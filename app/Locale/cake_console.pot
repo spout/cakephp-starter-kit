@@ -1,0 +1,83 @@
+# LANGUAGE translation of CakePHP Application
+# Copyright YEAR NAME <EMAIL@ADDRESS>
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: PROJECT VERSION\n"
+"POT-Creation-Date: 2012-07-11 13:18+0200\n"
+"PO-Revision-Date: YYYY-mm-DD HH:MM+ZZZZ\n"
+"Last-Translator: NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <EMAIL@ADDRESS>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=INTEGER; plural=EXPRESSION;\n"
+
+#: Plugin/Tools/Console/Command/ConvertShell.php:39
+msgid "<warning>Dry-run mode enabled!</warning>"
+msgstr ""
+
+#: Plugin/Tools/Console/Command/ConvertShell.php:42
+msgid "<warning>dos2unix not available</warning>"
+msgstr ""
+
+#: Plugin/Tools/Console/Command/ConvertShell.php:135
+msgid "Mode"
+msgstr ""
+
+#: Plugin/Tools/Console/Command/ConvertShell.php:140
+msgid "Specify extensions [php|txt|...]"
+msgstr ""
+
+#: Plugin/Tools/Console/Command/ConvertShell.php:145
+msgid "Dry run the clear command, no files will actually be deleted. Should be combined with verbose!"
+msgstr ""
+
+#: Plugin/Tools/Console/Command/ConvertShell.php:150
+msgid "exclude the following files or folders"
+msgstr ""
+
+#: Plugin/Tools/Console/Command/ConvertShell.php:158
+msgid "The Convert Shell converts files from dos/unix/mac to another system"
+msgstr ""
+
+#: Plugin/Tools/Console/Command/ConvertShell.php:160
+msgid "Convert folder recursivly (Tools.Convert folder [options] [path])"
+msgstr ""
+
+#: Plugin/Tools/Console/Command/IndentShell.php:92
+#: Plugin/Tools/Console/Command/IndexShell.php:275
+msgid "Dry run the update, no files will actually be modified."
+msgstr ""
+
+#: Plugin/Tools/Console/Command/IndentShell.php:97
+#: Plugin/Tools/Console/Command/IndexShell.php:280
+msgid "Log all ouput to file log.txt in TMP dir"
+msgstr ""
+
+#: Plugin/Tools/Console/Command/IndentShell.php:102
+#: Plugin/Tools/Console/Command/IndexShell.php:285
+msgid "Interactive"
+msgstr ""
+
+#: Plugin/Tools/Console/Command/IndentShell.php:109
+msgid "Correct indentation of files"
+msgstr ""
+
+#: Plugin/Tools/Console/Command/IndentShell.php:111
+msgid "Indent all files in a folder"
+msgstr ""
+
+#: Plugin/Tools/Console/Command/IndexShell.php:290
+msgid "custom ds"
+msgstr ""
+
+#: Plugin/Tools/Console/Command/IndexShell.php:297
+msgid "..."
+msgstr ""
+
+#: Plugin/Tools/Console/Command/IndexShell.php:299
+msgid "Run"
+msgstr ""
+

@@ -1,0 +1,1 @@
+<?php echo $this->element('generic/actions/search', array('itemsBrowseBefore' => '<ul class="thumbnails">', 'itemsBrowseAfter' => '</ul>'));?>

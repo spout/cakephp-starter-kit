@@ -1,0 +1,24 @@
+<IfModule mod_rewrite.c>
+    RewriteEngine On
+    
+	# no www redirect
+    #RewriteCond %{HTTP_HOST} ^www\.example\.com$ [NC]
+	#RewriteRule ^(.*)$ http://example.com/$1 [R=301,L]
+	
+	# robots.txt rewrite
+	RewriteRule ^robots.txt$ robots.php
+	
+	# Add trailing slash
+	# RewriteCond %{REQUEST_FILENAME} !-f
+	# RewriteRule ^(.*[^/])$ http://%{HTTP_HOST}/cakephp-starter-kit/$1/ [L,R=301]
+	
+	RewriteCond %{REQUEST_FILENAME} !-f 
+	RewriteCond %{REQUEST_FILENAME} !-d 
+	RewriteCond %{REQUEST_URI} !(\.[a-zA-Z0-9]{1,5}|/)$ 
+	RewriteRule ^(.*)$ http://%{HTTP_HOST}/cakephp-starter-kit/$1/ [L,R=301]
+	
+	# CakePHP rewrite
+    RewriteCond %{REQUEST_FILENAME} !-d
+    RewriteCond %{REQUEST_FILENAME} !-f
+    RewriteRule ^(.*)$ index.php [QSA,L]
+</IfModule>

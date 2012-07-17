@@ -1,0 +1,36 @@
+[submodule "cakephp"]
+	path = cakephp
+	url = git://github.com/cakephp/cakephp.git
+[submodule "app/Vendor/spyc"]
+	path = app/Vendor/spyc
+	url = git://github.com/mustangostang/spyc.git
+[submodule "app/Vendor/securimage"]
+	path = app/Vendor/securimage
+	url = git://github.com/dapphp/securimage.git
+[submodule "app/Vendor/simplepie"]
+	path = app/Vendor/simplepie
+	url = git://github.com/simplepie/simplepie.git
+[submodule "app/Plugin/Tools"]
+	path = app/Plugin/Tools
+	url = git://github.com/dereuromark/tools.git
+[submodule "app/Plugin/Utils"]
+	path = app/Plugin/Utils
+	url = git://github.com/CakeDC/utils.git
+[submodule "app/Plugin/Upload"]
+	path = app/Plugin/Upload
+	url = git://github.com/josegonzalez/upload.git
+[submodule "app/Vendor/elFinder"]
+	path = app/Vendor/elFinder
+	url = git://github.com/Studio-42/elFinder.git
+[submodule "app/Plugin/Crud"]
+	path = app/Plugin/Crud
+	url = git://github.com/nodesagency/Platform-Crud-Plugin.git
+[submodule "app/Plugin/TwitterBootstrap"]
+	path = app/Plugin/TwitterBootstrap
+	url = git://github.com/nodesagency/Platform-Twitter-Bootstrap.git
+[submodule "app/Plugin/Tags"]
+	path = app/Plugin/Tags
+	url = git://github.com/CakeDC/tags.git
+[submodule "app/Plugin/Search"]
+	path = app/Plugin/Search
+	url = git://github.com/CakeDC/search.git

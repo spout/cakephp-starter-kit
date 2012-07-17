@@ -1,0 +1,300 @@
+/*reset*/
+a,abbr,acronym,address,applet,article,aside,audio,b,big,blockquote,body,canvas,caption,center,cite,code,dd,del,details,dfn,dialog,div,dl,dt,em,embed,fieldset,figcaption,figure,font,footer,form,h1,h2,h3,h4,h5,h6,header,hgroup,hr,html,i,iframe,img,ins,kbd,label,legend,li,mark,menu,meter,nav,object,ol,output,p,pre,progress,q,rp,rt,ruby,s,samp,section,small,span,strike,strong,sub,summary,sup,table,tbody,td,tfoot,th,thead,time,tr,tt,u,ul,var,video,xmp{border:0;margin:0;padding:0;font-size:100%}html,body{height:100%}article,aside,details,figcaption,figure,footer,header,hgroup,menu,nav,section{display:block}b,strong{font-weight:bold}img{color:transparent;font-size:0;vertical-align:middle;-ms-interpolation-mode:bicubic}li{display:list-item}table{border-collapse:collapse;border-spacing:0}th,td,caption{font-weight:normal;vertical-align:top;text-align:left}q{quotes:none}q:before,q:after{content:'';content:none}sub,sup,small{font-size:75%}sub,sup{line-height:0;position:relative;vertical-align:baseline}sub{bottom:-0.25em}sup{top:-0.5em}svg{overflow:hidden}
+
+/*commons*/
+a img {border:none;}
+img {vertical-align:middle;}
+
+abbr, acronym, .help {
+	border-bottom:1px dotted #333;
+	cursor:help;
+}
+	
+/*code,pre {
+	background-color:#f4f4f4;
+	font-family:monospace;
+	font-size:1.3em;
+	padding:1em;
+	margin:0.3em;
+	display:block;
+	overflow:auto;
+	word-wrap:break-word;
+}*/
+
+.skip {
+	display:none;
+}
+
+.item-count{
+	color:#808080;
+	font-size:0.9em;
+}
+
+em {font-style:italic;}/*W3C doesn't specify that <em> is italic, but it is by default on most browsers*/
+strong {font-weight:bold;}/*W3C doesn't specify that <strong> is bold, but it is by default on most browsers*/
+.underline {text-decoration:underline;}
+.strike {text-decoration:line-through;}
+.centerize {text-align:center;}
+.textal {text-align:left;}
+.textar {text-align:right;}
+.inline {display:inline;list-style-type:none;list-style-image:none;}
+
+.geo{display:none;}
+
+.clear {clear:both;}
+.floatr {float:right;}
+.floatl {float:left;}
+
+div {line-height:1.2;}
+/* 
+Fuck*ng IE6 Peekaboo Bug
+http://www.dracos.co.uk/code/ie6-css-bug/
+http://www.positioniseverything.net/explorer/peekaboo.html
+*/
+
+#lang-selector {
+	text-align:right;	
+}
+
+#lang-selector li{
+	display:inline;
+	margin:0 3px;
+}
+
+/*flashMessage*/
+.flashMessageInfo, .flashMessageError, .flashMessageSuccess, #authMessage, .form-inputs-info, .no-results {
+	background-position: 5px 50%;
+	background-repeat: no-repeat;
+	padding: 15px 15px 15px 45px;
+	margin: 5px 0;
+}
+
+.flashMessageInfo, .form-inputs-info {
+	background-color:#F7F7FF;
+	border:1px solid #DDDDF7;
+	background-image:url(../img/flashMessageInfo.png);
+}
+
+.flashMessageError, #authMessage, .no-results {
+	background-color:#FCCECC;
+	border:1px solid #CC0000;
+	background-image:url(../img/flashMessageError.png);
+}
+
+.flashMessageSuccess {
+	background-color:#EEFFEE;
+	border:1px solid #CCF7CC;
+	background-image:url(../img/flashMessageSuccess.png);
+}
+
+/*Forms*/
+fieldset {
+	border: 1px solid #ccc;
+	margin-bottom: 10px;
+	padding: 10px;
+}
+
+fieldset legend {
+	color: #e32;
+	font-size: 1.2em;
+	font-weight: bold;
+}
+
+fieldset fieldset {
+
+}
+
+fieldset fieldset legend {
+	font-size: 120%;
+	font-weight: normal;
+}
+
+form .input {
+	color: #444;
+	padding:5px;
+	margin:5px 0;
+}
+
+form .textarea textarea {
+	width:99%;
+}
+
+label {
+	display:block;
+	margin-bottom:3px;
+}
+
+form .required {
+	font-weight: bold;
+}
+
+form .required label:after {
+	color: #e32;
+	content: ' *';
+	display:inline;
+}
+
+form div.radio.required label {
+	font-weight: normal;
+}
+
+form div.radio.required label:after {
+	content: '';
+}
+
+form div.radio.required legend:after {
+	color: #e32;
+	content: ' *';
+}
+
+div.checkbox label {
+	display: inline;
+}
+
+input, textarea, select {
+	padding:3px;
+}
+
+div.checkbox label {
+	display:inline;
+	cursor:pointer;
+}
+
+input[type=radio] {
+	display:inline;
+}
+
+div.radio label {
+	display:inline;
+	cursor:pointer;
+	margin: 0 5px;
+}
+
+div.error-message {
+	color:#CC0000;
+	font-weight:bold;
+}
+
+div.error {
+	background-color:#FCCECC;
+	border:1px solid #CC0000;
+}
+
+/*Pagination*/
+.paginator-counter {
+	margin:5px 0;
+}
+
+.paginator-links {
+	margin:5px 0;
+}
+
+.paginator-links a,
+.paginator-links span {
+	padding:3px;
+	font-weight:bold;
+	-webkit-border-radius: 5px;
+	-moz-border-radius: 5px;
+	border-radius: 5px;
+}
+
+.paginator-links a {
+	border:1px solid #9AAFE5;
+	font-size:1.2em;
+	color:#105CB6;
+	text-decoration:none;
+}
+
+.paginator-links a:hover {
+	border:1px solid #296BB5;
+	text-decoration:none;
+}
+
+.paginator-links span.current {
+	font-size:1.2em;
+	border:1px solid #2E6AB1;
+	background-color:#2E6AB1;
+	color:#ffffff;
+	font-weight:bold;
+}
+
+.actions-links {
+	text-align:right;
+}
+
+.actions-links li {
+	display:inline;
+}
+
+.actions-links li a {
+	font-weight:bold;
+	background-repeat:no-repeat;
+	padding-left:20px;
+}
+
+.actions-links .action-edit {
+	background-image:url(../img/action-link-edit.png);
+}
+.actions-links .action-delete {
+	background-image:url(../img/action-link-delete.png);
+}
+.actions-links .action-accept {
+	background-image:url(../img/action-link-accept.png);
+}
+
+.breadcrumbs, .breadcrumbs-address {
+	margin:5px 0;
+	font-size:1.1em;
+}
+.breadcrumbs a, .breadcrumbs-address a {
+	font-weight:bold;
+}
+
+.breadcrumbs-separator {
+	color:#CC0000;
+}
+
+/*Comments*/
+
+.comments-list {
+	margin:10px 0;	
+}
+
+.comments-list-item {
+	padding: 5px;
+	margin: 5px 0;
+	border:1px solid #CCC;
+}
+.comments-list-meta {
+	
+}
+
+.comments-list-avatar {
+	float:left;
+	margin-right:10px;
+}
+
+.comments-list-name {
+	
+}
+
+.comments-list-date {
+	
+}
+
+.comments-list-comment {
+	padding:5px;
+	margin:5px 0;
+}
+
+#stars-cap {
+	margin-left: 5px;
+}
+
+/*Rounded corners*/
+.flashMessageInfo, .flashMessageError, .flashMessageSuccess, #authMessage, .form-inputs-info, div.error, .no-results {
+	-webkit-border-radius: 10px;
+	-moz-border-radius: 10px;
+	border-radius: 10px;
+}
+	

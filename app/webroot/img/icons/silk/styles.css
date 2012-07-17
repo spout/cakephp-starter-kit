@@ -1,0 +1,102 @@
+/* Famfamfam Silk Icons 
+ * CSS Document - Main Stylesheet 
+ * coded by Lisaraël@newedge
+ */
+ 
+/* Main */
+
+* {
+	margin: 0;
+	padding: 0;
+}
+
+html {
+	background: #efefef;
+}
+
+body {
+	font: normal 62.5%/150% Verdana, Helvetica, sans-serif;
+	margin: 50px auto 0;
+	width: 500px;
+	color: #555;
+}
+
+img {
+	border: 0;
+}
+
+/* Links */
+
+a:link, a {
+	color: #7E5FC1;
+	text-decoration: none;
+}
+
+a:visited {
+	color: #7E5FC1;
+	text-decoration: none;
+}
+
+a:hover {
+	color: #ABA1C1;
+	text-decoration: underline;
+}
+
+a:active {
+	color: #7E5FC1;
+}
+
+/* Interface */
+
+h1 {
+	font-family: "Trebuchet MS", Verdana, Helvetica, Arial, sans-serif;
+	font-size: 16px;
+	font-weight: bold;
+	margin: 0 0 10px;
+	color: #646041;
+}
+
+#sommaire {
+	margin: 0 auto 15px;
+	width: 100%;
+	-moz-column-count: 5;
+	-moz-column-gap: 25px;
+	text-align: left;
+}
+
+.icon_section {
+	border-top: 1px dotted #555;
+	padding: 5px 0;
+	margin: 5px 0 0;
+	clear: both;
+}
+
+.icon_section h2 {
+	font-family: "Trebuchet MS", Verdana, Helvetica, Arial, sans-serif;
+	font-size: 12px;
+	font-weight: bold;
+	margin: 0 0 5px;
+	color: #646041;
+}
+
+.icon {
+	float: left;
+	padding: 15px 5px; 
+	margin: 0 5px 5px 0;
+	text-align: center;
+	border: 1px dotted #555;
+	width: 100px;
+}
+
+.icon img {
+	margin: 0 5px;
+}
+
+.icon span {
+	display: block;
+	text-align: center;
+	font-size: 9px;
+	font-weight: bold;
+	color: #333;
+	word-break: break-all;
+}

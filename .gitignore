@@ -1,0 +1,8 @@
+/app/Config/database.php
+/app/Config/core.php
+/app/Config/email.php
+/app/tmp/*
+/app/webroot/uploads/*
+/app/webroot/thumbs/*
+/node_modules
+.DS_Store

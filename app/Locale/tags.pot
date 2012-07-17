@@ -1,0 +1,159 @@
+# LANGUAGE translation of CakePHP Application
+# Copyright YEAR NAME <EMAIL@ADDRESS>
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: PROJECT VERSION\n"
+"POT-Creation-Date: 2012-07-11 13:18+0200\n"
+"PO-Revision-Date: YYYY-mm-DD HH:MM+ZZZZ\n"
+"Last-Translator: NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <EMAIL@ADDRESS>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=INTEGER; plural=EXPRESSION;\n"
+
+#: Plugin/Tags/Controller/TagsController.php:106
+msgid "The Tags has been saved."
+msgstr ""
+
+#: Plugin/Tags/Controller/TagsController.php:122
+msgid "Tag saved."
+msgstr ""
+
+#: Plugin/Tags/Controller/TagsController.php:145
+msgid "Tag deleted."
+msgstr ""
+
+#: Plugin/Tags/Controller/TagsController.php:147
+#: Plugin/Tags/Model/Tag.php:65;105
+msgid "Invalid Tag."
+msgstr ""
+
+#: Plugin/Tags/Model/Tagged.php:169
+msgid "Find tagged will not work with a recursive level of -1, you need at least 0."
+msgstr ""
+
+#: Plugin/Tags/View/Tags/admin_add.ctp:15
+msgid "Add %s"
+msgstr ""
+
+#: Plugin/Tags/View/Tags/admin_add.ctp:15
+#: Plugin/Tags/View/Tags/admin_edit.ctp:15
+#: Plugin/Tags/View/Tags/admin_index.ctp:77
+#: Plugin/Tags/View/Tags/admin_view.ctp:13;54;55;57
+#: Plugin/Tags/View/Tags/view.ctp:13
+msgid "Tag"
+msgstr ""
+
+#: Plugin/Tags/View/Tags/admin_add.ctp:20
+#: Plugin/Tags/View/Tags/admin_edit.ctp:23
+msgid "Submit"
+msgstr ""
+
+#: Plugin/Tags/View/Tags/admin_add.ctp:24
+#: Plugin/Tags/View/Tags/admin_edit.ctp:28
+#: Plugin/Tags/View/Tags/admin_view.ctp:56
+#: Plugin/Tags/View/Tags/view.ctp:54
+msgid "List %s"
+msgstr ""
+
+#: Plugin/Tags/View/Tags/admin_add.ctp:24
+#: Plugin/Tags/View/Tags/admin_edit.ctp:28
+#: Plugin/Tags/View/Tags/admin_index.ctp:13
+#: Plugin/Tags/View/Tags/admin_view.ctp:56
+#: Plugin/Tags/View/Tags/index.ctp:13
+#: Plugin/Tags/View/Tags/view.ctp:54
+msgid "Tags"
+msgstr ""
+
+#: Plugin/Tags/View/Tags/admin_edit.ctp:15
+#: Plugin/Tags/View/Tags/admin_view.ctp:54
+msgid "Edit %s"
+msgstr ""
+
+#: Plugin/Tags/View/Tags/admin_edit.ctp:27
+#: Plugin/Tags/View/Tags/admin_index.ctp:64
+msgid "Delete"
+msgstr ""
+
+#: Plugin/Tags/View/Tags/admin_edit.ctp:27
+#: Plugin/Tags/View/Tags/admin_index.ctp:64
+#: Plugin/Tags/View/Tags/admin_view.ctp:55
+msgid "Are you sure you want to delete # %s?"
+msgstr ""
+
+#: Plugin/Tags/View/Tags/admin_index.ctp:17
+#: Plugin/Tags/View/Tags/index.ctp:17
+msgid "Page %page% of %pages%, showing %current% records out of %count% total, starting on record %start%, ending on %end%"
+msgstr ""
+
+#: Plugin/Tags/View/Tags/admin_index.ctp:29
+#: Plugin/Tags/View/Tags/index.ctp:29
+msgid "Actions"
+msgstr ""
+
+#: Plugin/Tags/View/Tags/admin_index.ctp:62
+#: Plugin/Tags/View/Tags/index.ctp:62
+msgid "View"
+msgstr ""
+
+#: Plugin/Tags/View/Tags/admin_index.ctp:63
+msgid "Edit"
+msgstr ""
+
+#: Plugin/Tags/View/Tags/admin_index.ctp:71
+#: Plugin/Tags/View/Tags/index.ctp:69
+msgid "previous"
+msgstr ""
+
+#: Plugin/Tags/View/Tags/admin_index.ctp:73
+#: Plugin/Tags/View/Tags/index.ctp:71
+msgid "next"
+msgstr ""
+
+#: Plugin/Tags/View/Tags/admin_index.ctp:77
+#: Plugin/Tags/View/Tags/admin_view.ctp:57
+msgid "New %s"
+msgstr ""
+
+#: Plugin/Tags/View/Tags/admin_view.ctp:15
+#: Plugin/Tags/View/Tags/view.ctp:15
+msgid "Id"
+msgstr ""
+
+#: Plugin/Tags/View/Tags/admin_view.ctp:20
+#: Plugin/Tags/View/Tags/view.ctp:20
+msgid "Identifier"
+msgstr ""
+
+#: Plugin/Tags/View/Tags/admin_view.ctp:25
+#: Plugin/Tags/View/Tags/view.ctp:25
+msgid "Name"
+msgstr ""
+
+#: Plugin/Tags/View/Tags/admin_view.ctp:30
+#: Plugin/Tags/View/Tags/view.ctp:30
+msgid "Keyname"
+msgstr ""
+
+#: Plugin/Tags/View/Tags/admin_view.ctp:35
+#: Plugin/Tags/View/Tags/view.ctp:35
+msgid "Weight"
+msgstr ""
+
+#: Plugin/Tags/View/Tags/admin_view.ctp:40
+#: Plugin/Tags/View/Tags/view.ctp:40
+msgid "Created"
+msgstr ""
+
+#: Plugin/Tags/View/Tags/admin_view.ctp:45
+#: Plugin/Tags/View/Tags/view.ctp:45
+msgid "Modified"
+msgstr ""
+
+#: Plugin/Tags/View/Tags/admin_view.ctp:55
+msgid "Delete %s"
+msgstr ""
+

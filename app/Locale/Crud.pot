@@ -1,0 +1,52 @@
+# LANGUAGE translation of CakePHP Application
+# Copyright YEAR NAME <EMAIL@ADDRESS>
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: PROJECT VERSION\n"
+"POT-Creation-Date: 2012-07-11 13:18+0200\n"
+"PO-Revision-Date: YYYY-mm-DD HH:MM+ZZZZ\n"
+"Last-Translator: NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <EMAIL@ADDRESS>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=INTEGER; plural=EXPRESSION;\n"
+
+#: Plugin/Crud/Controller/Component/CrudComponent.php:358
+msgid "Succesfully created %s"
+msgstr ""
+
+#: Plugin/Crud/Controller/Component/CrudComponent.php:362
+msgid "Could not create %s"
+msgstr ""
+
+#: Plugin/Crud/Controller/Component/CrudComponent.php:397
+msgid "%s was succesfully updated"
+msgstr ""
+
+#: Plugin/Crud/Controller/Component/CrudComponent.php:401
+msgid "Could not update %s"
+msgstr ""
+
+#: Plugin/Crud/Controller/Component/CrudComponent.php:413;460;502
+msgid "Could not find %s"
+msgstr ""
+
+#: Plugin/Crud/Controller/Component/CrudComponent.php:508;517
+msgid "Could not delete %s"
+msgstr ""
+
+#: Plugin/Crud/Controller/Component/CrudComponent.php:514
+msgid "Successfully deleted %s"
+msgstr ""
+
+#: Plugin/Crud/Controller/Component/CrudComponent.php:521
+msgid "Invalid HTTP request"
+msgstr ""
+
+#: Plugin/Crud/Controller/Component/CrudComponent.php:592
+msgid "Invalid id"
+msgstr ""
+

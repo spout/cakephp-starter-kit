@@ -1,0 +1,2329 @@
+# LANGUAGE translation of CakePHP Application
+# Copyright YEAR NAME <EMAIL@ADDRESS>
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: PROJECT VERSION\n"
+"POT-Creation-Date: 2012-02-22 12:15+0100\n"
+"PO-Revision-Date: 2012-07-14 11:02+0100\n"
+"Last-Translator: \n"
+"Language-Team: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Poedit-Language: French\n"
+
+#: Controller/AdsController.php:9
+msgid "Prix fixé"
+msgstr ""
+
+#: Controller/AdsController.php:10
+#: View/Elements/ads/fields/price.ctp:27
+msgid "A discuter"
+msgstr ""
+
+#: Controller/AdsController.php:11
+#: View/Elements/ads/fields/price.ctp:38
+msgid "Non applicable"
+msgstr ""
+
+#: Controller/AdsController.php:12
+#: View/Elements/ads/fields/price.ctp:43
+msgid "Gratuit"
+msgstr ""
+
+#: Controller/AdsController.php:13
+#: View/Elements/ads/fields/price.ctp:47
+msgid "Echange"
+msgstr ""
+
+#: Controller/AdsController.php:14
+#: View/Elements/ads/fields/price.ctp:32
+msgid "Non communiqué"
+msgstr ""
+
+#: Controller/AdsController.php:19
+msgid "Offre"
+msgstr ""
+
+#: Controller/AdsController.php:20
+msgid "Demande"
+msgstr ""
+
+#: Controller/AdsController.php:25
+#: View/Elements/menutop.ctp:37
+msgid "Annonces équitation"
+msgstr ""
+
+#: Controller/AppController.php:41
+msgid "Vous devez être connecté pour accéder à cette partie."
+msgstr ""
+
+#: Controller/AppController.php:123;130
+msgid "Vous n'avez pas la permission d'accéder à cette page."
+msgstr ""
+
+#: Controller/AppController.php:268
+msgid "Enregistrement #%s non trouvé."
+msgstr ""
+
+#: Controller/AppController.php:285
+msgid "Cet enregistrement est en attente de validation."
+msgstr ""
+
+#: Controller/AppController.php:337
+msgid "Nouveau commentaire"
+msgstr ""
+
+#: Controller/AppController.php:338
+msgid "Votre commentaire a été ajouté avec succès."
+msgstr ""
+
+#: Controller/AppController.php:342;461;688
+#: Controller/CatsController.php:31
+#: Controller/CustomFieldsController.php:45
+#: Controller/LinksController.php:52
+#: Controller/UsersController.php:78;103
+msgid "Veuillez corriger les erreurs ci-dessous."
+msgstr ""
+
+#: Controller/AppController.php:425
+#: Model/Ad.php:33;77
+#: Model/Comment.php:15
+#: Model/Contact.php:11
+#: Model/Event.php:22
+#: Model/Link.php:31;47
+#: Model/Post.php:27
+msgid "E-mail non valide"
+msgstr ""
+
+#: Controller/AppController.php:426;429;432;435;438
+#: Controller/LinksController.php:8
+#: Model/Ad.php:34;37;40;43;46;49;52;55;58;62
+#: Model/AppModel.php:11
+#: Model/Comment.php:11;14;18
+#: Model/Contact.php:12;15;18;22
+#: Model/Event.php:23;26;29;32;35;38;42;46
+#: Model/Link.php:32;35;38;41;44
+#: Model/Photo.php:17
+#: Model/Post.php:28;31;34;37;40
+#: Model/User.php:22;25
+msgid "Champ requis"
+msgstr ""
+
+#: Controller/AppController.php:456
+#: Controller/ContactController.php:11
+#: Controller/LinksController.php:48
+msgid "Votre message a été envoyé avec succès."
+msgstr ""
+
+#: Controller/AppController.php:587
+msgid "Le champ \"%s\" de l'enregistrement #%s a été mis à la valeur \"%s\"."
+msgstr ""
+
+#: Controller/AppController.php:606
+msgid "Enregistrement supprimé avec succès."
+msgstr ""
+
+#: Controller/AppController.php:658
+msgid "Votre note a été enregistrée"
+msgstr ""
+
+#: Controller/AppController.php:661
+msgid "Vous avez déjà noté cet enregistrement"
+msgstr ""
+
+#: Controller/AppController.php:679
+#: Controller/CatsController.php:25
+#: Controller/CustomFieldsController.php:41
+msgid "Les données ont été enregistrées."
+msgstr ""
+
+#: Controller/AppController.php:682
+msgid "Nouveau enregistrement"
+msgstr ""
+
+#: Controller/AppController.php:738
+msgid "Page non trouvée"
+msgstr ""
+
+#: Controller/AppController.php:831
+msgid "Bonjour %s %s<br /><p>Merci d'avoir créé un compte sur notre site:<br />%s</p><p>Vous pouvez vous enregistrer avec les informations suivantes:<br /><strong>E-mail:</strong> %s<br /><strong>Mot de passe:</strong> %s</p><p>Le Webmaster</p>Ceci est un message automatique, svp n'y répondez pas !"
+msgstr ""
+
+#: Controller/AppController.php:836
+msgid "Votre nouveau compte membre"
+msgstr ""
+
+#: Controller/AppController.php:841
+msgid "Un e-mail contenant vos informations de connexion a été envoyé à %s."
+msgstr ""
+
+#: Controller/CatsController.php:10
+#: View/Links/view.ctp:45
+msgid "Catégories"
+msgstr ""
+
+#: Controller/CustomFieldsController.php:9
+msgid "Champs personnalisés"
+msgstr ""
+
+#: Controller/EventsController.php:11
+#: View/Elements/menutop.ctp:57
+#: View/Events/index.ctp:3
+msgid "Agenda équestre"
+msgstr ""
+
+#: Controller/EventsController.php:43
+msgid "Cet événement a déjà eu lieu."
+msgstr ""
+
+#: Controller/LinksController.php:11
+#: View/Elements/menutop.ctp:17
+msgid "Annuaire du cheval"
+msgstr ""
+
+#: Controller/LinksController.php:44
+msgid "L'enregistrement #%s a été activé."
+msgstr ""
+
+#: Controller/PaymentsController.php:8
+msgid "Paiements"
+msgstr ""
+
+#: Controller/PhotosController.php:12
+msgid "Photos équitation"
+msgstr ""
+
+#: Controller/PostsController.php:11
+msgid "Blog"
+msgstr ""
+
+#: Controller/ShopsController.php:8
+#: View/Elements/menutop.ctp:100
+msgid "Boutique"
+msgstr ""
+
+#: Controller/ShopsController.php:11
+msgid "Equipements du cheval et de l'écurie"
+msgstr ""
+
+#: Controller/ShopsController.php:12
+msgid "Equipements du cavalier"
+msgstr ""
+
+#: Controller/UsersController.php:10
+msgid "Membres"
+msgstr ""
+
+#: Controller/UsersController.php:25
+msgid "Cet e-mail a bien été trouvé dans notre base de données, mais le compte n'est pas activé. Vérifiez votre courrier pour le lien d'activation."
+msgstr ""
+
+#: Controller/UsersController.php:35
+msgid "Vous êtes connecté avec succès."
+msgstr ""
+
+#: Controller/UsersController.php:39
+msgid "Combinaison e-mail / mot de passe incorrecte. Veuillez essayer à nouveau."
+msgstr ""
+
+#: Controller/UsersController.php:57
+msgid "Bonjour %s %s,<p>Merci d'avoir créé un compte sur notre site:<br />%s</p><p>Vous êtes à un pas de vous enregistrer et d'accéder à l'espace réservé aux membres.<br />Pour activer votre compte, cliquez ici:</p><p>%s</p><p>Une fois que vous aurez activé votre compte, vous pourrez vous enregistrer avec les informations suivantes:<br /><strong>E-mail:</strong> %s<br /><strong>Mot de passe:</strong> %s</p><p>Merci!</p><p>Le Webmaster</p>Ceci est un message automatique, svp n'y répondez pas !"
+msgstr ""
+
+#: Controller/UsersController.php:69
+msgid "Activez votre compte membre"
+msgstr ""
+
+#: Controller/UsersController.php:74
+msgid "Un e-mail contenant le lien d'activation vous a été envoyé, vérifiez votre courrier.<br />Vous devez cliquer sur ce lien pour vérifier votre adresse e-mail avant de pouvoir vous enregistrer."
+msgstr ""
+
+#: Controller/UsersController.php:87
+msgid "Vous êtes maintenant déconnecté."
+msgstr ""
+
+#: Controller/UsersController.php:100
+msgid "Vos informations ont été mises à jour."
+msgstr ""
+
+#: Controller/UsersController.php:118
+msgid "Votre mot de passe a été changé."
+msgstr ""
+
+#: Controller/UsersController.php:129
+msgid "Votre compte a été activé, vous pouvez maintenant vous connecter."
+msgstr ""
+
+#: Controller/UsersController.php:132
+msgid "Erreur d'activation du compte !"
+msgstr ""
+
+#: Controller/UsersController.php:158
+msgid "Bonjour %s %s,<br /><p>Nous avons changé votre mot de passe.</p><p>Voici vos informations de connexion:<br /><strong>E-mail:</strong> %s<br /><strong>Nouveau mot de passe:</strong> %s</p><p>Vous pouvez vous connecter ici:<br />%s</p><p>Le Webmaster</p>Ceci est un message automatique, svp n'y répondez pas !"
+msgstr ""
+
+#: Controller/UsersController.php:169
+msgid "Votre nouveau mot de passe"
+msgstr ""
+
+#: Controller/UsersController.php:174
+msgid "Un e-mail contenant votre nouveau mot de passe vous a été envoyé, vérifiez votre courrier."
+msgstr ""
+
+#: Controller/UsersController.php:178
+msgid "Cette adresse e-mail n'a pas été trouvée dans notre base de donnée."
+msgstr ""
+
+#: Model/Ad.php:59
+msgid "Le prix doit être numérique"
+msgstr ""
+
+#: Model/Ad.php:65;69;73
+msgid "Le poids du fichier est supérieur au maximum accepté"
+msgstr ""
+
+#: Model/Ad.php:66;70;74
+msgid "Le type du fichier est invalide"
+msgstr ""
+
+#: Model/Ad.php:80
+#: Model/Link.php:50;53;56;59;62
+msgid "Le format du numéro n'est pas valide"
+msgstr ""
+
+#: Model/AppModel.php:10
+#: Model/Contact.php:21
+msgid "Code de sécurité incorrect"
+msgstr ""
+
+#: Model/Event.php:39;43
+msgid "Date non valide"
+msgstr ""
+
+#: Model/User.php:11
+msgid "Veuillez entrer une adresse e-mail valide"
+msgstr ""
+
+#: Model/User.php:12
+msgid "Cet e-mail est déjà inscrit"
+msgstr ""
+
+#: Model/User.php:15
+msgid "Le mot de passe doit être de 6 caractères minimum"
+msgstr ""
+
+#: Model/User.php:16
+msgid "Veuillez entrer un mot de passe"
+msgstr ""
+
+#: Model/User.php:19
+msgid "Les mots de passe ne correspondent pas"
+msgstr ""
+
+#: Model/Behavior/GeocodingBehavior.php:126
+msgid "Non-existent address"
+msgstr ""
+
+#: Model/Behavior/GeocodingBehavior.php:130
+msgid "Over requests"
+msgstr ""
+
+#: Model/Behavior/GeocodingBehavior.php:134
+msgid "Request was denied"
+msgstr ""
+
+#: Model/Behavior/GeocodingBehavior.php:138
+msgid "Address was missing"
+msgstr ""
+
+#: Model/Behavior/GeocodingBehavior.php:142
+msgid "Unknown error"
+msgstr ""
+
+#: Plugin/Utils/Lib/I18nCountry.php:55
+msgid "Invalid setting for key: Use iso, name, iso3, numcode or printableName."
+msgstr ""
+
+#: Plugin/Utils/Lib/I18nCountry.php:59
+msgid "Afghanistan"
+msgstr ""
+
+#: Plugin/Utils/Lib/I18nCountry.php:60
+msgid "Albania"
+msgstr ""
+
+#: Plugin/Utils/Lib/I18nCountry.php:61
+msgid "Algeria"
+msgstr ""
+
+#: Plugin/Utils/Lib/I18nCountry.php:62
+msgid "American Samoa"
+msgstr ""
+
+#: Plugin/Utils/Lib/I18nCountry.php:63
+msgid "Andorra"
+msgstr ""
+
+#: Plugin/Utils/Lib/I18nCountry.php:64
+msgid "Angola"
+msgstr ""
+
+#: Plugin/Utils/Lib/I18nCountry.php:65
+msgid "Anguilla"
+msgstr ""
+
+#: Plugin/Utils/Lib/I18nCountry.php:66
+msgid "Antarctica"
+msgstr ""
+
+#: Plugin/Utils/Lib/I18nCountry.php:67
+msgid "Antigua and Barbuda"
+msgstr ""
+
+#: Plugin/Utils/Lib/I18nCountry.php:68
+msgid "Argentina"
+msgstr ""
+
+#: Plugin/Utils/Lib/I18nCountry.php:69
+msgid "Armenia"
+msgstr ""
+
+#: Plugin/Utils/Lib/I18nCountry.php:70
+msgid "Aruba"
+msgstr ""
+
+#: Plugin/Utils/Lib/I18nCountry.php:71
+msgid "Australia"
+msgstr ""
+
+#: Plugin/Utils/Lib/I18nCountry.php:72
+msgid "Austria"
+msgstr ""
+
+#: Plugin/Utils/Lib/I18nCountry.php:73
+msgid "Azerbaijan"
+msgstr ""
+
+#: Plugin/Utils/Lib/I18nCountry.php:74
+msgid "Bahamas"
+msgstr ""
+
+#: Plugin/Utils/Lib/I18nCountry.php:75
+msgid "Bahrain"
+msgstr ""
+
+#: Plugin/Utils/Lib/I18nCountry.php:76
+msgid "Bangladesh"
+msgstr ""
+
+#: Plugin/Utils/Lib/I18nCountry.php:77
+msgid "Barbados"
+msgstr ""
+
+#: Plugin/Utils/Lib/I18nCountry.php:78
+msgid "Belarus"
+msgstr ""
+
+#: Plugin/Utils/Lib/I18nCountry.php:79
+msgid "Belgium"
+msgstr ""
+
+#: Plugin/Utils/Lib/I18nCountry.php:80
+msgid "Belize"
+msgstr ""
+
+#: Plugin/Utils/Lib/I18nCountry.php:81
+msgid "Benin"
+msgstr ""
+
+#: Plugin/Utils/Lib/I18nCountry.php:82
+msgid "Bermuda"
+msgstr ""
+
+#: Plugin/Utils/Lib/I18nCountry.php:83
+msgid "Bhutan"
+msgstr ""
+
+#: Plugin/Utils/Lib/I18nCountry.php:84
+msgid "Bolivia"
+msgstr ""
+
+#: Plugin/Utils/Lib/I18nCountry.php:85
+msgid "Bosnia and Herzegovina"
+msgstr ""
+
+#: Plugin/Utils/Lib/I18nCountry.php:86
+msgid "Botswana"
+msgstr ""
+
+#: Plugin/Utils/Lib/I18nCountry.php:87
+msgid "Bouvet Island"
+msgstr ""
+
+#: Plugin/Utils/Lib/I18nCountry.php:88
+msgid "Brazil"
+msgstr ""
+
+#: Plugin/Utils/Lib/I18nCountry.php:89
+msgid "British Indian Ocean Territory"
+msgstr ""
+
+#: Plugin/Utils/Lib/I18nCountry.php:90
+msgid "Brunei Darussalam"
+msgstr ""
+
+#: Plugin/Utils/Lib/I18nCountry.php:91
+msgid "Bulgaria"
+msgstr ""
+
+#: Plugin/Utils/Lib/I18nCountry.php:92
+msgid "Burkina Faso"
+msgstr ""
+
+#: Plugin/Utils/Lib/I18nCountry.php:93
+msgid "Burundi"
+msgstr ""
+
+#: Plugin/Utils/Lib/I18nCountry.php:94
+msgid "Cambodia"
+msgstr ""
+
+#: Plugin/Utils/Lib/I18nCountry.php:95
+msgid "Cameroon"
+msgstr ""
+
+#: Plugin/Utils/Lib/I18nCountry.php:96
+msgid "Canada"
+msgstr ""
+
+#: Plugin/Utils/Lib/I18nCountry.php:97
+msgid "Cape Verde"
+msgstr ""
+
+#: Plugin/Utils/Lib/I18nCountry.php:98
+msgid "Cayman Islands"
+msgstr ""
+
+#: Plugin/Utils/Lib/I18nCountry.php:99
+msgid "Central African Republic"
+msgstr ""
+
+#: Plugin/Utils/Lib/I18nCountry.php:100
+msgid "Chad"
+msgstr ""
+
+#: Plugin/Utils/Lib/I18nCountry.php:101
+msgid "Chile"
+msgstr ""
+
+#: Plugin/Utils/Lib/I18nCountry.php:102
+msgid "China"
+msgstr ""
+
+#: Plugin/Utils/Lib/I18nCountry.php:103
+msgid "Christmas Island"
+msgstr ""
+
+#: Plugin/Utils/Lib/I18nCountry.php:104
+msgid "Cocos (Keeling) Islands"
+msgstr ""
+
+#: Plugin/Utils/Lib/I18nCountry.php:105
+msgid "Colombia"
+msgstr ""
+
+#: Plugin/Utils/Lib/I18nCountry.php:106
+msgid "Comoros"
+msgstr ""
+
+#: Plugin/Utils/Lib/I18nCountry.php:107
+msgid "Congo"
+msgstr ""
+
+#: Plugin/Utils/Lib/I18nCountry.php:108
+msgid "Congo, the Democratic Republic of the"
+msgstr ""
+
+#: Plugin/Utils/Lib/I18nCountry.php:109
+msgid "Cook Islands"
+msgstr ""
+
+#: Plugin/Utils/Lib/I18nCountry.php:110
+msgid "Costa Rica"
+msgstr ""
+
+#: Plugin/Utils/Lib/I18nCountry.php:111
+msgid "Cote D'Ivoire"
+msgstr ""
+
+#: Plugin/Utils/Lib/I18nCountry.php:112
+msgid "Croatia"
+msgstr ""
+
+#: Plugin/Utils/Lib/I18nCountry.php:113
+msgid "Cuba"
+msgstr ""
+
+#: Plugin/Utils/Lib/I18nCountry.php:114
+msgid "Cyprus"
+msgstr ""
+
+#: Plugin/Utils/Lib/I18nCountry.php:115
+msgid "Czech Republic"
+msgstr ""
+
+#: Plugin/Utils/Lib/I18nCountry.php:116
+msgid "Denmark"
+msgstr ""
+
+#: Plugin/Utils/Lib/I18nCountry.php:117
+msgid "Djibouti"
+msgstr ""
+
+#: Plugin/Utils/Lib/I18nCountry.php:118
+msgid "Dominica"
+msgstr ""
+
+#: Plugin/Utils/Lib/I18nCountry.php:119
+msgid "Dominican Republic"
+msgstr ""
+
+#: Plugin/Utils/Lib/I18nCountry.php:120
+msgid "Ecuador"
+msgstr ""
+
+#: Plugin/Utils/Lib/I18nCountry.php:121
+msgid "Egypt"
+msgstr ""
+
+#: Plugin/Utils/Lib/I18nCountry.php:122
+msgid "El Salvador"
+msgstr ""
+
+#: Plugin/Utils/Lib/I18nCountry.php:123
+msgid "Equatorial Guinea"
+msgstr ""
+
+#: Plugin/Utils/Lib/I18nCountry.php:124
+msgid "Eritrea"
+msgstr ""
+
+#: Plugin/Utils/Lib/I18nCountry.php:125
+msgid "Estonia"
+msgstr ""
+
+#: Plugin/Utils/Lib/I18nCountry.php:126
+msgid "Ethiopia"
+msgstr ""
+
+#: Plugin/Utils/Lib/I18nCountry.php:127
+msgid "Falkland Islands (Malvinas)"
+msgstr ""
+
+#: Plugin/Utils/Lib/I18nCountry.php:128
+msgid "Faroe Islands"
+msgstr ""
+
+#: Plugin/Utils/Lib/I18nCountry.php:129
+msgid "Fiji"
+msgstr ""
+
+#: Plugin/Utils/Lib/I18nCountry.php:130
+msgid "Finland"
+msgstr ""
+
+#: Plugin/Utils/Lib/I18nCountry.php:131
+msgid "France"
+msgstr ""
+
+#: Plugin/Utils/Lib/I18nCountry.php:132
+msgid "French Guiana"
+msgstr ""
+
+#: Plugin/Utils/Lib/I18nCountry.php:133
+msgid "French Polynesia"
+msgstr ""
+
+#: Plugin/Utils/Lib/I18nCountry.php:134
+msgid "French Southern Territories"
+msgstr ""
+
+#: Plugin/Utils/Lib/I18nCountry.php:135
+msgid "Gabon"
+msgstr ""
+
+#: Plugin/Utils/Lib/I18nCountry.php:136
+msgid "Gambia"
+msgstr ""
+
+#: Plugin/Utils/Lib/I18nCountry.php:137
+msgid "Georgia"
+msgstr ""
+
+#: Plugin/Utils/Lib/I18nCountry.php:138
+msgid "Germany"
+msgstr ""
+
+#: Plugin/Utils/Lib/I18nCountry.php:139
+msgid "Ghana"
+msgstr ""
+
+#: Plugin/Utils/Lib/I18nCountry.php:140
+msgid "Gibraltar"
+msgstr ""
+
+#: Plugin/Utils/Lib/I18nCountry.php:141
+msgid "Greece"
+msgstr ""
+
+#: Plugin/Utils/Lib/I18nCountry.php:142
+msgid "Greenland"
+msgstr ""
+
+#: Plugin/Utils/Lib/I18nCountry.php:143
+msgid "Grenada"
+msgstr ""
+
+#: Plugin/Utils/Lib/I18nCountry.php:144
+msgid "Guadeloupe"
+msgstr ""
+
+#: Plugin/Utils/Lib/I18nCountry.php:145
+msgid "Guam"
+msgstr ""
+
+#: Plugin/Utils/Lib/I18nCountry.php:146
+msgid "Guatemala"
+msgstr ""
+
+#: Plugin/Utils/Lib/I18nCountry.php:147
+msgid "Guinea"
+msgstr ""
+
+#: Plugin/Utils/Lib/I18nCountry.php:148
+msgid "Guinea-Bissau"
+msgstr ""
+
+#: Plugin/Utils/Lib/I18nCountry.php:149
+msgid "Guyana"
+msgstr ""
+
+#: Plugin/Utils/Lib/I18nCountry.php:150
+msgid "Haiti"
+msgstr ""
+
+#: Plugin/Utils/Lib/I18nCountry.php:151
+msgid "Heard Island and Mcdonald Islands"
+msgstr ""
+
+#: Plugin/Utils/Lib/I18nCountry.php:152
+msgid "Holy See (Vatican City State)"
+msgstr ""
+
+#: Plugin/Utils/Lib/I18nCountry.php:153
+msgid "Honduras"
+msgstr ""
+
+#: Plugin/Utils/Lib/I18nCountry.php:154
+msgid "Hong Kong"
+msgstr ""
+
+#: Plugin/Utils/Lib/I18nCountry.php:155
+msgid "Hungary"
+msgstr ""
+
+#: Plugin/Utils/Lib/I18nCountry.php:156
+msgid "Iceland"
+msgstr ""
+
+#: Plugin/Utils/Lib/I18nCountry.php:157
+msgid "India"
+msgstr ""
+
+#: Plugin/Utils/Lib/I18nCountry.php:158
+msgid "Indonesia"
+msgstr ""
+
+#: Plugin/Utils/Lib/I18nCountry.php:159
+msgid "Iran, Islamic Republic of"
+msgstr ""
+
+#: Plugin/Utils/Lib/I18nCountry.php:160
+msgid "Iraq"
+msgstr ""
+
+#: Plugin/Utils/Lib/I18nCountry.php:161
+msgid "Ireland"
+msgstr ""
+
+#: Plugin/Utils/Lib/I18nCountry.php:162
+msgid "Israel"
+msgstr ""
+
+#: Plugin/Utils/Lib/I18nCountry.php:163
+msgid "Italy"
+msgstr ""
+
+#: Plugin/Utils/Lib/I18nCountry.php:164
+msgid "Jamaica"
+msgstr ""
+
+#: Plugin/Utils/Lib/I18nCountry.php:165
+msgid "Japan"
+msgstr ""
+
+#: Plugin/Utils/Lib/I18nCountry.php:166
+msgid "Jordan"
+msgstr ""
+
+#: Plugin/Utils/Lib/I18nCountry.php:167
+msgid "Kazakhstan"
+msgstr ""
+
+#: Plugin/Utils/Lib/I18nCountry.php:168
+msgid "Kenya"
+msgstr ""
+
+#: Plugin/Utils/Lib/I18nCountry.php:169
+msgid "Kiribati"
+msgstr ""
+
+#: Plugin/Utils/Lib/I18nCountry.php:170
+msgid "Korea, Democratic People's Republic of"
+msgstr ""
+
+#: Plugin/Utils/Lib/I18nCountry.php:171
+msgid "Korea, Republic of"
+msgstr ""
+
+#: Plugin/Utils/Lib/I18nCountry.php:172
+msgid "Kuwait"
+msgstr ""
+
+#: Plugin/Utils/Lib/I18nCountry.php:173
+msgid "Kyrgyzstan"
+msgstr ""
+
+#: Plugin/Utils/Lib/I18nCountry.php:174
+msgid "Lao People's Democratic Republic"
+msgstr ""
+
+#: Plugin/Utils/Lib/I18nCountry.php:175
+msgid "Latvia"
+msgstr ""
+
+#: Plugin/Utils/Lib/I18nCountry.php:176
+msgid "Lebanon"
+msgstr ""
+
+#: Plugin/Utils/Lib/I18nCountry.php:177
+msgid "Lesotho"
+msgstr ""
+
+#: Plugin/Utils/Lib/I18nCountry.php:178
+msgid "Liberia"
+msgstr ""
+
+#: Plugin/Utils/Lib/I18nCountry.php:179
+msgid "Libyan Arab Jamahiriya"
+msgstr ""
+
+#: Plugin/Utils/Lib/I18nCountry.php:180
+msgid "Liechtenstein"
+msgstr ""
+
+#: Plugin/Utils/Lib/I18nCountry.php:181
+msgid "Lithuania"
+msgstr ""
+
+#: Plugin/Utils/Lib/I18nCountry.php:182
+msgid "Luxembourg"
+msgstr ""
+
+#: Plugin/Utils/Lib/I18nCountry.php:183
+msgid "Macao"
+msgstr ""
+
+#: Plugin/Utils/Lib/I18nCountry.php:184
+msgid "Macedonia, the Former Yugoslav Republic of"
+msgstr ""
+
+#: Plugin/Utils/Lib/I18nCountry.php:185
+msgid "Madagascar"
+msgstr ""
+
+#: Plugin/Utils/Lib/I18nCountry.php:186
+msgid "Malawi"
+msgstr ""
+
+#: Plugin/Utils/Lib/I18nCountry.php:187
+msgid "Malaysia"
+msgstr ""
+
+#: Plugin/Utils/Lib/I18nCountry.php:188
+msgid "Maldives"
+msgstr ""
+
+#: Plugin/Utils/Lib/I18nCountry.php:189
+msgid "Mali"
+msgstr ""
+
+#: Plugin/Utils/Lib/I18nCountry.php:190
+msgid "Malta"
+msgstr ""
+
+#: Plugin/Utils/Lib/I18nCountry.php:191
+msgid "Marshall Islands"
+msgstr ""
+
+#: Plugin/Utils/Lib/I18nCountry.php:192
+msgid "Martinique"
+msgstr ""
+
+#: Plugin/Utils/Lib/I18nCountry.php:193
+msgid "Mauritania"
+msgstr ""
+
+#: Plugin/Utils/Lib/I18nCountry.php:194
+msgid "Mauritius"
+msgstr ""
+
+#: Plugin/Utils/Lib/I18nCountry.php:195
+msgid "Mayotte"
+msgstr ""
+
+#: Plugin/Utils/Lib/I18nCountry.php:196
+msgid "Mexico"
+msgstr ""
+
+#: Plugin/Utils/Lib/I18nCountry.php:197
+msgid "Micronesia, Federated States of"
+msgstr ""
+
+#: Plugin/Utils/Lib/I18nCountry.php:198
+msgid "Moldova, Republic of"
+msgstr ""
+
+#: Plugin/Utils/Lib/I18nCountry.php:199
+msgid "Monaco"
+msgstr ""
+
+#: Plugin/Utils/Lib/I18nCountry.php:200
+msgid "Mongolia"
+msgstr ""
+
+#: Plugin/Utils/Lib/I18nCountry.php:201
+msgid "Montserrat"
+msgstr ""
+
+#: Plugin/Utils/Lib/I18nCountry.php:202
+msgid "Morocco"
+msgstr ""
+
+#: Plugin/Utils/Lib/I18nCountry.php:203
+msgid "Mozambique"
+msgstr ""
+
+#: Plugin/Utils/Lib/I18nCountry.php:204
+msgid "Myanmar"
+msgstr ""
+
+#: Plugin/Utils/Lib/I18nCountry.php:205
+msgid "Namibia"
+msgstr ""
+
+#: Plugin/Utils/Lib/I18nCountry.php:206
+msgid "Nauru"
+msgstr ""
+
+#: Plugin/Utils/Lib/I18nCountry.php:207
+msgid "Nepal"
+msgstr ""
+
+#: Plugin/Utils/Lib/I18nCountry.php:208
+msgid "Netherlands"
+msgstr ""
+
+#: Plugin/Utils/Lib/I18nCountry.php:209
+msgid "Netherlands Antilles"
+msgstr ""
+
+#: Plugin/Utils/Lib/I18nCountry.php:210
+msgid "New Caledonia"
+msgstr ""
+
+#: Plugin/Utils/Lib/I18nCountry.php:211
+msgid "New Zealand"
+msgstr ""
+
+#: Plugin/Utils/Lib/I18nCountry.php:212
+msgid "Nicaragua"
+msgstr ""
+
+#: Plugin/Utils/Lib/I18nCountry.php:213
+msgid "Niger"
+msgstr ""
+
+#: Plugin/Utils/Lib/I18nCountry.php:214
+msgid "Nigeria"
+msgstr ""
+
+#: Plugin/Utils/Lib/I18nCountry.php:215
+msgid "Niue"
+msgstr ""
+
+#: Plugin/Utils/Lib/I18nCountry.php:216
+msgid "Norfolk Island"
+msgstr ""
+
+#: Plugin/Utils/Lib/I18nCountry.php:217
+msgid "Northern Mariana Islands"
+msgstr ""
+
+#: Plugin/Utils/Lib/I18nCountry.php:218
+msgid "Norway"
+msgstr ""
+
+#: Plugin/Utils/Lib/I18nCountry.php:219
+msgid "Oman"
+msgstr ""
+
+#: Plugin/Utils/Lib/I18nCountry.php:220
+msgid "Pakistan"
+msgstr ""
+
+#: Plugin/Utils/Lib/I18nCountry.php:221
+msgid "Palau"
+msgstr ""
+
+#: Plugin/Utils/Lib/I18nCountry.php:222
+msgid "Palestinian Territory, Occupied"
+msgstr ""
+
+#: Plugin/Utils/Lib/I18nCountry.php:223
+msgid "Panama"
+msgstr ""
+
+#: Plugin/Utils/Lib/I18nCountry.php:224
+msgid "Papua New Guinea"
+msgstr ""
+
+#: Plugin/Utils/Lib/I18nCountry.php:225
+msgid "Paraguay"
+msgstr ""
+
+#: Plugin/Utils/Lib/I18nCountry.php:226
+msgid "Peru"
+msgstr ""
+
+#: Plugin/Utils/Lib/I18nCountry.php:227
+msgid "Philippines"
+msgstr ""
+
+#: Plugin/Utils/Lib/I18nCountry.php:228
+msgid "Pitcairn"
+msgstr ""
+
+#: Plugin/Utils/Lib/I18nCountry.php:229
+msgid "Poland"
+msgstr ""
+
+#: Plugin/Utils/Lib/I18nCountry.php:230
+msgid "Portugal"
+msgstr ""
+
+#: Plugin/Utils/Lib/I18nCountry.php:231
+msgid "Puerto Rico"
+msgstr ""
+
+#: Plugin/Utils/Lib/I18nCountry.php:232
+msgid "Qatar"
+msgstr ""
+
+#: Plugin/Utils/Lib/I18nCountry.php:233
+msgid "Reunion"
+msgstr ""
+
+#: Plugin/Utils/Lib/I18nCountry.php:234
+msgid "Romania"
+msgstr ""
+
+#: Plugin/Utils/Lib/I18nCountry.php:235
+msgid "Russian Federation"
+msgstr ""
+
+#: Plugin/Utils/Lib/I18nCountry.php:236
+msgid "Rwanda"
+msgstr ""
+
+#: Plugin/Utils/Lib/I18nCountry.php:237
+msgid "Saint Helena"
+msgstr ""
+
+#: Plugin/Utils/Lib/I18nCountry.php:238
+msgid "Saint Kitts and Nevis"
+msgstr ""
+
+#: Plugin/Utils/Lib/I18nCountry.php:239
+msgid "Saint Lucia"
+msgstr ""
+
+#: Plugin/Utils/Lib/I18nCountry.php:240
+msgid "Saint Pierre and Miquelon"
+msgstr ""
+
+#: Plugin/Utils/Lib/I18nCountry.php:241
+msgid "Saint Vincent and the Grenadines"
+msgstr ""
+
+#: Plugin/Utils/Lib/I18nCountry.php:242
+msgid "Samoa"
+msgstr ""
+
+#: Plugin/Utils/Lib/I18nCountry.php:243
+msgid "San Marino"
+msgstr ""
+
+#: Plugin/Utils/Lib/I18nCountry.php:244
+msgid "Sao Tome and Principe"
+msgstr ""
+
+#: Plugin/Utils/Lib/I18nCountry.php:245
+msgid "Saudi Arabia"
+msgstr ""
+
+#: Plugin/Utils/Lib/I18nCountry.php:246
+msgid "Senegal"
+msgstr ""
+
+#: Plugin/Utils/Lib/I18nCountry.php:247
+msgid "Serbia and Montenegro"
+msgstr ""
+
+#: Plugin/Utils/Lib/I18nCountry.php:248
+msgid "Seychelles"
+msgstr ""
+
+#: Plugin/Utils/Lib/I18nCountry.php:249
+msgid "Sierra Leone"
+msgstr ""
+
+#: Plugin/Utils/Lib/I18nCountry.php:250
+msgid "Singapore"
+msgstr ""
+
+#: Plugin/Utils/Lib/I18nCountry.php:251
+msgid "Slovakia"
+msgstr ""
+
+#: Plugin/Utils/Lib/I18nCountry.php:252
+msgid "Slovenia"
+msgstr ""
+
+#: Plugin/Utils/Lib/I18nCountry.php:253
+msgid "Solomon Islands"
+msgstr ""
+
+#: Plugin/Utils/Lib/I18nCountry.php:254
+msgid "Somalia"
+msgstr ""
+
+#: Plugin/Utils/Lib/I18nCountry.php:255
+msgid "South Africa"
+msgstr ""
+
+#: Plugin/Utils/Lib/I18nCountry.php:256
+msgid "South Georgia and the South Sandwich Islands"
+msgstr ""
+
+#: Plugin/Utils/Lib/I18nCountry.php:257
+msgid "Spain"
+msgstr ""
+
+#: Plugin/Utils/Lib/I18nCountry.php:258
+msgid "Sri Lanka"
+msgstr ""
+
+#: Plugin/Utils/Lib/I18nCountry.php:259
+msgid "Sudan"
+msgstr ""
+
+#: Plugin/Utils/Lib/I18nCountry.php:260
+msgid "Suriname"
+msgstr ""
+
+#: Plugin/Utils/Lib/I18nCountry.php:261
+msgid "Svalbard and Jan Mayen"
+msgstr ""
+
+#: Plugin/Utils/Lib/I18nCountry.php:262
+msgid "Swaziland"
+msgstr ""
+
+#: Plugin/Utils/Lib/I18nCountry.php:263
+msgid "Sweden"
+msgstr ""
+
+#: Plugin/Utils/Lib/I18nCountry.php:264
+msgid "Switzerland"
+msgstr ""
+
+#: Plugin/Utils/Lib/I18nCountry.php:265
+msgid "Syrian Arab Republic"
+msgstr ""
+
+#: Plugin/Utils/Lib/I18nCountry.php:266
+msgid "Taiwan, Province of China"
+msgstr ""
+
+#: Plugin/Utils/Lib/I18nCountry.php:267
+msgid "Tajikistan"
+msgstr ""
+
+#: Plugin/Utils/Lib/I18nCountry.php:268
+msgid "Tanzania, United Republic of"
+msgstr ""
+
+#: Plugin/Utils/Lib/I18nCountry.php:269
+msgid "Thailand"
+msgstr ""
+
+#: Plugin/Utils/Lib/I18nCountry.php:270
+msgid "Timor-Leste"
+msgstr ""
+
+#: Plugin/Utils/Lib/I18nCountry.php:271
+msgid "Togo"
+msgstr ""
+
+#: Plugin/Utils/Lib/I18nCountry.php:272
+msgid "Tokelau"
+msgstr ""
+
+#: Plugin/Utils/Lib/I18nCountry.php:273
+msgid "Tonga"
+msgstr ""
+
+#: Plugin/Utils/Lib/I18nCountry.php:274
+msgid "Trinidad and Tobago"
+msgstr ""
+
+#: Plugin/Utils/Lib/I18nCountry.php:275
+msgid "Tunisia"
+msgstr ""
+
+#: Plugin/Utils/Lib/I18nCountry.php:276
+msgid "Turkey"
+msgstr ""
+
+#: Plugin/Utils/Lib/I18nCountry.php:277
+msgid "Turkmenistan"
+msgstr ""
+
+#: Plugin/Utils/Lib/I18nCountry.php:278
+msgid "Turks and Caicos Islands"
+msgstr ""
+
+#: Plugin/Utils/Lib/I18nCountry.php:279
+msgid "Tuvalu"
+msgstr ""
+
+#: Plugin/Utils/Lib/I18nCountry.php:280
+msgid "Uganda"
+msgstr ""
+
+#: Plugin/Utils/Lib/I18nCountry.php:281
+msgid "Ukraine"
+msgstr ""
+
+#: Plugin/Utils/Lib/I18nCountry.php:282
+msgid "United Arab Emirates"
+msgstr ""
+
+#: Plugin/Utils/Lib/I18nCountry.php:283
+msgid "United Kingdom"
+msgstr ""
+
+#: Plugin/Utils/Lib/I18nCountry.php:284
+msgid "United States"
+msgstr ""
+
+#: Plugin/Utils/Lib/I18nCountry.php:285
+msgid "Uruguay"
+msgstr ""
+
+#: Plugin/Utils/Lib/I18nCountry.php:286
+msgid "Uzbekistan"
+msgstr ""
+
+#: Plugin/Utils/Lib/I18nCountry.php:287
+msgid "Vanuatu"
+msgstr ""
+
+#: Plugin/Utils/Lib/I18nCountry.php:288
+msgid "Venezuela"
+msgstr ""
+
+#: Plugin/Utils/Lib/I18nCountry.php:289
+msgid "Viet Nam"
+msgstr ""
+
+#: Plugin/Utils/Lib/I18nCountry.php:290
+msgid "Virgin Islands, British"
+msgstr ""
+
+#: Plugin/Utils/Lib/I18nCountry.php:291
+msgid "Virgin Islands, U.s."
+msgstr ""
+
+#: Plugin/Utils/Lib/I18nCountry.php:292
+msgid "Wallis and Futuna"
+msgstr ""
+
+#: Plugin/Utils/Lib/I18nCountry.php:293
+msgid "Western Sahara"
+msgstr ""
+
+#: Plugin/Utils/Lib/I18nCountry.php:294
+msgid "Yemen"
+msgstr ""
+
+#: Plugin/Utils/Lib/I18nCountry.php:295
+msgid "Zambia"
+msgstr ""
+
+#: Plugin/Utils/Lib/I18nCountry.php:296
+msgid "Zimbabwe"
+msgstr ""
+
+#: Plugin/Utils/Lib/I18nCountry.php:342
+msgid "Invalid argument #1: %s is not a valid %s identifyer."
+msgstr ""
+
+#: View/Ads/browse.ctp:2
+msgid "Mes annonces"
+msgstr ""
+
+#: View/Ads/form.ctp:1
+msgid "Modifier une annonce"
+msgstr ""
+
+#: View/Ads/form.ctp:1
+#: View/Elements/menutop.ctp:49
+#: View/Layouts/iziads.ctp:86
+msgid "Placer une annonce"
+msgstr ""
+
+#: View/Ads/form.ctp:49
+msgid "L'annonce"
+msgstr ""
+
+#: View/Ads/form.ctp:51
+#: View/Elements/generic/actions/map.ctp:121
+#: View/Shops/index.ctp:30
+msgid "Catégorie"
+msgstr ""
+
+#: View/Ads/form.ctp:52
+#: View/Ads/view.ctp:31
+#: View/Elements/filemanager.ctp:25
+#: View/Elements/ads/items-browse-item.ctp:37
+msgid "Type"
+msgstr ""
+
+#: View/Ads/form.ctp:52
+msgid "J'offre"
+msgstr ""
+
+#: View/Ads/form.ctp:52
+msgid "Je recherche"
+msgstr ""
+
+#: View/Ads/form.ctp:53
+#: View/Events/form.ctp:38
+#: View/Links/form.ctp:30;35
+#: View/Photos/form.ctp:40
+#: View/Posts/form.ctp:28
+msgid "Titre"
+msgstr ""
+
+#: View/Ads/form.ctp:54
+#: View/Ads/view.ctp:30
+#: View/Events/form.ctp:47
+#: View/Events/view.ctp:27
+#: View/Links/form.ctp:43;48
+#: View/Photos/form.ctp:45
+#: View/Posts/form.ctp:30
+msgid "Description"
+msgstr ""
+
+#: View/Ads/form.ctp:61
+msgid "Aspects financiers"
+msgstr ""
+
+#: View/Ads/form.ctp:62
+msgid "Option du prix"
+msgstr ""
+
+#: View/Ads/form.ctp:64
+msgid "Pour l'option du prix A discuter, le champ prix est à titre indicatif et n'est pas obligatoire."
+msgstr ""
+
+#: View/Ads/form.ctp:68
+#: View/Ads/view.ctp:32
+#: View/Elements/ads/items-browse-item.ctp:37
+#: View/Elements/shops/items-browse.ctp:42
+msgid "Prix"
+msgstr ""
+
+#: View/Ads/form.ctp:73
+msgid "Où se trouve le bien de l'annonce ?"
+msgstr ""
+
+#: View/Ads/form.ctp:78
+#: View/Elements/menutop.ctp:82
+msgid "Photos"
+msgstr ""
+
+#: View/Ads/form.ctp:80
+msgid "Les annonces avec photo sont les plus visitées.<br />Poids: 500 Ko par photo maximum.<br />La photo 1 est la photo qui sera affichée dans les résultats."
+msgstr ""
+
+#: View/Ads/form.ctp:83
+msgid "Photo %d"
+msgstr ""
+
+#: View/Ads/form.ctp:88
+msgid "Vidéo"
+msgstr ""
+
+#: View/Ads/form.ctp:90
+msgid "Vous pouvez indiquer un lien vidéo YouTube, Dailymotion, Vimeo, Metacafe,..."
+msgstr ""
+
+#: View/Ads/form.ctp:92
+#: View/Links/form.ctp:60
+msgid "Lien vidéo de présentation"
+msgstr ""
+
+#: View/Ads/form.ctp:96
+#: View/Links/form.ctp:72
+msgid "Informations de contact"
+msgstr ""
+
+#: View/Ads/form.ctp:97
+#: View/Ads/view.ctp:37
+#: View/Elements/generic/comments-form.ctp:5
+#: View/Elements/generic/who-form.ctp:25
+#: View/Elements/links/fields/qr_code.ctp:15
+#: View/Elements/users/form.ctp:13;19
+#: View/Links/form.ctp:73
+#: View/Links/view.ctp:51
+#: View/Themed/Mobile/Elements/generic/fields/email_contact.ctp:10
+#: View/Users/login.ctp:8
+#: View/Users/lost_password.ctp:5
+msgid "E-mail"
+msgstr ""
+
+#: View/Ads/form.ctp:103
+#: View/Ads/view.ctp:38
+#: View/Elements/links/fields/qr_code.ctp:10;11
+#: View/Links/form.ctp:79;80
+#: View/Links/view.ctp:52
+msgid "Téléphone"
+msgstr ""
+
+#: View/Ads/form.ctp:104
+#: View/Links/form.ctp:84
+msgid "Pseudo Skype"
+msgstr ""
+
+#: View/Ads/form.ctp:109
+#: View/Cats/form.ctp:71
+#: View/Elements/generic/actions-links.ctp:14
+#: View/Elements/users/form.ctp:32
+#: View/Events/form.ctp:67
+#: View/Links/form.ctp:89
+#: View/Photos/form.ctp:49
+#: View/Posts/form.ctp:33
+#: View/Users/change_password.ctp:8
+msgid "Modifier"
+msgstr ""
+
+#: View/Ads/form.ctp:109
+#: View/Cats/form.ctp:71
+#: View/Events/form.ctp:67
+#: View/Links/form.ctp:89
+#: View/Photos/form.ctp:49
+#: View/Posts/form.ctp:33
+msgid "Ajouter"
+msgstr ""
+
+#: View/Ads/view.ctp:29
+#: View/Links/view.ctp:56
+msgid "Vidéo de présentation"
+msgstr ""
+
+#: View/Ads/view.ctp:33
+#: View/Elements/links/fields/qr_code.ctp:7
+#: View/Events/view.ctp:30
+msgid "Ville"
+msgstr ""
+
+#: View/Ads/view.ctp:34
+#: View/Elements/generic/actions/map.ctp:125
+#: View/Elements/links/fields/qr_code.ctp:9
+#: View/Events/view.ctp:31
+#: View/Links/form.ctp:65
+msgid "Pays"
+msgstr ""
+
+#: View/Ads/view.ctp:35
+#: View/Events/view.ctp:32
+#: View/Links/view.ctp:48
+msgid "Localisation"
+msgstr ""
+
+#: View/Ads/view.ctp:36
+#: View/Links/view.ctp:49
+msgid "Coordonnées GPS"
+msgstr ""
+
+#: View/Ads/view.ctp:39
+#: View/Elements/links/fields/qr_code.ctp:17
+#: View/Links/view.ctp:55
+msgid "Skype"
+msgstr ""
+
+#: View/Ads/view.ctp:40
+msgid "Consulté"
+msgstr ""
+
+#: View/Ads/view.ctp:49
+#: View/Layouts/iziads.ctp:84
+#: View/Links/view.ctp:82
+msgid "Carte"
+msgstr ""
+
+#: View/Cats/form.ctp:1
+msgid "Modifier une catégorie"
+msgstr ""
+
+#: View/Cats/form.ctp:1
+msgid "Ajouter une catégorie"
+msgstr ""
+
+#: View/Cats/form.ctp:8
+msgid "Catégorie parente"
+msgstr ""
+
+#: View/Cats/form.ctp:10
+msgid "Nom %s"
+msgstr ""
+
+#: View/Cats/form.ctp:11
+msgid "Permalien %s"
+msgstr ""
+
+#: View/Cats/form.ctp:49
+#: View/CustomFields/form.ctp:13
+msgid "Champ personnalisé"
+msgstr ""
+
+#: View/Contact/index.ctp:1;4
+#: View/Layouts/equidir.ctp:213
+msgid "Contactez-nous"
+msgstr ""
+
+#: View/Contact/index.ctp:5
+#: View/Elements/generic/actions/message.ctp:8
+msgid "Votre e-mail"
+msgstr ""
+
+#: View/Contact/index.ctp:6
+#: View/Elements/generic/actions/message.ctp:11
+#: View/Links/accept.ctp:26
+msgid "Sujet"
+msgstr ""
+
+#: View/Contact/index.ctp:7
+#: View/Elements/generic/actions/message.ctp:12
+#: View/Links/accept.ctp:27
+msgid "Message"
+msgstr ""
+
+#: View/Contact/index.ctp:10
+#: View/Elements/generic/actions/message.ctp:15
+#: View/Elements/generic/actions/save_field.ctp:11
+#: View/Links/accept.ctp:29
+msgid "Envoyer"
+msgstr ""
+
+#: View/CustomFields/form.ctp:1
+msgid "Gestion des champs"
+msgstr ""
+
+#: View/CustomFields/form.ctp:6
+msgid "Options traduisibles"
+msgstr ""
+
+#: View/CustomFields/form.ctp:6
+#: View/Elements/generic/actions/index.ctp:51;60
+msgid "et"
+msgstr ""
+
+#: View/CustomFields/form.ctp:31
+msgid "Enregistrer"
+msgstr ""
+
+#: View/CustomFields/form.ctp:58
+msgid "Prévisualisation"
+msgstr ""
+
+#: View/CustomFields/inputs.ctp:2
+msgid "Affichage des champs"
+msgstr ""
+
+#: View/CustomFields/inputs.ctp:5
+msgid "Modifier les champs personnalisés"
+msgstr ""
+
+#: View/CustomFields/inputs.ctp:10
+msgid "Détails supplémentaires"
+msgstr ""
+
+#: View/Elements/about.ctp:2;33
+#: View/Elements/link-to-us.ctp:1;3;4
+#: View/Elements/sponsors.ctp:10
+#: View/Elements/generic/breadcrumbs.ctp:7
+#: View/Elements/generic/actions/rss/feed.ctp:2
+#: View/Layouts/equidir.ctp:4;17;18;19;97;252
+#: View/Layouts/iziads.ctp:5;18;19;20;46;152
+#: View/Pages/fr/legal.ctp:1;4;27;48;49;49;50
+#: View/Pages/fr/points.ctp:5
+#: View/Themed/Mobile/Layouts/equidir.ctp:4;46
+msgid "main_title"
+msgstr "GamesDir"
+
+#: View/Elements/filemanager.ctp:2
+#: View/Photos/form.ctp:4
+msgid "Gestionnaire de fichiers"
+msgstr ""
+
+#: View/Elements/filemanager.ctp:4
+msgid "Images"
+msgstr ""
+
+#: View/Elements/filemanager.ctp:5
+msgid "Flash"
+msgstr ""
+
+#: View/Elements/filemanager.ctp:6
+msgid "Fichiers"
+msgstr ""
+
+#: View/Elements/google-maps-autocomplete.ctp:122
+msgid "Entrez le lieu 'Adresse, ville, code postal/département'. Au fur et à mesure que vous tapez le lieu, des suggestions apparaissent. Une fois que vous aurez cliqué sur une des suggestions, le marqueur apparaîtra sur la carte. Vous pourrez ensuite le déplacer à l'endroit exact où se situe l'enregistrement."
+msgstr ""
+
+#: View/Elements/google-maps-autocomplete.ctp:124
+msgid "Lieu"
+msgstr ""
+
+#: View/Elements/link-to-us.ctp:1
+msgid "Faire un lien vers %s"
+msgstr ""
+
+#: View/Elements/link-to-us.ctp:7
+msgid "Lien texte simple"
+msgstr ""
+
+#: View/Elements/link-to-us.ctp:13
+msgid "Lien avec logo"
+msgstr ""
+
+#: View/Elements/menutop.ctp:23;43
+#: View/Elements/generic/actions/map.ctp:2;118
+msgid "Recherche par carte"
+msgstr ""
+
+#: View/Elements/menutop.ctp:29
+#: View/Links/form.ctp:1
+msgid "Proposer une activité"
+msgstr ""
+
+#: View/Elements/menutop.ctp:67
+msgid "Evénements équestres en %s"
+msgstr ""
+
+#: View/Elements/menutop.ctp:74
+#: View/Events/form.ctp:1
+msgid "Ajouter un événement"
+msgstr ""
+
+#: View/Elements/menutop.ctp:89
+msgid "Ajouter une galerie"
+msgstr ""
+
+#: View/Elements/paginator-counter.ctp:4
+msgid "Total: <strong>%count%</strong> - Résultats: <strong>%start%</strong> - <strong>%end%</strong> - Page: <strong>%page%</strong> sur <strong>%pages%</strong>"
+msgstr ""
+
+#: View/Elements/paginator-links.ctp:8;8
+msgid "Première page"
+msgstr ""
+
+#: View/Elements/paginator-links.ctp:13;13
+msgid "Page précédente"
+msgstr ""
+
+#: View/Elements/paginator-links.ctp:22;22
+msgid "Page suivante"
+msgstr ""
+
+#: View/Elements/paginator-links.ctp:27;27
+msgid "Dernière page"
+msgstr ""
+
+#: View/Elements/sponsors.ctp:10
+msgid "Publicité sur %s"
+msgstr ""
+
+#: View/Elements/users-box.ctp:4
+msgid "Déconnexion"
+msgstr ""
+
+#: View/Elements/users-box.ctp:6
+msgid "Inscription"
+msgstr ""
+
+#: View/Elements/users-box.ctp:7
+#: View/Users/login.ctp:2;6;16
+msgid "Connexion"
+msgstr ""
+
+#: View/Elements/events/items-browse-item.ctp:37
+#: View/Events/view.ctp:28
+#: View/Events/json/fullcalendar.ctp:8
+#: View/Homepages/index.ctp:140
+#: View/Links/view.ctp:74
+msgid "Du"
+msgstr ""
+
+#: View/Elements/events/items-browse-item.ctp:37
+#: View/Events/view.ctp:29
+#: View/Events/json/fullcalendar.ctp:9
+#: View/Homepages/index.ctp:140
+#: View/Links/view.ctp:74
+msgid "Au"
+msgstr ""
+
+#: View/Elements/generic/actions-links.ctp:7;10
+msgid "Accepter"
+msgstr ""
+
+#: View/Elements/generic/actions-links.ctp:17
+msgid "Supprimer"
+msgstr ""
+
+#: View/Elements/generic/actions-links.ctp:17
+msgid "Vous êtes sur ?"
+msgstr ""
+
+#: View/Elements/generic/comments-form.ctp:3;9
+#: View/Elements/generic/comments.ctp:3
+#: View/Elements/generic/actions/comment.ctp:1
+msgid "Poster un commentaire"
+msgstr ""
+
+#: View/Elements/generic/comments-form.ctp:4
+#: View/Elements/generic/who-form.ctp:27
+#: View/Elements/generic/actions/message.ctp:10
+#: View/Elements/users/form.ctp:27
+msgid "Nom"
+msgstr ""
+
+#: View/Elements/generic/comments-form.ctp:7
+msgid "Commentaire"
+msgstr ""
+
+#: View/Elements/generic/comments.ctp:1
+msgid "Commentaires"
+msgstr ""
+
+#: View/Elements/generic/comments.ctp:26
+msgid "Aucun commentaire. Soyez le premier à donner votre avis."
+msgstr ""
+
+#: View/Elements/generic/created-modified.ctp:3
+msgid "Ajouté par"
+msgstr ""
+
+#: View/Elements/generic/created-modified.ctp:6
+msgid "Ajouté"
+msgstr ""
+
+#: View/Elements/generic/created-modified.ctp:9
+msgid "Dernière modification"
+msgstr ""
+
+#: View/Elements/generic/items-browse.ctp:27
+msgid "Derniers ajoutés"
+msgstr ""
+
+#: View/Elements/generic/items-browse.ctp:40
+msgid "Aucun résultat"
+msgstr ""
+
+#: View/Elements/generic/nearby.ctp:2
+msgid "A proximité"
+msgstr ""
+
+#: View/Elements/generic/phone-info.ctp:1
+msgid "Indiquez les numéros de téléphone de cette manière:<br />Exemple: en France le numéro 04 12 34 56 78 s'écrira <strong>+33 4 12345678</strong><br /><span class=\"underline\">+33</span>: indicatif international<br /><span class=\"underline\">4</span>: indicatif de zone <strong>sans le 0</strong><br /><span class=\"underline\">12345678</span>: numéro local <strong>sans espace</strong><br /><a href=\"http://fr.wikipedia.org/wiki/Liste_des_indicatifs_t%C3%A9l%C3%A9phoniques_internationaux_par_indicatif\" onclick=\"window.open(this.href);return false;\" rel=\"nofollow\">Liste des indicatifs internationaux</a><br />Il faut un espace après l'indicatif international et après l'indicatif de zone.<br /><strong>Tout autre encodage ne sera pas valide.</strong>"
+msgstr ""
+
+#: View/Elements/generic/who-form.ctp:21
+msgid "Qui êtes vous ?"
+msgstr ""
+
+#: View/Elements/generic/who-form.ctp:23
+msgid "Si vous n'avez jamais ajouté un enregistrement sur notre site, un compte utilisateur sera créé automatiquement dès l'ajout de votre premier enregistrement. Vous recevrez par e-mail les informations de connexion. Le compte utilisateur vous servira à gérer les enregistrements que vous avez proposés. Si vous vous %s, vous ne devrez plus indiquer ces informations.<br /><strong>Ces informations ne seront pas affichées.</strong>"
+msgstr ""
+
+#: View/Elements/generic/who-form.ctp:23
+msgid "connectez"
+msgstr ""
+
+#: View/Elements/generic/who-form.ctp:26
+#: View/Elements/generic/actions/message.ctp:9
+#: View/Elements/users/form.ctp:26
+msgid "Prénom"
+msgstr ""
+
+#: View/Elements/generic/actions/index.ctp:30;31
+msgid "Page %d"
+msgstr ""
+
+#: View/Elements/generic/actions/index.ctp:74
+msgid "Filtrer les résultats par pays"
+msgstr ""
+
+#: View/Elements/generic/actions/index.ctp:97
+msgid "Filtrer les résultats par catégories"
+msgstr ""
+
+#: View/Elements/generic/actions/index.ctp:99
+msgid "Go"
+msgstr ""
+
+#: View/Elements/generic/actions/map.ctp:7
+msgid "enregistrement(s) affiché(s) sur la carte pour cette recherche."
+msgstr ""
+
+#: View/Elements/generic/actions/map.ctp:121
+msgid "Toutes les catégories"
+msgstr ""
+
+#: View/Elements/generic/actions/map.ctp:125
+msgid "Tous les pays"
+msgstr ""
+
+#: View/Elements/generic/actions/message.ctp:2;7
+#: View/Elements/generic/fields/email_contact.ctp:4
+#: View/Themed/Mobile/Elements/generic/fields/email_contact.ctp:11
+msgid "Envoyer un message"
+msgstr ""
+
+#: View/Elements/generic/actions/search.ctp:2;8
+#: View/Layouts/iziads.ctp:85
+#: View/Shops/index.ctp:37
+msgid "Recherche"
+msgstr ""
+
+#: View/Elements/generic/actions/search.ctp:7
+#: View/Shops/index.ctp:27
+msgid "Mot(s) clé(s)"
+msgstr ""
+
+#: View/Elements/generic/actions/rss/feed.ctp:6
+#: View/Homepages/index.ctp:99;114;132
+#: View/Layouts/equidir.ctp:17;18;19
+#: View/Layouts/iziads.ctp:18;19;20
+msgid "RSS"
+msgstr ""
+
+#: View/Elements/generic/fields/hitcount.ctp:2
+msgid "<strong>%d</strong> fois"
+msgstr ""
+
+#: View/Elements/generic/fields/rating.ctp:38
+msgid "Donner une note de %s"
+msgstr ""
+
+#: View/Elements/generic/fields/rating.ctp:47
+msgid "Voter"
+msgstr ""
+
+#: View/Elements/generic/fields/rating.ctp:51
+msgid "Note moyenne: %01.2F/5.00 avec %d évaluation(s)"
+msgstr ""
+
+#: View/Elements/generic/fields/url.ctp:7;7
+msgid "Ouvrir dans une nouvelle fenêtre"
+msgstr ""
+
+#: View/Elements/generic/fields/url.ctp:9
+msgid "visites"
+msgstr ""
+
+#: View/Elements/generic/fields/url.ctp:9
+msgid "visite"
+msgstr ""
+
+#: View/Elements/links/items-browse-item.ctp:8
+#: View/Links/form.ctp:14
+msgid "Points"
+msgstr ""
+
+#: View/Elements/links/rentabiliweb-form-vc.ctp:12;29
+msgid "Achetez des points"
+msgstr ""
+
+#: View/Elements/links/fields/qr_code.ctp:6
+#: View/Links/view.ctp:47
+msgid "Adresse"
+msgstr ""
+
+#: View/Elements/links/fields/qr_code.ctp:8
+#: View/Links/form.ctp:68
+msgid "Code postal"
+msgstr ""
+
+#: View/Elements/links/fields/qr_code.ctp:12;13
+#: View/Links/form.ctp:81;82
+#: View/Links/view.ctp:53
+msgid "Mobile"
+msgstr ""
+
+#: View/Elements/links/fields/qr_code.ctp:14
+#: View/Links/form.ctp:83
+#: View/Links/view.ctp:54
+msgid "Fax"
+msgstr ""
+
+#: View/Elements/links/fields/qr_code.ctp:16
+#: View/Links/form.ctp:55
+#: View/Links/view.ctp:46
+msgid "Site Web"
+msgstr ""
+
+#: View/Elements/posts/items-browse-item.ctp:7
+#: View/Posts/view.ctp:17
+msgid "Publié le %s"
+msgstr ""
+
+#: View/Elements/shops/items-browse.ctp:28
+msgid "Produits en vente"
+msgstr ""
+
+#: View/Elements/shops/items-browse.ctp:43
+msgid "Temps restant"
+msgstr ""
+
+#: View/Elements/shops/items-browse.ctp:63
+msgid "Fin: %s"
+msgstr ""
+
+#: View/Elements/shops/items-browse.ctp:77
+msgid "Voir tous les produits"
+msgstr ""
+
+#: View/Elements/users/control-panel.ctp:3
+#: View/Homepages/index.ctp:99
+#: View/Layouts/equidir.ctp:17
+#: View/Layouts/iziads.ctp:18
+msgid "Annuaire"
+msgstr ""
+
+#: View/Elements/users/control-panel.ctp:4
+msgid "Gérer mes activités"
+msgstr ""
+
+#: View/Elements/users/control-panel.ctp:6
+#: View/Homepages/index.ctp:114
+#: View/Layouts/equidir.ctp:18
+#: View/Layouts/iziads.ctp:19;83
+msgid "Annonces"
+msgstr ""
+
+#: View/Elements/users/control-panel.ctp:7
+msgid "Gérer mes annonces"
+msgstr ""
+
+#: View/Elements/users/control-panel.ctp:9
+#: View/Homepages/index.ctp:132
+#: View/Layouts/equidir.ctp:19
+#: View/Layouts/iziads.ctp:20
+msgid "Agenda"
+msgstr ""
+
+#: View/Elements/users/control-panel.ctp:10
+msgid "Gérer mes événements"
+msgstr ""
+
+#: View/Elements/users/form.ctp:1
+msgid "Créer un compte membre"
+msgstr ""
+
+#: View/Elements/users/form.ctp:1
+#: View/Users/index.ctp:4
+msgid "Modifier mon compte"
+msgstr ""
+
+#: View/Elements/users/form.ctp:9
+msgid "Informations de connexion"
+msgstr ""
+
+#: View/Elements/users/form.ctp:15;20
+#: View/Users/login.ctp:9
+msgid "Mot de passe"
+msgstr ""
+
+#: View/Elements/users/form.ctp:16
+#: View/Users/change_password.ctp:1;4
+#: View/Users/index.ctp:5
+msgid "Modifier le mot de passe"
+msgstr ""
+
+#: View/Elements/users/form.ctp:21
+msgid "Mot de passe (vérification)"
+msgstr ""
+
+#: View/Elements/users/form.ctp:25
+msgid "Informations personnelles"
+msgstr ""
+
+#: View/Elements/users/form.ctp:32
+msgid "Créer un compte"
+msgstr ""
+
+#: View/Errors/error400.ctp:3
+msgid "Erreur"
+msgstr ""
+
+#: View/Errors/error400.ctp:5
+msgid "La page demandée %s n'a pas été trouvée sur ce serveur."
+msgstr ""
+
+#: View/Events/browse.ctp:2
+msgid "Mes événements"
+msgstr ""
+
+#: View/Events/form.ctp:1
+msgid "Modifier un événement"
+msgstr ""
+
+#: View/Events/form.ctp:36
+msgid "L'événement"
+msgstr ""
+
+#: View/Events/form.ctp:40
+msgid "Entrez la date au format YYYY-MM-DD"
+msgstr ""
+
+#: View/Events/form.ctp:45
+msgid "Date de début"
+msgstr ""
+
+#: View/Events/form.ctp:46
+msgid "Date de fin"
+msgstr ""
+
+#: View/Events/form.ctp:50
+msgid "Où se déroule l'événement ?"
+msgstr ""
+
+#: View/Events/form.ctp:58
+msgid "Couleur"
+msgstr ""
+
+#: View/Events/form.ctp:59
+msgid "Link ID"
+msgstr ""
+
+#: View/Events/index.ctp:70
+msgid "Aujourd'hui"
+msgstr ""
+
+#: View/Events/index.ctp:71
+msgid "Mois"
+msgstr ""
+
+#: View/Events/index.ctp:72
+msgid "Semaine"
+msgstr ""
+
+#: View/Events/index.ctp:73
+msgid "Jour"
+msgstr ""
+
+#: View/Events/index.ctp:74
+msgid "Toute la journée"
+msgstr ""
+
+#: View/Events/json/fullcalendar.ctp:12
+msgid "expiré"
+msgstr ""
+
+#: View/Helper/MyHtmlHelper.php:34
+msgid "aujourd'hui"
+msgstr ""
+
+#: View/Helper/MyHtmlHelper.php:36
+msgid "hier"
+msgstr ""
+
+#: View/Helper/MyHtmlHelper.php:51;51
+msgid "Code de sécurité"
+msgstr ""
+
+#: View/Helper/MyHtmlHelper.php:52
+msgid "Réactualiser l'image"
+msgstr ""
+
+#: View/Helper/MyHtmlHelper.php:58
+msgid "Cliquez-ici pour écouter le code"
+msgstr ""
+
+#: View/Helper/MyHtmlHelper.php:67
+msgid "Code de sécurité anti-spam"
+msgstr ""
+
+#: View/Helper/MyHtmlHelper.php:70
+msgid "Recopiez le code de sécurité"
+msgstr ""
+
+#: View/Helper/MyHtmlHelper.php:155
+msgid "Vous devez activer le JavaScript pour voir l'e-mail"
+msgstr ""
+
+#: View/Homepages/index.ctp:2
+msgid "Annuaire du cheval, petites annonces équitation et agenda équestre"
+msgstr ""
+
+#: View/Homepages/index.ctp:3
+msgid "Le portail du cheval et de l'équitation"
+msgstr ""
+
+#: View/Homepages/index.ctp:4
+msgid "Portail équestre international: Equidir vous propose toute l'information sur le monde des chevaux à travers son annuaire du cheval, ses annonces sur l'équitation et son agenda équestre."
+msgstr ""
+
+#: View/Layouts/equidir.ctp:100
+msgid "Le portail de l'équitation"
+msgstr ""
+
+#: View/Layouts/equidir.ctp:112
+#: View/Layouts/iziads.ctp:67
+msgid "Recherche..."
+msgstr ""
+
+#: View/Layouts/equidir.ctp:220
+#: View/Layouts/iziads.ctp:131
+msgid "Mentions légales"
+msgstr ""
+
+#: View/Layouts/iziads.ctp:56
+msgid "Annonces avec photo et vidéo pour les particuliers et les professionnels"
+msgstr ""
+
+#: View/Layouts/iziads.ctp:131
+msgid "Contactez Equidir"
+msgstr ""
+
+#: View/Layouts/Emails/html/default.ctp:8
+#: View/Layouts/Emails/text/default.ctp:3
+msgid "Ce message a été envoyé via %s, si vous pensez qu'il s'agit d'un spam, vous pouvez nous envoyer une copie à %s."
+msgstr ""
+
+#: View/Links/accept.ctp:2
+msgid "Valider une fiche"
+msgstr ""
+
+#: View/Links/accept.ctp:25
+msgid "A"
+msgstr ""
+
+#: View/Links/browse.ctp:2
+msgid "Mes activités"
+msgstr ""
+
+#: View/Links/form.ctp:1
+msgid "Modifier une activité"
+msgstr ""
+
+#: View/Links/form.ctp:12
+msgid "Admin"
+msgstr ""
+
+#: View/Links/form.ctp:13
+msgid "Boutique eBay"
+msgstr ""
+
+#: View/Links/form.ctp:19
+msgid "L'activité"
+msgstr ""
+
+#: View/Links/form.ctp:22
+msgid "Catégorie %d"
+msgstr ""
+
+#: View/Links/form.ctp:26
+msgid "Indiquez un titre clair et précis, qui vous différencie des autres, tel que le nom de votre entreprise.<br />Exemples <strong>non-valables</strong>:<ul><li>Vente de chevaux</li><li>Construction de boxes</li></ul>Exemples <strong>valables</strong>:<ul><li>Dupont - Vente de chevaux</li><li>Dupond - Construction de boxes</li></ul>"
+msgstr ""
+
+#: View/Links/form.ctp:40
+msgid "Veuillez écrire une description <strong>unique et originale</strong>, évitez les copier/coller d'une description de votre site."
+msgstr ""
+
+#: View/Links/form.ctp:54
+msgid "Liens"
+msgstr ""
+
+#: View/Links/form.ctp:58
+msgid "Pour la vidéo de présentation, vous pouvez indiquer un lien vidéo YouTube, Dailymotion, Vimeo, Metacafe,..."
+msgstr ""
+
+#: View/Links/form.ctp:64
+msgid "Où se trouve l'activité ?"
+msgstr ""
+
+#: View/Links/form.ctp:66
+msgid "Localité"
+msgstr ""
+
+#: View/Links/form.ctp:67
+msgid "Adresse (rue, n<sup>o</sup>)"
+msgstr ""
+
+#: View/Links/view.ctp:50
+msgid "Evaluation"
+msgstr ""
+
+#: View/Links/view.ctp:57
+msgid "Enregistrer sur votre smartphone"
+msgstr ""
+
+#: View/Links/view.ctp:63
+msgid "Signaler une erreur ou une modification"
+msgstr ""
+
+#: View/Links/view.ctp:68
+msgid "Evénements associés"
+msgstr ""
+
+#: View/Pages/fr/partenaires.ctp:19
+msgid "Devenir partenaire"
+msgstr ""
+
+#: View/Pages/fr/points.ctp:1
+msgid "Fonctionnement des points"
+msgstr ""
+
+#: View/Photos/form.ctp:1
+msgid "Ajouter une galerie de photos"
+msgstr ""
+
+#: View/Photos/form.ctp:1
+msgid "Modifier une galerie de photos"
+msgstr ""
+
+#: View/Photos/form.ctp:44
+msgid "Date"
+msgstr ""
+
+#: View/Photos/form.ctp:46
+msgid "Auteur des photos"
+msgstr ""
+
+#: View/Photos/form.ctp:47
+msgid "Chemin"
+msgstr ""
+
+#: View/Photos/view.ctp:18
+msgid "Photos par %s"
+msgstr ""
+
+#: View/Posts/form.ctp:1
+msgid "Modifier un article"
+msgstr ""
+
+#: View/Posts/form.ctp:1
+msgid "Ajouter un article"
+msgstr ""
+
+#: View/Posts/form.ctp:26
+msgid "L'article"
+msgstr ""
+
+#: View/Posts/form.ctp:29
+msgid "Titre H1"
+msgstr ""
+
+#: View/Shops/index.ctp:5
+msgid "Boutique en ligne - Matériel d'équitation pour le cavalier et le cheval"
+msgstr ""
+
+#: View/Shops/index.ctp:27
+msgid "Selle, tapis, guêtres, étriers, bridon, couverture, ..."
+msgstr ""
+
+#: View/Users/activate.ctp:1
+msgid "Activation d'un compte membre"
+msgstr ""
+
+#: View/Users/change_password.ctp:5
+msgid "Nouveau mot de passe"
+msgstr ""
+
+#: View/Users/change_password.ctp:6
+msgid "Nouveau mot de passe (vérification)"
+msgstr ""
+
+#: View/Users/index.ctp:1
+msgid "Panneau de contrôle"
+msgstr ""
+
+#: View/Users/index.ctp:2
+msgid "Mon compte membre"
+msgstr ""
+
+#: View/Users/login.ctp:12
+msgid "Mot de passe oublié ?"
+msgstr ""
+
+#: View/Users/login.ctp:14
+msgid "Connexion automatique"
+msgstr ""
+
+#: View/Users/lost_password.ctp:1;4
+msgid "Mot de passe oublié"
+msgstr ""
+
+#: View/Users/lost_password.ctp:8
+msgid "Récupérer un nouveau mot de passe"
+msgstr ""
+
+#: Model/CustomField.php:validation
+#: for field options
+msgid "Invalid JSON data"
+msgstr ""
+
+#~ msgid "Sauvegarder"
+#~ msgstr "Save"
+
+#~ msgid "add"
+#~ msgstr "Add"
