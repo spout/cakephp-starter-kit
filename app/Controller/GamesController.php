@@ -44,6 +44,8 @@ class GamesController extends AppController {
 	public function beforeFilter() {
 		parent::beforeFilter();
 		
+		$this->{$this->modelClass}->contain(array('Category'));
+		
 		$this->set('esrbRatings', $this->esrbRatings);
 		$this->set('pegiRatings', $this->pegiRatings);
 		$this->set('platforms', $this->platforms);

@@ -11,7 +11,7 @@
 		echo $this->Html->meta('icon');
 
 		echo $this->Html->css('/bootstrap/css/bootstrap.min.css');
-		echo $this->Html->css('gamesdir.css');
+		// echo $this->Html->css('gamesdir.css');
 		echo $this->Html->css('/bootstrap/css/bootstrap-responsive.css');
 		
 		$jquery = array('version' => '1.7.2');

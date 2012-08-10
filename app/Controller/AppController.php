@@ -326,7 +326,7 @@ abstract class AppController extends Controller {
 	public function rating($id = null) {
 		$this->autoRender = false;
 		
-		if (!is_null($id) && ($this->request->is('post') || $this->request->is('put'))) {
+		if (!is_null($id) && ($this->request->is('post') || $this->request->is('put')) && isset($this->request->data[$this->modelClass]['rate'])) {
 			$cookieName = $this->modelClass.'_rating_'.$id;
 			$cookieName = md5($cookieName);// pretty cool
 			$cookieVar = 'true';
