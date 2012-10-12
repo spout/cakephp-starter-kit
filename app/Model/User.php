@@ -9,27 +9,27 @@ class User extends AppModel {
 		$this->validate = array(
 			'email' => array(
 				'valid' => array('rule' => 'email',	'required' => true,	'message' => __('Veuillez entrer une adresse e-mail valide')),
-				'unique' => array('rule' => array('isUnique', 'email'),	'message' => __('Cet e-mail est déjà inscrit'))
+				'unique' => array('rule' => array('isUnique', 'email'),	'on' => 'create', 'message' => __('Cet e-mail est déjà inscrit'))
 			),
 			'password' => array(
-				'length' => array('rule' => array('minLength', '6'), 'message' => __('Le mot de passe doit être de 6 caractères minimum')),
+				'length' => array('rule' => array('minLength', '6'), 'on' => 'create', 'message' => __('Le mot de passe doit être de 6 caractères minimum')),
 				'required' => array('rule' => 'notEmpty', 'required' => true, 'message' => __('Veuillez entrer un mot de passe'))
 			),
 			'password_verify' => array(
-				'same' => array('rule' => array('compareFields', 'password', 'password_verify'), 'required' => true, 'message' => __('Les mots de passe ne correspondent pas')),
+				'same' => array('rule' => array('compareFields', 'password', 'password_verify'), 'required' => true, 'on' => 'create', 'message' => __('Les mots de passe ne correspondent pas')),
 			),	
 			'firstname' => array(
-				'required' => array('rule' => 'notEmpty', 'required' => true, 'message' => __('Champ requis'))
+				'required' => array('rule' => 'notEmpty', 'required' => true, 'on' => 'create', 'message' => __('Champ requis'))
 			),
 			'lastname' => array(
-				'required' => array('rule' => 'notEmpty', 'required' => true, 'message' => __('Champ requis'))
+				'required' => array('rule' => 'notEmpty', 'required' => true, 'on' => 'create', 'message' => __('Champ requis'))
 			),
 			'captcha' => $this->validateCaptcha
 			);
 	}
 	
 	public function beforeSave($options = array()) {
-		parent::beforeSave();
+		parent::beforeSave($options);
 		
 		if (isset($this->data['User']['password']) && !empty($this->data['User']['password'])) {
 			$this->data['User']['password'] = AuthComponent::password($this->data['User']['password']);	

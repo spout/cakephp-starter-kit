@@ -1,17 +1,17 @@
 <?php 
-$title = getPreferedLang(${$singularVar}[$modelClass], $displayField);
-//$description = getPreferedLang(${$singularVar}[$modelClass], 'description');
+$title = getPreferedLang($item[$modelClass], $displayField);
+//$description = getPreferedLang($item[$modelClass], 'description');
 ?>
 <div class="<?php echo $this->request->params['controller'];?>-browse-item <?php if($k%2):?>odd<?php else:?>even<?php endif;?>">
 
 	<p class="<?php echo $this->request->params['controller'];?>-browse-item-title">
-		<?php echo $this->Html->link($title, array('action' => 'view', 'id' => ${$singularVar}[$modelClass][$primaryKey], 'slug' => slug($title)));?>
+		<?php echo $this->Html->link($title, array('action' => 'view', 'id' => $item[$modelClass][$primaryKey], 'slug' => slug($title)));?>
 	</p>
 	
-	<?php echo $this->element('photos/gallery', array($singularVar => ${$singularVar}, 'num' => 1));?>
+	<?php echo $this->element('Photos/gallery', array($singularVar => $item, 'num' => 1));?>
 	
-	<?php if(!empty(${$singularVar}[$modelClass]['date'])):?>
-		<p><?php echo $this->MyHtml->niceDate(${$singularVar}[$modelClass]['date'], '%e %B %Y');?></p>
+	<?php if(!empty($item[$modelClass]['date'])):?>
+		<p><?php echo $this->MyHtml->niceDate($item[$modelClass]['date'], '%e %B %Y');?></p>
 	<?php endif;?>
 	
 	

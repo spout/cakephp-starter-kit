@@ -7,6 +7,9 @@ App::import('Vendor', 'functions');
 define('PEAR', APP.'Vendor'.DS.'Pear'.DS);
 ini_set('include_path', PEAR.PATH_SEPARATOR.ini_get('include_path'));
 
+/**
+ * MinifyAsset plugin
+ */
 // Configure::write('MinifyAsset', true);
 
 /**

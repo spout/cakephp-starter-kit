@@ -1,9 +1,18 @@
 <?php 
+App::uses('CategoryEvent', 'Controller/Event');
+App::uses('CountryEvent', 'Controller/Event');
+
 class AdsController extends AppController {
 	public $paginate = array('limit' => 20, 'order' => 'created DESC');
 	
 	public function beforeFilter() {
 		parent::beforeFilter();
+		
+		$this->getEventManager()->attach(new CategoryEvent());
+		$this->getEventManager()->attach(new CountryEvent());
+		
+		$this->Crud->enableAction('add');
+		$this->Crud->enableAction('edit');
 		
 		$priceTypes = array(
 			'fixed' => __('Prix fixé'), 
@@ -22,14 +31,21 @@ class AdsController extends AppController {
 		
 		$this->set(compact('priceTypes', 'adsTypes'));
 		
-		$this->set('moduleTitle', __('Annonces équitation'));
-	}
-	
-	public function view($id) {
-		parent::view($id);
-		$this->helpers[] = 'AutoEmbed';
-		$this->{$this->modelClass}->hit($id);//Hitcount behavior
-		$this->set('nearbyResults', $this->{$this->modelClass}->findAllByDistance(array('id' => $id)));
+		// $this->set('moduleTitle', __('Annonces équitation'));
+		
+		// $this->{$this->modelClass}->updateItemCount();
+		
+		// $items = $this->{$this->modelClass}->find('all');
+		
+		// foreach ($items as $item) {
+			// $this->{$this->modelClass}->Categorized->create();
+			
+			// $dataSave = array(
+				// 'category_id' => $item[$this->modelClass]['category_id'],
+				// 'foreign_key' => $item[$this->modelClass]['id'],
+				// 'model' => $this->modelClass
+			// );
+			// $this->{$this->modelClass}->Categorized->save($dataSave);
+		// }
 	}
 }
-?>

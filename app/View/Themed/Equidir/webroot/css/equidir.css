@@ -1,0 +1,42 @@
+@import url(http://fonts.googleapis.com/css?family=Boogaloo);
+
+body {
+	/*font-family: 'Trebuchet MS', Helvetica, sans-serif;*/
+	font-family: Verdana, Geneva, sans-serif;
+	color: #595959;
+	background: #E6E0C8 url(../img/bodyBg.gif) repeat-x 0 0;
+	padding-top: 60px;
+	padding-bottom: 40px;
+}
+
+h1, h2, h3, h4, h5, h6, fieldset legend {
+	font-family: 'Boogaloo', cursive;
+	font-weight: normal;
+	line-height: 1;
+	margin: 10px 0;
+	color: #8A867D;
+}
+
+form .required label:after {
+	color: #e32;
+	content: ' *';
+	display: inline;
+}
+
+.clear {
+	clear: both;
+}
+
+#logo, #slogan {
+	text-align: center;
+}
+
+#content-wrapper {
+	background-color: #FAFAF5;
+	padding: 20px;
+}
+
+#homepage-carousel {
+	max-width: 930px;
+	margin: 0 auto;
+}

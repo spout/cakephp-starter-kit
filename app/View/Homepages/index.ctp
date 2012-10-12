@@ -14,8 +14,8 @@ $(function(){
 EOT;
 $this->Html->scriptBlock($scriptBlock, array('inline' => false));*/
 
-$sliderDir = 'equidir/slider/';
-$sliderPath = IMAGES.$sliderDir;
+$sliderDir = 'slider/';
+$sliderPath = App::themePath($this->theme).'webroot/img/'.$sliderDir;
 
 $sliderFiles = glob($sliderPath.'*');
 
@@ -35,7 +35,16 @@ if (!empty($sliderFiles)) {
 	}
 }
 
-$this->Html->script('jquery/jquery.carouFredSel-5.5.0-packed.js', false);
+$carouselId = 'homepage-carousel';
+
+$scriptBlock = <<<EOT
+$(function(){
+	$('#{$carouselId}').carousel();
+});
+EOT;
+$this->Html->scriptBlock($scriptBlock, array('inline' => false));
+
+/*$this->Html->script('jquery/jquery.carouFredSel-5.5.0-packed.js', false);
 
 $scriptBlock = <<<EOT
 $(function(){
@@ -65,17 +74,25 @@ $(function(){
 	});
 });
 EOT;
-$this->Html->scriptBlock($scriptBlock, array('inline' => false));
+$this->Html->scriptBlock($scriptBlock, array('inline' => false));*/
 ?>
 
-<?php if(isset($sliderDir) && isset($oneSlider) && !empty($oneSlider)):?>
+<div id="<?php echo $carouselId;?>" class="carousel slide">
+	<div class="carousel-inner">
+		<?php foreach ($sliderFiles as $k => $filename):?>
+			<div class="item<?php if($k == 0):?> active<?php endif;?>">
+				<?php echo $this->Html->image($sliderDir.basename($filename));?>
+			</div>
+		<?php endforeach;?>
+	</div>
+	
+	<a class="carousel-control left" href="#<?php echo $carouselId;?>" data-slide="prev">&lsaquo;</a>
+	<a class="carousel-control right" href="#<?php echo $carouselId;?>" data-slide="next">&rsaquo;</a>
+</div>
+
+<?php /*if(isset($sliderDir) && isset($oneSlider) && !empty($oneSlider)):?>
 	<div id="homepages-slider">
 		<ul id="slider">
-		<?php /*foreach ($sliderFiles as $filename):?>
-			<li>
-				<?php echo $this->Html->image($sliderDir.basename($filename));?>
-			</li>
-		<?php endforeach;*/?>
 			<li><?php echo $this->Html->image($sliderDir.basename($oneSlider));?></li>
 		</ul>
 		<div class="clear"></div>
@@ -85,7 +102,7 @@ $this->Html->scriptBlock($scriptBlock, array('inline' => false));
 		<a id="slider-next" href="javascript:void(0)"><span>next</span></a>
 		<div id="slider-pagination"></div>
 	</div>
-<?php endif;?>
+<?php endif;*/?>
 
 <div class="grid_12 alpha">
 	<div class="homepages-about">
@@ -153,27 +170,4 @@ $this->Html->scriptBlock($scriptBlock, array('inline' => false));
 		</div>
 	<?php endif;?>
 </div>
-
 <div class="clear"></div>
-
-<?php /*
-<div class="grid_12 alpha">
-	<div>
-		<script type="text/javascript">
-		//<![CDATA[
-		document.write("<iframe src=\"http:\/\/www.facebook.com\/plugins\/like.php?href=http%3A%2F%2Fwww.facebook.com%2Fequidir&amp;layout=standard&amp;show_faces=true&amp;width=470&amp;action=like&amp;colorscheme=light&amp;height=80\" scrolling=\"no\" frameborder=\"0\" style=\"border:none; overflow:hidden; width:470px; height:80px;margin-top:10px;\" allowTransparency=\"true\"><\/iframe>");
-		//]]>
-		</script>	
-	</div>
-</div>
-
-<div class="grid_12 omega">
-	<div>
-		<?php echo $this->element('addthis');?>
-		<div id="plusone" class="floatr"></div>
-	</div>
-</div>
-
-<div class="clear"></div>
-
-*/?>

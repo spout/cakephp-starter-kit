@@ -1,5 +1,5 @@
 <?php 
-$path = $photosBasePath.${$singularVar}[$modelClass]['dir'].'/';
+$path = $photosBasePath.$item[$modelClass]['dir'].'/';
 $files = array_values(array_diff(scandir(WWW_ROOT.$path), array('.', '..')));
 
 if (isset($num)) {
@@ -14,7 +14,7 @@ foreach ($files as $k => $f) {
 		echo $this->Html->link($element, '/'.$path.$f, array('escape' => false, 'class' => 'fancybox', 'rel' => 'fancybox'));
 	}
 	else {
-		echo $this->Html->link($element, array('action' => 'view', 'id' => ${$singularVar}[$modelClass]['id'], 'slug' => slug(getPreferedLang(${$singularVar}[$modelClass]))), array('escape' => false));
+		echo $this->Html->link($element, array('action' => 'view', 'id' => $item[$modelClass]['id'], 'slug' => slug(getPreferedLang($item[$modelClass]))), array('escape' => false));
 	}
 	
 	echo '</div>';

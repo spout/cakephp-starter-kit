@@ -22,6 +22,10 @@ if (rtrim(str_replace(TXT_LANG, '', $this->request->url), '/') !== '') {
 		$crumbs[$title_for_layout] = null;
 	}
 	
+	if ($this->request->action == 'index' && isset($this->request->params['country']) && isset($country)) {
+		$crumbs[h($country['Country']['name_'.TXT_LANG])] = null;
+	}
+	
 	$lastKey = end(array_keys($crumbs));
 	
 	foreach ($crumbs as $k => $v) {

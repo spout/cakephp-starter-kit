@@ -1,9 +1,10 @@
 <?php
-App::uses('CatEvent', 'Controller/Event');
-// App::uses('CountryEvent', 'Controller/Event');
+App::uses('CategoryEvent', 'Controller/Event');
+App::uses('CountryEvent', 'Controller/Event');
 
 class LinksController extends AppController {
-	public $paginate = array('limit' => 20, 'order' => array('Link.awards' => 'DESC', 'Link.created' => 'DESC') , 'conditions' => array('Link.active' => 1), 'contain' => array('Country', 'Cat'));
+	//public $paginate = array('limit' => 20, 'order' => array('Link.awards' => 'DESC', 'Link.created' => 'DESC') , 'conditions' => array('Link.active' => 1) /*, 'contain' => array('Country', 'Cat')*/);
+	public $paginate = array('limit' => 15, 'order' => array('Link.created' => 'DESC') , 'conditions' => array('Link.active' => 1));
 	
 	public $presetVars = array(
 		array('field' => 'query', 'type' => 'value'),
@@ -14,21 +15,28 @@ class LinksController extends AppController {
 	public function beforeFilter() {
 		parent::beforeFilter();
 		
-		$this->getEventManager()->attach(new CatEvent());
-		// $this->getEventManager()->attach(new CountryEvent());
+		$this->getEventManager()->attach(new CategoryEvent());
+		$this->getEventManager()->attach(new CountryEvent());
 		
-		// $this->{$this->modelClass}->bindModel(array('hasOne' => array('CatRelationship' => array('foreignKey' => 'foreign_key'))), false);
-		// $this->{$this->modelClass}->contain(array('CatRelationship'));
+		$this->Crud->enableAction('add');
+		$this->Crud->enableAction('edit');
 		
-		// $params = array(
-			// 'conditions' => array(
-				// 'CatRelationship.cat_id' => array(42, 25)
-			// ),
-		// );
+		$this->Auth->allow('add', 'thumbs');
 		
-		// pr($this->{$this->modelClass}->find('count', $params));
+		// $this->{$this->modelClass}->updateItemCount();
 		
-		$this->Auth->allow('add', 'edit', 'thumbs');
+		// $items = $this->{$this->modelClass}->find('all');
+		
+		// foreach ($items as $item) {
+			// $this->{$this->modelClass}->Categorized->create();
+			
+			// $dataSave = array(
+				// 'category_id' => $item[$this->modelClass]['category_id'],
+				// 'foreign_key' => $item[$this->modelClass]['id'],
+				// 'model' => $this->modelClass
+			// );
+			// $this->{$this->modelClass}->Categorized->save($dataSave);
+		// }
 	}
 	
 	public function search() {

@@ -1,7 +1,6 @@
 <?php 
 class Ad extends AppModel {
 	public $name = 'Ad';
-	public $recursive = -1;
 	
 	public $actsAs = array(
 		'Containable',
@@ -10,15 +9,14 @@ class Ad extends AppModel {
 			'photo_2' => array('path' => 'webroot{DS}files{DS}annonces{DS}{field}{DS}'),
 			'photo_3' => array('path' => 'webroot{DS}files{DS}annonces{DS}{field}{DS}')
 		),
-		'Hitcount'
+		'Hitcount',
+		'CategoryThreaded',
+		'Search.Searchable',
 	);
 	
 	public $belongsTo = array(
 		'Country' => array(
 			'foreignKey' => 'country'
-		),
-		'AdCat' => array(
-			'foreignKey' => 'cat_id'
 		),
 		'User'
 	);
@@ -39,9 +37,9 @@ class Ad extends AppModel {
 			'lastname' => array(
 				'required' => array('rule' => 'notEmpty', 'required' => true, 'message' => __('Champ requis'))
 			),
-			'cat_id' => array(
-	    		'required' => array('rule' => 'notEmpty', 'required' => true, 'message' => __('Champ requis'))
-	    	),
+			// 'cat_id' => array(
+	    		// 'required' => array('rule' => 'notEmpty', 'required' => true, 'message' => __('Champ requis'))
+	    	// ),
 	    	'type' => array(
 	    		'required' => array('rule' => 'notEmpty', 'required' => true, 'message' => __('Champ requis'))
 	    	),
@@ -61,18 +59,18 @@ class Ad extends AppModel {
 	    	'address' => array(
 	    		'required' => array('rule' => 'notEmpty', 'required' => true, 'message' => __('Champ requis'))
 	    	),
-	    	'photo_1' => array(
-	    		'size' => array('rule' => 'isUnderPhpSizeLimit', 'allowEmpty' => true, 'message' => __('Le poids du fichier est supérieur au maximum accepté')),
-	    		'mime' => array('rule' => array('isValidMimeType', array('image/jpeg', 'image/pjpeg', 'image/png'), false), 'allowEmpty' => true, 'message' => __('Le type du fichier est invalide')),
-	    	),
-	    	'photo_2' => array(
-	    		'size' => array('rule' => 'isUnderPhpSizeLimit', 'allowEmpty' => true, 'message' => __('Le poids du fichier est supérieur au maximum accepté')),
-	    		'mime' => array('rule' => array('isValidMimeType', array('image/jpeg', 'image/pjpeg', 'image/png'), false), 'allowEmpty' => true, 'message' => __('Le type du fichier est invalide')),
-	    	),
-	    	'photo_3' => array(
-	    		'size' => array('rule' => 'isUnderPhpSizeLimit', 'allowEmpty' => true, 'message' => __('Le poids du fichier est supérieur au maximum accepté')),
-	    		'mime' => array('rule' => array('isValidMimeType', array('image/jpeg', 'image/pjpeg', 'image/png'), false), 'allowEmpty' => true, 'message' => __('Le type du fichier est invalide')),
-	    	),
+	    	// 'photo_1' => array(
+	    		// 'size' => array('rule' => 'isUnderPhpSizeLimit', 'allowEmpty' => true, 'message' => __('Le poids du fichier est supérieur au maximum accepté')),
+	    		// 'mime' => array('rule' => array('isValidMimeType', array('image/jpeg', 'image/pjpeg', 'image/png'), false), 'allowEmpty' => true, 'message' => __('Le type du fichier est invalide')),
+	    	// ),
+	    	// 'photo_2' => array(
+	    		// 'size' => array('rule' => 'isUnderPhpSizeLimit', 'allowEmpty' => true, 'message' => __('Le poids du fichier est supérieur au maximum accepté')),
+	    		// 'mime' => array('rule' => array('isValidMimeType', array('image/jpeg', 'image/pjpeg', 'image/png'), false), 'allowEmpty' => true, 'message' => __('Le type du fichier est invalide')),
+	    	// ),
+	    	// 'photo_3' => array(
+	    		// 'size' => array('rule' => 'isUnderPhpSizeLimit', 'allowEmpty' => true, 'message' => __('Le poids du fichier est supérieur au maximum accepté')),
+	    		// 'mime' => array('rule' => array('isValidMimeType', array('image/jpeg', 'image/pjpeg', 'image/png'), false), 'allowEmpty' => true, 'message' => __('Le type du fichier est invalide')),
+	    	// ),
 	    	'email_contact' => array(
 				'email' => array('rule' => 'email', 'allowEmpty' => true, 'message' => __('E-mail non valide'))
 			),
@@ -145,4 +143,3 @@ class Ad extends AppModel {
 		}*/	
 	}
 }
-?>

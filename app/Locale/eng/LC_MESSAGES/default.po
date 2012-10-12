@@ -5,7 +5,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
 "POT-Creation-Date: 2012-02-22 12:15+0100\n"
-"PO-Revision-Date: 2012-06-19 17:16+0100\n"
+"PO-Revision-Date: 2012-10-01 10:13+0100\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "MIME-Version: 1.0\n"
@@ -1605,7 +1605,7 @@ msgstr "More details"
 #: View/Pages/fr/points.ctp:5
 #: View/Themed/Mobile/Layouts/equidir.ctp:4;46
 msgid "main_title"
-msgstr "Spout.be"
+msgstr "Equidir"
 
 #: View/Elements/filemanager.ctp:2
 #: View/Photos/form.ctp:4

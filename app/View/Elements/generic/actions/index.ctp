@@ -101,7 +101,6 @@ $this->Html->scriptBlock($scriptBlock, array('inline' => false));
 	</div>
 <?php endif;?>
 
-<?php //if(isset(${$pluralVar}) && !empty(${$pluralVar}) && isset($catModelClass) && isset($cat[$catModelClass]['description_'.TXT_LANG]) && !empty($cat[$catModelClass]['description_'.TXT_LANG])):?>
 <?php if(isset($items) && !empty($items) && isset($catModelClass) && isset($cat[$catModelClass]['description_'.TXT_LANG]) && !empty($cat[$catModelClass]['description_'.TXT_LANG])):?>
 	<h2 id="<?php echo $this->request->params['controller'];?>-cat-description"><?php echo h($cat[$catModelClass]['description_'.TXT_LANG]);?><?php if(isset($this->request->params['country']) && isset($country)):?> - <?php echo h($country['Country']['name_'.TXT_LANG]);?><?php endif;?></h2>
 <?php endif;?>

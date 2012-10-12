@@ -35,7 +35,7 @@ if ($paginatorParams['pageCount'] > 1) {
 	if ($this->Paginator->hasPrev() && !empty($prev))
 		$paginatorLinks .= $prev.$sep;
 
-	$numbers = $this->Paginator->numbers(array('modulus' => 12 , 'separator' => $sep, 'tag' => 'li'));
+	$numbers = $this->Paginator->numbers(array('modulus' => 12, 'separator' => $sep, 'tag' => 'li'));
 	if (!empty($numbers))
 		$paginatorLinks .= $numbers;
 
@@ -47,8 +47,8 @@ if ($paginatorParams['pageCount'] > 1) {
 	if (!empty($last))
 		$paginatorLinks .= $sep.$last;
 	
-	$paginatorLinks = str_replace('/page:1/"','"', $paginatorLinks);// remove /index/page:1 duplicate content
-	$paginatorLinks = str_replace('/index"','"', $paginatorLinks);// remove /index duplicate content
+	$paginatorLinks = str_replace('/page:1/"','/"', $paginatorLinks);// remove /index/page:1 duplicate content
+	$paginatorLinks = str_replace('/index"','/"', $paginatorLinks);// remove /index duplicate content
 ?>
 	<div class="pagination">
 		<ul>

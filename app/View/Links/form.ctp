@@ -58,11 +58,13 @@ $ebayGlobalIds = $tmp;
 <fieldset>
 	<legend><?php echo __('L\'activité');?></legend>
 	
-	<?php echo $this->Form->input('Cat', array('label' => __('Catégorie'), 'size' => 10, 'escape' => false));?>
+	<?php /*echo $this->Form->input('Cat', array('label' => __('Catégorie'), 'size' => 10, 'escape' => false));?>
 	
 	<?php for($i = 1; $i <= 3; $i++):?>
 		<?php echo $this->Form->input(($i == 1) ? 'cat_id' : 'cat_id_'.$i, array('label' => sprintf(__('Catégorie %d'), $i), 'options' => $cats, 'empty' => '-', 'default' => ($i == 1 && !empty($catId)) ? $catId : '', 'escape' => false));?>
-	<?php endfor;?>
+	<?php endfor;*/?>
+	
+	<?php echo $this->Form->input('Category', array('label' => __('Catégories')));?>
 	
 	<div class="form-inputs-info">
 		<?php echo __('Indiquez un titre clair et précis, qui vous différencie des autres, tel que le nom de votre entreprise.<br />Exemples <strong>non-valables</strong>:<ul><li>Vente de chevaux</li><li>Construction de boxes</li></ul>Exemples <strong>valables</strong>:<ul><li>Dupont - Vente de chevaux</li><li>Dupond - Construction de boxes</li></ul>');?>

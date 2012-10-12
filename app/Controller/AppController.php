@@ -12,13 +12,15 @@ abstract class AppController extends Controller {
 				// 'edit',
 				'view',
 				// 'delete',
+				
 				'admin_index',
 				'admin_add',
 				'admin_edit',
 				'admin_view',
 				'admin_delete'
 			),
-			'validateId' => 'integer'
+			'validateId' => 'integer',
+			'relatedLists' => array('default' => false)
         ),
 		'Auth',
 		'RequestHandler',
@@ -88,6 +90,12 @@ abstract class AppController extends Controller {
 		
 		$this->set('moduleTitle', Inflector::humanize($this->request->params['controller']));// Default moduleTitle used in generic breadcrumbs and index
 		
+		$siteComponent = Inflector::classify(str_replace('.', '', env('HTTP_HOST')));
+		$siteComponentClass = $siteComponent.'Component';
+		if (file_exists(APP.'Controller'.DS.'Component'.DS.$siteComponentClass.'.php')) {
+			$this->Components->load($siteComponent);
+		}
+		
 		$this->loadModel($this->modelClass);
 		if (class_exists($this->modelClass)) {
 			$model =& $this->{$this->modelClass};
@@ -96,7 +104,8 @@ abstract class AppController extends Controller {
 			$singularVar = Inflector::variable($modelClass);
 			$pluralVar = Inflector::variable($this->name);
 			$primaryKey = $model->primaryKey;
-			$fields = array_diff(array_keys($model->schema()), $this->bannedFields);
+			$schema = $model->schema();
+			$fields = (is_array($schema)) ? array_diff(array_keys($schema), $this->bannedFields) : array();
 			$displayField = $model->displayField;
 			
 			$this->set(compact('modelClass', 'singularVar', 'pluralVar', 'primaryKey', 'fields', 'displayField'));
@@ -111,16 +120,10 @@ abstract class AppController extends Controller {
 		));
 		
 		$this->getEventManager()->attach(array($this, 'afterFindSlugEvent'), 'Crud.afterFind');
-		
-		$siteComponent = Inflector::classify(str_replace('.', '', env('HTTP_HOST')));
-		$siteComponentClass = $siteComponent.'Component';
-		if (file_exists(APP.'Controller'.DS.'Component'.DS.$siteComponentClass.'.php')) {
-			$this->Components->load($siteComponent);
-		}
 	}
 	
 	public function afterFindSlugEvent(CakeEvent $event) {
-		if ($event->subject->action == 'view' && isset($event->subject->request->params['pass'][0]) && isset($event->subject->request->params['slug']) && isset($event->subject->item)) {
+		if ($event->subject->action == 'view' && isset($event->subject->item) && isset($event->subject->request->params['pass'][0]) && isset($event->subject->request->params['slug'])) {
 			$id = $event->subject->request->params['pass'][0];
 			$expectedSlug = slug(getPreferedLang($event->subject->item[$event->subject->modelClass], $event->subject->model->displayField));
 			if ($expectedSlug != $event->subject->request->params['slug']) {
@@ -133,6 +136,10 @@ abstract class AppController extends Controller {
 		if (in_array($this->request->params['action'], array('add', 'edit', 'admin_add', 'admin_edit'))) {
 			$id = (isset($this->request->params['pass'][0]) && !empty($this->request->params['pass'][0])) ? $this->request->params['pass'][0] : 0;
 			$this->set(compact('id'));
+		}
+		
+		if (in_array($this->request->params['action'], array('edit', 'delete', 'admin_edit', 'admin_delete'))) {
+			$this->checkOwner($this->request->params['pass'][0]);
 		}
 		
 		if (in_array($this->request->params['action'], array('add', 'edit', 'search', 'admin_add', 'admin_edit'))) {
@@ -188,6 +195,9 @@ abstract class AppController extends Controller {
         }
     }
 	
+	/**
+	* Set language and locale via the URL
+	*/
 	protected function _setLanguage() {
 		if (!isset($this->request->params['lang']) || empty($this->request->params['lang'])) {
 			$this->request->params['lang'] = Configure::read('Config.defaultLanguage');
@@ -216,14 +226,23 @@ abstract class AppController extends Controller {
 		}
 	}
 	
-	public function checkOwner($data, $redirect = '/') {
-		if (Auth::hasRole(ROLE_ADMIN) || (isset($data[$this->modelClass]['user_id']) && Auth::id() == $data[$this->modelClass]['user_id'])) {
+	public function checkOwner($id, $redirect = '/') {
+		if (Auth::hasRole(ROLE_ADMIN) || $this->{$this->modelClass}->isOwnedBy($id, Auth::id())) {
 			return;
 		} else {
 			$this->Session->setFlash($this->Auth->authError, 'error');
 			$this->redirect($redirect);
 		}
 	}
+	
+	/*public function checkOwner($data, $redirect = '/') {
+		if (Auth::hasRole(ROLE_ADMIN) || (isset($data[$this->modelClass]['user_id']) && Auth::id() == $data[$this->modelClass]['user_id'])) {
+			return;
+		} else {
+			$this->Session->setFlash($this->Auth->authError, 'error');
+			$this->redirect($redirect);
+		}
+	}*/
 	
 	public function checkRoles($roles, $redirect = '/') {
 		if (Auth::hasRoles($roles)) {
@@ -265,12 +284,19 @@ abstract class AppController extends Controller {
 	protected function _setAssociatedData() {
 		foreach(array('belongsTo', 'hasAndBelongsToMany') as $association) {
 			foreach ($this->{$this->modelClass}->{$association} as $alias => $values) {
-				if ($alias == 'Category') {
-					$list = $this->{$this->modelClass}->{$alias}->generateThreadedList(array('model' => $this->modelClass));
-				} else {
-					$list = $this->{$this->modelClass}->{$alias}->find('list');
+				switch ($alias) {
+					case 'Category':
+						$list = $this->{$this->modelClass}->{$alias}->generateThreadedList(array('model' => $this->modelClass));
+						break;
+						
+					case 'Country':
+						$list = $this->{$this->modelClass}->{$alias}->find('list', array('fields' => array('code', 'name_'.TXT_LANG), 'order' => 'name_'.TXT_LANG));
+						break;
+						
+					default:
+						$list = $this->{$this->modelClass}->{$alias}->find('list');
+						break;
 				}
-				
 				$this->set(Inflector::variable(Inflector::pluralize($alias)), $list);
 			}
 		}
@@ -320,6 +346,26 @@ abstract class AppController extends Controller {
 		
 		if (!is_file(APP.'View'.DS.$this->viewPath.DS.'feed.ctp')) {
 			$this->render('/Elements/generic/actions/rss/feed');
+		}
+	}
+	
+	public function map() {
+		$this->{$this->modelClass}->validate = array();
+		
+		$results = $this->{$this->modelClass}->find('all', array('contain' => array('Country')));
+		
+		$countriesOptions = array();
+		foreach ($results as $r) {
+			$countriesOptions[$r['Country']['code'].'-'.slug($r['Country']['name_'.TXT_LANG])] = $r['Country']['name_'.TXT_LANG];
+		}
+		
+		asort($countriesOptions);
+		
+		$this->set(compact('countriesOptions'));
+		
+		if (isset($this->{$this->modelClass}->Category)) {
+			$catsList = $this->{$this->modelClass}->Category->generateThreadedList(null, 'slug_'.TXT_LANG);
+			$this->set(compact('catsList'));
 		}
 	}
 	

@@ -18,15 +18,15 @@ $possibleFields = array(
 	);
 
 $chl = array();
-$chl[] = getPreferedLang(${$singularVar}['Link'], 'title');
+$chl[] = getPreferedLang($item['Link'], 'title');
 foreach ($possibleFields as $k => $v) {
-	if (isset(${$singularVar}['Link'][$k]) && !empty(${$singularVar}['Link'][$k])) {
+	if (isset($item['Link'][$k]) && !empty($item['Link'][$k])) {
 		switch ($k) {
 			case 'country':
-				$value = ${$singularVar}['Country']['name_'.TXT_LANG];
+				$value = $item['Country']['name_'.TXT_LANG];
 				break;
 			default:
-				$value = ${$singularVar}['Link'][$k];
+				$value = $item['Link'][$k];
 				break;
 		}
 		

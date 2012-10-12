@@ -9,12 +9,6 @@ class UsersController extends AppController {
 	}
 
 	public function login() {
-		unset($this->User->validate['email']['unique']);
-		unset($this->User->validate['password_verify']);
-		unset($this->User->validate['firstname']);
-		unset($this->User->validate['lastname']);
-		unset($this->User->validate['captcha']);
-		
 		if ($this->request->is('post')) {
 			if (isset($this->request->data[$this->modelClass]['email']) && !empty($this->request->data[$this->modelClass]['email'])) {
 				$user = $this->{$this->modelClass}->findByEmail($this->request->data[$this->modelClass]['email']);
@@ -24,6 +18,7 @@ class UsersController extends AppController {
 					$this->redirect(array('action' => 'login'));
 				}
 			}
+			
 			if ($this->Auth->login()) {
 				$this->User->id = $this->Auth->user('id');
 				$this->User->saveField('last_visit', date('Y-m-d H:i:s'));
@@ -31,8 +26,7 @@ class UsersController extends AppController {
 				$this->_setCookie();
 				
 				$this->Session->setFlash(__('Vous êtes connecté avec succès.'), 'success');
-				
-				return $this->redirect($this->Auth->redirect());
+				$this->redirect($this->Auth->redirect());
 			} else {
 				$this->Session->setFlash(__('Combinaison e-mail / mot de passe incorrecte. Veuillez essayer à nouveau.'), 'error');
 			}
@@ -45,10 +39,11 @@ class UsersController extends AppController {
 
 	public function register()	{
 		if ($this->request->is('post')) {
-	    	$this->request->data['User']['email'] = strtolower($this->request->data['User']['email']);
-		
 			$fieldList = array('email', 'password', 'password_verify', 'firstname', 'lastname');
-		    $this->User->set($this->request->data);
+			
+	    	$this->request->data['User']['email'] = strtolower($this->request->data['User']['email']);
+			$this->User->set($this->request->data);
+			
 			if ($this->User->save($this->request->data['User'], array('fieldList' => $fieldList))) {
 				$activateUrl = Router::url(array('action' => 'activate', $this->User->getLastInsertID(), $this->Auth->password($this->request->data['User']['password'])), $full = true);
 				
@@ -104,19 +99,16 @@ class UsersController extends AppController {
 	}
 	
 	public function change_password() {
-		unset($this->User->validate['email']);
-		unset($this->User->validate['firstname']);
-		unset($this->User->validate['lastname']);
-		
 		if ($this->request->is('post')) {
 	        $this->User->set($this->request->data);
-			if ($this->User->validates()) {
+			if ($this->User->validates(array('fieldList' => array('password', 'password_verify')))) {
 	        	$this->User->id = $this->Auth->user('id');
 		    	$this->User->saveField('password', $this->request->data['User']['password']);
 				$this->Session->setFlash(__('Votre mot de passe a été changé.'), 'success');
     			$this->redirect(array('action' => 'index'));
-	        }
-	        
+	        } else {
+				$this->Session->setFlash(__('Veuillez corriger les erreurs ci-dessous.'), 'error');	
+			}
 	    }	    
 	}
 	
@@ -134,15 +126,9 @@ class UsersController extends AppController {
 	}
 	
 	public function lost_password() {
-		unset($this->User->validate['email']['unique']);
-		unset($this->User->validate['password']);
-		unset($this->User->validate['password_verify']);
-		unset($this->User->validate['firstname']);
-		unset($this->User->validate['lastname']);
-			
 		if ($this->request->is('post')) {
 		    $this->User->set($this->request->data);
-		    if ($this->User->validates()) {
+		    if ($this->User->validates(array('fieldList' => array('email', 'captcha')))) {
 				if ($this->User->hasAny(array('User.email' => $this->request->data['User']['email']))) {
 					$user = $this->User->findByEmail($this->request->data['User']['email']);
 					

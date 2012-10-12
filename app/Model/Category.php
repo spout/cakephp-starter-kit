@@ -20,14 +20,14 @@ class Category extends AppModel {
 	public function generateThreadedList($conditions = NULL, $keyPath = NULL, $valuePath = NULL, $spacer = '__') {
 		$keyPath = empty($keyPath) ? $this->primaryKey : $keyPath;
 		$valuePath = empty($valuePath) ? $this->displayField : $valuePath;
-	
+		
 		$list = $this->find('threaded', array('conditions' => $conditions, 'order' => $this->displayField));
 		$list = $this->threadedToList($list, $keyPath, $valuePath, $spacer);
 		
 		return $list;
 	}
 	
-	/*public function threadedToList($data_array, $keyPath = 'id', $valuePath = 'name', $spacer = '__', $counter = 0) {
+	public function threadedToList($data_array, $keyPath = 'id', $valuePath = 'name', $spacer = '__', $counter = 0) {
 		$list = array();
 		
 		foreach ($data_array as $data) {
@@ -35,7 +35,7 @@ class Category extends AppModel {
 				if (empty($data['children'])) {
 					$list[$data[$this->alias]['id']] = array('name' => $data[$this->alias][$valuePath], 'value' => $data[$this->alias][$keyPath], 'class' => 'select-option-level-'.$counter);
 				} else {
-					$list[h($data[$this->alias][$valuePath])] = $this->threadedToList($data['children'], $keyPath, $valuePath, $spacer, $counter + 1);
+					$list[$data[$this->alias][$valuePath]] = $this->threadedToList($data['children'], $keyPath, $valuePath, $spacer, $counter + 1);
 				}
 			} else {
 				$sep = str_repeat($spacer, $counter - 1);
@@ -51,9 +51,9 @@ class Category extends AppModel {
 		}
 		
 		return $list;
-	}*/
+	}
 	
-	public function threadedToList($data_array, $keyPath = 'id', $valuePath = 'name', $spacer = '__', &$list = array(), $counter = 0) {
+	/*public function threadedToList($data_array, $keyPath = 'id', $valuePath = 'name', $spacer = '__', &$list = array(), $counter = 0) {
 		if (!is_array($data_array)) {
 			return array();
 		}
@@ -67,7 +67,7 @@ class Category extends AppModel {
 		}
 		
 		return $list;
-	}
+	}*/
 	
 	public function getThreadedChildrenIds($id) {
 		$childIds = $this->find('list', array('conditions' => array('parent_id' => $id), 'fields' => array('id')));

@@ -1,13 +1,13 @@
 <?php
 //fixed, talk, na, free, exchange
-$price = ${$singularVar}[$modelClass]['price'];
+$price = $item[$modelClass]['price'];
 if(!isset($currencySymbol)){
 	$currencySymbol = '&euro;';
 }
 
 $fullPriceTypeDisplay = true;
 
-$priceType = ${$singularVar}[$modelClass]['price_type'];
+$priceType = $item[$modelClass]['price_type'];
 	
 switch($priceType){
 	default:
@@ -47,4 +47,3 @@ switch($priceType){
 		echo __('Echange');
 		break;
 }
-?>

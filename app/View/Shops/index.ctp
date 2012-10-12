@@ -37,6 +37,6 @@ $this->set('title_for_layout', h(join(' - ', $titles)));
 <?php echo $this->Form->end(__('Recherche'));?>
 <?php if(isset($shops) && !empty($shops)):?>
 	<?php echo $this->element('paginator-counter');?>
-	<?php echo $this->element('shops'.DS.'items-browse');?>
+	<?php echo $this->element('Shops'.DS.'items-browse');?>
 	<?php echo $this->element('paginator-links');?>
 <?php endif;?>

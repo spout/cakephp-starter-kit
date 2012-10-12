@@ -48,12 +48,12 @@ $this->Html->scriptBlock($scriptBlock, array('inline' => false));
 <fieldset>
 	<legend><?php echo __("L'annonce");?></legend>
 	
-	<?php echo $this->Form->input('cat_id', array('label' => __('Catégorie'), 'options' => ${$singularVar.'Cats'}, 'empty' => '-', 'default' => (!empty($catId)) ? $catId : '', 'escape' => false));?>
+	<?php echo $this->Form->input('Category', array('label' => __('Catégorie'), 'empty' => '-', 'multiple' => false, 'escape' => false));?>
 	<?php echo $this->Form->input('type', array('legend' => __('Type'), 'options' => array('offer' => __('J\'offre'), 'demand' => __('Je recherche')), 'default' => 'offer', 'type' => 'radio'));?>
 	<?php echo $this->Form->input('title', array('label' => __('Titre'), 'size' => 60, 'maxlength' => 70));?>
 	<?php echo $this->Form->input('description', array('label' => __('Description'), 'rows' => 8, 'cols' => 60));?>
 	
-	<?php if($this->Auth->isAdmin()):?>
+	<?php if(Auth::hasRole(ROLE_ADMIN)):?>
 		<div id="customFields"></div>
 	<?php endif;?>
 	

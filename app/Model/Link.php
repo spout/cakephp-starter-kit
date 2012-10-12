@@ -4,6 +4,7 @@ class Link extends AppModel {
 	
 	public $actsAs = array(
 		'Containable',
+		'CategoryThreaded',
 		'Search.Searchable',
 	);
 	
@@ -11,22 +12,17 @@ class Link extends AppModel {
 		'Country' => array(
 			'foreignKey' => 'country'
 		),
-		// 'Cat' => array(
-			// 'foreignKey' => 'cat_id',
-			// 'counterCache' => 'item_count',
-			// 'counterScope' => array('Link.active' => 1)
-		// ),
 		'User',
 	);
 	
-	public $hasAndBelongsToMany = array(
+	/*public $hasAndBelongsToMany = array(
 		'Cat' => array(
 			'joinTable' => 'cat_relationships',
 			'foreignKey' => 'foreign_key',
 			'associationForeignKey' => 'cat_id',
 			'unique' => 'keepExisting'
 		),
-	);
+	);*/
 	
 	public $hasMany = array(
 		'Comment' => array(
@@ -61,8 +57,11 @@ class Link extends AppModel {
 			'title_'.TXT_LANG => array(
 				'required' => array('rule' => 'notEmpty', 'required' => true, 'message' => __('Champ requis'))
 			),
-			'cat_id' => array(
+			/*'cat_id' => array(
 	    		'required' => array('rule' => 'notEmpty', 'required' => true, 'message' => __('Champ requis'))
+	    	),*/
+			'Category' => array(
+	    		'required' => array('rule' => array('multiple', array('min' => 1, 'max' => 3)), 'message' => __('Veuillez sélectionner 1 à 3 catégories'))
 	    	),
 	    	'country' => array(
 	    		'required' => array('rule' => 'notEmpty', 'required' => true, 'message' => __('Champ requis'))

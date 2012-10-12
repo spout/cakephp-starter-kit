@@ -21,6 +21,10 @@ class CategoryThreadedBehavior extends ModelBehavior {
 			$categories = $Model->Categorized->find('list', array('fields' => array('id', 'id'), 'conditions' => array('Categorized.foreign_key' => $Model->id, 'Categorized.model' => $Model->alias)));
 			$Model->Categorized->deleteAll(array('Categorized.id' => $categories , 'Categorized.foreign_key' => $Model->id, 'Categorized.model' => $Model->alias));
 			
+			if (!is_array($Model->data['Category']['Category'])) {
+				$Model->data['Category']['Category'] = array($Model->data['Category']['Category']);
+			}
+			
 			foreach ($Model->data['Category']['Category'] as $catId) {
 				$Model->Categorized->create();
 				$Model->Categorized->save(array('category_id' => $catId, 'foreign_key' => $Model->id, 'model' => $Model->alias));
@@ -44,16 +48,20 @@ class CategoryThreadedBehavior extends ModelBehavior {
 			foreach ($categories as $catId) {
 				$childIds = array_merge(array($catId), $Model->Category->getThreadedChildrenIds($catId));
 				
-				if (isset($Model->hasAndBelongsToMany['Category'])) { // HABTM
-					$itemCount = $Model->find('count', array('contain' => array('Categorized'), 'conditions' => array('Categorized.category_id' => $childIds, 'Categorized.model' => $Model->alias, $Model->alias.'.active' => 1)));
-				} elseif (isset($Model->belongsTo['Category'])) { // belongsTo
-					$itemCount = $Model->find('count', array('conditions' => array($Model->alias.'.category_id' => $childIds, $Model->alias.'.active' => 1)));
-				}
+				$activeCond = ($Model->hasField('active')) ? array($Model->alias.'.active' => 1) : array();
 				
-				if (isset($itemCount)) {
+				if (isset($Model->hasAndBelongsToMany['Category'])) { // HABTM
+					$conditions = array('Categorized.category_id' => $childIds, 'Categorized.model' => $Model->alias) + $activeCond;
+					$itemCount = $Model->find('count', array('contain' => array('Categorized'), 'conditions' => $conditions));
+				} /*elseif (isset($Model->belongsTo['Category'])) { // belongsTo
+					$conditions = array($Model->alias.'.category_id' => $childIds) + $activeCond;
+					$itemCount = $Model->find('count', array('conditions' => $conditions));
+				}*/
+				
+				// if (isset($itemCount)) {
 					$Model->Category->id = $catId;
 					$Model->Category->saveField('item_count', $itemCount);
-				}
+				// }
 			}
 		}
 	}

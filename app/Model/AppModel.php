@@ -18,8 +18,9 @@ class AppModel extends Model {
 		array_walk_recursive($this->data, $whitespace);
 		
 		$solved = CakeSession::read('Captcha.solved');
+		$userId = Auth::id();
 		
-		if (!empty($solved) || (isset($_SESSION['Auth']['User']) && !empty($_SESSION['Auth']['User']))) {
+		if (!empty($solved) || !empty($userId)) {
 			unset($this->validate['captcha']);
 		}
 		
@@ -39,6 +40,10 @@ class AppModel extends Model {
 	
 	public function afterDelete() {
 		Cache::clear();
+	}
+	
+	public function isOwnedBy($id, $userId) {
+		return $this->field('id', array('id' => $id, 'user_id' => $userId)) === $id;
 	}
 	
 	public function validateCaptcha($data) {
