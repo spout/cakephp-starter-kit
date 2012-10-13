@@ -12,4 +12,3 @@ class PhotosController extends AppController {
 		$this->set('photosBasePath', $this->photosBasePath);
 	}
 }
-?>
