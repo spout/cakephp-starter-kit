@@ -55,4 +55,3 @@ class User extends AppModel {
 		return substr($password, 0, $length);
 	}	
 }
-?>

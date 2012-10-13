@@ -42,4 +42,3 @@ class Post extends AppModel {
 	    );
 	}
 }
-?>

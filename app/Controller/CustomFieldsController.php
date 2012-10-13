@@ -64,4 +64,3 @@ class CustomFieldsController extends AppController {
 		$this->set(compact('model', 'foreignKey', 'customFields'));
 	}
 }
-?>

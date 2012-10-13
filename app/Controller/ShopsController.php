@@ -88,4 +88,3 @@ class ShopsController extends AppController {
 		$this->set('shops', $this->paginate('Shop', $conditions));
 	}
 }
-?>

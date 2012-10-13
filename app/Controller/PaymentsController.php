@@ -89,4 +89,3 @@ class PaymentsController extends AppController {
 		$this->redirect(array('controller' => 'links', 'action' => 'view', 'id' => $id, 'slug' => slug(getPreferedLang($link['Link'], 'title'))));
 	}
 }
-?>

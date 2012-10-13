@@ -22,4 +22,3 @@ class HomepagesController extends AppController {
 		//$this->set('linksTotalCountClicks', $query[0][0]['sum_count_clicks']);
 	}
 }
-?>

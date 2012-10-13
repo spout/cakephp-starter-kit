@@ -22,4 +22,3 @@ class Photo extends AppModel {
 	    );
 	}
 }
-?>

@@ -63,4 +63,3 @@ class Event extends AppModel {
 				);
 	}
 }
-?>

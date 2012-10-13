@@ -21,4 +21,3 @@ class Comment extends AppModel {
 	    );
 	}
 }
-?>
