@@ -13,11 +13,13 @@ class AppHelper extends Helper {
 			// }
 		}
 		
-		$routerUrl = Router::url($url, $full); 
+		return parent::url($url, $full);
+		
+		/*$routerUrl = Router::url($url, $full); 
         if (!preg_match('/\\.(rss|html|js|json|css|jpeg|jpg|gif|png|xml?)$/', strtolower($routerUrl)) && $routerUrl != '#' && substr($routerUrl, -1) != '/') { 
             $routerUrl .= '/'; 
         } 
-        return $routerUrl; 
+        return $routerUrl; */
 	}
 	
 }

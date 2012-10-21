@@ -5,7 +5,7 @@ body {
 	font-family: Verdana, Geneva, sans-serif;
 	color: #595959;
 	background: #E6E0C8 url(../img/bodyBg.gif) repeat-x 0 0;
-	padding-top: 60px;
+	padding-top: 50px;
 	padding-bottom: 40px;
 }
 
@@ -17,18 +17,40 @@ h1, h2, h3, h4, h5, h6, fieldset legend {
 	color: #8A867D;
 }
 
+ul {
+	list-style: none;
+}
+
 form .required label:after {
 	color: #e32;
 	content: ' *';
 	display: inline;
 }
 
+.cake-sql-log {}
+.cake-sql-log td, .cake-sql-log th {
+	border: 1px solid #CCC;
+	padding: 3px;
+}
+
 .clear {
 	clear: both;
 }
 
+/*
+Fix issue: Bootstrap distorts some Google Maps Controls and Overlays
+https://github.com/twitter/bootstrap/issues/1552
+*/
+#gmap img, #gmap_overview img {
+	max-width: none;
+}
+
 #logo, #slogan {
 	text-align: center;
+}
+
+#slogan {
+	font-size: 10px;
 }
 
 #content-wrapper {
@@ -39,4 +61,75 @@ form .required label:after {
 #homepage-carousel {
 	max-width: 930px;
 	margin: 0 auto;
+}
+
+.links-cats, .ads-cats {
+	margin: 10px 0;
+	padding: 5px 10px;
+	background-color: white;
+	border: 1px dotted #BBB;
+}
+
+.links-browse-item, .ads-browse-item, .events-browse-item, .photos-browse-item {
+	background-color: white;
+	margin-bottom: 10px;
+	border-bottom: 1px dotted #bbb;
+	border-top: 1px dotted #bbb;
+}
+
+.links-browse-item-title, .ads-browse-item-title, .events-browse-item-title {
+	padding-top: 10px;
+	font-weight: bold;
+}
+
+.links-browse-item-url {
+	color: #F3861B;
+	float: left;
+}
+
+.links-browse-item-thumb {
+	text-align: center;
+	padding: 10px;
+}
+
+.links-view-thumb {
+	text-align: center;
+}
+
+/*
+.links-countries-filters, .ads-countries-filters {}
+.links-countries-filters ul li, .ads-countries-filters ul li {
+	float: left;
+	width:20%;
+}
+.links-countries-filters a, .ads-countries-filters a {
+	font-weight: bold;
+}*/
+
+h2#links-cat-description, .links-browse h2, .ads-browse h2, .links-countries-filters h2, .ads-countries-filters h2 {
+	background: transparent url(../img/hr-bg.gif) repeat-x 0 100%;
+	padding-bottom: 10px;
+	margin: 10px 0;
+}
+
+
+.events-browse h2:before, .links-view h2:before, .ads-view h2:before, .events-view h2:before {
+	content: " ";
+	display: block;
+	background: transparent url(../img/ribbon-wrap.png) no-repeat 0 -52px;
+	height: 52px;
+	width: 52px;
+	position: absolute;
+	bottom: 0;
+	left: -40px;
+	z-index: -1;
+}
+
+.events-browse h2, .links-view h2, .ads-view h2, .events-view h2 {
+	position: relative;
+	height: 52px;
+	line-height: 52px;
+	background: transparent url(../img/ribbon.png) no-repeat 12px 0;
+	z-index: 0;
+	color: #EFDABE;
 }

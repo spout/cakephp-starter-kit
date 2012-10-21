@@ -39,12 +39,6 @@ class LinksController extends AppController {
 		// }
 	}
 	
-	public function search() {
-		$this->Prg->commonProcess();
-        $this->paginate['conditions'] = $this->{$this->modelClass}->parseCriteria($this->passedArgs);
-        $this->set('items', $this->paginate());
-	} 
-	
 	/*public function view($id) {
 		$this->helpers[] = 'AutoEmbed';
 		$this->set('nearbyResults', $this->{$this->modelClass}->findAllByDistance(array('id' => $id)));

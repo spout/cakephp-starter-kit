@@ -268,12 +268,13 @@ abstract class AppController extends Controller {
 			// }
 		}
 		
-		$routerUrl = Router::url($url, true);
+		/*$routerUrl = Router::url($url, true);
 		if (substr($routerUrl, -1) != '/') {
 			$routerUrl .= '/'; // Add trailing slash
 		}
 		
-		parent::redirect($routerUrl, $status, $exit);
+		parent::redirect($routerUrl, $status, $exit);*/
+		parent::redirect($url, $status, $exit);
 	}
 	
 	/**
@@ -333,6 +334,41 @@ abstract class AppController extends Controller {
 		$this->set('_serialize', array('items'));// JSON and XML Views
 	}
 	
+	public function autocomplete() {
+		if (isset($_GET['term']) && !empty($_GET['term'])) {
+			$term = Sanitize::escape($_GET['term']);
+			$languages = Configure::read('Config.languages');
+			if (!empty($languages)) {
+				$conditions = array();
+				foreach ($languages as $lang => $v) {
+					$field = 'title_'.$lang;
+					if ($this->{$this->modelClass}->hasField($field)) {
+						$conditions['or'][$field.' LIKE'] = '%'.$term.'%';
+					}
+				}
+			} else {
+				$conditions = array($this->{$this->modelClass}->displayField.' LIKE' => '%'.$term.'%');
+			}
+			
+			$items = $this->{$this->modelClass}->find('all', array('conditions' => $conditions, 'limit' => 10));
+			
+			$data = array();
+			foreach ($items as $k => $item) {
+				$id = $item[$this->modelClass]['id'];
+				$label = getPreferedLang($item[$this->modelClass], 'title');
+				$url = Router::url(array('lang' => TXT_LANG, 'action' => 'view', 'id' => $id, 'slug' => slug($label)), true);
+				
+				$data[$k] = compact('id', 'label', 'url');
+			}
+			
+			$this->autoRender = false;
+			echo json_encode($data);
+			
+			//$this->set('items', $items);
+			//$this->set('_serialize', array('items'));// JSON and XML Views
+		}
+	}
+	
 	public function feed() {
 		$items = $this->paginate();
 		
@@ -388,10 +424,10 @@ abstract class AppController extends Controller {
 			//check on cookieSet = already click
 			if (empty($cookieSet) && $data[$this->modelClass]['rating_last_ip'] != $ip) {
 				$newCount = $data[$this->modelClass]['rating_count'] + 1;
-			    $newRating = $data[$this->modelClass]['rating_avg'] * $data[$this->modelClass]['rating_count'];
-			    $newRating = ($submittedRating + $newRating) / $newCount;
-			    $newRating = number_format($newRating, 2, '.', '');
-				
+				$newRating = $data[$this->modelClass]['rating_avg'] * $data[$this->modelClass]['rating_count'];
+				$newRating = ($submittedRating + $newRating) / $newCount;
+				$newRating = number_format($newRating, 2, '.', '');
+
 				$saveData = array();
 				$saveData[$this->modelClass]['rating_avg'] = $newRating;
 				$saveData[$this->modelClass]['rating_count'] = $newCount;
@@ -411,7 +447,7 @@ abstract class AppController extends Controller {
 				
 				$saveData[$this->modelClass]['rating_bayesian'] = number_format($bayesianAvg, 2, '.', '');
 			
-				$cookieExpires = 7 * 24 * 60 * 60;//7 jours; 24 heures; 60 minutes; 60secondes
+				$cookieExpires = 7 * 24 * 60 * 60;//7 jours; 24 heures; 60 minutes; 60 secondes
 				$this->Cookie->write($cookieName, $cookieVar, true, $cookieExpires);
 				
 				$this->{$this->modelClass}->save($saveData, false);

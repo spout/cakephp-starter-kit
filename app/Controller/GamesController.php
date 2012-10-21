@@ -101,7 +101,7 @@ class GamesController extends AppController {
 			$categorized = array(
 				'category_id' => $game[$this->modelClass]['category_id'],
 				'foreign_key' => $game[$this->modelClass]['id'],
-				'model' => 'Game'
+				'model' => $this->modelClass
 			);
 			$this->{$this->modelClass}->Categorized->create();
 			$this->{$this->modelClass}->Categorized->save($categorized);

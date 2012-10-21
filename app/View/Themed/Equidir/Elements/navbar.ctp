@@ -58,7 +58,7 @@
 					<?php endif;*/?>
 				</ul>
 				<?php echo $this->Form->create('Link', array('url' => array('controller' => 'links', 'action' => 'search'), 'class' => 'navbar-search pull-right', 'id' => 'LinkSearchFormLayout'));?>
-				<?php echo $this->Form->text('Link.query', array('class' => 'search-query', 'id' => 'LinkQueryLayout', 'placeholder' => __('Recherche')));?>
+				<?php echo $this->Form->text('Link.query', array('class' => 'search-query', 'id' => 'LinkQueryLayout', 'placeholder' => __('Recherche'), 'data-provide' => 'typeahead'));?>
 				<?php echo $this->Form->end();?>
 			</div><!--/.nav-collapse -->
 		</div>

@@ -63,46 +63,55 @@ if (isset($catModelClass) && isset($cat[$catModelClass]['description_'.TXT_LANG]
 	$this->set('metaDescription', join(' - ', $metaDescription));
 }
 ?>
-<?php if(isset($cats) && !empty($cats)):?>
-	<div class="<?php echo $this->request->params['controller'];?>-cats">
-		<?php echo $this->Tree->generate($cats, array('element' => 'generic/tree-item', 'model' => $catModelClass));?>
-		<div class="clear"></div>
-	</div>
-<?php elseif(isset($countriesFilters) && !empty($countriesFilters)):?>
-	<div class="<?php echo $this->request->params['controller'];?>-countries-filters">
-		<h2><?php echo __('Filtrer les résultats par pays');?></h2>
-		<ul>
-		<?php foreach($countriesFilters as $k => $c):?>
-			<li><?php echo $this->Html->image('flags/'.$k.'.gif');?>&nbsp;<?php echo $this->Html->link($c['name_'.TXT_LANG], array('cat_slug' => isset($this->request->params['cat_slug']) ? $this->request->params['cat_slug'] : 0, 'country' => $k.'-'.slug($c['name_'.TXT_LANG])));?>&nbsp;<span class="item-count">(<?php echo $c['count'];?>)</span></li>
-		<?php endforeach;?>
-		</ul>
-		<div class="clear"></div>
-	</div>
-<?php elseif(isset($catsListFilters) && !empty($catsListFilters)):?>
-	<div class="<?php echo $this->request->params['controller'];?>-cats-filters">
-<?php
-$selectId = $modelClass.'CatId';
-$scriptBlock = <<<EOT
-$(function(){
-    $('#{$selectId}').change(function() {
-		window.location = $(this).val();
-	});	
-});
+<div class="row">
+	<div class="span8">
+		<?php if(isset($subCats) && !empty($subCats)):?>
+			<?php echo $this->Tree->generate($subCats, array('element' => 'generic/tree-item', 'model' => $catModelClass));?>
+		<?php endif;?>
+		
+		<?php if(isset($items) && !empty($items) && isset($catModelClass) && isset($cat[$catModelClass]['description_'.TXT_LANG]) && !empty($cat[$catModelClass]['description_'.TXT_LANG])):?>
+			<h2 id="<?php echo $this->request->params['controller'];?>-cat-description"><?php echo h($cat[$catModelClass]['description_'.TXT_LANG]);?><?php if(isset($this->request->params['country']) && isset($country)):?> - <?php echo h($country['Country']['name_'.TXT_LANG]);?><?php endif;?></h2>
+		<?php endif;?>
+		<?php echo $this->element('generic/items-browse');?>
+	</div>	 
+
+	<div class="span4">
+		<?php if(isset($cats) && !empty($cats)):?>
+			<div class="<?php echo $this->request->params['controller'];?>-cats">
+				<?php echo $this->Tree->generate($cats, array('element' => 'generic/tree-item', 'model' => $catModelClass));?>
+				<div class="clear"></div>
+			</div>
+		<?php elseif(isset($countriesFilters) && !empty($countriesFilters)):?>
+			<div class="<?php echo $this->request->params['controller'];?>-countries-filters">
+				<h2><?php echo __('Filtrer les résultats par pays');?></h2>
+				<ul>
+				<?php foreach($countriesFilters as $k => $c):?>
+					<li><?php echo $this->Html->image('flags/'.$k.'.gif');?>&nbsp;<?php echo $this->Html->link($c['name_'.TXT_LANG], array('cat_slug' => isset($this->request->params['cat_slug']) ? $this->request->params['cat_slug'] : 0, 'country' => $k.'-'.slug($c['name_'.TXT_LANG])));?>&nbsp;<span class="item-count">(<?php echo $c['count'];?>)</span></li>
+				<?php endforeach;?>
+				</ul>
+				<div class="clear"></div>
+			</div>
+		<?php elseif(isset($catsListFilters) && !empty($catsListFilters)):?>
+			<div class="<?php echo $this->request->params['controller'];?>-cats-filters">
+		<?php
+		$selectId = $modelClass.'CatId';
+		$scriptBlock = <<<EOT
+		$(function(){
+			$('#{$selectId}').change(function() {
+				window.location = $(this).val();
+			});	
+		});
 EOT;
-$this->Html->scriptBlock($scriptBlock, array('inline' => false));
-?>
-		<?php echo $this->Form->create($modelClass, array('url' => '/redir.php'));?>
-		<fieldset>
-		<legend><?php echo __('Filtrer les résultats par catégories');?></legend>
-		<?php echo $this->Form->select('url', $catsListFilters, array('escape' => false, 'id' => $selectId, 'name' => 'url', 'empty' => '-'));?>
-		<?php echo $this->Form->submit(__('Go'), array('div' => false));?>
-		</fieldset>
-		<?php echo $this->Form->end();?>
+		$this->Html->scriptBlock($scriptBlock, array('inline' => false));
+		?>
+				<?php echo $this->Form->create($modelClass, array('url' => '/redir.php'));?>
+				<fieldset>
+				<legend><?php echo __('Filtrer les résultats par catégories');?></legend>
+				<?php echo $this->Form->select('url', $catsListFilters, array('escape' => false, 'id' => $selectId, 'name' => 'url', 'empty' => '-'));?>
+				<?php echo $this->Form->submit(__('Go'), array('div' => false));?>
+				</fieldset>
+				<?php echo $this->Form->end();?>
+			</div>
+		<?php endif;?>
 	</div>
-<?php endif;?>
-
-<?php if(isset($items) && !empty($items) && isset($catModelClass) && isset($cat[$catModelClass]['description_'.TXT_LANG]) && !empty($cat[$catModelClass]['description_'.TXT_LANG])):?>
-	<h2 id="<?php echo $this->request->params['controller'];?>-cat-description"><?php echo h($cat[$catModelClass]['description_'.TXT_LANG]);?><?php if(isset($this->request->params['country']) && isset($country)):?> - <?php echo h($country['Country']['name_'.TXT_LANG]);?><?php endif;?></h2>
-<?php endif;?>
-
-<?php echo $this->element('generic/items-browse');?>
+</div>

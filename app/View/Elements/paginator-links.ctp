@@ -35,7 +35,7 @@ if ($paginatorParams['pageCount'] > 1) {
 	if ($this->Paginator->hasPrev() && !empty($prev))
 		$paginatorLinks .= $prev.$sep;
 
-	$numbers = $this->Paginator->numbers(array('modulus' => 12, 'separator' => $sep, 'tag' => 'li'));
+	$numbers = $this->Paginator->numbers(array('modulus' => 8, 'separator' => $sep, 'tag' => 'li'));
 	if (!empty($numbers))
 		$paginatorLinks .= $numbers;
 

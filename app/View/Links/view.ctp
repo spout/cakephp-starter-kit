@@ -6,7 +6,6 @@ $this->set('metaDescription', $description);
 ?>
 
 <div class="<?php echo $pluralVar;?>-view">
-	
 	<?php if(Auth::hasRole(ROLE_ADMIN)):?>
 		<?php echo $this->element('Links/rentabiliweb-form-vc');?>
 		<?php echo $this->element('Links/teads');?>
@@ -16,30 +15,31 @@ $this->set('metaDescription', $description);
 	
 	<h2><?php echo h($title);?></h2>
 	
-	<div class="grid_6 alpha centerize">
-		<?php if(!empty($item[$modelClass]['url'])):?>
-			<?php
-			$urlDisplay = !empty($item[$modelClass]['url_display']) ? $item[$modelClass]['url_display'] : $item[$modelClass]['url'];
-			if (!empty($urlDisplay)) {
-				$countClickUrl = $this->Html->url(array('action' => 'count_clicks', $item[$modelClass]['id']));
-			?>
-			<p>
-				<a href="<?php echo $urlDisplay;?>" onclick="location='<?php echo $countClickUrl;?>';return false;" onmouseover="window.status='<?php echo $urlDisplay;?>';return true;" onmouseout="self.status='';return true;">
-					<?php echo $this->element('website-screenshot', array('url' => $item[$modelClass]['url'], 'size' => 'lg'));?>
-				</a>
-			</p>
-			<?php }?>
-		<?php else:?>
-		&nbsp;
-		<?php endif;?>
+	<div class="row">
+		<div class="span3">
+			<?php if(!empty($item[$modelClass]['url'])):?>
+				<?php
+				$urlDisplay = !empty($item[$modelClass]['url_display']) ? $item[$modelClass]['url_display'] : $item[$modelClass]['url'];
+				if (!empty($urlDisplay)) {
+					$countClickUrl = $this->Html->url(array('action' => 'count_clicks', $item[$modelClass]['id']));
+				?>
+				<p class="<?php echo $pluralVar;?>-view-thumb">
+					<a href="<?php echo $urlDisplay;?>" onclick="location='<?php echo $countClickUrl;?>';return false;" onmouseover="window.status='<?php echo $urlDisplay;?>';return true;" onmouseout="self.status='';return true;">
+						<?php echo $this->element('website-screenshot', array('url' => $item[$modelClass]['url'], 'size' => 'lg'));?>
+					</a>
+				</p>
+				<?php }?>
+			<?php else:?>
+				&nbsp;
+			<?php endif;?>
+		</div>
+
+		<div class="span9">
+			<?php if(!empty($description)):?>
+				<p><?php echo nl2br(h($description));?></p>
+			<?php endif;?>
+		</div>
 	</div>
-	
-	<div class="grid_11 omega">
-		<?php if(!empty($description)):?>
-			<p><?php echo nl2br(h($description));?></p>
-		<?php endif;?>
-	</div>
-	<div class="clear"></div>
 	
 	<?php 
 	$displayElements = array(
@@ -63,7 +63,7 @@ $this->set('metaDescription', $description);
 	
 	<p class="<?php echo $pluralVar;?>-bug-report"><?php echo $this->Html->image('icons/silk/bug.png');?>&nbsp;<?php echo $this->Html->link(__('Signaler une erreur ou une modification'), array('controller' => 'contact', '?' => 'subject='.$this->Html->url(array('action' => 'view', 'id' => $item[$modelClass]['id'], 'slug' => slug($title)))), array('rel' => 'nofollow', 'class' => 'fancybox'));?></p>
 	
-	<?php echo $this->element('shops'.DS.'items-browse');?>
+	<?php echo $this->element('Shops'.DS.'items-browse');?>
 	
 	<?php if(isset($item['Event']) && !empty($item['Event'])):?>
 		<h2><?php echo __('Evénements associés');?></h2>

@@ -27,21 +27,47 @@
 		echo $this->Html->css('prettyPhoto/css/prettyPhoto.css', 'stylesheet', array('media' => 'screen'));
 		
 		$this->Html->scriptStart();
+		
+		$autocompleteUrl = $this->Html->url(array('controller' => 'links', 'action' => 'autocomplete.json'));
 		?>
 		$(function(){
 			$("a.lightbox").prettyPhoto({
 				social_tools: ''
 			});
+			
+			var labels, mapped;
+			
+			$("#LinkQueryLayout").typeahead({
+				minLength: 2,
+				items: 10,
+				source: function (query, process) {
+					$.get('<?php echo $autocompleteUrl;?>', { term: query }, function (data) {
+						labels = [];
+						mapped = {};
+
+						$.each(data, function (i, item) {
+							mapped[item.label] = item.url;
+							labels.push(item.label);
+						});
+
+						process(labels);
+					});
+				},
+				updater: function(item) {
+					window.location.replace(mapped[item]);
+					return;
+				}
+			});
 		});
 		<?php
 		echo $this->Html->scriptEnd();
-			
+
 		echo $this->fetch('meta');
 		echo $this->fetch('css');
 		echo $this->fetch('script');
 		?>
 		<!--[if lt IE 9]>
-		<script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+			<script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
 		<![endif]-->
 	</head>
 	<body>
