@@ -148,15 +148,15 @@ abstract class AppController extends Controller {
 	}
 	
 	/**
-    * Dispatches the controller action.  Checks that the action exists and isn't private.
-    *
-    * If Cake raises MissingActionException we attempt to execute Crud
-    *
-    * @param CakeRequest $request
-    * @return mixed The resulting response.
-    * @throws PrivateActionException When actions are not public or prefixed by _
-    * @throws MissingActionException When actions are not defined and scaffolding and CRUD is not enabled.
-    */
+	* Dispatches the controller action.  Checks that the action exists and isn't private.
+	*
+	* If Cake raises MissingActionException we attempt to execute Crud
+	*
+	* @param CakeRequest $request
+	* @return mixed The resulting response.
+	* @throws PrivateActionException When actions are not public or prefixed by _
+	* @throws MissingActionException When actions are not defined and scaffolding and CRUD is not enabled.
+	*/
 	public function invokeAction(CakeRequest $request) {
 		try {
 			return parent::invokeAction($request);
