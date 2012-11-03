@@ -37,16 +37,13 @@ class CategoryEvent extends CrudBaseEvent {
 				}
 				
 				$catId = $cat[$this->catModel->alias]['id'];
-				// $cats = $this->catModel->find('threaded', array('conditions' => array('parent_id' => $catId, 'model' => $event->subject->model->alias), 'order' => 'name_'.TXT_LANG));
-				$subCats = $this->catModel->find('threaded', array('conditions' => array('parent_id' => $catId, 'model' => $event->subject->model->alias), 'order' => 'name_'.TXT_LANG));
 				$catPath = $this->catModel->getThreadedPath($catId);
+				$childrenIds = $this->catModel->getThreadedChildrenIds($catId);
+				$subCats = $this->catModel->find('threaded', array('conditions' => array('parent_id' => $catId, 'model' => $event->subject->model->alias), 'order' => 'name_'.TXT_LANG));
 				
-				$event->subject->controller->set(compact('cat', 'subCats', 'catPath'));
-				$event->subject->controller->paginate['conditions']['category_id'] = $catId;
+				$event->subject->controller->paginate['conditions']['category_id'] = array_merge($childrenIds, array($catId));
 				
-			//} elseif (!isset($event->subject->request->params['country'])) {
-			} else {
-				// $cats = $this->catModel->find('threaded', array('conditions' => array('model' => $event->subject->model->alias), 'order' => 'name_'.TXT_LANG));
+				$event->subject->controller->set(compact('cat', 'catId', 'catPath', 'subCats'));
 			}
 			
 			$cats = $this->catModel->find('threaded', array('conditions' => array('model' => $event->subject->model->alias), 'order' => 'name_'.TXT_LANG));

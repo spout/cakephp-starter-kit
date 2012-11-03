@@ -7,19 +7,8 @@ class AppHelper extends Helper {
 			if (!isset($url['lang']) && isset($this->request->params['lang'])) {
 				$url['lang'] = $this->request->params['lang'];
 			}
-			
-			// if (!isset($url['admin'])) {
-				// $url['admin'] = false;
-			// }
 		}
 		
 		return parent::url($url, $full);
-		
-		/*$routerUrl = Router::url($url, $full); 
-        if (!preg_match('/\\.(rss|html|js|json|css|jpeg|jpg|gif|png|xml?)$/', strtolower($routerUrl)) && $routerUrl != '#' && substr($routerUrl, -1) != '/') { 
-            $routerUrl .= '/'; 
-        } 
-        return $routerUrl; */
 	}
-	
 }

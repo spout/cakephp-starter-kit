@@ -47,8 +47,8 @@ if ($paginatorParams['pageCount'] > 1) {
 	if (!empty($last))
 		$paginatorLinks .= $sep.$last;
 	
-	$paginatorLinks = str_replace('/page:1/"','/"', $paginatorLinks);// remove /index/page:1 duplicate content
-	$paginatorLinks = str_replace('/index"','/"', $paginatorLinks);// remove /index duplicate content
+	$paginatorLinks = str_replace('/page:1"','"', $paginatorLinks);// remove /index/page:1 duplicate content
+	$paginatorLinks = str_replace('/index"','"', $paginatorLinks);// remove /index duplicate content
 ?>
 	<div class="pagination">
 		<ul>

@@ -17,10 +17,12 @@
 		}
 		$this->Paginator->options(array('url' => $paginatorUrl));
 		
-		$displayPaginator = ($this->request->params['action'] === 'search' || (!isset($catModelClass) || isset($this->request->params['cat_slug'])) || isset($this->request->params['country'])) ? true : false;
+		$displayPaginator = ($this->request->params['action'] === 'search' || (isset($subCats) && empty($subCats))) ? true : false;
 	?>
-	<?php echo $this->element('paginator-counter');?>
-	<?php echo $this->element('paginator-links');?>
+	<?php if($displayPaginator):?>
+		<?php echo $this->element('paginator-counter');?>
+		<?php echo $this->element('paginator-links');?>
+	<?php endif;?>
 	<div class="<?php echo $this->request->params['controller'];?>-browse">
 		<?php if(isset($itemsBrowseBefore)):?>
 			<?php echo $itemsBrowseBefore;?>
@@ -34,7 +36,9 @@
 			<?php echo $itemsBrowseAfter;?>
 		<?php endif;?>
 	</div>
-	<?php echo $this->element('paginator-links');?>
+	<?php if($displayPaginator):?>
+		<?php echo $this->element('paginator-links');?>
+	<?php endif;?>
 <?php endif;?>
 
 <?php if(isset($items) && empty($items) && !isset($cats)):?>

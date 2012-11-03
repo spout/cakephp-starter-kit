@@ -5,8 +5,10 @@ $this->Html->script('http://maps.google.com/maps/api/js?sensor=false', false);
 $zoom = isset($zoom) ? $zoom : 15;
 $gmapId = isset($gmapId) ? $gmapId : 'gmap';
 $gmapOverviewId = isset($gmapOverviewId) ? $gmapOverviewId : 'gmap_overview';
-$gmapStyle = isset($gmapStyle) ? $gmapStyle : 'width:50%;height:370px;float:left;';
-$gmapOverviewStyle = isset($gmapOverviewStyle) ? $gmapOverviewStyle : 'width:50%;height:370px;float:right;';
+// $gmapStyle = isset($gmapStyle) ? $gmapStyle : 'width:50%;height:370px;float:left;';
+// $gmapOverviewStyle = isset($gmapOverviewStyle) ? $gmapOverviewStyle : 'width:50%;height:370px;float:right;';
+$gmapStyle = isset($gmapStyle) ? $gmapStyle : 'height:370px;';
+$gmapOverviewStyle = isset($gmapOverviewStyle) ? $gmapOverviewStyle : 'height:370px;';
 
 $scriptBlock = <<<EOT
 	$(function(){
@@ -52,7 +54,9 @@ $scriptBlock = <<<EOT
 EOT;
 $this->Html->scriptBlock($scriptBlock, array('inline' => false));
 ?>
-<div id="<?php echo $gmapId;?>" style="<?php echo $gmapStyle;?>"></div>
-<div id="<?php echo $gmapOverviewId;?>" style="<?php echo $gmapOverviewStyle;?>"></div>
+<div class="row">
+<div id="<?php echo $gmapId;?>" class="span6" style="<?php echo $gmapStyle;?>"></div>
+<div id="<?php echo $gmapOverviewId;?>" class="span6" style="<?php echo $gmapOverviewStyle;?>"></div>
 <div class="clear"></div>
+</div>
 <?php endif;?>

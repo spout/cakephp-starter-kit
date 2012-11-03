@@ -62,11 +62,15 @@ if (isset($catModelClass) && isset($cat[$catModelClass]['description_'.TXT_LANG]
 	
 	$this->set('metaDescription', join(' - ', $metaDescription));
 }
+
 ?>
 <div class="row">
 	<div class="span8">
-		<?php if(isset($subCats) && !empty($subCats)):?>
-			<?php echo $this->Tree->generate($subCats, array('element' => 'generic/tree-item', 'model' => $catModelClass));?>
+		<?php if (isset($subCats) && !empty($subCats)):?>
+			<div class="<?php echo $this->request->params['controller'];?>-subcats">
+				<?php echo $this->Tree->generate($subCats, array('element' => 'generic/tree-item', 'model' => $catModelClass));?>
+				<div class="clear"></div>
+			</div>
 		<?php endif;?>
 		
 		<?php if(isset($items) && !empty($items) && isset($catModelClass) && isset($cat[$catModelClass]['description_'.TXT_LANG]) && !empty($cat[$catModelClass]['description_'.TXT_LANG])):?>

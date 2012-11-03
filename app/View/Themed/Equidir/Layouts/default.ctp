@@ -35,6 +35,15 @@
 				social_tools: ''
 			});
 			
+			$("#LinkQueryLayout").autocomplete({
+				source: "<?php echo $autocompleteUrl;?>",
+				minLength: 2,
+				select: function( event, ui ) {
+					window.location.replace(ui.item.url);
+				}
+			});
+			
+			<?php /*
 			var labels, mapped;
 			
 			$("#LinkQueryLayout").typeahead({
@@ -58,6 +67,7 @@
 					return;
 				}
 			});
+			*/?>
 		});
 		<?php
 		echo $this->Html->scriptEnd();

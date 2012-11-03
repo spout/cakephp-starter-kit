@@ -24,19 +24,32 @@ class LinksController extends AppController {
 		$this->Auth->allow('add', 'thumbs');
 		
 		// $this->{$this->modelClass}->updateItemCount();
+		// $this->_update_categorized();
+	}
+	
+	protected function _update_categorized() {
+		$items = $this->{$this->modelClass}->find('all');
+		$catIdFields = array('cat_id', 'cat_id_2', 'cat_id_3');
 		
-		// $items = $this->{$this->modelClass}->find('all');
-		
-		// foreach ($items as $item) {
-			// $this->{$this->modelClass}->Categorized->create();
+		foreach ($items as $item) {
 			
-			// $dataSave = array(
-				// 'category_id' => $item[$this->modelClass]['category_id'],
-				// 'foreign_key' => $item[$this->modelClass]['id'],
-				// 'model' => $this->modelClass
-			// );
-			// $this->{$this->modelClass}->Categorized->save($dataSave);
-		// }
+			foreach ($catIdFields as $catIdField) {
+				if (!empty($item[$this->modelClass][$catIdField])) {
+					
+					$catId = $item[$this->modelClass][$catIdField];
+					
+					$this->{$this->modelClass}->Categorized->create();
+
+					$dataSave = array(
+						'category_id' => $catId,
+						'foreign_key' => $item[$this->modelClass]['id'],
+						'model' => $this->modelClass
+					);
+					$this->{$this->modelClass}->Categorized->save($dataSave);
+				}
+			}
+		}
+		
 	}
 	
 	/*public function view($id) {
