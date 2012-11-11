@@ -1,9 +1,9 @@
 <?php
-App::uses('CategoryEvent', 'Controller/Event');
-App::uses('CountryEvent', 'Controller/Event');
+// App::uses('CategoryEvent', 'Controller/Event');
+// App::uses('CountryEvent', 'Controller/Event');
+App::uses('GenericEvent', 'Controller/Event');
 
 class LinksController extends AppController {
-	//public $paginate = array('limit' => 20, 'order' => array('Link.awards' => 'DESC', 'Link.created' => 'DESC') , 'conditions' => array('Link.active' => 1) /*, 'contain' => array('Country', 'Cat')*/);
 	public $paginate = array('limit' => 15, 'order' => array('Link.created' => 'DESC') , 'conditions' => array('Link.active' => 1));
 	
 	public $presetVars = array(
@@ -15,8 +15,7 @@ class LinksController extends AppController {
 	public function beforeFilter() {
 		parent::beforeFilter();
 		
-		$this->getEventManager()->attach(new CategoryEvent());
-		$this->getEventManager()->attach(new CountryEvent());
+		$this->getEventManager()->attach(new GenericEvent());
 		
 		$this->Crud->enableAction('add');
 		$this->Crud->enableAction('edit');

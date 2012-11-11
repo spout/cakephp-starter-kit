@@ -7,6 +7,10 @@ class AppHelper extends Helper {
 			if (!isset($url['lang']) && isset($this->request->params['lang'])) {
 				$url['lang'] = $this->request->params['lang'];
 			}
+			
+			if (!isset($url['admin'])) {
+				$url['admin'] = false;
+			}
 		}
 		
 		return parent::url($url, $full);

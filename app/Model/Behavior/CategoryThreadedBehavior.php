@@ -1,18 +1,36 @@
 <?php
 class CategoryThreadedBehavior extends ModelBehavior {
 	public function setup(Model $Model, $settings = array()) {
-		$Model->hasAndBelongsToMany['Category'] = array(
-            'className' => 'Category',
-            'foreignKey' => 'foreign_key',
-            'associationForeignKey' => 'category_id',
-            'with' => 'Categorized',
-			'conditions' => array('Category.model' => $Model->alias),
-			'unique' => true
-        );
+		switch($settings['relationshipType']) {
+			case 'belongsTo':
+				$Model->belongsTo['Category'] = array(
+					'className' => 'Category',
+					'foreignKey' => 'category_id',
+					'conditions' => array('Category.model' => $Model->alias),
+				);
+				break;
+			
+			case 'hasAndBelongsToMany':
+				$Model->hasAndBelongsToMany['Category'] = array(
+					'className' => 'Category',
+					'foreignKey' => 'foreign_key',
+					'associationForeignKey' => 'category_id',
+					'with' => 'Categorized',
+					'conditions' => array('Category.model' => $Model->alias, 'Categorized.model' => $Model->alias),
+					'unique' => true
+				);
+				break;
+			
+			default:
+				throw new Exception('Invalid or undefined relationType setting');
+				break;
+		}
 	}
 	
 	public function beforeSave(Model $Model) {
-		$Model->unbindModel(array('hasAndBelongsToMany' => array('Category')));
+		if (isset($Model->hasAndBelongsToMany['Category'])) {
+			$Model->unbindModel(array('hasAndBelongsToMany' => array('Category')));
+		}
 		return true;
 	}
 	
@@ -48,21 +66,32 @@ class CategoryThreadedBehavior extends ModelBehavior {
 			foreach ($categories as $catId) {
 				$childIds = array_merge(array($catId), $Model->Category->getThreadedChildrenIds($catId));
 				
-				$activeCond = ($Model->hasField('active')) ? array($Model->alias.'.active' => 1) : array();
+				$conditions = array();
+				if ($Model->hasField('active')) {
+					$conditions[$Model->alias.'.active'] = 1;
+				}
 				
-				if (isset($Model->hasAndBelongsToMany['Category'])) { // HABTM
-					$conditions = array('Categorized.category_id' => $childIds, 'Categorized.model' => $Model->alias) + $activeCond;
+				if (isset($Model->hasAndBelongsToMany['Category'])) {
+					$conditions['Categorized.category_id'] = $childIds;
+					$conditions['Categorized.model'] = $Model->alias;
+					
 					$itemCount = $Model->find('count', array('contain' => array('Categorized'), 'conditions' => $conditions));
-				} /*elseif (isset($Model->belongsTo['Category'])) { // belongsTo
-					$conditions = array($Model->alias.'.category_id' => $childIds) + $activeCond;
+				} elseif (isset($Model->belongsTo['Category'])) {
+					$conditions[$Model->alias.'.category_id'] = $childIds;
+					
 					$itemCount = $Model->find('count', array('conditions' => $conditions));
-				}*/
-				
-				// if (isset($itemCount)) {
+				}
+
+				if (isset($itemCount)) {
 					$Model->Category->id = $catId;
 					$Model->Category->saveField('item_count', $itemCount);
-				// }
+				}
+				
+				unset($itemCount);
 			}
+			
+			// $log = $Model->getDataSource()->getLog(false, false);
+			// debug($log);
 		}
 	}
 }

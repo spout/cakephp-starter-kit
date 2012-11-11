@@ -3,21 +3,22 @@ $title = getPreferedLang($item[$modelClass], $displayField);
 $description = getPreferedLang($item[$modelClass], 'description');
 ?>
 <div class="<?php echo $this->request->params['controller'];?>-browse-item <?php if($k%2):?>odd<?php else:?>even<?php endif;?>">
-	<div class="row">
-		<?php if($item[$modelClass]['user_id'] == Auth::id() || Auth::hasRole(ROLE_ADMIN)):?>
+	
+	<?php /*if($item[$modelClass]['user_id'] == Auth::id() || Auth::hasRole(ROLE_ADMIN)):?>
 			<div class="span12">
 				<div class="<?php echo $this->request->params['controller'];?>-browse-item-awards">
 					<span class="underline"><?php echo __('Points');?></span> : <?php echo $item[$modelClass]['awards'];?>
 				</div>
 				<div class="clear"></div>
 			</div>
-		<?php endif;?>
-
-		<div class="span2">
+	<?php endif;*/?>
+	
+	<div class="media">
+		<div class="pull-left">
 			<p class="<?php echo $this->request->params['controller'];?>-browse-item-thumb">
 				<?php 
 				if (!empty($item[$modelClass]['url'])) {
-					$thumb = $this->element('website-screenshot', array('url' => $item[$modelClass]['url'], 'size' => 'sm'));
+					$thumb = $this->element('website-screenshot', array('url' => $item[$modelClass]['url'], 'size' => '120x90'));
 				} else {
 					$thumb = $this->element('phpthumb', array('src' => 'img/thumb-default.png', 'w' => 120, 'h' => 90, 'zc' => 0, 'f' => 'png'));
 				}
@@ -26,7 +27,7 @@ $description = getPreferedLang($item[$modelClass], 'description');
 			</p>
 		</div>
 
-		<div class="span6">
+		<div class="media-body">
 			<p class="<?php echo $this->request->params['controller'];?>-browse-item-title">
 				<?php echo $this->Html->link($title, array('action' => 'view', 'id' => $item[$modelClass][$primaryKey], 'slug' => slug($title)));?>
 			</p>

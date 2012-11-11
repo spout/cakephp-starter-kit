@@ -4,7 +4,10 @@ class Link extends AppModel {
 	
 	public $actsAs = array(
 		'Containable',
-		'CategoryThreaded',
+		'CategoryThreaded' => array(
+			'relationshipType' => 'hasAndBelongsToMany'
+			//'relationshipType' => 'belongsTo'
+		),
 		'Search.Searchable',
 	);
 	
@@ -12,6 +15,18 @@ class Link extends AppModel {
 		'Country' => array(
 			'foreignKey' => 'country'
 		),
+		/*'Category' => array(
+			'className' => 'Category',
+			'foreignKey' => 'cat_id'
+		),
+		'Category2' => array(
+			'className' => 'Category',
+			'foreignKey' => 'cat_id_2'
+		),
+		'Category3' => array(
+			'className' => 'Category',
+			'foreignKey' => 'cat_id_3'
+		),*/
 		'User',
 	);
 	

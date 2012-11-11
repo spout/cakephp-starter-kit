@@ -4,9 +4,9 @@
 <?php if(isset($this->request->params['pass'][0]) && !empty($this->request->params['pass'][0])):?>
 	<?php echo $this->Form->hidden('id', array('value' => $this->request->params['pass'][0]));?>
 <?php else:?>
-	<p style="font-size:1.5em;color:#FF0000;margin:20px 0;">
+	<div class="alert alert-error" style="font-size: 20px;">
 		<?php echo __("Si votre activité n'a aucun rapport avec l'équitation, c'est inutile de nous proposer votre site Web, la fiche serait supprimée sans notification.");?>
-	</p>
+	</div>
 <?php endif;?>
 
 <?php //echo $this->element('generic/who-form');?>
@@ -64,9 +64,11 @@ $ebayGlobalIds = $tmp;
 		<?php echo $this->Form->input(($i == 1) ? 'cat_id' : 'cat_id_'.$i, array('label' => sprintf(__('Catégorie %d'), $i), 'options' => $cats, 'empty' => '-', 'default' => ($i == 1 && !empty($catId)) ? $catId : '', 'escape' => false));?>
 	<?php endfor;*/?>
 	
-	<?php echo $this->Form->input('Category', array('label' => __('Catégories')));?>
+	<?php echo $this->Form->input('Category', array('label' => __('Catégories'), 'size' => 10));?>
+	<?php /*echo $this->Form->input('category_id_2', array('label' => __('Catégorie %d', 2), 'options' => $categories, 'empty' => '-'));?>
+	<?php echo $this->Form->input('category_id_3', array('label' => __('Catégorie %d', 3), 'options' => $categories, 'empty' => '-'));*/?>
 	
-	<div class="form-inputs-info">
+	<div class="text-warning">
 		<?php echo __('Indiquez un titre clair et précis, qui vous différencie des autres, tel que le nom de votre entreprise.<br />Exemples <strong>non-valables</strong>:<ul><li>Vente de chevaux</li><li>Construction de boxes</li></ul>Exemples <strong>valables</strong>:<ul><li>Dupont - Vente de chevaux</li><li>Dupond - Construction de boxes</li></ul>');?>
 	</div>
 	<?php
@@ -80,7 +82,7 @@ $ebayGlobalIds = $tmp;
 		}
 	}
 	?>
-	<div class="form-inputs-info">
+	<div class="text-warning">
 		<?php echo __("Veuillez écrire une description <strong>unique et originale</strong>, évitez les copier/coller d'une description de votre site.");?>
 	</div>
 	<?php
@@ -96,7 +98,7 @@ $ebayGlobalIds = $tmp;
 	<fieldset>
 		<legend><?php echo __('Liens');?></legend>
 		<?php echo $this->Form->input('url', array('label' => __('Site Web'), 'size' => 45, 'default' => 'http://'));?>
-		<div class="form-inputs-info">
+		<div class="text-warning">
 			<?php echo __('Pour la vidéo de présentation, vous pouvez indiquer un lien vidéo YouTube, Dailymotion, Vimeo, Metacafe,...');?>
 		</div>
 		<?php echo $this->Form->input('video', array('label' => __('Lien vidéo de présentation'), 'size' => 45, 'default' => 'http://'));?>
@@ -111,7 +113,7 @@ $ebayGlobalIds = $tmp;
 	<fieldset>
 		<legend><?php echo __("Informations de contact");?></legend>
 		<?php echo $this->Form->input('email_contact', array('label' => __('E-mail'), 'size' => 45));?>
-		<div class="form-inputs-info">
+		<div class="text-warning">
 			<?php echo $this->element('generic/phone-info');?>
 		</div>
 		<?php echo $this->Form->input('phone', array('label' => __('Téléphone'), 'size' => 45));?>

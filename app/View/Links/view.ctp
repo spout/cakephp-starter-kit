@@ -15,8 +15,8 @@ $this->set('metaDescription', $description);
 	
 	<h2><?php echo h($title);?></h2>
 	
-	<div class="row">
-		<div class="span3">
+	<div class="media">
+		<div class="pull-left">
 			<?php if(!empty($item[$modelClass]['url'])):?>
 				<?php
 				$urlDisplay = !empty($item[$modelClass]['url_display']) ? $item[$modelClass]['url_display'] : $item[$modelClass]['url'];
@@ -25,7 +25,7 @@ $this->set('metaDescription', $description);
 				?>
 				<p class="<?php echo $pluralVar;?>-view-thumb">
 					<a href="<?php echo $urlDisplay;?>" onclick="location='<?php echo $countClickUrl;?>';return false;" onmouseover="window.status='<?php echo $urlDisplay;?>';return true;" onmouseout="self.status='';return true;">
-						<?php echo $this->element('website-screenshot', array('url' => $item[$modelClass]['url'], 'size' => 'lg'));?>
+						<?php echo $this->element('website-screenshot', array('url' => $item[$modelClass]['url'], 'size' => '200x150'));?>
 					</a>
 				</p>
 				<?php }?>
@@ -34,7 +34,7 @@ $this->set('metaDescription', $description);
 			<?php endif;?>
 		</div>
 
-		<div class="span9">
+		<div class="media-body">
 			<?php if(!empty($description)):?>
 				<p><?php echo nl2br(h($description));?></p>
 			<?php endif;?>
@@ -55,7 +55,7 @@ $this->set('metaDescription', $description);
 		'fax' => __('Fax'),
 		'skype' => __('Skype'),
 		'video' => __('Vidéo de présentation'),
-		'qr_code' => __('Enregistrer sur votre smartphone')
+		'qr_code' => __('QR Code')
 	);
 	
 	echo $this->element('generic/view-display-elements', array('displayElements' => $displayElements));

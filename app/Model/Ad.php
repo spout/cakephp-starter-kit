@@ -10,7 +10,9 @@ class Ad extends AppModel {
 			'photo_3' => array('path' => 'webroot{DS}files{DS}annonces{DS}{field}{DS}')
 		),
 		'Hitcount',
-		'CategoryThreaded',
+		'CategoryThreaded' => array(
+			'relationshipType' => 'belongsTo'
+		),
 		'Search.Searchable',
 	);
 	

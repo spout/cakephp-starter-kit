@@ -2,8 +2,15 @@
 App::uses('CrudBaseEvent', 'Crud.Controller/Event');
 
 class CategoryEvent extends CrudBaseEvent {
+	
+	public function init(CakeEvent $event) {
+		if (isset($event->subject->model->Category)) {
+			$this->catModel =& $event->subject->model->Category;
+			$event->subject->controller->set('catModelClass', $this->catModel->alias);
+		}
+    }
 
-    public function init(CakeEvent $event) {
+    /*public function init(CakeEvent $event) {
 		if (isset($event->subject->model->Category)) {
 			$this->catModel =& $event->subject->model->Category;
 			$event->subject->controller->set('catModelClass', $this->catModel->alias);
@@ -41,7 +48,18 @@ class CategoryEvent extends CrudBaseEvent {
 				$childrenIds = $this->catModel->getThreadedChildrenIds($catId);
 				$subCats = $this->catModel->find('threaded', array('conditions' => array('parent_id' => $catId, 'model' => $event->subject->model->alias), 'order' => 'name_'.TXT_LANG));
 				
-				$event->subject->controller->paginate['conditions']['category_id'] = array_merge($childrenIds, array($catId));
+				if (isset($event->subject->model->hasAndBelongsToMany[$this->catModel->alias])) {
+					// HABTM
+					$event->subject->model->bindModel(array('hasOne' => array('Categorized' => array('foreignKey' => 'foreign_key'))), false);
+					$event->subject->controller->paginate['contain'][] = 'Categorized';
+					
+					$event->subject->controller->paginate['conditions']['Categorized.category_id'] = array_merge($childrenIds, array($catId));
+					$event->subject->controller->paginate['conditions']['Categorized.model'] = $event->subject->model->alias;
+					
+				} elseif (isset($event->subject->model->belongsTo[$this->catModel->alias])) {
+					// belongsTo
+					$event->subject->controller->paginate['conditions']['category_id'] = array_merge($childrenIds, array($catId));
+				}
 				
 				$event->subject->controller->set(compact('cat', 'catId', 'catPath', 'subCats'));
 			}
@@ -50,5 +68,5 @@ class CategoryEvent extends CrudBaseEvent {
 			
 			$event->subject->controller->set(compact('cats'));
 		}
-    }
+    }*/
 }

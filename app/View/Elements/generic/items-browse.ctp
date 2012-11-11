@@ -17,7 +17,7 @@
 		}
 		$this->Paginator->options(array('url' => $paginatorUrl));
 		
-		$displayPaginator = ($this->request->params['action'] === 'search' || (isset($subCats) && empty($subCats))) ? true : false;
+		$displayPaginator = ($this->request->params['action'] === 'search' || (isset($subCategories) && empty($subCategories))) ? true : false;
 	?>
 	<?php if($displayPaginator):?>
 		<?php echo $this->element('paginator-counter');?>
@@ -41,7 +41,7 @@
 	<?php endif;?>
 <?php endif;?>
 
-<?php if(isset($items) && empty($items) && !isset($cats)):?>
+<?php if(isset($items) && empty($items) && (!isset($subCategories) || empty($subCategories))):?>
 	<div class="alert no-results">
 		<?php echo __('Aucun résultat');?>
 	</div>

@@ -12,8 +12,8 @@ if (rtrim(str_replace(TXT_LANG, '', $this->request->url), '/') !== '') {
 		$crumbs[$title_for_layout] = '';
 	}
 	
-	if (isset($catPath) && !empty($catPath)) {
-		foreach ($catPath as $k => $c) {
+	if (isset($categoryPath) && !empty($categoryPath)) {
+		foreach ($categoryPath as $k => $c) {
 			$crumbs[$c['Category']['name_'.TXT_LANG]] = array('action' => 'index', $c['Category']['slug_'.TXT_LANG]);
 		}
 	}

@@ -1,14 +1,14 @@
 <?php 
-if(!isset($google_ad_client)){
+if (!isset($google_ad_client)) {
 	$google_ad_client = 'pub-2543171833542907';
 }
-if(!isset($google_ad_slot)){
+if (!isset($google_ad_slot)) {
 	$google_ad_slot = '9141195829';
 }
-if(!isset($google_ad_width)){
+if (!isset($google_ad_width)) {
 	$google_ad_width = 300;
 }
-if(!isset($google_ad_height)){
+if (!isset($google_ad_height)) {
 	$google_ad_height = 250;
 }
 ?>

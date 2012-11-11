@@ -3,12 +3,11 @@ App::uses('CrudBaseEvent', 'Crud.Controller/Event');
 
 class CountryEvent extends CrudBaseEvent {
 
-	public function beforeFind(CakeEvent $event) {
-		$event->subject->model->contain('Country');
-	}
-	
 	public function beforePaginate(CakeEvent $event) {
 		if (isset($event->subject->model->Country)) {
+			
+			$event->subject->controller->paginate['contain'][] = 'Country';
+			
 			$countryModel =& $event->subject->model->Country;
 			
 			if (isset($event->subject->request->params['country']) && !empty($event->subject->request->params['country'])) {
@@ -37,7 +36,7 @@ class CountryEvent extends CrudBaseEvent {
 			if (isset($event->subject->request->params['cat_slug']) && !isset($event->subject->request->params['country'])) {
 				$cacheFile = $event->subject->modelClass.'_index_countries_filters_'.md5($event->subject->request->here);
 				if (($countriesFilters = Cache::read($cacheFile)) === false) {
-					$results = $event->subject->model->find('all', array('conditions' => $event->subject->controller->paginate['conditions'], 'contain' => 'Country'));
+					$results = $event->subject->model->find('all', array('conditions' => $event->subject->controller->paginate['conditions'], 'contain' => $event->subject->controller->paginate['contain']));
 					
 					$countriesFilters = array();
 					foreach ($results as $r) {
@@ -46,11 +45,9 @@ class CountryEvent extends CrudBaseEvent {
 					}
 					Cache::write($cacheFile, $countriesFilters);
 				}
-				
+					
 				$event->subject->controller->set(compact('countriesFilters'));
 			}
-			
-			$event->subject->model->contain('Country');
 		}
     }
 }

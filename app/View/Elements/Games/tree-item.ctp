@@ -11,19 +11,19 @@
 * @param array $lastChild
 * @param boolean $hasVisibleChildren
 */
-$catModelClass = 'Category';
+$categoryModelClass = 'Category';
 $linkAttribs = array('escape' => false);
-if (isset($data[$catModelClass]['description_'.TXT_LANG]) && !empty($data[$catModelClass]['description_'.TXT_LANG])) {
-	$linkAttribs['title'] = $data[$catModelClass]['description_'.TXT_LANG];
+if (isset($data[$categoryModelClass]['description_'.TXT_LANG]) && !empty($data[$categoryModelClass]['description_'.TXT_LANG])) {
+	$linkAttribs['title'] = $data[$categoryModelClass]['description_'.TXT_LANG];
 }
 
-$counter = '<span class="badge">'.$data[$catModelClass]['item_count'].'</span>';
-// $counter = '<span class="item-count">('.$data[$catModelClass]['item_count'].')</span>';
+$counter = '<span class="badge">'.$data[$categoryModelClass]['item_count'].'</span>';
+// $counter = '<span class="item-count">('.$data[$categoryModelClass]['item_count'].')</span>';
 
-$linkUrl = array('controller' => 'games', 'action' => 'index', $data[$catModelClass]['slug_'.TXT_LANG]);
+$linkUrl = array('controller' => 'games', 'action' => 'index', $data[$categoryModelClass]['slug_'.TXT_LANG]);
 if (isset($this->request->params['named']['platform']) && !empty($this->request->params['named']['platform'])) {
 	$linkUrl['platform'] = $this->request->params['named']['platform'];
 }
 
-echo $this->Html->link($data[$catModelClass]['name_'.TXT_LANG].' '.$counter, $linkUrl, $linkAttribs);
+echo $this->Html->link($data[$categoryModelClass]['name_'.TXT_LANG].' '.$counter, $linkUrl, $linkAttribs);
 ?>

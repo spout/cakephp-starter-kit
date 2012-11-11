@@ -120,6 +120,7 @@ abstract class AppController extends Controller {
 		));
 		
 		$this->getEventManager()->attach(array($this, 'afterFindSlugEvent'), 'Crud.afterFind');
+		$this->getEventManager()->attach(array($this, 'beforeRedirectEvent'), 'Crud.beforeRedirect');
 	}
 	
 	public function afterFindSlugEvent(CakeEvent $event) {
@@ -130,6 +131,10 @@ abstract class AppController extends Controller {
 				$event->subject->controller->redirect(array('action' => 'view', 'id' => $id, 'slug' => $expectedSlug));
 			}
 		}
+	}
+	
+	public function beforeRedirectEvent(CakeEvent $event) {
+		$event->subject->url = array('action' => 'view', 'id' => $event->subject->id, 'slug' => slug($event->subject->request->data[$event->subject->model->alias][$event->subject->model->displayField]));
 	}
 	
 	public function beforeRender() {
@@ -263,9 +268,9 @@ abstract class AppController extends Controller {
 				$url['lang'] = $this->request->params['lang'];
 			}
 			
-			// if (!isset($url['admin'])) {
-				// $url['admin'] = false;
-			// }
+			if (!isset($url['admin'])) {
+				$url['admin'] = false;
+			}
 		}
 		
 		/*$routerUrl = Router::url($url, true);

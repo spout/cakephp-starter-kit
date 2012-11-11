@@ -1,5 +1,17 @@
 @import url(http://fonts.googleapis.com/css?family=Boogaloo);
 
+/*
+Boostrap custom:
+
+@navbarBackground: #5E5B55
+@navbarBackgroundHighlight: #7D7871
+@navbarLinkColor: #D9D8D5
+@navbarLinkColorActive: #D9D8D5
+@dropdownBackground: @navbarBackgroundHighlight
+@dropdownLinkColor: @navbarLinkColor
+@dropdownLinkBackgroundHover: @navbarBackground
+*/
+
 body {
 	/*font-family: 'Trebuchet MS', Helvetica, sans-serif;*/
 	font-family: Verdana, Geneva, sans-serif;
@@ -15,6 +27,16 @@ h1, h2, h3, h4, h5, h6, fieldset legend {
 	line-height: 1;
 	margin: 10px 0;
 	color: #8A867D;
+}
+
+a {
+	color: #318391;
+	text-decoration: none;
+}
+
+a:hover, a:active {
+	color: #F3861B;
+	text-decoration: none;
 }
 
 h1 {
@@ -45,14 +67,24 @@ form .required label:after {
 	clear: both;
 }
 
-.badge {
-	padding: 1px 4px 2px;
-	font-size: 10px;
+.item-count {
+	background-color: #F1EEE0;
+	color: #8A867D;
+	padding: 1px 2px;
+	font-size: 9px;
+	-webkit-border-radius: 8px;
+	border-radius: 8px;
+	border: 1px solid #D9D4BD;
 }
 
 .ui-autocomplete {
 	z-index: 15000;
 	width: 200px;
+}
+
+.breadcrumb {
+	-webkit-border-radius: 10px;
+	border-radius: 10px;
 }
 
 /*
@@ -80,6 +112,30 @@ https://github.com/twitter/bootstrap/issues/1552
 #content-wrapper {
 	background-color: #FAFAF5;
 	padding: 20px;
+	-webkit-border-radius: 10px 10px 0px 0px;
+	border-radius: 10px 10px 0px 0px;
+}
+
+#footer {
+	padding: 20px;
+	color: #999;
+	background-color: #4D4A45;
+	border-top: 1px solid #FFF;
+	-webkit-border-radius: 0px 0px 10px 10px;
+	border-radius: 0px 0px 10px 10px;
+}
+
+#content-wrapper, #footer {
+	-webkit-box-shadow:  0px 0px 5px 0px rgba(0, 0, 0, 0.1);
+	box-shadow:  0px 0px 5px 0px rgba(0, 0, 0, 0.1);
+}
+
+#footer a {
+	color: #FFF;
+}
+
+#footer a:hover, #footer a:active {
+	color: #CDB581;
 }
 
 #homepage-carousel {
@@ -96,6 +152,8 @@ https://github.com/twitter/bootstrap/issues/1552
 	padding: 5px 10px;
 	background-color: white;
 	border: 1px dotted #BBB;
+	-webkit-border-radius: 10px;
+	border-radius: 10px;
 }
 
 .links-cats ul, .ads-cats ul, .links-subcats ul, .ads-subcats ul {
@@ -131,10 +189,11 @@ https://github.com/twitter/bootstrap/issues/1552
 */
 
 .links-browse-item, .ads-browse-item, .events-browse-item, .photos-browse-item {
-	background-color: white;
 	margin-bottom: 10px;
-	border-bottom: 1px dotted #bbb;
-	border-top: 1px dotted #bbb;
+	padding: 0 5px;
+	background-color: #FFF;
+	border: 1px dotted #bbb;
+	border-radius: 10px;
 }
 
 .links-browse-item-title, .ads-browse-item-title, .events-browse-item-title {
@@ -197,6 +256,8 @@ h2#links-cat-description, .links-browse h2, .ads-browse h2, .links-countries-fil
 	.events-browse h2:before, .links-view h2:before, .ads-view h2:before, .events-view h2:before,
 	.events-browse h2, .links-view h2, .ads-view h2, .events-view h2
 	{
+		height: auto;
+		line-height: normal;
 		background-image: none;
 		color: #DB7818;
 	}

@@ -6,10 +6,22 @@ if (isset($url)) {
 	}
 	
 	if (!isset($provider)) {
-		$provider = 'shrinktheweb';
+		$provider = 'toolki';
 	}
 	
-	switch($provider) {
+	switch ($provider) {
+		case 'toolki':
+			if (!isset($size)) {
+				$width = '120x90';
+			}
+			
+			$thumbUrl = 'http://thumbs.toolki.com/?url=%s&size=%s';
+			$thumbUrl = h(sprintf($thumbUrl, $url, $size));
+			
+			echo '<img src="'.$thumbUrl.'" alt="'.$alt.'" />';
+			
+			break;
+		
 		case 'thumbalizr':
 			//http://api1.thumbalizr.com/
 			$apiKey = '5076283f34d9704a07da19a82a76b313';
