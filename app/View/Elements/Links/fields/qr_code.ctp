@@ -18,15 +18,15 @@ $possibleFields = array(
 	);
 
 $chl = array();
-$chl[] = getPreferedLang($item['Link'], 'title');
+$chl[] = getPreferedLang($item[$modelClass], 'title');
 foreach ($possibleFields as $k => $v) {
-	if (isset($item['Link'][$k]) && !empty($item['Link'][$k])) {
+	if (isset($item[$modelClass][$k]) && !empty($item[$modelClass][$k])) {
 		switch ($k) {
 			case 'country':
 				$value = $item['Country']['name_'.TXT_LANG];
 				break;
 			default:
-				$value = $item['Link'][$k];
+				$value = $item[$modelClass][$k];
 				break;
 		}
 		
@@ -44,6 +44,10 @@ $query = array(
 );
 
 $imgUrl = $endpoint.http_build_query($query, '', '&amp;');
-
-echo '<img src="'.$imgUrl.'" alt="QR code" />';
 ?>
+<button type="button" class="btn btn-small btn-link" data-toggle="collapse" data-target="#qr-code">
+	<?php echo __('Afficher le code');?>
+</button>
+<div id="qr-code" class="collapse">
+	<img src="<?php echo $imgUrl;?>" alt="QR code" />
+</div>

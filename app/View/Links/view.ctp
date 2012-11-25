@@ -43,12 +43,12 @@ $this->set('metaDescription', $description);
 	
 	<?php 
 	$displayElements = array(
-		'cats' => __('Catégories'),
 		'url' => __('Site Web'),
+		'cats' => __('Catégories'),
 		'address' => __('Adresse'),
 		'address_components' => __('Localisation'),
 		'geo' => __('Coordonnées GPS'),
-		// 'rating' => __('Evaluation'),
+		//'rating' => __('Evaluation'),
 		'email_contact' => __('E-mail'),
 		'phone' => __('Téléphone'),
 		'mobile' => __('Mobile'),
@@ -84,7 +84,7 @@ $this->set('metaDescription', $description);
 		<?php echo $this->element('google-maps', array('lat' => $item[$modelClass]['geo_lat'], 'lon' => $item[$modelClass]['geo_lon']));?>
 	<?php endif;?>
 	
-	<?php echo $this->element('generic'.DS.'comments');?>
+	<?php //echo $this->element('generic'.DS.'comments');?>
 
 	<?php echo $this->element('generic'.DS.'created-modified');?>
 </div>

@@ -47,6 +47,10 @@ h2 {
 	font-size: 22px;
 }
 
+h3, h4, h5, h6 {
+	font-size: 20px;
+}
+
 ul {
 	list-style: none;
 }
@@ -147,13 +151,17 @@ https://github.com/twitter/bootstrap/issues/1552
 	margin: 10px 0;
 }
 
-.links-cats, .ads-cats, .links-subcats, .ads-subcats {
+.links-cats, .ads-cats, .links-subcats, .ads-subcats, .links-countries-filters, .ads-countries-filters {
 	margin: 0;
 	padding: 5px 10px;
 	background-color: white;
 	border: 1px dotted #BBB;
 	-webkit-border-radius: 10px;
 	border-radius: 10px;
+}
+
+.links-countries-filters, .ads-countries-filters {
+	margin-bottom: 10px;
 }
 
 .links-cats ul, .ads-cats ul, .links-subcats ul, .ads-subcats ul {

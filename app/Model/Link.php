@@ -6,7 +6,6 @@ class Link extends AppModel {
 		'Containable',
 		'CategoryThreaded' => array(
 			'relationshipType' => 'hasAndBelongsToMany'
-			//'relationshipType' => 'belongsTo'
 		),
 		'Search.Searchable',
 	);
@@ -15,29 +14,8 @@ class Link extends AppModel {
 		'Country' => array(
 			'foreignKey' => 'country'
 		),
-		/*'Category' => array(
-			'className' => 'Category',
-			'foreignKey' => 'cat_id'
-		),
-		'Category2' => array(
-			'className' => 'Category',
-			'foreignKey' => 'cat_id_2'
-		),
-		'Category3' => array(
-			'className' => 'Category',
-			'foreignKey' => 'cat_id_3'
-		),*/
 		'User',
 	);
-	
-	/*public $hasAndBelongsToMany = array(
-		'Cat' => array(
-			'joinTable' => 'cat_relationships',
-			'foreignKey' => 'foreign_key',
-			'associationForeignKey' => 'cat_id',
-			'unique' => 'keepExisting'
-		),
-	);*/
 	
 	public $hasMany = array(
 		'Comment' => array(
@@ -76,7 +54,7 @@ class Link extends AppModel {
 	    		'required' => array('rule' => 'notEmpty', 'required' => true, 'message' => __('Champ requis'))
 	    	),*/
 			'Category' => array(
-	    		'required' => array('rule' => array('multiple', array('min' => 1, 'max' => 3)), 'message' => __('Veuillez sélectionner 1 à 3 catégories'))
+	    		'required' => array('rule' => array('multiple', array('min' => 1, 'max' => 3)), 'required' => true, 'message' => __('Veuillez sélectionner 1 à 3 catégories'))
 	    	),
 	    	'country' => array(
 	    		'required' => array('rule' => 'notEmpty', 'required' => true, 'message' => __('Champ requis'))
@@ -99,7 +77,7 @@ class Link extends AppModel {
 			'fax' => array(
 				'valid' => array('rule' => '/^(\+)[0-9]{1,3}[\s][0-9]{1,3}[\s][0-9]{6,10}$/', 'allowEmpty' => true, 'message' => __('Le format du numéro n\'est pas valide'))
 			),
-	    	//'captcha' => $this->validateCaptcha
+	    	'captcha' => $this->validateCaptcha
 	    );
 	}
 	

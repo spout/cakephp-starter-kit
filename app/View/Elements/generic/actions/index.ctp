@@ -70,7 +70,8 @@ if (isset($categoryModelClass) && isset($cat[$categoryModelClass]['description_'
 				<?php echo $this->Tree->generate($subCategories, array('element' => 'generic/tree-item', 'model' => $categoryModelClass));?>
 				<div class="clear"></div>
 			</div>
-		<?php elseif(isset($countriesFilters) && !empty($countriesFilters)):?>
+		<?php endif;?>
+		<?php /*elseif(isset($countriesFilters) && !empty($countriesFilters)):?>
 			<div class="<?php echo $this->request->params['controller'];?>-countries-filters">
 				<h2><?php echo __('Filtrer les résultats par pays');?></h2>
 				<ul>
@@ -101,15 +102,27 @@ EOT;
 				</fieldset>
 				<?php echo $this->Form->end();?>
 			</div>
-		<?php endif;?>
+		<?php endif;*/?>
 		
 		<?php if(isset($items) && !empty($items) && isset($categoryModelClass) && isset($category[$categoryModelClass]['description_'.TXT_LANG]) && !empty($category[$categoryModelClass]['description_'.TXT_LANG])):?>
 			<h2 id="<?php echo $this->request->params['controller'];?>-cat-description"><?php echo h($category[$categoryModelClass]['description_'.TXT_LANG]);?><?php if(isset($this->request->params['country']) && isset($country)):?> - <?php echo h($country['Country']['name_'.TXT_LANG]);?><?php endif;?></h2>
 		<?php endif;?>
 		<?php echo $this->element('generic/items-browse');?>
-	</div>	 
+	</div>
 
 	<div class="span4">
+		<?php if((!isset($subCategories) || empty($subCategories)) && isset($countriesFilters) && !empty($countriesFilters)):?>
+			<div class="<?php echo $this->request->params['controller'];?>-countries-filters">
+				<h3><?php echo __('Filtrer la catégorie <em>%s</em> par pays', $category[$categoryModelClass]['name_'.TXT_LANG]);?></h3>
+				<ul>
+				<?php foreach($countriesFilters as $k => $c):?>
+					<li><?php echo $this->Html->image('flags/'.$k.'.gif');?>&nbsp;<?php echo $this->Html->link($c['name_'.TXT_LANG], array('cat_slug' => isset($this->request->params['cat_slug']) ? $this->request->params['cat_slug'] : 0, 'country' => $k.'-'.slug($c['name_'.TXT_LANG])));?>&nbsp;<span class="item-count"><?php echo $c['count'];?></span></li>
+				<?php endforeach;?>
+				</ul>
+				<div class="clear"></div>
+			</div>
+		<?php endif;?>
+		
 		<?php if(isset($categories) && !empty($categories)):?>
 			<div class="<?php echo $this->request->params['controller'];?>-cats">
 				<?php echo $this->Tree->generate($categories, array('element' => 'generic/tree-item', 'model' => $categoryModelClass));?>

@@ -11,7 +11,7 @@ class Ad extends AppModel {
 		),
 		'Hitcount',
 		'CategoryThreaded' => array(
-			'relationshipType' => 'belongsTo'
+			'relationshipType' => 'hasAndBelongsToMany'
 		),
 		'Search.Searchable',
 	);

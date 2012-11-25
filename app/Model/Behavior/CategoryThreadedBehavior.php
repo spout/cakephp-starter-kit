@@ -16,9 +16,29 @@ class CategoryThreadedBehavior extends ModelBehavior {
 					'foreignKey' => 'foreign_key',
 					'associationForeignKey' => 'category_id',
 					'with' => 'Categorized',
-					'conditions' => array('Category.model' => $Model->alias, 'Categorized.model' => $Model->alias),
+					'conditions' => array(
+						'Category.model' => $Model->alias,
+						'Categorized.model' => $Model->alias
+					),
 					'unique' => true
 				);
+				
+				/*$Model->hasMany['Categorized'] = array(
+					'className' => 'Category',
+					'foreignKey' => 'foreign_key',
+					'associationForeignKey' => 'category_id',
+					'conditions' => array(
+						'Categorized.model' => $Model->alias
+					),
+				);
+				
+				$Model->Categorized->belongsTo[$Model->alias] = array(
+					'className' => $Model->alias,
+					'conditions' => array(
+						'Category.model' => $Model->alias
+					)
+				);*/
+				
 				break;
 			
 			default:
@@ -28,22 +48,26 @@ class CategoryThreadedBehavior extends ModelBehavior {
 	}
 	
 	public function beforeSave(Model $Model) {
+		// prevent default functionnality to gain full control of others keys, see afterSave method
 		if (isset($Model->hasAndBelongsToMany['Category'])) {
+			// Unset to prevent undefined index in Model::save() because HABTM unbind
+			// Categories are still in $Model->data[$Model->alias]['Category'], see afterSave
+			unset($Model->data['Category']);
+			
 			$Model->unbindModel(array('hasAndBelongsToMany' => array('Category')));
 		}
+		
 		return true;
 	}
 	
 	public function afterSave(Model $Model) {
-		if (isset($Model->data['Category']['Category'])) {
+		if (isset($Model->data[$Model->alias]['Category']) && is_array($Model->data[$Model->alias]['Category'])) {
+			$Model->bindModel(array('hasMany' => array('Categorized' => array('foreignKey' => 'foreign_key'))), false);
+			
 			$categories = $Model->Categorized->find('list', array('fields' => array('id', 'id'), 'conditions' => array('Categorized.foreign_key' => $Model->id, 'Categorized.model' => $Model->alias)));
 			$Model->Categorized->deleteAll(array('Categorized.id' => $categories , 'Categorized.foreign_key' => $Model->id, 'Categorized.model' => $Model->alias));
 			
-			if (!is_array($Model->data['Category']['Category'])) {
-				$Model->data['Category']['Category'] = array($Model->data['Category']['Category']);
-			}
-			
-			foreach ($Model->data['Category']['Category'] as $catId) {
+			foreach ($Model->data[$Model->alias]['Category'] as $catId) {
 				$Model->Categorized->create();
 				$Model->Categorized->save(array('category_id' => $catId, 'foreign_key' => $Model->id, 'model' => $Model->alias));
 			}

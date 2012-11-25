@@ -119,22 +119,17 @@ abstract class AppController extends Controller {
 			'admin_view' => 'view',
 		));
 		
-		$this->getEventManager()->attach(array($this, 'afterFindSlugEvent'), 'Crud.afterFind');
 		$this->getEventManager()->attach(array($this, 'beforeRedirectEvent'), 'Crud.beforeRedirect');
 	}
-	
-	public function afterFindSlugEvent(CakeEvent $event) {
-		if ($event->subject->action == 'view' && isset($event->subject->item) && isset($event->subject->request->params['pass'][0]) && isset($event->subject->request->params['slug'])) {
-			$id = $event->subject->request->params['pass'][0];
-			$expectedSlug = slug(getPreferedLang($event->subject->item[$event->subject->modelClass], $event->subject->model->displayField));
-			if ($expectedSlug != $event->subject->request->params['slug']) {
-				$event->subject->controller->redirect(array('action' => 'view', 'id' => $id, 'slug' => $expectedSlug));
-			}
-		}
-	}
-	
+
 	public function beforeRedirectEvent(CakeEvent $event) {
-		$event->subject->url = array('action' => 'view', 'id' => $event->subject->id, 'slug' => slug($event->subject->request->data[$event->subject->model->alias][$event->subject->model->displayField]));
+		if (in_array($event->subject->action, array('add', 'edit', 'admin_add', 'admin_edit'))) {
+			$event->subject->url = array('action' => 'view', 'id' => $event->subject->id, 'slug' => slug($event->subject->request->data[$event->subject->model->alias][$event->subject->model->displayField]));
+		}
+		
+		if (in_array($event->subject->action, array('delete', 'admin_delete'))) {
+			$event->subject->url = array('action' => 'index');
+		}
 	}
 	
 	public function beforeRender() {
@@ -272,13 +267,6 @@ abstract class AppController extends Controller {
 				$url['admin'] = false;
 			}
 		}
-		
-		/*$routerUrl = Router::url($url, true);
-		if (substr($routerUrl, -1) != '/') {
-			$routerUrl .= '/'; // Add trailing slash
-		}
-		
-		parent::redirect($routerUrl, $status, $exit);*/
 		parent::redirect($url, $status, $exit);
 	}
 	

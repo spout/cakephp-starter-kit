@@ -34,3 +34,6 @@
 [submodule "app/Plugin/Search"]
 	path = app/Plugin/Search
 	url = git://github.com/CakeDC/search.git
+[submodule "app/Plugin/Api"]
+	path = app/Plugin/Api
+	url = git://github.com/nodesagency/Platform-API-plugin.git

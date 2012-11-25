@@ -4,7 +4,7 @@ App::uses('CrudBaseEvent', 'Crud.Controller/Event');
 class GenericEvent extends CrudBaseEvent {
 	
 	public function init(CakeEvent $event) {
-		$event->subject->model->contain(array('Country', 'Category'));
+		$event->subject->model->contain(array('Country' , 'Category'));
 		
 		if (isset($event->subject->model->Category)) {
 			$this->categoryModel =& $event->subject->model->Category;
@@ -13,10 +13,19 @@ class GenericEvent extends CrudBaseEvent {
     }
 	
 	public function afterFind(CakeEvent $event) {
+		
+		if ($event->subject->action == 'view' && isset($event->subject->item) && isset($event->subject->request->params['pass'][0]) && isset($event->subject->request->params['slug'])) {
+			$id = $event->subject->request->params['pass'][0];
+			$expectedSlug = slug(getPreferedLang($event->subject->item[$event->subject->modelClass], $event->subject->model->displayField));
+			if ($expectedSlug != $event->subject->request->params['slug']) {
+				$event->subject->controller->redirect(array('action' => 'view', 'id' => $id, 'slug' => $expectedSlug));
+			}
+		}
+		
 		if (isset($this->categoryModel) && is_object($this->categoryModel) && isset($event->subject->item[$this->categoryModel->alias]) && !empty($event->subject->item[$this->categoryModel->alias]) && isset($event->subject->item) && !empty($event->subject->item)) {
 			if (isset($event->subject->model->hasAndBelongsToMany[$this->categoryModel->alias]) && isset($event->subject->item[$this->categoryModel->alias][0]['id'])) {
 				// hasAndBelongsToMany
-				$catId = $event->subject->item[$this->categoryModel->alias][0]['id'];
+				$catId = $event->subject->item[$this->categoryModel->alias][0]['id'];// First category
 			} elseif (isset($event->subject->item[$this->categoryModel->alias]['id'])) {
 				// belongsTo
 				$catId = $event->subject->item[$this->categoryModel->alias]['id'];

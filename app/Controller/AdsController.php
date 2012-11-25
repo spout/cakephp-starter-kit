@@ -1,15 +1,13 @@
 <?php 
-App::uses('CategoryEvent', 'Controller/Event');
-App::uses('CountryEvent', 'Controller/Event');
+App::uses('GenericEvent', 'Controller/Event');
 
 class AdsController extends AppController {
-	public $paginate = array('limit' => 20, 'order' => 'created DESC');
+	public $paginate = array('limit' => 20, 'order' => array('Ad.created' => 'DESC'));
 	
 	public function beforeFilter() {
 		parent::beforeFilter();
 		
-		$this->getEventManager()->attach(new CategoryEvent());
-		$this->getEventManager()->attach(new CountryEvent());
+		$this->getEventManager()->attach(new GenericEvent());
 		
 		$this->Crud->enableAction('add');
 		$this->Crud->enableAction('edit');

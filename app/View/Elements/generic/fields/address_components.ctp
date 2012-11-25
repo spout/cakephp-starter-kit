@@ -21,10 +21,5 @@ if (isset($item[$modelClass]['address_components']) && !empty($item[$modelClass]
 	}
 	$addressComponents = array_unique($tmp);
 	
-	foreach ($addressComponents as $k => $v) {
-		$this->MyHtml->addCrumb($v);
-	}
-	
-	echo $this->MyHtml->getCrumbs();
+	echo implode(' <span class="divider">&rsaquo;</span> ', $addressComponents);
 }
-?>

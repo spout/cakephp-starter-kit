@@ -1,10 +1,8 @@
 <?php
-// App::uses('CategoryEvent', 'Controller/Event');
-// App::uses('CountryEvent', 'Controller/Event');
 App::uses('GenericEvent', 'Controller/Event');
 
 class LinksController extends AppController {
-	public $paginate = array('limit' => 15, 'order' => array('Link.created' => 'DESC') , 'conditions' => array('Link.active' => 1));
+	public $paginate = array('limit' => 15, 'order' => array('Link.created' => 'DESC') , 'contain' => array('Country', 'Category'), 'conditions' => array('Link.active' => 1));
 	
 	public $presetVars = array(
 		array('field' => 'query', 'type' => 'value'),

@@ -26,7 +26,7 @@ class CustomFieldsController extends AppController {
 			$this->paginate['conditions']['foreign_key'] = $foreignKey;
 		}
 		
-		parent::index();
+		// parent::index();
 	}
 	
 	public function form($model, $foreignKey = null) {
