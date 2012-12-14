@@ -3,7 +3,7 @@ $partners = array(
 	array(
 		'url' => 'http://www.xeno-tactic.com',
 		'anchor' => 'Jeu Xeno Tactic',
-		'title' => 'Jouer à Xeno Tactic',
+		'title' => 'Jouer Ã  Xeno Tactic',
 	),
 	array(
 		'url' => 'http://www.jeux-flash.ch/',

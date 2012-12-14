@@ -5,7 +5,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
-"POT-Creation-Date: 2012-07-11 13:18+0200\n"
+"POT-Creation-Date: 2012-12-08 21:31+0100\n"
 "PO-Revision-Date: YYYY-mm-DD HH:MM+ZZZZ\n"
 "Last-Translator: NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <EMAIL@ADDRESS>\n"
@@ -13,6 +13,61 @@ msgstr ""
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=INTEGER; plural=EXPRESSION;\n"
+
+#: Plugin/Tools/Console/Command/CodeShell.php:38;207
+msgid "Updating %s..."
+msgstr ""
+
+#: Plugin/Tools/Console/Command/CodeShell.php:42;265
+msgid "Done updating %s"
+msgstr ""
+
+#: Plugin/Tools/Console/Command/CodeShell.php:173
+msgid "Correcting %s"
+msgstr ""
+
+#: Plugin/Tools/Console/Command/CodeShell.php:261
+msgid " * Updating %s"
+msgstr ""
+
+#: Plugin/Tools/Console/Command/CodeShell.php:283
+msgid "The plugin to update. Only the specified plugin will be updated."
+msgstr ""
+
+#: Plugin/Tools/Console/Command/CodeShell.php:288
+msgid "Custom path to update recursivly."
+msgstr ""
+
+#: Plugin/Tools/Console/Command/CodeShell.php:293
+msgid "The extension(s) to search. A pipe delimited list, or a preg_match compatible subpattern"
+msgstr ""
+
+#: Plugin/Tools/Console/Command/CodeShell.php:298
+msgid "Include vendor files, as well"
+msgstr ""
+
+#: Plugin/Tools/Console/Command/CodeShell.php:303
+#: Plugin/Tools/Console/Command/FolderSyncShell.php:187
+#: Plugin/Tools/Console/Command/IndentShell.php:106
+#: Plugin/Tools/Console/Command/IndexShell.php:275
+msgid "Dry run the update, no files will actually be modified."
+msgstr ""
+
+#: Plugin/Tools/Console/Command/CodeShell.php:310
+msgid "A shell to help automate code cleanup. \nBe sure to have a backup of your application before running these commands."
+msgstr ""
+
+#: Plugin/Tools/Console/Command/CodeShell.php:313
+msgid "Run multiple upgrade commands."
+msgstr ""
+
+#: Plugin/Tools/Console/Command/CodeShell.php:317
+msgid "Correct dependencies"
+msgstr ""
+
+#: Plugin/Tools/Console/Command/CodeShell.php:321
+msgid "Make files utf8 compliant"
+msgstr ""
 
 #: Plugin/Tools/Console/Command/ConvertShell.php:39
 msgid "<warning>Dry-run mode enabled!</warning>"
@@ -46,35 +101,52 @@ msgstr ""
 msgid "Convert folder recursivly (Tools.Convert folder [options] [path])"
 msgstr ""
 
-#: Plugin/Tools/Console/Command/IndentShell.php:92
-#: Plugin/Tools/Console/Command/IndexShell.php:275
-msgid "Dry run the update, no files will actually be modified."
+#: Plugin/Tools/Console/Command/FolderSyncShell.php:167
+msgid "source - defaults to app"
 msgstr ""
 
-#: Plugin/Tools/Console/Command/IndentShell.php:97
+#: Plugin/Tools/Console/Command/FolderSyncShell.php:172
+msgid "target - required"
+msgstr ""
+
+#: Plugin/Tools/Console/Command/FolderSyncShell.php:177
+msgid "The plugin folder - can only be used with app as source"
+msgstr ""
+
+#: Plugin/Tools/Console/Command/FolderSyncShell.php:182
+msgid "Remove files if source is non-existent"
+msgstr ""
+
+#: Plugin/Tools/Console/Command/FolderSyncShell.php:192
+#: Plugin/Tools/Console/Command/IndentShell.php:111
 #: Plugin/Tools/Console/Command/IndexShell.php:280
 msgid "Log all ouput to file log.txt in TMP dir"
 msgstr ""
 
-#: Plugin/Tools/Console/Command/IndentShell.php:102
+#: Plugin/Tools/Console/Command/FolderSyncShell.php:199
+#: Plugin/Tools/Console/Command/IndexShell.php:297
+msgid "..."
+msgstr ""
+
+#: Plugin/Tools/Console/Command/FolderSyncShell.php:201
+msgid "Update"
+msgstr ""
+
+#: Plugin/Tools/Console/Command/IndentShell.php:116
 #: Plugin/Tools/Console/Command/IndexShell.php:285
 msgid "Interactive"
 msgstr ""
 
-#: Plugin/Tools/Console/Command/IndentShell.php:109
+#: Plugin/Tools/Console/Command/IndentShell.php:123
 msgid "Correct indentation of files"
 msgstr ""
 
-#: Plugin/Tools/Console/Command/IndentShell.php:111
+#: Plugin/Tools/Console/Command/IndentShell.php:125
 msgid "Indent all files in a folder"
 msgstr ""
 
 #: Plugin/Tools/Console/Command/IndexShell.php:290
 msgid "custom ds"
-msgstr ""
-
-#: Plugin/Tools/Console/Command/IndexShell.php:297
-msgid "..."
 msgstr ""
 
 #: Plugin/Tools/Console/Command/IndexShell.php:299

@@ -35,6 +35,8 @@
 				social_tools: ''
 			});
 			
+			//$('.alert').delay(5000).slideUp();
+			
 			$("#LinkQueryLayout").autocomplete({
 				source: "<?php echo $autocompleteUrl;?>",
 				minLength: 2,
@@ -74,6 +76,7 @@
 
 		echo $this->fetch('meta');
 		echo $this->fetch('css');
+		echo $this->fetch('dataTableSettings');
 		echo $this->fetch('script');
 		?>
 		<!--[if lt IE 9]>

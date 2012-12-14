@@ -3,10 +3,10 @@
 <?php echo $this->element('disqus');?>
 
 <?php /*
-<?php if(!empty(${$singularVar}['Comment'])):?>
+<?php if(!empty($item['Comment'])):?>
 	<p><a href="#post-comment"><?php echo __('Poster un commentaire');?></a></p>
 	<div class="comments-list">
-		<?php foreach(${$singularVar}['Comment'] as $comment):?>
+		<?php foreach($item['Comment'] as $comment):?>
 			<div id="comment-<?php echo $comment['id'];?>" class="comments-list-item">
 				<div class="comments-list-meta">
 					<div class="comments-list-avatar">

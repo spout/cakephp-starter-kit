@@ -3,13 +3,33 @@ $title = getPreferedLang($item[$modelClass], 'title');
 $description = getPreferedLang($item[$modelClass], 'description');
 $this->set('title_for_layout', h($title));
 $this->set('metaDescription', $description);
+
+$this->Html->script('jquery/jquery.jeditable.mini.js', array('inline' => false));
+
+$editableUrl = $this->Html->url(array('action' => 'save_field'));
+
+$this->Html->scriptStart(array('inline' => false));
+?>
+$(function(){
+	$('.editable').editable('<?php echo $editableUrl;?>', {
+		id: 'data[<?php echo $modelClass;?>][id]',
+		name: 'data[<?php echo $modelClass;?>][value]',
+		submitdata : {
+			'data[<?php echo $modelClass;?>][field]': 'description_fr'
+		},
+		submit: 'OK',
+		type: 'textarea'
+	});
+});
+<?php
+$this->Html->scriptEnd();
 ?>
 
 <div class="<?php echo $pluralVar;?>-view">
-	<?php if(Auth::hasRole(ROLE_ADMIN)):?>
+	<?php /*if(Auth::hasRole(ROLE_ADMIN)):?>
 		<?php echo $this->element('Links/rentabiliweb-form-vc');?>
 		<?php echo $this->element('Links/teads');?>
-	<?php endif;?>
+	<?php endif;*/?>
 	
 	<?php echo $this->element('generic/actions-links');?>
 	
@@ -36,7 +56,7 @@ $this->set('metaDescription', $description);
 
 		<div class="media-body">
 			<?php if(!empty($description)):?>
-				<p><?php echo nl2br(h($description));?></p>
+				<div class="editable" id="<?php echo $item[$modelClass]['id'];?>"><?php echo h($description);?></div>
 			<?php endif;?>
 		</div>
 	</div>

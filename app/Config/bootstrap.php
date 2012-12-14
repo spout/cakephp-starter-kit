@@ -4,8 +4,8 @@ App::import('Vendor', 'functions');
 /**
  * Set include_path for PEAR
  */
-define('PEAR', APP.'Vendor'.DS.'Pear'.DS);
-ini_set('include_path', PEAR.PATH_SEPARATOR.ini_get('include_path'));
+// define('PEAR', APP.'Vendor'.DS.'Pear'.DS);
+// ini_set('include_path', PEAR.PATH_SEPARATOR.ini_get('include_path'));
 
 /**
  * MinifyAsset plugin
@@ -46,8 +46,26 @@ Configure::write('Config.languages', array(
 /**
  * Configures AppController public controller actions
  */
-Configure::write('Config.publicActions', array(
-	'login','logout', 'register', 'display', 'index', 'view', 'feed', 'markers', 'map', 'count_clicks', 'message', 'autocomplete', 'comment', 'search', 'rating')
+Configure::write('Config.publicActions', 
+	array(
+		'login',
+		'logout',
+		'register',
+		'display',
+		'index',
+		'view',
+		'feed',
+		'markers',
+		'map',
+		'count_clicks',
+		'message',
+		'autocomplete',
+		'comment',
+		'search',
+		'rating',
+		'datatable',
+		'admin_index',
+	)
 );
 
 /**

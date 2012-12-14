@@ -1,8 +1,8 @@
 <?php 
 $this->set('title_for_layout', __('Envoyer un message'));
-$title = getPreferedLang(${$singularVar}[$modelClass], 'title');
+$title = getPreferedLang($item[$modelClass], 'title');
 ?>
-<?php echo $this->Form->create($modelClass, array('url' => array('action' => 'message', ${$singularVar}[$modelClass]['id'])));?>
+<?php echo $this->Form->create($modelClass, array('url' => array('action' => 'message', $item[$modelClass]['id'])));?>
 <fieldset>
 <legend><?php echo __('Envoyer un message');?></legend>
 <?php echo $this->Form->input('email', array('label' => __('Votre e-mail'), 'size' => 30, 'default' => $this->Auth->user('email')));?>

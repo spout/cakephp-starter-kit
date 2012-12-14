@@ -36,7 +36,7 @@
 					<li><?php echo $this->Html->link(__('Boutique'), array('controller' => 'shops', 'action' => 'index', 'admin' => false));?></li>
 					<li><?php echo $this->Html->link(__('Photos'), array('controller' => 'photos', 'action' => 'index', 'admin' => false));?></li>
 					<li><?php echo $this->Html->link($this->Html->image('feed-icons/feed-icon-14x14.png', array('alt' => 'RSS')), array('controller' => 'links', 'action' => 'feed.rss'), array('escape' => false));?></li>
-					<?php /*if(Auth::id()):?>
+					<?php if(Auth::id()):?>
 					<li class="divider-vertical"></li>
 					<li class="dropdown">
 						<?php echo $this->Html->link(Auth::user('email').' <b class="caret"></b>', '#', array('class' => 'dropdown-toggle', 'data-toggle' => 'dropdown', 'escape' => false));?>
@@ -46,7 +46,7 @@
 						</ul>
 					</li>
 					<?php endif;?>
-					<?php if(Auth::hasRole(ROLE_ADMIN)):?>
+					<?php /*if(Auth::hasRole(ROLE_ADMIN)):?>
 					<li class="divider-vertical"></li>
 					<li class="dropdown">
 						<?php echo $this->Html->link(__('Admin').' <b class="caret"></b>', '#', array('class' => 'dropdown-toggle', 'data-toggle' => 'dropdown', 'escape' => false));?>

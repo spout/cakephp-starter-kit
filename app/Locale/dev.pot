@@ -14,28 +14,15 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=INTEGER; plural=EXPRESSION;\n"
 
-#: Plugin/Tools/Lib/EmailLib.php:494
-msgid "File not specified."
+#: Plugin/Tools/Controller/Component/Auth/TinyAuthorize.php:54
+msgid "TinyAuth could not find `%s` cache - expects at least a `default` cache"
 msgstr ""
 
-#: Plugin/Tools/Lib/EmailLib.php:498
-msgid "File not found: \"%s\""
+#: Plugin/Tools/Controller/Component/Auth/TinyAuthorize.php:82
+msgid "Missing acl information (%s) in user session"
 msgstr ""
 
-#: Plugin/Tools/Lib/EmailLib.php:613
-msgid "%s not found."
-msgstr ""
-
-#: Plugin/Tools/Lib/EmailLib.php:617
-msgid "Unknown email configuration \"%s\"."
-msgstr ""
-
-#: View/Layouts/default.ctp:19
-#: View/Layouts/error.ctp:19
-msgid "CakePHP: the rapid development php framework"
-msgstr ""
-
-#: webroot/test.php:87
-msgid "Debug setting does not allow access to this url."
+#: Plugin/Tools/Controller/Component/Auth/TinyAuthorize.php:171
+msgid "Invalid Role Setup for TinyAuthorize (no roles found)"
 msgstr ""
 

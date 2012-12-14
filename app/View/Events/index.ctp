@@ -9,7 +9,7 @@ if (isset($this->request->params['month'])) {
 $titles[] = $year;
 $this->set('title_for_layout', join(' ', $titles));
 ?>
-<?php if(isset(${$pluralVar}) && !empty(${$pluralVar})):?>
+<?php if(isset($items) && !empty($items)):?>
 	<div class="<?php echo $this->request->params['controller'];?>-browse">
 	<?php 
 	for ($m = 1; $m <= 12; $m++) {
@@ -19,16 +19,16 @@ $this->set('title_for_layout', join(' ', $titles));
 		
 		$outMonth = '';
 		if (date('Ym') <= $year.$m) {//outdated month
-			foreach (${$pluralVar} as $k => ${$singularVar}) {
-				if(	($monthStart >= strtotime(${$singularVar}[$modelClass]['date_start']) && $monthStart <= strtotime(${$singularVar}[$modelClass]['date_end']))
+			foreach ($items as $k => $item) {
+				if(	($monthStart >= strtotime($item[$modelClass]['date_start']) && $monthStart <= strtotime($item[$modelClass]['date_end']))
 					||
-					($monthEnd >= strtotime(${$singularVar}[$modelClass]['date_start']) && $monthEnd <= strtotime(${$singularVar}[$modelClass]['date_end']))
+					($monthEnd >= strtotime($item[$modelClass]['date_start']) && $monthEnd <= strtotime($item[$modelClass]['date_end']))
 					||
-					(strtotime(${$singularVar}[$modelClass]['date_start']) >= $monthStart && strtotime(${$singularVar}[$modelClass]['date_start']) <= $monthEnd)
+					(strtotime($item[$modelClass]['date_start']) >= $monthStart && strtotime($item[$modelClass]['date_start']) <= $monthEnd)
 					||
-					(strtotime(${$singularVar}[$modelClass]['date_end']) >= $monthStart && strtotime(${$singularVar}[$modelClass]['date_end']) <= $monthEnd)
+					(strtotime($item[$modelClass]['date_end']) >= $monthStart && strtotime($item[$modelClass]['date_end']) <= $monthEnd)
 					) {
-					$outMonth .= $this->element($pluralVar.'/items-browse-item', array($singularVar => ${$singularVar}, 'k' => $k));
+					$outMonth .= $this->element($pluralVar.'/items-browse-item', array($singularVar => $item, 'k' => $k));
 				}
 			}
 		}

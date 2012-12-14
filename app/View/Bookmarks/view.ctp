@@ -14,22 +14,11 @@ $this->set('metaDescription', $description);
 	<h2><?php echo h($title);?></h2>
 	
 	<?php 
-	/*$displayElements = array(
-		'video' => __('Vidéo de présentation'),
-		'description' => __('Description'),
-		'type' => __('Type'),
-		'price' => __('Prix'),
-		'city' => __('Ville'),
-		'country' => __('Pays'),
-		'address_components' => __('Localisation'),
-		'geo' => __('Coordonnées GPS'),
-		'email_contact' => __('E-mail'),
-		'phone' => __('Téléphone'),
-		'skype' => __('Skype'),
-		'hitcount' => __('Consulté'),
+	$displayElements = array(
+		'video' => __('VidÃ©o de prÃ©sentation'),
 	);
 	
-	echo $this->element('generic/view-display-elements', array('displayElements' => $displayElements));*/
+	echo $this->element('generic/view-display-elements', array('displayElements' => $displayElements));
 	?>
 	
 	<?php if(isset($item[$modelClass]['oembed']['html'])):?>

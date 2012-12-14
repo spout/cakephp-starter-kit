@@ -9,10 +9,6 @@ Router::parseExtensions('rss', 'json', 'kml', 'xml', 'js');
 Router::connect('/', array('controller' => 'homepages', 'action' => 'index'), array('routeClass' => 'I18nRoute'));
 Router::connect('/:lang/', array('controller' => 'homepages', 'action' => 'index'), array('lang' => '[a-z]{2}', 'routeClass' => 'I18nRoute'));
 
-// Admin i18n routes
-Router::connect('/:lang/admin/:controller', array('action' => 'index', 'admin' => true), array('lang' => '[a-z]{2}', 'routeClass' => 'I18nRoute'));
-Router::connect('/:lang/admin/:controller/:action/*', array('admin' => true), array('lang' => '[a-z]{2}', 'routeClass' => 'I18nRoute'));
-
 Router::connect('/:lang/logiciels', array('controller' => 'pages', 'action' => 'display', 'logiciels'), array('routeClass' => 'I18nRoute'));
 
 Router::connect('/:lang/pages/*', array('controller' => 'pages', 'action' => 'display'), array('routeClass' => 'I18nRoute'));
@@ -24,11 +20,15 @@ $routesAliases = array(
 	'posts' => array('fr' => 'blog', 'en' => 'blog'),
 );
 
-$genericActionsRoutes = 'view|add|edit|delete|feed|markers|map|count_clicks|message|autocomplete|comment|search|save_field|accept|rating|browse|filemanager|sponsor';
+$genericActionsRoutes = 'view|add|edit|delete|feed|markers|map|count_clicks|message|autocomplete|comment|search|save_field|accept|rating|browse|filemanager|sponsor|datatable|ajax_pagination';
 
 foreach ($routesAliases as $controller => $aliases) {
 	foreach ($aliases as $lang => $alias) {
+		Router::connect('/:lang/:prefix/'.$alias, array('controller' => $controller, 'action' => 'index', 'prefix' => 'admin', 'admin' => true), array('lang' => $lang, 'routeClass' => 'I18nRoute'));
+		Router::connect('/:lang/:prefix/'.$alias.'/*', array('controller' => $controller, 'prefix' => 'admin', 'admin' => true), array('lang' => $lang, 'routeClass' => 'I18nRoute'));
+		
 		Router::connect('/:lang/'.$alias.'/:id-:slug', array('controller' => $controller, 'action' => 'view'), array('lang' => $lang, 'id' => '[0-9]+', 'slug' => '[a-zA-Z0-9\-_]+', 'pass' => array('id'), 'routeClass' => 'I18nRoute'));
+		
 		Router::connect('/:lang/'.$alias, array('controller' => $controller, 'action' => 'index'), array('lang' => $lang, 'routeClass' => 'I18nRoute'));
 		
 		Router::connect('/:lang/'.$alias.'/:action/:cat_slug/:country/*', array('controller' => $controller), array('lang' => $lang, 'action' => 'feed|markers', 'cat_slug' => '[a-zA-Z0-9\-_]+', 'country' => '[a-zA-Z0-9\-_]+', 'routeClass' => 'I18nRoute'));
@@ -56,8 +56,13 @@ foreach ($routesAliases as $lang => $alias) {
 	Router::connect('/:lang/'.$alias.'/*', array('controller' => 'shops', 'action' => 'index'), array('lang' => $lang, 'routeClass' => 'I18nRoute'));
 }
 
+
 Router::connect('/:lang/:controller/:id-:slug/*', array('action' => 'view'), array('lang' => '[a-z]{2}', 'id' => '[0-9]+', 'slug' => '[a-zA-Z0-9\-_]+', 'pass' => array('id', 'slug'), 'routeClass' => 'I18nRoute'));
 Router::connect('/:lang/sitemap', array('controller' => 'sitemaps', 'action' => 'index'), array('lang' => '[a-z]{2}', 'routeClass' => 'I18nRoute'));
+
+// Admin i18n routes
+Router::connect('/:lang/admin/:controller', array('action' => 'index', 'admin' => true), array('lang' => '[a-z]{2}', 'routeClass' => 'I18nRoute'));
+Router::connect('/:lang/admin/:controller/:action/*', array('admin' => true), array('lang' => '[a-z]{2}', 'routeClass' => 'I18nRoute'));
 
 Router::connect('/:lang/:controller', array('action' => 'index'), array('lang' => '[a-z]{2}', 'routeClass' => 'I18nRoute'));
 Router::connect('/:lang/:controller/:action/*', array(), array('lang' => '[a-z]{2}', 'routeClass' => 'I18nRoute'));

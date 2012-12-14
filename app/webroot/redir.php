@@ -1,8 +1,7 @@
 <?php
 if (!empty($_GET['url'])) {
 	$url = $_GET['url'];
-}
-elseif (!empty($_POST['url'])) {
+} elseif (!empty($_POST['url'])) {
 	$url = $_POST['url'];
 } else {
 	$url = '';
@@ -14,4 +13,3 @@ if (!empty($url)) {
 }
 
 exit();
-?>

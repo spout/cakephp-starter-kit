@@ -1,8 +1,8 @@
 <?php
 $markers = array();
 $json = array();
-foreach(${$pluralVar} as $k => ${$singularVar}){
-	$markers[${$singularVar}[$modelClass]['geo_lat'].'_'.${$singularVar}[$modelClass]['geo_lon']][] = ${$singularVar};
+foreach($items as $k => $item){
+	$markers[$item[$modelClass]['geo_lat'].'_'.$item[$modelClass]['geo_lon']][] = $item;
 }
 
 $count = 0;

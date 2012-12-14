@@ -1,5 +1,5 @@
 <?php 
-$title = getPreferedLang(${$singularVar}[$modelClass], 'name');
+$title = getPreferedLang($item[$modelClass], 'name');
 $this->set('title_for_layout', h($title));
 ?>
 
@@ -12,8 +12,8 @@ $this->set('title_for_layout', h($title));
 	<dl>
 	<?php foreach(Configure::read('Config.languages') as $k => $l):?>
 			<dt><?php echo h($l['language']);?></dt>
-			<dd><?php echo h(${$singularVar}[$modelClass]['name_'.$k]);?></dd>
-			<dd><?php echo h(${$singularVar}[$modelClass]['slug_'.$k]);?></dd>
+			<dd><?php echo h($item[$modelClass]['name_'.$k]);?></dd>
+			<dd><?php echo h($item[$modelClass]['slug_'.$k]);?></dd>
 	<?php endforeach;?>
 	</dl>
 </div>

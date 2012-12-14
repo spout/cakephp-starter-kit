@@ -4,7 +4,7 @@ class Game extends AppModel {
 	
 	public $actsAs = array(
 		'Containable',
-		'CategoryThreaded',
+		//'CategoryThreaded',
 		'Search.Searchable',
 	);
 	

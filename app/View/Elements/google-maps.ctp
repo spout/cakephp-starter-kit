@@ -1,6 +1,6 @@
 <?php if(isset($lat) && isset($lon)):?>
 <?php
-$infoWindowContent = (isset(${$singularVar}[$modelClass]) && !empty(${$singularVar}[$modelClass])) ? h(getPreferedLang(${$singularVar}[$modelClass], 'title')) : '';
+$infoWindowContent = (isset($item[$modelClass]) && !empty($item[$modelClass])) ? h(getPreferedLang($item[$modelClass], 'title')) : '';
 $this->Html->script('http://maps.google.com/maps/api/js?sensor=false', false);
 $zoom = isset($zoom) ? $zoom : 15;
 $gmapId = isset($gmapId) ? $gmapId : 'gmap';

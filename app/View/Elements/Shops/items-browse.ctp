@@ -74,6 +74,6 @@
 	</table>
 	
 	<?php if($this->request->params['action'] == 'view'):?>
-		<p><?php echo $this->Html->link(__('Voir tous les produits'), array('controller' => 'shops', 'action' => 'index', 'id' => ${$singularVar}[$modelClass]['id']));?></p>
+		<p><?php echo $this->Html->link(__('Voir tous les produits'), array('controller' => 'shops', 'action' => 'index', 'id' => $item[$modelClass]['id']));?></p>
 	<?php endif;?>
 <?php endif;?>

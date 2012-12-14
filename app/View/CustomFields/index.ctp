@@ -1,4 +1,4 @@
-<?php if(isset(${$pluralVar}) && !empty(${$pluralVar})):?>
+<?php if(isset($items) && !empty($items)):?>
 	<?php echo $this->element('paginator-counter');?>
 	
 	<?php
@@ -12,12 +12,12 @@
 			</th>
 		<?php endforeach;?>
 		</tr>
-		<?php foreach(${$pluralVar} as $k => ${$singularVar}):?>
+		<?php foreach($items as $k => $item):?>
 			<tr>
 				<?php foreach($tableFields as $f):?>
 				<td>
-					<?php if(isset(${$singularVar}[$modelClass][$f]) && !empty(${$singularVar}[$modelClass][$f])):?>
-						<?php echo h(${$singularVar}[$modelClass][$f]);?>
+					<?php if(isset($item[$modelClass][$f]) && !empty($item[$modelClass][$f])):?>
+						<?php echo h($item[$modelClass][$f]);?>
 					<?php else:?>
 						&nbsp;
 					<?php endif;?>

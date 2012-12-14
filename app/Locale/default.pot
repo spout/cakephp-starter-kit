@@ -5,7 +5,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
-"POT-Creation-Date: 2012-07-11 13:18+0200\n"
+"POT-Creation-Date: 2012-12-08 21:30+0100\n"
 "PO-Revision-Date: YYYY-mm-DD HH:MM+ZZZZ\n"
 "Last-Translator: NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <EMAIL@ADDRESS>\n"
@@ -14,72 +14,100 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=INTEGER; plural=EXPRESSION;\n"
 
-#: Controller/AdsController.php:9
+#: Controller/AdsController.php:16
 msgid "Prix fixé"
 msgstr ""
 
-#: Controller/AdsController.php:10
+#: Controller/AdsController.php:17
 #: View/Elements/Ads/fields/price.ctp:27
 msgid "A discuter"
 msgstr ""
 
-#: Controller/AdsController.php:11
+#: Controller/AdsController.php:18
 #: View/Elements/Ads/fields/price.ctp:38
 msgid "Non applicable"
 msgstr ""
 
-#: Controller/AdsController.php:12
+#: Controller/AdsController.php:19
 #: View/Elements/Ads/fields/price.ctp:43
 msgid "Gratuit"
 msgstr ""
 
-#: Controller/AdsController.php:13
+#: Controller/AdsController.php:20
 #: View/Elements/Ads/fields/price.ctp:47
 msgid "Echange"
 msgstr ""
 
-#: Controller/AdsController.php:14
+#: Controller/AdsController.php:21
 #: View/Elements/Ads/fields/price.ctp:32
 msgid "Non communiqué"
 msgstr ""
 
-#: Controller/AdsController.php:19
+#: Controller/AdsController.php:26
 msgid "Offre"
 msgstr ""
 
-#: Controller/AdsController.php:20
+#: Controller/AdsController.php:27
 msgid "Demande"
 msgstr ""
 
-#: Controller/AdsController.php:25
-#: View/Elements/menutop.ctp:10
-msgid "Annonces équitation"
-msgstr ""
-
-#: Controller/AppController.php:76
+#: Controller/AppController.php:137
 msgid "Vous n'êtes pas autorisé à accéder à cette page."
 msgstr ""
 
-#: Controller/AppController.php:282
-msgid "Le champ \"%s\" de l'enregistrement #%s a été mis à la valeur \"%s\"."
+#: Controller/AppController.php:178
+msgid "Enregistrement ajouté avec succès !"
 msgstr ""
 
-#: Controller/AppController.php:357
+#: Controller/AppController.php:181;189
+#: Controller/ContactController.php:14
+#: Controller/CustomFieldsController.php:45
+#: Controller/UsersController.php:71;96;110
+msgid "Veuillez corriger les erreurs ci-dessous."
+msgstr ""
+
+#: Controller/AppController.php:186
+msgid "Enregistrement modifié avec succès !"
+msgstr ""
+
+#: Controller/AppController.php:194
+msgid "Enregistrement supprimé avec succès !"
+msgstr ""
+
+#: Controller/AppController.php:197
+msgid "La suppression de l'enregistrement a échoué."
+msgstr ""
+
+#: Controller/AppController.php:202
+msgid "Enregistrement non trouvé."
+msgstr ""
+
+#: Controller/AppController.php:207
+msgid "Requête HTTP non valide"
+msgstr ""
+
+#: Controller/AppController.php:210
+msgid "Id non valide"
+msgstr ""
+
+#: Controller/AppController.php:383
+msgid "Le champ \"%s\" de l'enregistrement #%s a été modifié avec succès\"."
+msgstr ""
+
+#: Controller/AppController.php:531
 msgid "Votre note a été enregistrée"
 msgstr ""
 
-#: Controller/AppController.php:359
+#: Controller/AppController.php:533
 msgid "Vous avez déjà noté cet enregistrement"
+msgstr ""
+
+#: Controller/BookmarksController.php:28
+msgid "Fournisseur de service non supporté"
 msgstr ""
 
 #: Controller/ContactController.php:11
 msgid "Votre message a été envoyé avec succès."
-msgstr ""
-
-#: Controller/ContactController.php:14
-#: Controller/CustomFieldsController.php:45
-#: Controller/UsersController.php:76;101
-msgid "Veuillez corriger les erreurs ci-dessous."
 msgstr ""
 
 #: Controller/CustomFieldsController.php:9
@@ -91,7 +119,6 @@ msgid "Les données ont été enregistrées."
 msgstr ""
 
 #: Controller/EventsController.php:11
-#: View/Elements/menutop.ctp:16
 #: View/Events/index.ctp:3
 msgid "Agenda équestre"
 msgstr ""
@@ -100,8 +127,8 @@ msgstr ""
 msgid "Cet événement a déjà eu lieu."
 msgstr ""
 
-#: Controller/GamesController.php:66
-#: Controller/Event/CatEvent.php:38
+#: Controller/GamesController.php:70
+#: Controller/Event/GenericEvent.php:49
 msgid "Page non trouvée"
 msgstr ""
 
@@ -126,7 +153,7 @@ msgid "Il n'y a aucune publicité pour le moment, veuillez réessayer plus tard.
 msgstr ""
 
 #: Controller/ShopsController.php:8
-#: View/Elements/menutop.ctp:22
+#: View/Themed/Equidir/Elements/navbar.ctp:36
 msgid "Boutique"
 msgstr ""
 
@@ -138,108 +165,129 @@ msgstr ""
 msgid "Equipements du cavalier"
 msgstr ""
 
-#: Controller/UsersController.php:23
+#: Controller/UsersController.php:17
 msgid "Cet e-mail a bien été trouvé dans notre base de données, mais le compte n'est pas activé. Vérifiez votre courrier pour le lien d'activation."
 msgstr ""
 
-#: Controller/UsersController.php:33
+#: Controller/UsersController.php:28
 msgid "Vous êtes connecté avec succès."
 msgstr ""
 
-#: Controller/UsersController.php:37
+#: Controller/UsersController.php:31
 msgid "Combinaison e-mail / mot de passe incorrecte. Veuillez essayer à nouveau."
 msgstr ""
 
-#: Controller/UsersController.php:55
+#: Controller/UsersController.php:50
 msgid "Bonjour %s %s,<p>Merci d'avoir créé un compte sur notre site:<br />%s</p><p>Vous êtes à un pas de vous enregistrer et d'accéder à l'espace réservé aux membres.<br />Pour activer votre compte, cliquez ici:</p><p>%s</p><p>Une fois que vous aurez activé votre compte, vous pourrez vous enregistrer avec les informations suivantes:<br /><strong>E-mail:</strong> %s<br /><strong>Mot de passe:</strong> %s</p><p>Merci!</p><p>Le Webmaster</p>Ceci est un message automatique, svp n'y répondez pas !"
 msgstr ""
 
-#: Controller/UsersController.php:67
+#: Controller/UsersController.php:62
 msgid "Activez votre compte membre"
 msgstr ""
 
-#: Controller/UsersController.php:72
+#: Controller/UsersController.php:67
 msgid "Un e-mail contenant le lien d'activation vous a été envoyé, vérifiez votre courrier.<br />Vous devez cliquer sur ce lien pour vérifier votre adresse e-mail avant de pouvoir vous enregistrer."
 msgstr ""
 
-#: Controller/UsersController.php:85
+#: Controller/UsersController.php:80
 msgid "Vous êtes maintenant déconnecté."
 msgstr ""
 
-#: Controller/UsersController.php:98
+#: Controller/UsersController.php:93
 msgid "Vos informations ont été mises à jour."
 msgstr ""
 
-#: Controller/UsersController.php:116
+#: Controller/UsersController.php:107
 msgid "Votre mot de passe a été changé."
 msgstr ""
 
-#: Controller/UsersController.php:127
+#: Controller/UsersController.php:119
 msgid "Votre compte a été activé, vous pouvez maintenant vous connecter."
 msgstr ""
 
-#: Controller/UsersController.php:130
+#: Controller/UsersController.php:122
 msgid "Erreur d'activation du compte !"
 msgstr ""
 
-#: Controller/UsersController.php:156
+#: Controller/UsersController.php:142
 msgid "Bonjour %s %s,<br /><p>Nous avons changé votre mot de passe.</p><p>Voici vos informations de connexion:<br /><strong>E-mail:</strong> %s<br /><strong>Nouveau mot de passe:</strong> %s</p><p>Vous pouvez vous connecter ici:<br />%s</p><p>Le Webmaster</p>Ceci est un message automatique, svp n'y répondez pas !"
 msgstr ""
 
-#: Controller/UsersController.php:167
+#: Controller/UsersController.php:153
 msgid "Votre nouveau mot de passe"
 msgstr ""
 
-#: Controller/UsersController.php:172
+#: Controller/UsersController.php:158
 msgid "Un e-mail contenant votre nouveau mot de passe vous a été envoyé, vérifiez votre courrier."
 msgstr ""
 
-#: Controller/UsersController.php:176
+#: Controller/UsersController.php:162
 msgid "Cette adresse e-mail n'a pas été trouvée dans notre base de donnée."
 msgstr ""
 
-#: Controller/Component/SpoutbeComponent.php:10
+#: Controller/Component/SpoutbeComponent.php:7
 msgid "Membres"
 msgstr ""
 
-#: Controller/Component/SpoutbeComponent.php:11
-#: View/Homepages/index.ctp:104
+#: Controller/Component/SpoutbeComponent.php:8
+#: View/Homepages/index.ctp:121
+#: View/Themed/Equidir/Elements/navbar.ctp:13
 msgid "Annuaire"
 msgstr ""
 
-#: Controller/Component/SpoutbeComponent.php:12
+#: Controller/Component/SpoutbeComponent.php:9
+#: View/Homepages/index.ctp:139
+#: View/Themed/Equidir/Elements/navbar.ctp:21
+msgid "Annonces"
+msgstr ""
+
+#: Controller/Component/SpoutbeComponent.php:10
 #: View/Ads/form.ctp:78
-#: View/Elements/menutop.ctp:29;37
+#: View/Themed/Equidir/Elements/navbar.ctp:37
 msgid "Photos"
 msgstr ""
 
-#: Controller/Component/SpoutbeComponent.php:13
+#: Controller/Component/SpoutbeComponent.php:11
 msgid "Jeux gratuits"
 msgstr ""
 
-#: Controller/Component/SpoutbeComponent.php:14
+#: Controller/Component/SpoutbeComponent.php:12
+#: View/Categories/index.ctp:1
+#: View/Elements/sidebar-categories.ctp:3
 #: View/Games/form.ctp:16
-#: View/Links/view.ctp:46
+#: View/Links/form.ctp:67
+#: View/Links/view.ctp:47
 msgid "Catégories"
+msgstr ""
+
+#: Controller/Component/SpoutbeComponent.php:13
+#: View/FileManager/admin_index.ctp:2
+#: View/Photos/form.ctp:4
+msgid "Gestionnaire de fichiers"
+msgstr ""
+
+#: Controller/Component/SpoutbeComponent.php:14
+#: View/Themed/Equidir/Layouts/default.ctp:133
+msgid "Contact"
 msgstr ""
 
 #: Model/Ad.php:33;77
 #: Model/Comment.php:15
 #: Model/Contact.php:11
 #: Model/Event.php:22
-#: Model/Link.php:71
+#: Model/Link.php:63
 #: Model/Post.php:27
 msgid "E-mail non valide"
 msgstr ""
 
-#: Model/Ad.php:34;37;40;43;46;49;52;55;58;62
+#: Model/Ad.php:34;37;40;46;49;52;55;58;62
 #: Model/AppModel.php:11
 #: Model/Category.php:12;15
 #: Model/Comment.php:11;14;18
 #: Model/Contact.php:12;15;18
 #: Model/Event.php:23;26;29;32;35;38;42;46
-#: Model/Game.php:28;31;34;37
-#: Model/Link.php:62;65;68
+#: Model/Game.php:31;34;37
+#: Model/Link.php:51;60
 #: Model/Photo.php:17
 #: Model/Post.php:28;31;34;37;40
 #: Model/User.php:22;25
@@ -250,16 +298,8 @@ msgstr ""
 msgid "Le prix doit être numérique"
 msgstr ""
 
-#: Model/Ad.php:65;69;73
-msgid "Le poids du fichier est supérieur au maximum accepté"
-msgstr ""
-
-#: Model/Ad.php:66;70;74
-msgid "Le type du fichier est invalide"
-msgstr ""
-
 #: Model/Ad.php:80
-#: Model/Link.php:74;77;80;83;86
+#: Model/Link.php:66;69;72;75;78
 msgid "Le format du numéro n'est pas valide"
 msgstr ""
 
@@ -267,8 +307,21 @@ msgstr ""
 msgid "Code de sécurité incorrect"
 msgstr ""
 
+#: Model/Bookmark.php:15
+msgid "YouTube"
+msgstr ""
+
+#: Model/Bookmark.php:20
+msgid "SoundCloud"
+msgstr ""
+
 #: Model/Event.php:39;43
 msgid "Date non valide"
+msgstr ""
+
+#: Model/Game.php:28
+#: Model/Link.php:57
+msgid "Veuillez sélectionner 1 à 3 catégories"
 msgstr ""
 
 #: Model/User.php:11
@@ -311,6 +364,34 @@ msgstr ""
 msgid "Unknown error"
 msgstr ""
 
+#: Plugin/Crud/Test/Case/Controller/Component/CrudComponentTest.php:1482
+msgid "Successfully created CrudExample"
+msgstr ""
+
+#: Plugin/Tools/Console/Command/FolderSyncShell.php:75
+msgid "Files: %s"
+msgstr ""
+
+#: Plugin/Tools/Console/Command/FolderSyncShell.php:79
+msgid "%s missing files"
+msgstr ""
+
+#: Plugin/Tools/Console/Command/FolderSyncShell.php:87
+msgid "%s target files updated"
+msgstr ""
+
+#: Plugin/Tools/Console/Command/FolderSyncShell.php:90
+msgid "%s source files removed"
+msgstr ""
+
+#: Plugin/Tools/Console/Command/FolderSyncShell.php:152
+msgid "Usage: cake FolderSync <command>"
+msgstr ""
+
+#: Plugin/Tools/Console/Command/FolderSyncShell.php:154
+msgid "Commands:"
+msgstr ""
+
 #: Plugin/Tools/Console/Command/HashShell.php:32
 msgid "Select hashType - or [q] to quit"
 msgstr ""
@@ -343,349 +424,186 @@ msgstr ""
 msgid "sha1 is the default algorithm"
 msgstr ""
 
+#: Plugin/Tools/Console/Command/IndentShell.php:78
+msgid "Modifying files! Continue?"
+msgstr ""
+
 #: Plugin/Tools/Console/Command/IndexShell.php:231
 msgid "Run this statement?"
 msgstr ""
 
-#: Plugin/Tools/Console/Command/PhpTagShell.php:70
-#: Plugin/Tools/Console/Command/WhitespaceShell.php:46
+#: Plugin/Tools/Console/Command/PhpTagShell.php:71
+#: Plugin/Tools/Console/Command/WhitespaceShell.php:45
 msgid "Remove? [y]/[n], [a] for all in this folder, [r] for all below, [*] for all files(!), [q] to quit"
 msgstr ""
 
-#: Plugin/Tools/Console/Command/PwdShell.php:22
+#: Plugin/Tools/Console/Command/PwdShell.php:31
 msgid "No Auth Component found"
 msgstr ""
 
-#: Plugin/Tools/Console/Command/PwdShell.php:29
-#: Plugin/Tools/Console/Command/ResetShell.php:74
+#: Plugin/Tools/Console/Command/PwdShell.php:38
+#: Plugin/Tools/Console/Command/ResetShell.php:79
 msgid "Password to Hash (2 characters at least)"
 msgstr ""
 
-#: Plugin/Tools/Console/Command/ResetShell.php:31
+#: Plugin/Tools/Console/Command/ResetShell.php:36
 msgid "New email address (must have a valid form at least)"
 msgstr ""
 
-#: Plugin/Tools/Console/Command/UserShell.php:35
+#: Plugin/Tools/Console/Command/UserShell.php:36
 msgid "Username (2 characters at least)"
 msgstr ""
 
-#: Plugin/Tools/Console/Command/UserShell.php:38
+#: Plugin/Tools/Console/Command/UserShell.php:39
 msgid "Password (2 characters at least)"
 msgstr ""
 
-#: Plugin/Tools/Console/Command/UserShell.php:53;65
+#: Plugin/Tools/Console/Command/UserShell.php:54;66
 msgid "Role"
 msgstr ""
 
-#: Plugin/Tools/Console/Command/UserShell.php:70
+#: Plugin/Tools/Console/Command/UserShell.php:71
 msgid "Please insert a role manually"
 msgstr ""
 
-#: Plugin/Tools/Console/Command/UserShell.php:94
+#: Plugin/Tools/Console/Command/UserShell.php:96
 msgid "Please insert a status"
 msgstr ""
 
-#: Plugin/Tools/Console/Command/UserShell.php:100
+#: Plugin/Tools/Console/Command/UserShell.php:102
 msgid "Provide Email? "
 msgstr ""
 
-#: Plugin/Tools/Console/Command/UserShell.php:102
+#: Plugin/Tools/Console/Command/UserShell.php:104
 msgid "Please insert an email"
 msgstr ""
 
-#: Plugin/Tools/Console/Command/UserShell.php:111
+#: Plugin/Tools/Console/Command/UserShell.php:113
 msgid "Continue? "
 msgstr ""
 
-#: Plugin/Tools/Controller/AuthExtComponent.php:116
-msgid "invalidLoginCredentials"
-msgstr ""
-
-#: Plugin/Tools/Controller/AuthExtComponent.php:123;135
-msgid "Account not active yet"
-msgstr ""
-
-#: Plugin/Tools/Controller/AuthExtComponent.php:127
-msgid "Account wurde vorübergehend gesperrt"
-msgstr ""
-
-#: Plugin/Tools/Controller/AuthExtComponent.php:139
-msgid "Account wurde noch nicht freigeschalten"
-msgstr ""
-
-#: Plugin/Tools/Controller/AuthExtComponent.php:157
-msgid "Unknown Error"
-msgstr ""
-
-#: Plugin/Tools/Controller/AuthExtComponent.php:162
-msgid "Email not active yet"
-msgstr ""
-
-#: Plugin/Tools/Controller/QloginController.php:41
+#: Plugin/Tools/Controller/QloginController.php:44
 msgid "Invalid Key"
 msgstr ""
 
-#: Plugin/Tools/Controller/QloginController.php:53
-msgid "Invalid Account"
-msgstr ""
-
-#: Plugin/Tools/Controller/QloginController.php:60
+#: Plugin/Tools/Controller/QloginController.php:55
 msgid "You successfully logged in via qlogin"
 msgstr ""
 
-#: Plugin/Tools/Controller/QloginController.php:100
+#: Plugin/Tools/Controller/QloginController.php:112
 msgid "Success"
 msgstr ""
 
-#: Plugin/Tools/Controller/TinyUrlsController.php:87
+#: Plugin/Tools/Controller/TinyUrlsController.php:88
 msgid "Done"
+msgstr ""
+
+#: Plugin/Tools/Controller/Component/AuthExtComponent.php:99
+msgid "invalidLoginCredentials"
+msgstr ""
+
+#: Plugin/Tools/Controller/Component/AuthExtComponent.php:106;118
+msgid "Account not active yet"
+msgstr ""
+
+#: Plugin/Tools/Controller/Component/AuthExtComponent.php:110
+msgid "Account wurde vorübergehend gesperrt"
+msgstr ""
+
+#: Plugin/Tools/Controller/Component/AuthExtComponent.php:122
+msgid "Account wurde noch nicht freigeschalten"
+msgstr ""
+
+#: Plugin/Tools/Controller/Component/AuthExtComponent.php:140
+msgid "Unknown Error"
+msgstr ""
+
+#: Plugin/Tools/Controller/Component/AuthExtComponent.php:145
+msgid "Email not active yet"
 msgstr ""
 
 #: Plugin/Tools/Controller/Component/CalendarComponent.php:65;77
 msgid "invalid date"
 msgstr ""
 
-#: Plugin/Tools/Controller/Component/CommonComponent.php:474
+#: Plugin/Tools/Controller/Component/CommonComponent.php:499
 msgid "Meta Type invalid"
 msgstr ""
 
-#: Plugin/Tools/Controller/Component/CommonComponent.php:1062
+#: Plugin/Tools/Controller/Component/CommonComponent.php:1081
 msgid "Comma"
 msgstr ""
 
-#: Plugin/Tools/Controller/Component/CommonComponent.php:1062
+#: Plugin/Tools/Controller/Component/CommonComponent.php:1081
 msgid "Semicolon"
 msgstr ""
 
-#: Plugin/Tools/Controller/Component/CommonComponent.php:1062
+#: Plugin/Tools/Controller/Component/CommonComponent.php:1081
 msgid "Space"
 msgstr ""
 
-#: Plugin/Tools/Controller/Component/CommonComponent.php:1063
+#: Plugin/Tools/Controller/Component/CommonComponent.php:1082
 msgid "Tabulator"
 msgstr ""
 
-#: Plugin/Tools/Controller/Component/CommonComponent.php:1063
+#: Plugin/Tools/Controller/Component/CommonComponent.php:1082
 msgid "New Line"
 msgstr ""
 
-#: Plugin/Tools/Controller/Component/MobileComponent.php:103
+#: Plugin/Tools/Controller/Component/MobileComponent.php:189
 msgid "Engine %s not available"
 msgstr ""
 
-#: Plugin/Tools/Controller/Component/Auth/TinyAuthorize.php:53
-msgid "TinyAuth could not find `%s` cache - expects at least a `default` cache"
+#: Plugin/Tools/Lib/GeocodeLib.php:275
+msgid "Could not retrieve url with '%s'"
 msgstr ""
 
-#: Plugin/Tools/Controller/Component/Auth/TinyAuthorize.php:77
-msgid "Missing acl information (%s) in user session"
+#: Plugin/Tools/Lib/GeocodeLib.php:287;408
+msgid "Failed with XML parsing of '%s'"
 msgstr ""
 
-#: Plugin/Tools/Controller/Component/Auth/TinyAuthorize.php:166
-msgid "Invalid Role Setup for TinyAuthorize (no roles found)"
+#: Plugin/Tools/Lib/GeocodeLib.php:299;419
+msgid "Inconclusive result (total of %s)"
 msgstr ""
 
-#: Plugin/Tools/Lib/DatetimeLib.php:448
-#: Plugin/Tools/Lib/Utility/TimeLib.php:471
-msgid "o'clock"
+#: Plugin/Tools/Lib/GeocodeLib.php:314;434
+msgid "Accuracy not good enough (%s instead of at least %s)"
 msgstr ""
 
-#: Plugin/Tools/Lib/DatetimeLib.php:797;939;1730
-#: Plugin/Tools/Lib/Utility/TimeLib.php:820;962
-#: Plugin/Tools/Test/Case/Helper/DatetimeHelperTest.php:62
-msgid "%s ago"
+#: Plugin/Tools/Lib/GeocodeLib.php:322;459
+msgid "Address '%s' has been geocoded"
 msgstr ""
 
-#: Plugin/Tools/Lib/DatetimeLib.php:800
-#: Plugin/Tools/Lib/Utility/TimeLib.php:823
-msgid "in %s"
+#: Plugin/Tools/Lib/GeocodeLib.php:329
+msgid "Delay necessary for '%s'"
 msgstr ""
 
-#: Plugin/Tools/Lib/DatetimeLib.php:838
-#: Plugin/Tools/Lib/Utility/TimeLib.php:861
-msgid "Month"
+#: Plugin/Tools/Lib/GeocodeLib.php:338;475
+msgid "Could not geocode '%s'"
 msgstr ""
 
-#: Plugin/Tools/Lib/DatetimeLib.php:839
-#: Plugin/Tools/Lib/Utility/TimeLib.php:862
-msgid "Day"
+#: Plugin/Tools/Lib/GeocodeLib.php:344;481
+msgid "Aborted after too many trials with '%s'"
 msgstr ""
 
-#: Plugin/Tools/Lib/DatetimeLib.php:840
-#: Plugin/Tools/Lib/Utility/TimeLib.php:863
-msgid "Hour"
+#: Plugin/Tools/Lib/GeocodeLib.php:346
+msgid "Too many trials - abort"
 msgstr ""
 
-#: Plugin/Tools/Lib/DatetimeLib.php:841
-#: Plugin/Tools/Lib/Utility/TimeLib.php:864
-msgid "Minute"
+#: Plugin/Tools/Lib/GeocodeLib.php:450
+msgid "Expectation not reached (%s instead of at least %s)"
 msgstr ""
 
-#: Plugin/Tools/Lib/DatetimeLib.php:842
-#: Plugin/Tools/Lib/Utility/TimeLib.php:865
-msgid "Second"
+#: Plugin/Tools/Lib/GeocodeLib.php:466
+msgid "Delay necessary for address '%s'"
 msgstr ""
 
-#: Plugin/Tools/Lib/DatetimeLib.php:845
-#: Plugin/Tools/Lib/Utility/TimeLib.php:868
-msgid "Months"
+#: Plugin/Tools/Lib/GeocodeLib.php:720
+msgid "Invalid Unit"
 msgstr ""
 
-#: Plugin/Tools/Lib/DatetimeLib.php:846
-#: Plugin/Tools/Lib/Utility/TimeLib.php:869
-#: Plugin/Tools/Test/Case/Helper/DatetimeHelperTest.php:45;62;66
-msgid "Days"
-msgstr ""
-
-#: Plugin/Tools/Lib/DatetimeLib.php:847
-#: Plugin/Tools/Lib/Utility/TimeLib.php:870
-#: Plugin/Tools/Test/Case/Helper/DatetimeHelperTest.php:45;62;66
-msgid "Hours"
-msgstr ""
-
-#: Plugin/Tools/Lib/DatetimeLib.php:848
-#: Plugin/Tools/Lib/Utility/TimeLib.php:871
-#: Plugin/Tools/Test/Case/Helper/DatetimeHelperTest.php:37;41
-msgid "Minutes"
-msgstr ""
-
-#: Plugin/Tools/Lib/DatetimeLib.php:849
-#: Plugin/Tools/Lib/Utility/TimeLib.php:872
-#: Plugin/Tools/Test/Case/Helper/DatetimeHelperTest.php:37
-msgid "Seconds"
-msgstr ""
-
-#: Plugin/Tools/Lib/DatetimeLib.php:939
-#: Plugin/Tools/Lib/Utility/TimeLib.php:962
-#: Plugin/Tools/Test/Case/Helper/DatetimeHelperTest.php:70
-msgid "justNow"
-msgstr ""
-
-#: Plugin/Tools/Lib/DatetimeLib.php:939
-#: Plugin/Tools/Lib/Utility/TimeLib.php:962
-#: Plugin/Tools/Test/Case/Helper/DatetimeHelperTest.php:66
-msgid "In %s"
-msgstr ""
-
-#: Plugin/Tools/Lib/DatetimeLib.php:1224
-msgid "Today, %s"
-msgstr ""
-
-#: Plugin/Tools/Lib/DatetimeLib.php:1226
-msgid "Yesterday, %s"
-msgstr ""
-
-#: Plugin/Tools/Lib/DatetimeLib.php:1286
-#: Plugin/Tools/Lib/Utility/TimeLib.php:1052
-#: Plugin/Tools/Test/Case/Lib/Utility/DatetimeLibTest.php:37;60;84;85;86
-#: Plugin/Tools/View/Helper/DatetimeHelper.php:140
-msgid "Today"
-msgstr ""
-
-#: Plugin/Tools/Lib/DatetimeLib.php:1287
-#: Plugin/Tools/Lib/Utility/TimeLib.php:1053
-#: Plugin/Tools/Test/Case/Lib/Utility/DatetimeLibTest.php:86;87
-#: Plugin/Tools/View/Helper/DatetimeHelper.php:143
-msgid "Tomorrow"
-msgstr ""
-
-#: Plugin/Tools/Lib/DatetimeLib.php:1288
-#: Plugin/Tools/Lib/Utility/TimeLib.php:1054
-#: Plugin/Tools/Test/Case/Lib/Utility/DatetimeLibTest.php:85;87
-#: Plugin/Tools/View/Helper/DatetimeHelper.php:146
-msgid "Yesterday"
-msgstr ""
-
-#: Plugin/Tools/Lib/DatetimeLib.php:1289
-#: Plugin/Tools/Lib/Utility/TimeLib.php:1055
-msgid "The day after tomorrow"
-msgstr ""
-
-#: Plugin/Tools/Lib/DatetimeLib.php:1290
-#: Plugin/Tools/Lib/Utility/TimeLib.php:1056
-msgid "The day before yesterday"
-msgstr ""
-
-#: Plugin/Tools/Lib/DatetimeLib.php:1696
-msgid "on %s"
-msgstr ""
-
-#: Plugin/Tools/Lib/DatetimeLib.php:1766
-msgid "days"
-msgstr ""
-
-#: Plugin/Tools/Lib/DatetimeLib.php:1700
-msgid "year"
-msgid_plural "years"
-msgstr[0] ""
-msgstr[1] ""
-
-#: Plugin/Tools/Lib/DatetimeLib.php:1701;1706
-msgid "month"
-msgid_plural "months"
-msgstr[0] ""
-msgstr[1] ""
-
-#: Plugin/Tools/Lib/DatetimeLib.php:1702;1707;1711
-msgid "week"
-msgid_plural "weeks"
-msgstr[0] ""
-msgstr[1] ""
-
-#: Plugin/Tools/Lib/DatetimeLib.php:1703;1708;1712;1715;1052
-msgid "day"
-msgid_plural "days"
-msgstr[0] ""
-msgstr[1] ""
-
-#: Plugin/Tools/Lib/DatetimeLib.php:1716;1719
-msgid "hour"
-msgid_plural "hours"
-msgstr[0] ""
-msgstr[1] ""
-
-#: Plugin/Tools/Lib/DatetimeLib.php:1720;1723
-msgid "minute"
-msgid_plural "minutes"
-msgstr[0] ""
-msgstr[1] ""
-
-#: Plugin/Tools/Lib/DatetimeLib.php:1726
-msgid "second"
-msgid_plural "seconds"
-msgstr[0] ""
-msgstr[1] ""
-
-#: Plugin/Tools/Lib/DatetimeLib.php:1046
-msgid "abday"
-msgstr ""
-
-#: Plugin/Tools/Lib/DatetimeLib.php:1058
-msgid "d_t_fmt"
-msgstr ""
-
-#: Plugin/Tools/Lib/DatetimeLib.php:1080
-msgid "abmon"
-msgstr ""
-
-#: Plugin/Tools/Lib/DatetimeLib.php:1086
-msgid "mon"
-msgstr ""
-
-#: Plugin/Tools/Lib/DatetimeLib.php:1097
-msgid "am_pm"
-msgstr ""
-
-#: Plugin/Tools/Lib/DatetimeLib.php:1104
-msgid "t_fmt_ampm"
-msgstr ""
-
-#: Plugin/Tools/Lib/DatetimeLib.php:1118
-msgid "d_fmt"
-msgstr ""
-
-#: Plugin/Tools/Lib/DatetimeLib.php:1124
-msgid "t_fmt"
+#: Plugin/Tools/Lib/GeocodeLib.php:766
+msgid "Invalid level '%s'"
 msgstr ""
 
 #: Plugin/Tools/Lib/SpellLib.php:40
@@ -700,100 +618,242 @@ msgstr ""
 msgid "Dictionary %s not found"
 msgstr ""
 
-#: Plugin/Tools/Model/Behavior/CaptchaBehavior.php:100
-msgid "Illegal call"
+#: Plugin/Tools/Lib/Utility/TimeLib.php:471
+msgid "o'clock"
 msgstr ""
 
-#: Plugin/Tools/Model/Behavior/CaptchaBehavior.php:104
-msgid "Illegal content"
+#: Plugin/Tools/Lib/Utility/TimeLib.php:820;962
+#: Plugin/Tools/Test/Case/View/Helper/DatetimeHelperTest.php:62
+msgid "%s ago"
 msgstr ""
 
-#: Plugin/Tools/Model/Behavior/CaptchaBehavior.php:153
+#: Plugin/Tools/Lib/Utility/TimeLib.php:823
+msgid "in %s"
+msgstr ""
+
+#: Plugin/Tools/Lib/Utility/TimeLib.php:861
+msgid "Month"
+msgstr ""
+
+#: Plugin/Tools/Lib/Utility/TimeLib.php:862
+msgid "Day"
+msgstr ""
+
+#: Plugin/Tools/Lib/Utility/TimeLib.php:863
+msgid "Hour"
+msgstr ""
+
+#: Plugin/Tools/Lib/Utility/TimeLib.php:864
+msgid "Minute"
+msgstr ""
+
+#: Plugin/Tools/Lib/Utility/TimeLib.php:865
+msgid "Second"
+msgstr ""
+
+#: Plugin/Tools/Lib/Utility/TimeLib.php:868
+msgid "Months"
+msgstr ""
+
+#: Plugin/Tools/Lib/Utility/TimeLib.php:869
+#: Plugin/Tools/Test/Case/View/Helper/DatetimeHelperTest.php:45;62;66
+msgid "Days"
+msgstr ""
+
+#: Plugin/Tools/Lib/Utility/TimeLib.php:870
+#: Plugin/Tools/Test/Case/View/Helper/DatetimeHelperTest.php:45;62;66
+msgid "Hours"
+msgstr ""
+
+#: Plugin/Tools/Lib/Utility/TimeLib.php:871
+#: Plugin/Tools/Test/Case/View/Helper/DatetimeHelperTest.php:37;41
+msgid "Minutes"
+msgstr ""
+
+#: Plugin/Tools/Lib/Utility/TimeLib.php:872
+#: Plugin/Tools/Test/Case/View/Helper/DatetimeHelperTest.php:37
+msgid "Seconds"
+msgstr ""
+
+#: Plugin/Tools/Lib/Utility/TimeLib.php:962
+#: Plugin/Tools/Test/Case/View/Helper/DatetimeHelperTest.php:70
+msgid "justNow"
+msgstr ""
+
+#: Plugin/Tools/Lib/Utility/TimeLib.php:962
+#: Plugin/Tools/Test/Case/View/Helper/DatetimeHelperTest.php:66
+msgid "In %s"
+msgstr ""
+
+#: Plugin/Tools/Lib/Utility/TimeLib.php:1052
+#: Plugin/Tools/Test/Case/Lib/Utility/TimeLibTest.php:64;87;111;112;113
+#: Plugin/Tools/View/Helper/DatetimeHelper.php:121
+msgid "Today"
+msgstr ""
+
+#: Plugin/Tools/Lib/Utility/TimeLib.php:1053
+#: Plugin/Tools/Test/Case/Lib/Utility/TimeLibTest.php:113;114
+#: Plugin/Tools/View/Helper/DatetimeHelper.php:124
+msgid "Tomorrow"
+msgstr ""
+
+#: Plugin/Tools/Lib/Utility/TimeLib.php:1054
+#: Plugin/Tools/Test/Case/Lib/Utility/TimeLibTest.php:112;114
+#: Plugin/Tools/View/Helper/DatetimeHelper.php:127
+msgid "Yesterday"
+msgstr ""
+
+#: Plugin/Tools/Lib/Utility/TimeLib.php:1055
+msgid "The day after tomorrow"
+msgstr ""
+
+#: Plugin/Tools/Lib/Utility/TimeLib.php:1056
+msgid "The day before yesterday"
+msgstr ""
+
+#: Plugin/Tools/Model/Behavior/CaptchaBehavior.php:64;155
 msgid "captchaContentMissing"
 msgstr ""
 
-#: Plugin/Tools/Model/Behavior/CaptchaBehavior.php:162
+#: Plugin/Tools/Model/Behavior/CaptchaBehavior.php:67
+msgid "captchaIllegalContent"
+msgstr ""
+
+#: Plugin/Tools/Model/Behavior/CaptchaBehavior.php:70
+msgid "captchaResultTooFast"
+msgstr ""
+
+#: Plugin/Tools/Model/Behavior/CaptchaBehavior.php:73
+msgid "captchaResultTooLate"
+msgstr ""
+
+#: Plugin/Tools/Model/Behavior/CaptchaBehavior.php:76
+msgid "captchaResultIncorrect"
+msgstr ""
+
+#: Plugin/Tools/Model/Behavior/CaptchaBehavior.php:102
+msgid "Illegal call"
+msgstr ""
+
+#: Plugin/Tools/Model/Behavior/CaptchaBehavior.php:106
+msgid "Illegal content"
+msgstr ""
+
+#: Plugin/Tools/Model/Behavior/CaptchaBehavior.php:164
 msgid "Captcha incorrect"
 msgstr ""
 
-#: Plugin/Tools/Model/Behavior/LogableBehavior.php:371
+#: Plugin/Tools/Model/Behavior/CustomFindsBehavior.php:39
+msgid "The behavior \"Containable\", if used together with \"CustomFinds\" needs to be loaded before."
+msgstr ""
+
+#: Plugin/Tools/Model/Behavior/LogableBehavior.php:367
 msgid "deleted"
 msgstr ""
 
-#: Plugin/Tools/Model/Behavior/LogableBehavior.php:418
+#: Plugin/Tools/Model/Behavior/LogableBehavior.php:431
 msgid "added"
 msgstr ""
 
-#: Plugin/Tools/Model/Behavior/LogableBehavior.php:420
+#: Plugin/Tools/Model/Behavior/LogableBehavior.php:433
 msgid "updated"
 msgstr ""
 
-#: Plugin/Tools/Model/Behavior/LogableBehavior.php:527
+#: Plugin/Tools/Model/Behavior/LogableBehavior.php:541
 msgid "Custom action"
 msgstr ""
 
-#: Plugin/Tools/Model/Behavior/LogableBehavior.php:530
+#: Plugin/Tools/Model/Behavior/LogableBehavior.php:544
 msgid "by"
 msgstr ""
 
-#: Plugin/Tools/Model/Behavior/LogableBehavior.php:537
+#: Plugin/Tools/Model/Behavior/LogableBehavior.php:551
 msgid " by System"
 msgstr ""
 
-#: Plugin/Tools/Test/Case/Behavior/BitmaskedBehaviorTest.php:168
-msgid "Active"
-msgstr ""
-
-#: Plugin/Tools/Test/Case/Behavior/BitmaskedBehaviorTest.php:169
-msgid "Published"
-msgstr ""
-
-#: Plugin/Tools/Test/Case/Behavior/BitmaskedBehaviorTest.php:170
-msgid "Approved"
-msgstr ""
-
-#: Plugin/Tools/Test/Case/Behavior/BitmaskedBehaviorTest.php:171
-msgid "Flagged"
-msgstr ""
-
-#: Plugin/Tools/Test/Case/Behavior/MasterPasswordBehaviorTest.php:76
-msgid "No way"
-msgstr ""
-
-#: Plugin/Tools/Test/Case/Lib/Utility/DatetimeLibTest.php:85;86;87
+#: Plugin/Tools/Test/Case/Lib/Utility/TimeLibTest.php:112;113;114
 msgid "until"
 msgstr ""
 
-#: Plugin/Tools/Test/Case/Lib/Utility/DatetimeLibTest.php:182;191;197
+#: Plugin/Tools/Test/Case/Lib/Utility/TimeLibTest.php:209;218;224
 msgid "Sunday"
 msgstr ""
 
-#: Plugin/Tools/Test/Case/Lib/Utility/DatetimeLibTest.php:185
+#: Plugin/Tools/Test/Case/Lib/Utility/TimeLibTest.php:212
 msgid "Tue"
 msgstr ""
 
-#: Plugin/Tools/Test/Case/Lib/Utility/DatetimeLibTest.php:188
+#: Plugin/Tools/Test/Case/Lib/Utility/TimeLibTest.php:215
 msgid "Saturday"
 msgstr ""
 
-#: Plugin/Tools/Test/Case/Lib/Utility/DatetimeLibTest.php:194
+#: Plugin/Tools/Test/Case/Lib/Utility/TimeLibTest.php:221
 msgid "Tuesday"
 msgstr ""
 
-#: Plugin/Tools/Test/Case/Lib/Utility/DatetimeLibTest.php:203
+#: Plugin/Tools/Test/Case/Lib/Utility/TimeLibTest.php:230
 msgid "November"
 msgstr ""
 
-#: Plugin/Tools/Test/Case/Lib/Utility/DatetimeLibTest.php:206
+#: Plugin/Tools/Test/Case/Lib/Utility/TimeLibTest.php:233
 msgid "January"
 msgstr ""
 
-#: Plugin/Tools/Test/Case/Lib/Utility/DatetimeLibTest.php:209
+#: Plugin/Tools/Test/Case/Lib/Utility/TimeLibTest.php:236
 msgid "Feb"
 msgstr ""
 
-#: Plugin/Tools/Test/Case/Lib/Utility/DatetimeLibTest.php:212
+#: Plugin/Tools/Test/Case/Lib/Utility/TimeLibTest.php:239
 msgid "May"
+msgstr ""
+
+#: Plugin/Tools/Test/Case/Model/MyModelTest.php:293
+msgid "e %s f"
+msgstr ""
+
+#: Plugin/Tools/Test/Case/Model/MyModelTest.php:299
+msgid "e %s f %s g"
+msgstr ""
+
+#: Plugin/Tools/Test/Case/Model/MyModelTest.php:305
+msgid "e %s f %s g %s"
+msgstr ""
+
+#: Plugin/Tools/Test/Case/Model/MyModelTest.php:323
+msgid "a %s b %s c %s %s %s %s %s h %s"
+msgstr ""
+
+#: Plugin/Tools/Test/Case/Model/Behavior/BitmaskedBehaviorTest.php:168
+msgid "Active"
+msgstr ""
+
+#: Plugin/Tools/Test/Case/Model/Behavior/BitmaskedBehaviorTest.php:169
+msgid "Published"
+msgstr ""
+
+#: Plugin/Tools/Test/Case/Model/Behavior/BitmaskedBehaviorTest.php:170
+msgid "Approved"
+msgstr ""
+
+#: Plugin/Tools/Test/Case/Model/Behavior/BitmaskedBehaviorTest.php:171
+msgid "Flagged"
+msgstr ""
+
+#: Plugin/Tools/Test/Case/Model/Behavior/ChangePasswordBehaviorTest.php:67
+#: Plugin/Tools/Test/Case/Model/Behavior/PasswordableBehaviorTest.php:65
+msgid "valErrPwdNotMatch"
+msgstr ""
+
+#: Plugin/Tools/Test/Case/Model/Behavior/GeocoderBehaviorTest.php:96
+msgid "validateLongitudeError"
+msgstr ""
+
+#: Plugin/Tools/Test/Case/Model/Behavior/MasterPasswordBehaviorTest.php:76
+msgid "No way"
+msgstr ""
+
+#: Plugin/Tools/Test/Case/View/Helper/GoogleMapV3HelperTest.php:189
+msgid "click for full map"
 msgstr ""
 
 #: Plugin/Tools/View/Elements/master_password.ctp:9
@@ -817,7 +877,7 @@ msgid "previous"
 msgstr ""
 
 #: Plugin/Tools/View/Elements/pagination.ctp:21
-#: Plugin/Tools/View/Helper/FormatHelper.php:104;106
+#: Plugin/Tools/View/Helper/FormatHelper.php:106;108
 msgid "next"
 msgstr ""
 
@@ -825,47 +885,47 @@ msgstr ""
 msgid "Page %page% of %pages%, showing %current% records out of %count% total"
 msgstr ""
 
-#: Plugin/Tools/View/Helper/CaptchaHelper.php:40
+#: Plugin/Tools/View/Helper/CaptchaHelper.php:41
 msgid "calcPlus"
 msgstr ""
 
-#: Plugin/Tools/View/Helper/CaptchaHelper.php:40
+#: Plugin/Tools/View/Helper/CaptchaHelper.php:41
 msgid "calcMinus"
 msgstr ""
 
-#: Plugin/Tools/View/Helper/CaptchaHelper.php:40
+#: Plugin/Tools/View/Helper/CaptchaHelper.php:41
 msgid "calcTimes"
 msgstr ""
 
-#: Plugin/Tools/View/Helper/CaptchaHelper.php:129
+#: Plugin/Tools/View/Helper/CaptchaHelper.php:130
 msgid "Captcha"
 msgstr ""
 
-#: Plugin/Tools/View/Helper/CaptchaHelper.php:129
+#: Plugin/Tools/View/Helper/CaptchaHelper.php:130
 msgid "captchaExplained"
 msgstr ""
 
-#: Plugin/Tools/View/Helper/CaptchaHelper.php:132
+#: Plugin/Tools/View/Helper/CaptchaHelper.php:133
 msgid "captchaTip"
 msgstr ""
 
-#: Plugin/Tools/View/Helper/CommonHelper.php:328
+#: Plugin/Tools/View/Helper/CommonHelper.php:358
 msgid "Please enable cookies"
 msgstr ""
 
-#: Plugin/Tools/View/Helper/DatetimeHelper.php:122
+#: Plugin/Tools/View/Helper/DatetimeHelper.php:103
 msgid "publishedAlready"
 msgstr ""
 
-#: Plugin/Tools/View/Helper/DatetimeHelper.php:122
+#: Plugin/Tools/View/Helper/DatetimeHelper.php:103
 msgid "publishedToday"
 msgstr ""
 
-#: Plugin/Tools/View/Helper/DatetimeHelper.php:122
+#: Plugin/Tools/View/Helper/DatetimeHelper.php:103
 msgid "publishedNotYet"
 msgstr ""
 
-#: Plugin/Tools/View/Helper/FlattrHelper.php:104
+#: Plugin/Tools/View/Helper/FlattrHelper.php:105
 msgid "Donate"
 msgstr ""
 
@@ -877,97 +937,117 @@ msgstr ""
 msgid "Record"
 msgstr ""
 
-#: Plugin/Tools/View/Helper/FormExtHelper.php:956
+#: Plugin/Tools/View/Helper/FormExtHelper.php:958
 msgid "Selection"
 msgstr ""
 
-#: Plugin/Tools/View/Helper/FormExtHelper.php:958
+#: Plugin/Tools/View/Helper/FormExtHelper.php:960
 msgid "All"
 msgstr ""
 
-#: Plugin/Tools/View/Helper/FormExtHelper.php:959
+#: Plugin/Tools/View/Helper/FormExtHelper.php:961
 msgid "None"
 msgstr ""
 
-#: Plugin/Tools/View/Helper/FormExtHelper.php:960
+#: Plugin/Tools/View/Helper/FormExtHelper.php:962
 msgid "Revert"
 msgstr ""
 
-#: Plugin/Tools/View/Helper/FormatHelper.php:28
+#: Plugin/Tools/View/Helper/FormatHelper.php:30
 msgid "Zustimmen"
 msgstr ""
 
-#: Plugin/Tools/View/Helper/FormatHelper.php:29
+#: Plugin/Tools/View/Helper/FormatHelper.php:31
 msgid "Dagegen"
 msgstr ""
 
-#: Plugin/Tools/View/Helper/FormatHelper.php:32
+#: Plugin/Tools/View/Helper/FormatHelper.php:34
 msgid "alreadyVoted"
 msgstr ""
 
-#: Plugin/Tools/View/Helper/FormatHelper.php:98;100
+#: Plugin/Tools/View/Helper/FormatHelper.php:100;102
 msgid "prev"
 msgstr ""
 
-#: Plugin/Tools/View/Helper/FormatHelper.php:100
+#: Plugin/Tools/View/Helper/FormatHelper.php:102
 msgid "noPrev"
 msgstr ""
 
-#: Plugin/Tools/View/Helper/FormatHelper.php:106
+#: Plugin/Tools/View/Helper/FormatHelper.php:108
 msgid "noNext"
 msgstr ""
 
-#: Plugin/Tools/View/Helper/FormatHelper.php:376
+#: Plugin/Tools/View/Helper/FormatHelper.php:283
+msgid "prio"
+msgstr ""
+
+#: Plugin/Tools/View/Helper/FormatHelper.php:442
 msgid "of"
 msgstr ""
 
-#: Plugin/Tools/View/Helper/FormatHelper.php:413
+#: Plugin/Tools/View/Helper/FormatHelper.php:479
 msgid "Language"
 msgstr ""
 
-#: Plugin/Tools/View/Helper/FormatHelper.php:428
+#: Plugin/Tools/View/Helper/FormatHelper.php:494
 msgid "active"
 msgstr ""
 
-#: Plugin/Tools/View/Helper/FormatHelper.php:475
+#: Plugin/Tools/View/Helper/FormatHelper.php:541
 #: Plugin/Tools/View/Helper/TextExtHelper.php:138
 msgid "for use in an external mail client"
 msgstr ""
 
-#: Plugin/Tools/View/Helper/FormatHelper.php:567
+#: Plugin/Tools/View/Helper/FormatHelper.php:633
 msgid "Ja"
 msgstr ""
 
-#: Plugin/Tools/View/Helper/FormatHelper.php:568
+#: Plugin/Tools/View/Helper/FormatHelper.php:634
 msgid "Nein"
 msgstr ""
 
-#: Plugin/Tools/View/Helper/FormatHelper.php:692
+#: Plugin/Tools/View/Helper/FormatHelper.php:758
 msgid "notAvailable"
 msgstr ""
 
-#: Plugin/Tools/View/Helper/FormatHelper.php:771
+#: Plugin/Tools/View/Helper/FormatHelper.php:837
 msgid "Percent"
 msgstr ""
 
-#: Plugin/Tools/View/Helper/FormatHelper.php:916
+#: Plugin/Tools/View/Helper/FormatHelper.php:982
 msgid "Member"
 msgstr ""
 
-#: Plugin/Tools/View/Helper/FormatHelper.php:948
+#: Plugin/Tools/View/Helper/FormatHelper.php:1014
 msgid "%s deleted"
 msgstr ""
 
-#: Plugin/Tools/View/Helper/FormatHelper.php:948
+#: Plugin/Tools/View/Helper/FormatHelper.php:1014
 msgid "Account"
 msgstr ""
 
-#: Plugin/Tools/View/Helper/FormatHelper.php:1028
+#: Plugin/Tools/View/Helper/FormatHelper.php:1095
 msgid "Avatar"
 msgstr ""
 
-#: Plugin/Tools/View/Helper/FormatHelper.php:1061;1062
+#: Plugin/Tools/View/Helper/FormatHelper.php:1128;1129
 msgid "color"
+msgstr ""
+
+#: Plugin/Tools/View/Helper/GoogleMapV3Helper.php:428
+msgid "Map cannot be displayed!"
+msgstr ""
+
+#: Plugin/Tools/View/Helper/GoogleMapV3Helper.php:574
+msgid "Enter your address"
+msgstr ""
+
+#: Plugin/Tools/View/Helper/GoogleMapV3Helper.php:575
+msgid "Get directions"
+msgstr ""
+
+#: Plugin/Tools/View/Helper/GoogleMapV3Helper.php:1113
+msgid "Map"
 msgstr ""
 
 #: Plugin/Tools/View/Qlogin/admin_index.ctp:3;27;29
@@ -1975,7 +2055,7 @@ msgid "Modifier une annonce"
 msgstr ""
 
 #: View/Ads/form.ctp:1
-#: View/Elements/menutop.ctp:12
+#: View/Themed/Equidir/Elements/navbar.ctp:25
 msgid "Placer une annonce"
 msgstr ""
 
@@ -1985,7 +2065,6 @@ msgstr ""
 
 #: View/Ads/form.ctp:51
 #: View/Elements/generic/actions/map.ctp:121
-#: View/Links/form.ctp:61
 #: View/Shops/index.ctp:30
 msgid "Catégorie"
 msgstr ""
@@ -2005,8 +2084,10 @@ msgid "Je recherche"
 msgstr ""
 
 #: View/Ads/form.ctp:53
+#: View/Bookmarks/form.ctp:8
+#: View/Contents/form.ctp:8
 #: View/Events/form.ctp:38
-#: View/Links/form.ctp:72;77
+#: View/Links/form.ctp:76;81
 #: View/Photos/form.ctp:40
 #: View/Posts/form.ctp:28
 msgid "Titre"
@@ -2014,11 +2095,13 @@ msgstr ""
 
 #: View/Ads/form.ctp:54
 #: View/Ads/view.ctp:30
+#: View/Bookmarks/form.ctp:9
+#: View/Contents/form.ctp:9
 #: View/Events/form.ctp:47
 #: View/Events/view.ctp:27
-#: View/Games/form.ctp:13;18
-#: View/Games/view.ctp:36
-#: View/Links/form.ctp:85;90
+#: View/Games/form.ctp:9;18
+#: View/Games/view.ctp:18
+#: View/Links/form.ctp:89;94
 #: View/Photos/form.ctp:45
 #: View/Posts/form.ctp:30
 msgid "Description"
@@ -2039,7 +2122,7 @@ msgstr ""
 #: View/Ads/form.ctp:68
 #: View/Ads/view.ctp:32
 #: View/Elements/Ads/items-browse-item.ctp:37
-#: View/Elements/shops/items-browse.ctp:42
+#: View/Elements/Shops/items-browse.ctp:42
 msgid "Prix"
 msgstr ""
 
@@ -2064,12 +2147,12 @@ msgid "Vous pouvez indiquer un lien vidéo YouTube, Dailymotion, Vimeo, Metacafe
 msgstr ""
 
 #: View/Ads/form.ctp:100
-#: View/Links/form.ctp:100
+#: View/Links/form.ctp:104
 msgid "Lien vidéo de présentation"
 msgstr ""
 
 #: View/Ads/form.ctp:104
-#: View/Links/form.ctp:110
+#: View/Links/form.ctp:114
 msgid "Informations de contact"
 msgstr ""
 
@@ -2079,9 +2162,8 @@ msgstr ""
 #: View/Elements/Users/form.ctp:13;19
 #: View/Elements/generic/comments-form.ctp:5
 #: View/Elements/generic/who-form.ctp:25
-#: View/Links/form.ctp:111
+#: View/Links/form.ctp:115
 #: View/Links/view.ctp:52
-#: View/Themed/Mobile/Elements/generic/fields/email_contact.ctp:10
 #: View/Users/login.ctp:8
 #: View/Users/lost_password.ctp:5
 msgid "E-mail"
@@ -2090,25 +2172,27 @@ msgstr ""
 #: View/Ads/form.ctp:111
 #: View/Ads/view.ctp:38
 #: View/Elements/Links/fields/qr_code.ctp:10;11
-#: View/Links/form.ctp:115;116
+#: View/Links/form.ctp:119;120
 #: View/Links/view.ctp:53
 msgid "Téléphone"
 msgstr ""
 
 #: View/Ads/form.ctp:112
-#: View/Links/form.ctp:120
+#: View/Links/form.ctp:124
 msgid "Pseudo Skype"
 msgstr ""
 
 #: View/Ads/form.ctp:117
-#: View/Categories/form.ctp:22
-#: View/Cats/form.ctp:71
+#: View/Bookmarks/form.ctp:13
+#: View/Categories/form.ctp:23
+#: View/Contents/form.ctp:12
 #: View/Elements/Categories/tree-item.ctp:18
 #: View/Elements/Users/form.ctp:32
 #: View/Elements/generic/actions-links.ctp:9
+#: View/Elements/generic/actions/datatable/datatable.ctp:8
 #: View/Events/form.ctp:67
-#: View/Games/form.ctp:52
-#: View/Links/form.ctp:125
+#: View/Games/form.ctp:63
+#: View/Links/form.ctp:129
 #: View/Photos/form.ctp:49
 #: View/Posts/form.ctp:33
 #: View/Users/change_password.ctp:8
@@ -2116,17 +2200,19 @@ msgid "Modifier"
 msgstr ""
 
 #: View/Ads/form.ctp:117
-#: View/Categories/form.ctp:22
-#: View/Cats/form.ctp:71
+#: View/Bookmarks/form.ctp:13
+#: View/Categories/form.ctp:23
+#: View/Contents/form.ctp:12
 #: View/Events/form.ctp:67
-#: View/Games/form.ctp:52
-#: View/Links/form.ctp:125
+#: View/Games/form.ctp:63
+#: View/Links/form.ctp:129
 #: View/Photos/form.ctp:49
 #: View/Posts/form.ctp:33
 msgid "Ajouter"
 msgstr ""
 
 #: View/Ads/view.ctp:29
+#: View/Bookmarks/view.ctp:18
 #: View/Links/view.ctp:57
 msgid "Vidéo de présentation"
 msgstr ""
@@ -2142,7 +2228,7 @@ msgstr ""
 #: View/Elements/Links/fields/qr_code.ctp:9
 #: View/Elements/generic/actions/map.ctp:125
 #: View/Events/view.ctp:31
-#: View/Links/form.ctp:104
+#: View/Links/form.ctp:108
 msgid "Pays"
 msgstr ""
 
@@ -2173,19 +2259,30 @@ msgstr ""
 msgid "Carte"
 msgstr ""
 
+#: View/Bookmarks/form.ctp:7
+#: View/Contents/form.ctp:7
+msgid "Lien"
+msgstr ""
+
+#: View/Bookmarks/form.ctp:10
+#: View/Contents/form.ctp:10
+msgid "Tags"
+msgstr ""
+
+#: View/Bookmarks/form.ctp:11
+msgid "Tracklist"
+msgstr ""
+
 #: View/Categories/form.ctp:2
-#: View/Cats/form.ctp:1
 msgid "Modifier une catégorie"
 msgstr ""
 
 #: View/Categories/form.ctp:2
-#: View/Categories/index.ctp:2
-#: View/Cats/form.ctp:1
+#: View/Categories/index.ctp:3
 msgid "Ajouter une catégorie"
 msgstr ""
 
 #: View/Categories/form.ctp:12
-#: View/Cats/form.ctp:8
 msgid "Catégorie parente"
 msgstr ""
 
@@ -2197,21 +2294,12 @@ msgstr ""
 msgid "Permalien (%s)"
 msgstr ""
 
-#: View/Categories/index.ctp:6
+#: View/Categories/form.ctp:19
+msgid "Description (%s)"
+msgstr ""
+
+#: View/Categories/index.ctp:7
 msgid "Sélectionner le type de catégories à gérer"
-msgstr ""
-
-#: View/Cats/form.ctp:10
-msgid "Nom %s"
-msgstr ""
-
-#: View/Cats/form.ctp:11
-msgid "Permalien %s"
-msgstr ""
-
-#: View/Cats/form.ctp:49
-#: View/CustomFields/form.ctp:13
-msgid "Champ personnalisé"
 msgstr ""
 
 #: View/Contact/index.ctp:1;4
@@ -2255,6 +2343,10 @@ msgstr ""
 msgid "et"
 msgstr ""
 
+#: View/CustomFields/form.ctp:13
+msgid "Champ personnalisé"
+msgstr ""
+
 #: View/CustomFields/form.ctp:31
 msgid "Enregistrer"
 msgstr ""
@@ -2275,22 +2367,6 @@ msgstr ""
 msgid "Détails supplémentaires"
 msgstr ""
 
-#: View/Elements/about.ctp:2;26
-#: View/Elements/link-to-us.ctp:1;5
-#: View/Elements/generic/breadcrumbs.ctp:8
-#: View/Elements/generic/actions/rss/feed.ctp:2
-#: View/Layouts/default.ctp:182
-#: View/Pages/fr/legal.ctp:1;4;27;48;49;50
-#: View/Pages/fr/points.ctp:5
-#: View/Themed/Mobile/Layouts/equidir.ctp:4;46
-msgid "main_title"
-msgstr ""
-
-#: View/Elements/filemanager.ctp:2
-#: View/Photos/form.ctp:4
-msgid "Gestionnaire de fichiers"
-msgstr ""
-
 #: View/Elements/google-maps-autocomplete.ctp:122
 msgid "Entrez le lieu 'Adresse, ville, code postal/département'. Au fur et à mesure que vous tapez le lieu, des suggestions apparaissent. Une fois que vous aurez cliqué sur une des suggestions, le marqueur apparaîtra sur la carte. Vous pourrez ensuite le déplacer à l'endroit exact où se situe l'enregistrement."
 msgstr ""
@@ -2303,6 +2379,16 @@ msgstr ""
 msgid "Faire un lien vers %s"
 msgstr ""
 
+#: View/Elements/link-to-us.ctp:1;5
+#: View/Elements/generic/breadcrumbs.ctp:8
+#: View/Elements/generic/actions/rss/feed.ctp:2
+#: View/Pages/fr/legal.ctp:1;4;27;48;49;50
+#: View/Themed/Equidir/Elements/about.ctp:2;26
+#: View/Themed/Equidir/Elements/navbar.ctp:9
+#: View/Themed/Equidir/Layouts/default.ctp:5;91;133
+msgid "main_title"
+msgstr ""
+
 #: View/Elements/link-to-us.ctp:4
 msgid "Portail de l'équitation"
 msgstr ""
@@ -2313,33 +2399,6 @@ msgstr ""
 
 #: View/Elements/link-to-us.ctp:14
 msgid "Lien avec logo"
-msgstr ""
-
-#: View/Elements/menutop.ctp:4
-msgid "Annuaire du cheval"
-msgstr ""
-
-#: View/Elements/menutop.ctp:5;11
-#: View/Elements/generic/actions/map.ctp:2;118
-msgid "Recherche par carte"
-msgstr ""
-
-#: View/Elements/menutop.ctp:6
-#: View/Links/form.ctp:1
-msgid "Proposer une activité"
-msgstr ""
-
-#: View/Elements/menutop.ctp:17
-msgid "Calendrier"
-msgstr ""
-
-#: View/Elements/menutop.ctp:18
-#: View/Events/form.ctp:1
-msgid "Ajouter un événement"
-msgstr ""
-
-#: View/Elements/menutop.ctp:30
-msgid "Ajouter une galerie"
 msgstr ""
 
 #: View/Elements/paginator-counter.ctp:4
@@ -2362,8 +2421,21 @@ msgstr ""
 msgid "Dernière page"
 msgstr ""
 
+#: View/Elements/sidebar-partners.ctp:20
+msgid "Sites ami"
+msgstr ""
+
+#: View/Elements/sidebar-platforms.ctp:2
+#: View/Games/form.ctp:21
+#: View/Games/view.ctp:24
+msgid "Plateformes"
+msgstr ""
+
+#: View/Elements/sidebar-platforms.ctp:10
+msgid "Toutes"
+msgstr ""
+
 #: View/Elements/users-box.ctp:4
-#: View/Layouts/default.ctp:65
 msgid "Déconnexion"
 msgstr ""
 
@@ -2378,21 +2450,58 @@ msgstr ""
 
 #: View/Elements/Categories/tree-item.ctp:22
 #: View/Elements/generic/actions-links.ctp:13
+#: View/Elements/generic/actions/datatable/datatable.ctp:9
 msgid "Supprimer"
 msgstr ""
 
 #: View/Elements/Categories/tree-item.ctp:22
 #: View/Elements/generic/actions-links.ctp:13
+#: View/Elements/generic/actions/datatable/datatable.ctp:9
 msgid "Vous êtes sur ?"
+msgstr ""
+
+#: View/Elements/Events/items-browse-item.ctp:37
+#: View/Events/view.ctp:28
+#: View/Events/json/fullcalendar.ctp:8
+#: View/Homepages/index.ctp:165
+#: View/Links/view.ctp:75
+msgid "Du"
+msgstr ""
+
+#: View/Elements/Events/items-browse-item.ctp:37
+#: View/Events/view.ctp:29
+#: View/Events/json/fullcalendar.ctp:9
+#: View/Homepages/index.ctp:165
+#: View/Links/view.ctp:75
+msgid "Au"
+msgstr ""
+
+#: View/Elements/Games/item-rating-display.ctp:5
+msgid "%s/5.00 avec %d évaluation(s)"
 msgstr ""
 
 #: View/Elements/Games/search-fields.ctp:3
 msgid "Plateforme"
 msgstr ""
 
-#: View/Elements/Links/items-browse-item.ctp:8
-#: View/Links/form.ctp:54
-msgid "Points"
+#: View/Elements/Games/fields/classification.ctp:4
+#: View/Games/form.ctp:28
+msgid "ESRB"
+msgstr ""
+
+#: View/Elements/Games/fields/classification.ctp:8
+#: View/Games/form.ctp:29
+msgid "PEGI"
+msgstr ""
+
+#: View/Elements/Games/fields/modes.ctp:8
+#: View/Games/form.ctp:22
+msgid "Multijoueurs"
+msgstr ""
+
+#: View/Elements/Games/fields/modes.ctp:9
+#: View/Games/form.ctp:23
+msgid "Jouable en ligne"
 msgstr ""
 
 #: View/Elements/Links/rentabiliweb-form-vc.ctp:12;29
@@ -2413,28 +2522,53 @@ msgid "Adresse"
 msgstr ""
 
 #: View/Elements/Links/fields/qr_code.ctp:8
-#: View/Links/form.ctp:107
+#: View/Links/form.ctp:111
 msgid "Code postal"
 msgstr ""
 
 #: View/Elements/Links/fields/qr_code.ctp:12;13
-#: View/Links/form.ctp:117;118
+#: View/Links/form.ctp:121;122
 #: View/Links/view.ctp:54
 msgid "Mobile"
 msgstr ""
 
 #: View/Elements/Links/fields/qr_code.ctp:14
-#: View/Links/form.ctp:119
+#: View/Links/form.ctp:123
 #: View/Links/view.ctp:55
 msgid "Fax"
 msgstr ""
 
 #: View/Elements/Links/fields/qr_code.ctp:16
 #: View/Games/form.ctp:34
-#: View/Games/view.ctp:46
-#: View/Links/form.ctp:96
-#: View/Links/view.ctp:47
+#: View/Games/view.ctp:27
+#: View/Links/form.ctp:100
+#: View/Links/view.ctp:46
 msgid "Site Web"
+msgstr ""
+
+#: View/Elements/Links/fields/qr_code.ctp:49
+msgid "Afficher le code"
+msgstr ""
+
+#: View/Elements/Posts/items-browse-item.ctp:7
+#: View/Posts/view.ctp:17
+msgid "Publié le %s"
+msgstr ""
+
+#: View/Elements/Shops/items-browse.ctp:28
+msgid "Produits en vente"
+msgstr ""
+
+#: View/Elements/Shops/items-browse.ctp:43
+msgid "Temps restant"
+msgstr ""
+
+#: View/Elements/Shops/items-browse.ctp:63
+msgid "Fin: %s"
+msgstr ""
+
+#: View/Elements/Shops/items-browse.ctp:77
+msgid "Voir tous les produits"
 msgstr ""
 
 #: View/Elements/Users/form.ctp:1
@@ -2486,22 +2620,6 @@ msgstr ""
 msgid "Créer un compte"
 msgstr ""
 
-#: View/Elements/events/items-browse-item.ctp:37
-#: View/Events/view.ctp:28
-#: View/Events/json/fullcalendar.ctp:8
-#: View/Homepages/index.ctp:148
-#: View/Links/view.ctp:75
-msgid "Du"
-msgstr ""
-
-#: View/Elements/events/items-browse-item.ctp:37
-#: View/Events/view.ctp:29
-#: View/Events/json/fullcalendar.ctp:9
-#: View/Homepages/index.ctp:148
-#: View/Links/view.ctp:75
-msgid "Au"
-msgstr ""
-
 #: View/Elements/generic/actions-links.ctp:6
 msgid "Accepter"
 msgstr ""
@@ -2531,7 +2649,7 @@ msgstr ""
 msgid "Dernière modification"
 msgstr ""
 
-#: View/Elements/generic/items-browse.ctp:22
+#: View/Elements/generic/items-browse.ctp:46
 msgid "Aucun résultat"
 msgstr ""
 
@@ -2555,20 +2673,21 @@ msgstr ""
 msgid "connectez"
 msgstr ""
 
+#: View/Elements/generic/actions/datatable.ctp:2
+msgid "Datatable"
+msgstr ""
+
 #: View/Elements/generic/actions/index.ctp:29;30
 msgid "Page %d"
 msgstr ""
 
-#: View/Elements/generic/actions/index.ctp:73
-msgid "Filtrer les résultats par pays"
+#: View/Elements/generic/actions/index.ctp:116
+msgid "Filtrer la catégorie <em>%s</em> par pays"
 msgstr ""
 
-#: View/Elements/generic/actions/index.ctp:96
-msgid "Filtrer les résultats par catégories"
-msgstr ""
-
-#: View/Elements/generic/actions/index.ctp:98
-msgid "Go"
+#: View/Elements/generic/actions/map.ctp:2;118
+#: View/Themed/Equidir/Elements/navbar.ctp:16;24
+msgid "Recherche par carte"
 msgstr ""
 
 #: View/Elements/generic/actions/map.ctp:7
@@ -2585,13 +2704,12 @@ msgstr ""
 
 #: View/Elements/generic/actions/message.ctp:2;7
 #: View/Elements/generic/fields/email_contact.ctp:4
-#: View/Themed/Mobile/Elements/generic/fields/email_contact.ctp:11
 msgid "Envoyer un message"
 msgstr ""
 
 #: View/Elements/generic/actions/search.ctp:2;12
-#: View/Layouts/default.ctp:80
 #: View/Shops/index.ctp:37
+#: View/Themed/Equidir/Elements/navbar.ctp:61
 msgid "Recherche"
 msgstr ""
 
@@ -2600,12 +2718,12 @@ msgstr ""
 msgid "Mot(s) clé(s)"
 msgstr ""
 
-#: View/Elements/generic/actions/search.ctp:20
+#: View/Elements/generic/actions/search.ctp:24
 msgid "Aucun enregistrement trouvé. Veuillez essayer une autre recherche."
 msgstr ""
 
 #: View/Elements/generic/actions/rss/feed.ctp:6
-#: View/Homepages/index.ctp:104;122;140
+#: View/Homepages/index.ctp:121;139;157
 msgid "RSS"
 msgstr ""
 
@@ -2613,15 +2731,11 @@ msgstr ""
 msgid "<strong>%d</strong> fois"
 msgstr ""
 
-#: View/Elements/generic/fields/rating.ctp:38
+#: View/Elements/generic/fields/rating.ctp:36
 msgid "Donner une note de %s"
 msgstr ""
 
-#: View/Elements/generic/fields/rating.ctp:47
-msgid "Voter"
-msgstr ""
-
-#: View/Elements/generic/fields/rating.ctp:51
+#: View/Elements/generic/fields/rating.ctp:49
 msgid "Note moyenne: %01.2F/5.00 avec %d évaluation(s)"
 msgstr ""
 
@@ -2635,27 +2749,6 @@ msgstr ""
 
 #: View/Elements/generic/fields/url.ctp:9
 msgid "visite"
-msgstr ""
-
-#: View/Elements/posts/items-browse-item.ctp:7
-#: View/Posts/view.ctp:17
-msgid "Publié le %s"
-msgstr ""
-
-#: View/Elements/shops/items-browse.ctp:28
-msgid "Produits en vente"
-msgstr ""
-
-#: View/Elements/shops/items-browse.ctp:43
-msgid "Temps restant"
-msgstr ""
-
-#: View/Elements/shops/items-browse.ctp:63
-msgid "Fin: %s"
-msgstr ""
-
-#: View/Elements/shops/items-browse.ctp:77
-msgid "Voir tous les produits"
 msgstr ""
 
 #: View/Errors/error400.ctp:3
@@ -2672,6 +2765,11 @@ msgstr ""
 
 #: View/Events/form.ctp:1
 msgid "Modifier un événement"
+msgstr ""
+
+#: View/Events/form.ctp:1
+#: View/Themed/Equidir/Elements/navbar.ctp:33
+msgid "Ajouter un événement"
 msgstr ""
 
 #: View/Events/form.ctp:36
@@ -2731,23 +2829,14 @@ msgid "Modifier un jeu"
 msgstr ""
 
 #: View/Games/form.ctp:1
-#: View/Layouts/default.ctp:75
 msgid "Ajouter un jeu"
 msgstr ""
 
-#: View/Games/form.ctp:9
-msgid "Oui"
-msgstr ""
-
-#: View/Games/form.ctp:9
-msgid "Non"
-msgstr ""
-
-#: View/Games/form.ctp:14
+#: View/Games/form.ctp:10
 msgid "Nom du jeu"
 msgstr ""
 
-#: View/Games/form.ctp:15
+#: View/Games/form.ctp:11
 msgid "Permalien"
 msgstr ""
 
@@ -2759,41 +2848,18 @@ msgstr ""
 msgid "Langues"
 msgstr ""
 
-#: View/Games/form.ctp:21
-#: View/Games/view.ctp:41
-#: View/Layouts/default.ctp:160
-msgid "Plateformes"
-msgstr ""
-
-#: View/Games/form.ctp:22
-#: View/Games/view.ctp:42
-msgid "Multijoueurs"
-msgstr ""
-
-#: View/Games/form.ctp:23
-#: View/Games/view.ctp:43
-msgid "Jouable en ligne"
-msgstr ""
-
 #: View/Games/form.ctp:27
-#: View/Games/view.ctp:44
+#: View/Games/view.ctp:25
 msgid "Classification"
 msgstr ""
 
-#: View/Games/form.ctp:28
-msgid "ESRB"
-msgstr ""
-
-#: View/Games/form.ctp:29
-msgid "PEGI"
-msgstr ""
-
 #: View/Games/form.ctp:33
-#: View/Links/form.ctp:95
+#: View/Links/form.ctp:99
 msgid "Liens"
 msgstr ""
 
 #: View/Games/form.ctp:35
+#: View/Games/view.ctp:28
 msgid "Page de téléchargement"
 msgstr ""
 
@@ -2801,28 +2867,30 @@ msgstr ""
 msgid "Flux RSS"
 msgstr ""
 
-#: View/Games/form.ctp:37
+#: View/Games/form.ctp:48
+#: View/Games/view.ctp:22
 msgid "Vidéos"
 msgstr ""
 
-#: View/Games/form.ctp:41;42
+#: View/Games/form.ctp:52;53
+#: View/Games/view.ctp:29
 msgid "Développeurs"
 msgstr ""
 
-#: View/Games/form.ctp:43
+#: View/Games/form.ctp:54
 msgid "Site Web des développeurs"
 msgstr ""
 
-#: View/Games/form.ctp:47
+#: View/Games/form.ctp:58
 msgid "Informations complémentaires"
 msgstr ""
 
-#: View/Games/form.ctp:48
-#: View/Games/view.ctp:45
+#: View/Games/form.ctp:59
+#: View/Games/view.ctp:26
 msgid "Licence"
 msgstr ""
 
-#: View/Games/form.ctp:49
+#: View/Games/form.ctp:60
 msgid "Configuration requise"
 msgstr ""
 
@@ -2834,28 +2902,20 @@ msgstr ""
 msgid "Jeux PC à télécharger"
 msgstr ""
 
-#: View/Games/view.ctp:37
-msgid "Vid�os"
-msgstr ""
-
-#: View/Games/view.ctp:38
-msgid "Captures d'�cran"
-msgstr ""
-
-#: View/Games/view.ctp:39
+#: View/Games/view.ctp:19
 msgid "Evaluations"
 msgstr ""
 
-#: View/Games/view.ctp:40
+#: View/Games/view.ctp:20
+msgid "Modes de jeu"
+msgstr ""
+
+#: View/Games/view.ctp:21
 msgid "Langues du jeu"
 msgstr ""
 
-#: View/Games/view.ctp:47
-msgid "Page de t�l�chargement"
-msgstr ""
-
-#: View/Games/view.ctp:48
-msgid "D�veloppeurs"
+#: View/Games/view.ctp:23
+msgid "Captures d'écran"
 msgstr ""
 
 #: View/Helper/MyHtmlHelper.php:33
@@ -2902,49 +2962,13 @@ msgstr ""
 msgid "Portail équestre international: Equidir vous propose toute l'information sur le monde des chevaux à travers son annuaire du cheval, ses annonces sur l'équitation et son agenda équestre."
 msgstr ""
 
-#: View/Homepages/index.ctp:115
+#: View/Homepages/index.ctp:132
 msgid "L'annuaire référence <strong>%d</strong> activités équestres dont <strong>%d</strong> liens."
 msgstr ""
 
-#: View/Homepages/index.ctp:122
-msgid "Annonces"
-msgstr ""
-
-#: View/Homepages/index.ctp:140
+#: View/Homepages/index.ctp:157
+#: View/Themed/Equidir/Elements/navbar.ctp:29
 msgid "Agenda"
-msgstr ""
-
-#: View/Layouts/default.ctp:56
-msgid "Jeux"
-msgstr ""
-
-#: View/Layouts/default.ctp:57
-msgid "Logiciels annexes"
-msgstr ""
-
-#: View/Layouts/default.ctp:58
-msgid "Contact"
-msgstr ""
-
-#: View/Layouts/default.ctp:64
-msgid "Mon compte"
-msgstr ""
-
-#: View/Layouts/default.ctp:72
-#: View/Links/form.ctp:48
-msgid "Admin"
-msgstr ""
-
-#: View/Layouts/default.ctp:74
-msgid "Gestion des catégories"
-msgstr ""
-
-#: View/Layouts/default.ctp:123
-msgid "Sélection des meilleurs jeux complets gratuits pour PC (Windows, Mac OS X et Linux) et smartphones"
-msgstr ""
-
-#: View/Layouts/default.ctp:164
-msgid "Toutes"
 msgstr ""
 
 #: View/Links/accept.ctp:2
@@ -2963,8 +2987,17 @@ msgstr ""
 msgid "Modifier une activité"
 msgstr ""
 
+#: View/Links/form.ctp:1
+#: View/Themed/Equidir/Elements/navbar.ctp:17
+msgid "Proposer une activité"
+msgstr ""
+
 #: View/Links/form.ctp:8
 msgid "Si votre activité n'a aucun rapport avec l'équitation, c'est inutile de nous proposer votre site Web, la fiche serait supprimée sans notification."
+msgstr ""
+
+#: View/Links/form.ctp:48
+msgid "Admin"
 msgstr ""
 
 #: View/Links/form.ctp:51
@@ -2975,40 +3008,40 @@ msgstr ""
 msgid "Global ID"
 msgstr ""
 
+#: View/Links/form.ctp:54
+msgid "Points"
+msgstr ""
+
 #: View/Links/form.ctp:59
 msgid "L'activité"
 msgstr ""
 
-#: View/Links/form.ctp:64
-msgid "Catégorie %d"
-msgstr ""
-
-#: View/Links/form.ctp:68
+#: View/Links/form.ctp:72
 msgid "Indiquez un titre clair et précis, qui vous différencie des autres, tel que le nom de votre entreprise.<br />Exemples <strong>non-valables</strong>:<ul><li>Vente de chevaux</li><li>Construction de boxes</li></ul>Exemples <strong>valables</strong>:<ul><li>Dupont - Vente de chevaux</li><li>Dupond - Construction de boxes</li></ul>"
 msgstr ""
 
-#: View/Links/form.ctp:82
+#: View/Links/form.ctp:86
 msgid "Veuillez écrire une description <strong>unique et originale</strong>, évitez les copier/coller d'une description de votre site."
 msgstr ""
 
-#: View/Links/form.ctp:98
+#: View/Links/form.ctp:102
 msgid "Pour la vidéo de présentation, vous pouvez indiquer un lien vidéo YouTube, Dailymotion, Vimeo, Metacafe,..."
 msgstr ""
 
-#: View/Links/form.ctp:103
+#: View/Links/form.ctp:107
 msgid "Où se trouve l'activité ?"
 msgstr ""
 
-#: View/Links/form.ctp:105
+#: View/Links/form.ctp:109
 msgid "Localité"
 msgstr ""
 
-#: View/Links/form.ctp:106
+#: View/Links/form.ctp:110
 msgid "Adresse (rue, n<sup>o</sup>)"
 msgstr ""
 
 #: View/Links/view.ctp:58
-msgid "Enregistrer sur votre smartphone"
+msgid "QR Code"
 msgstr ""
 
 #: View/Links/view.ctp:64
@@ -3017,14 +3050,6 @@ msgstr ""
 
 #: View/Links/view.ctp:69
 msgid "Evénements associés"
-msgstr ""
-
-#: View/Pages/fr/partenaires.ctp:19
-msgid "Devenir partenaire"
-msgstr ""
-
-#: View/Pages/fr/points.ctp:1
-msgid "Fonctionnement des points"
 msgstr ""
 
 #: View/Photos/form.ctp:1
@@ -3073,6 +3098,26 @@ msgstr ""
 
 #: View/Shops/index.ctp:27
 msgid "Selle, tapis, guêtres, étriers, bridon, couverture, ..."
+msgstr ""
+
+#: View/Themed/Equidir/Elements/navbar.ctp:15;23
+msgid "Navigation par catégories"
+msgstr ""
+
+#: View/Themed/Equidir/Elements/navbar.ctp:31
+msgid "Agenda %d"
+msgstr ""
+
+#: View/Themed/Equidir/Elements/navbar.ctp:32
+msgid "Calendrier"
+msgstr ""
+
+#: View/Themed/Equidir/Layouts/default.ctp:93
+msgid "Le portail de l'équitation"
+msgstr ""
+
+#: View/Themed/Equidir/Layouts/default.ctp:133
+msgid "Mentions légales"
 msgstr ""
 
 #: View/Users/activate.ctp:1

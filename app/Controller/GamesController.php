@@ -44,7 +44,7 @@ class GamesController extends AppController {
 	public function beforeFilter() {
 		parent::beforeFilter();
 		
-		$this->{$this->modelClass}->contain(array('Category'));
+		/*$this->{$this->modelClass}->contain(array('Category'));
 		
 		$this->set('esrbRatings', $this->esrbRatings);
 		$this->set('pegiRatings', $this->pegiRatings);
@@ -56,7 +56,7 @@ class GamesController extends AppController {
 		// $this->getEventManager()->attach(array($this, 'afterFindCategoryEvent'), 'Crud.afterFind');
 		
 		$sidebarCategories = $this->{$this->modelClass}->Category->find('threaded', array('conditions' => array('Category.item_count !=' => 0, 'Category.model' => 'Game'), 'order' => array($this->{$this->modelClass}->Category->alias.'.name_'.TXT_LANG.' ASC')));
-		$this->set(compact('sidebarCategories'));
+		$this->set(compact('sidebarCategories'));*/
 	}
 	
 	public function beforePaginateEvent(CakeEvent $event) {

@@ -1,4 +1,4 @@
-<?php echo $this->Form->create('Comment', array('url' => $this->Html->url(array('action' => 'comment', ${$singularVar}[$modelClass]['id']))));?>
+<?php echo $this->Form->create('Comment', array('url' => $this->Html->url(array('action' => 'comment', $item[$modelClass]['id']))));?>
 <fieldset id="post-comment">
 <legend><?php echo __('Poster un commentaire');?></legend>
 <?php echo $this->Form->input('Comment.name', array('label' => __('Nom'), 'size' => 30));?>

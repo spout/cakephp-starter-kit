@@ -55,6 +55,11 @@ ul {
 	list-style: none;
 }
 
+table {
+	width: 100%;
+	border-collapse: collapse;
+}
+
 form .required label:after {
 	color: #e32;
 	content: ' *';

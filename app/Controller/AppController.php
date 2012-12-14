@@ -13,14 +13,14 @@ abstract class AppController extends Controller {
 				'view',
 				// 'delete',
 				
-				'admin_index',
+				//'admin_index',
 				'admin_add',
 				'admin_edit',
 				'admin_view',
 				'admin_delete'
 			),
 			'validateId' => 'integer',
-			'relatedLists' => array('default' => false)
+			'relatedLists' => array('default' => false),
         ),
 		'Auth',
 		'RequestHandler',
@@ -30,7 +30,7 @@ abstract class AppController extends Controller {
 			'commonProcess' => array(
 				'filterEmpty' => true
 			)
-		)
+		),
     );
 	
 	public $helpers = array(
@@ -46,7 +46,12 @@ abstract class AppController extends Controller {
 		'MyHtml',
 		'Utils.Tree',
 		'Utils.Gravatar',
-		'Minify'
+		'Minify',
+		'DataTable.DataTable' => array(
+			'js' => array(
+				//'bJQueryUI' => true,
+			),
+		),
 	);
 	
 	public $extraContentTypes = array(
@@ -55,97 +60,6 @@ abstract class AppController extends Controller {
 	
 	public $displayFields = array('title', 'name');
 	public $bannedFields = array('id', 'created', 'modified');
-	
-	public function beforeFilter() {
-		$this->_setLanguage();
-	
-		// Multilanguage views (PagesController)
-		if (isset($this->request->params['lang']) && !empty($this->request->params['lang']) && is_readable(APP.'View'.DS.$this->viewPath.DS.$this->request->params['lang'])) {
-			$this->viewPath = $this->viewPath.DS.$this->request->params['lang'];
-		}
-		
-		// Set custom response type
-		if (isset($this->extraContentTypes[$this->RequestHandler->ext])) {
-			$this->response->type(array($this->RequestHandler->ext => $this->extraContentTypes[$this->RequestHandler->ext]));
-		}
-		
-		if (isset($this->Auth)) {
-			$this->Auth->authenticate = array('Form' => array('fields' => array('username' => 'email', 'password' => 'password')));
-			$this->Auth->authorize = array('Tools.Tiny');
-			$this->Auth->loginAction = array('controller' => 'users', 'action' => 'login', 'admin' => false);
-			$this->Auth->loginRedirect = '/';
-			$this->Auth->logoutRedirect = '/';
-			$this->Auth->authError = __("Vous n'êtes pas autorisé à accéder à cette page.");
-			$this->Auth->userModel = 'User';
-			$this->Auth->scope = array('User.active' => 1);
-			
-			$this->Auth->allow(Configure::read('Config.publicActions'));
-			
-			if (Auth::hasRole(ROLE_ADMIN)) {
-				$this->Auth->allow();
-			}
-			
-			$this->restoreLoginFromCookie();
-		}
-		
-		$this->set('moduleTitle', Inflector::humanize($this->request->params['controller']));// Default moduleTitle used in generic breadcrumbs and index
-		
-		$siteComponent = Inflector::classify(str_replace('.', '', env('HTTP_HOST')));
-		$siteComponentClass = $siteComponent.'Component';
-		if (file_exists(APP.'Controller'.DS.'Component'.DS.$siteComponentClass.'.php')) {
-			$this->Components->load($siteComponent);
-		}
-		
-		$this->loadModel($this->modelClass);
-		if (class_exists($this->modelClass)) {
-			$model =& $this->{$this->modelClass};
-			
-			$modelClass = $this->modelClass;
-			$singularVar = Inflector::variable($modelClass);
-			$pluralVar = Inflector::variable($this->name);
-			$primaryKey = $model->primaryKey;
-			$schema = $model->schema();
-			$fields = (is_array($schema)) ? array_diff(array_keys($schema), $this->bannedFields) : array();
-			$displayField = $model->displayField;
-			
-			$this->set(compact('modelClass', 'singularVar', 'pluralVar', 'primaryKey', 'fields', 'displayField'));
-		}
-		
-		// Customize crud
-		$this->Crud->mapActionView(array(
-			'admin_index' => 'index',
-			'admin_add' => 'form',
-			'admin_edit' => 'form',
-			'admin_view' => 'view',
-		));
-		
-		$this->getEventManager()->attach(array($this, 'beforeRedirectEvent'), 'Crud.beforeRedirect');
-	}
-
-	public function beforeRedirectEvent(CakeEvent $event) {
-		if (in_array($event->subject->action, array('add', 'edit', 'admin_add', 'admin_edit'))) {
-			$event->subject->url = array('action' => 'view', 'id' => $event->subject->id, 'slug' => slug($event->subject->request->data[$event->subject->model->alias][$event->subject->model->displayField]));
-		}
-		
-		if (in_array($event->subject->action, array('delete', 'admin_delete'))) {
-			$event->subject->url = array('action' => 'index');
-		}
-	}
-	
-	public function beforeRender() {
-		if (in_array($this->request->params['action'], array('add', 'edit', 'admin_add', 'admin_edit'))) {
-			$id = (isset($this->request->params['pass'][0]) && !empty($this->request->params['pass'][0])) ? $this->request->params['pass'][0] : 0;
-			$this->set(compact('id'));
-		}
-		
-		if (in_array($this->request->params['action'], array('edit', 'delete', 'admin_edit', 'admin_delete'))) {
-			$this->checkOwner($this->request->params['pass'][0]);
-		}
-		
-		if (in_array($this->request->params['action'], array('add', 'edit', 'search', 'admin_add', 'admin_edit'))) {
-			$this->_setAssociatedData();
-		}
-	}
 	
 	/**
 	* Dispatches the controller action.  Checks that the action exists and isn't private.
@@ -195,6 +109,145 @@ abstract class AppController extends Controller {
 		}
 	}
 	
+	public function beforeFilter() {
+		$this->_setLanguage();
+		
+		$viewFullPath = APP.'View'.DS.$this->viewPath.DS;
+		// Multilanguage views (PagesController)
+		if (isset($this->request->params['lang']) && !empty($this->request->params['lang']) && is_readable($viewFullPath.$this->request->params['lang'])) {
+			$this->viewPath = $this->viewPath.DS.$this->request->params['lang'];
+		}
+		
+		$genericViewFullPath = APP.'View'.DS.'Elements'.DS.'generic'.DS.'actions'.DS;
+		if (!is_readable($viewFullPath.$this->request->action.'.ctp') && is_readable($genericViewFullPath.$this->request->action.'.ctp')) {
+			$this->viewPath = 'Elements'.DS.'generic'.DS.'actions';
+		}
+		
+		// Set custom response type
+		if (isset($this->extraContentTypes[$this->RequestHandler->ext])) {
+			$this->response->type(array($this->RequestHandler->ext => $this->extraContentTypes[$this->RequestHandler->ext]));
+		}
+		
+		if (isset($this->Auth)) {
+			$this->Auth->authenticate = array('Form' => array('fields' => array('username' => 'email', 'password' => 'password')));
+			$this->Auth->authorize = array('Tools.Tiny');
+			$this->Auth->loginAction = array('controller' => 'users', 'action' => 'login', 'admin' => false);
+			$this->Auth->loginRedirect = '/';
+			$this->Auth->logoutRedirect = '/';
+			$this->Auth->authError = __("Vous n'êtes pas autorisé à accéder à cette page.");
+			$this->Auth->userModel = 'User';
+			$this->Auth->scope = array('User.active' => 1);
+			
+			$this->Auth->allow(Configure::read('Config.publicActions'));
+			
+			if (Auth::hasRole(ROLE_ADMIN)) {
+				$this->Auth->allow();
+			}
+			
+			$this->_restoreLoginFromCookie();
+		}
+		
+		$this->set('moduleTitle', Inflector::humanize($this->request->params['controller']));// Default moduleTitle used in generic breadcrumbs and index
+		
+		$siteComponent = Inflector::classify(str_replace('.', '', env('HTTP_HOST')));
+		$siteComponentClass = $siteComponent.'Component';
+		if (file_exists(APP.'Controller'.DS.'Component'.DS.$siteComponentClass.'.php')) {
+			$this->Components->load($siteComponent);
+		}
+		
+		$this->loadModel($this->modelClass);
+		if (class_exists($this->modelClass)) {
+			$model =& $this->{$this->modelClass};
+			
+			$modelClass = $this->modelClass;
+			$singularVar = Inflector::variable($modelClass);
+			$pluralVar = Inflector::variable($this->name);
+			$primaryKey = $model->primaryKey;
+			$schema = $model->schema();
+			$fields = (is_array($schema)) ? array_diff(array_keys($schema), $this->bannedFields) : array();
+			$displayField = $model->displayField;
+			
+			$this->set(compact('modelClass', 'singularVar', 'pluralVar', 'primaryKey', 'fields', 'displayField'));
+		}
+		
+		$this->Crud->config('translations', array(
+			//'domain' => 'crud',
+			//'name' => null,
+			'create' => array(
+				'success' => array(
+					'message' => __('Enregistrement ajouté avec succès !'),
+				),
+				'error' => array(
+					'message' => __('Veuillez corriger les erreurs ci-dessous.'),
+				)
+			),
+			'update' => array(
+				'success' => array(
+					'message' => __('Enregistrement modifié avec succès !'),
+				),
+				'error' => array(
+					'message' => __('Veuillez corriger les erreurs ci-dessous.'),
+				)
+			),
+			'delete' => array(
+				'success' => array(
+					'message' => __('Enregistrement supprimé avec succès !'),
+				),
+				'error' => array(
+					'message' => __('La suppression de l\'enregistrement a échoué.'),
+				)
+			),
+			'find' => array(
+				'error' => array(
+					'message' => __('Enregistrement non trouvé.'),
+				)
+			),
+			'error' => array(
+				'invalid_http_request' => array(
+					'message' => __('Requête HTTP non valide'),
+				),
+				'invalid_id' => array(
+					'message' => __('Id non valide'),
+				)
+			)
+		));
+		
+		// Customize crud
+		$this->Crud->mapActionView(array(
+			//'admin_index' => 'index',
+			'admin_add' => 'form',
+			'admin_edit' => 'form',
+			'admin_view' => 'view',
+		));
+		
+		$this->getEventManager()->attach(array($this, 'beforeRedirectEvent'), 'Crud.beforeRedirect');
+	}
+
+	public function beforeRedirectEvent(CakeEvent $event) {
+		if (in_array($event->subject->action, array('add', 'edit', 'admin_add', 'admin_edit'))) {
+			$event->subject->url = array('action' => 'view', 'id' => $event->subject->id, 'slug' => slug($event->subject->request->data[$event->subject->model->alias][$event->subject->model->displayField]));
+		}
+		
+		if (in_array($event->subject->action, array('delete', 'admin_delete'))) {
+			$event->subject->url = array('action' => 'index');
+		}
+	}
+	
+	public function beforeRender() {
+		if (in_array($this->request->params['action'], array('add', 'edit', 'admin_add', 'admin_edit'))) {
+			$id = (isset($this->request->params['pass'][0]) && !empty($this->request->params['pass'][0])) ? $this->request->params['pass'][0] : 0;
+			$this->set(compact('id'));
+		}
+		
+		if (in_array($this->request->params['action'], array('edit', 'delete', 'admin_edit', 'admin_delete'))) {
+			$this->checkOwner($this->request->params['pass'][0]);
+		}
+		
+		if (in_array($this->request->params['action'], array('add', 'edit', 'search', 'admin_add', 'admin_edit'))) {
+			$this->_setAssociatedData();
+		}
+	}
+	
 	/**
 	* Set language and locale via the URL
 	*/
@@ -213,10 +266,29 @@ abstract class AppController extends Controller {
 			define('TXT_LANG', $lang);
 		}
 		
-		$locale = setlocale(LC_ALL, sprintf('%s_%s.%s', $lang, strtoupper($lang), Configure::read('App.encoding')));//fr_FR.UTF-8
+		$locale = setlocale(LC_ALL, $this->_getLocales($lang));
 	}
 	
-	public function restoreLoginFromCookie() {
+	protected function _getLocales($lang) {
+		// Loading the L10n object
+		App::uses('L10n', 'I18n');
+		$l10n = new L10n();
+
+		// Iso2 lang code
+		$iso2 = $l10n->map($lang);
+		$catalog = $l10n->catalog($lang);
+
+		$locales = array(
+			$iso2.'_'.strtoupper($iso2).'.'.strtoupper(str_replace('-', '', $catalog['charset'])), // fr_FR.UTF8
+			$iso2.'_'.strtoupper($iso2), // fr_FR
+			$catalog['locale'], // fre
+			$catalog['localeFallback'], // fre
+			$iso2 // fr
+		);
+		return $locales;
+	}
+	
+	protected function _restoreLoginFromCookie() {
 		$this->Cookie->name = 'Users';
 		$cookie = $this->Cookie->read('rememberMe');
 		if (!empty($cookie) && !$this->Auth->user()) {
@@ -234,15 +306,6 @@ abstract class AppController extends Controller {
 			$this->redirect($redirect);
 		}
 	}
-	
-	/*public function checkOwner($data, $redirect = '/') {
-		if (Auth::hasRole(ROLE_ADMIN) || (isset($data[$this->modelClass]['user_id']) && Auth::id() == $data[$this->modelClass]['user_id'])) {
-			return;
-		} else {
-			$this->Session->setFlash($this->Auth->authError, 'error');
-			$this->redirect($redirect);
-		}
-	}*/
 	
 	public function checkRoles($roles, $redirect = '/') {
 		if (Auth::hasRoles($roles)) {
@@ -298,9 +361,11 @@ abstract class AppController extends Controller {
 	
 	public function save_field($id = null, $field = null, $value = null) {
 		$idsList = $this->{$this->modelClass}->find('list', array('order' => array('id' => 'ASC')));
+		
 		foreach ($idsList as $k => &$v) {
-			$v = $k.' - '.$v;
+			$v = sprintf("%s - %s", $k, $v);
 		}
+		
 		$this->set(compact('idsList'));
 
 		if ($this->request->is('post') || $this->request->is('put')) {
@@ -315,9 +380,46 @@ abstract class AppController extends Controller {
 		if (!is_null($id) && !is_null($field) && !is_null($value) && $this->{$this->modelClass}->hasField($field)) {
 			$this->{$this->modelClass}->id = $id;
 			$this->{$this->modelClass}->saveField($field, $value);
-			$this->Session->setFlash(sprintf(__('Le champ "%s" de l\'enregistrement #%s a été mis à la valeur "%s".'), $field, $id, $value), 'success');
-			$this->redirect('/');
+			
+			if (!$this->request->is('ajax')) {
+				$this->Session->setFlash(sprintf(__('Le champ "%s" de l\'enregistrement #%s a été modifié avec succès".'), $field, $id), 'success');
+				$this->redirect($this->referer());
+			} else {
+				$this->autoRender = false;
+				echo $value;
+			}
 		}
+	}
+	
+	public function admin_index() {
+		$columns = array(
+			$this->{$this->modelClass}->primaryKey => '#',
+			$this->{$this->modelClass}->displayField => Inflector::humanize($this->{$this->modelClass}->displayField),
+			'actions' => null,
+		);
+
+		$this->paginate['limit'] = 50;
+		$items = $this->paginate();
+		
+		$this->set(compact('items', 'columns'));
+	}
+	
+	public function datatable() {
+		$columns = array(
+			$this->{$this->modelClass}->primaryKey => '#',
+			$this->{$this->modelClass}->displayField => Inflector::humanize($this->{$this->modelClass}->displayField),
+			'actions' => null
+		);
+		
+		$this->set(compact('columns'));
+		
+		$this->DataTable = $this->Components->load('DataTable.DataTable', array(
+			'columns' => $columns,
+			'triggerAction' => array('datatable')
+		));
+		$this->DataTable->initialize($this);
+		
+		$this->DataTable->paginate = array($this->modelClass);
 	}
 	
 	public function search() {
@@ -374,7 +476,7 @@ abstract class AppController extends Controller {
 		$this->set(compact('items', 'channel'));
 		
 		if (!is_file(APP.'View'.DS.$this->viewPath.DS.'feed.ctp')) {
-			$this->render('/Elements/generic/actions/rss/feed');
+			$this->render(DS.'Elements'.DS.'generic'.DS.'actions'.DS.'rss'.DS.'feed');
 		}
 	}
 	
@@ -396,6 +498,14 @@ abstract class AppController extends Controller {
 			$catsList = $this->{$this->modelClass}->Category->generateThreadedList(null, 'slug_'.TXT_LANG);
 			$this->set(compact('catsList'));
 		}
+	}
+	
+	public function markers() {
+		$conditions = isset($this->paginate['conditions']) ? $this->paginate['conditions'] : array();
+		$conditions['geo_lat !='] = NULL;
+	    $conditions['geo_lon !='] = NULL;
+		$items = $this->{$this->modelClass}->find('all', array('contain' => array('Country'), 'conditions' => $conditions));
+		$this->set(compact('items'));
 	}
 	
 	public function rating($id = null) {
