@@ -69,6 +69,13 @@ Configure::write('Config.publicActions',
 );
 
 /**
+ * Extra content types
+ */
+Configure::write('Config.extraContentTypes', array(
+	'kml' => 'application/vnd.google-earth.kml+xml'
+));
+
+/**
  * http://www.dereuromark.de/2012/04/07/auth-inline-authorization-the-easy-way/
  */
 define('USER_ROLE_KEY', 'role_id');

@@ -26,7 +26,7 @@ $(function(){
 $this->Html->scriptEnd();
 ?>
 
-<div class="<?php echo $pluralVar;?>-view">
+<div class="<?php echo $this->request->controller;?>-view">
 	<?php /*if(Auth::hasRole(ROLE_ADMIN)):?>
 		<?php echo $this->element('Links/rentabiliweb-form-vc');?>
 		<?php echo $this->element('Links/teads');?>
@@ -44,7 +44,7 @@ $this->Html->scriptEnd();
 				if (!empty($urlDisplay)) {
 					$countClickUrl = $this->Html->url(array('action' => 'count_clicks', $item[$modelClass]['id']));
 				?>
-				<p class="<?php echo $pluralVar;?>-view-thumb">
+				<p class="<?php echo $this->request->controller;?>-view-thumb">
 					<a href="<?php echo $urlDisplay;?>" onclick="location='<?php echo $countClickUrl;?>';return false;" onmouseover="window.status='<?php echo $urlDisplay;?>';return true;" onmouseout="self.status='';return true;">
 						<?php echo $this->element('website-screenshot', array('url' => $item[$modelClass]['url'], 'size' => '200x150'));?>
 					</a>
@@ -82,7 +82,7 @@ $this->Html->scriptEnd();
 	echo $this->element('generic/view-display-elements', array('displayElements' => $displayElements));
 	?>
 	
-	<p class="<?php echo $pluralVar;?>-bug-report"><?php echo $this->Html->image('icons/silk/bug.png');?>&nbsp;<?php echo $this->Html->link(__('Signaler une erreur ou une modification'), array('controller' => 'contact', '?' => 'subject='.$this->Html->url(array('action' => 'view', 'id' => $item[$modelClass]['id'], 'slug' => slug($title)))), array('rel' => 'nofollow', 'class' => 'fancybox'));?></p>
+	<p class="<?php echo $this->request->controller;?>-bug-report"><?php echo $this->Html->image('icons/silk/bug.png');?>&nbsp;<?php echo $this->Html->link(__('Signaler une erreur ou une modification'), array('controller' => 'contact', '?' => 'subject='.$this->Html->url(array('action' => 'view', 'id' => $item[$modelClass]['id'], 'slug' => slug($title)))), array('rel' => 'nofollow', 'class' => 'fancybox'));?></p>
 	
 	<?php echo $this->element('Shops'.DS.'items-browse');?>
 	

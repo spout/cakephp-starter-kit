@@ -21,7 +21,15 @@ abstract class AppController extends Controller {
 			'validateId' => 'integer',
 			'relatedLists' => array('default' => false),
 		),
-		'Auth',
+		'Auth' => array(
+			'authenticate' => array('Form' => array('fields' => array('username' => 'email', 'password' => 'password'))),
+			'authorize' => array('Tools.Tiny'),
+			'loginAction' => array('controller' => 'users', 'action' => 'login', 'admin' => false),
+			'loginRedirect' => '/',
+			'logoutRedirect' => '/',
+			'userModel' => 'User',
+			'scope' => array('User.active' => 1),
+		),
 		'RequestHandler',
 		'Session',
 		'Cookie',
@@ -51,10 +59,6 @@ abstract class AppController extends Controller {
 				//'bJQueryUI' => true,
 			),
 		),
-	);
-	
-	public $extraContentTypes = array(
-		'kml' => 'application/vnd.google-earth.kml+xml'
 	);
 	
 	public $displayFields = array('title', 'name');
@@ -113,18 +117,11 @@ abstract class AppController extends Controller {
 		
 		// Set custom response type
 		if (isset($this->extraContentTypes[$this->RequestHandler->ext])) {
-			$this->response->type(array($this->RequestHandler->ext => $this->extraContentTypes[$this->RequestHandler->ext]));
+			$this->response->type(array($this->RequestHandler->ext => Configure::read('Config.extraContentTypes.'.$this->RequestHandler->ext)));
 		}
 		
 		if (isset($this->Auth)) {
-			$this->Auth->authenticate = array('Form' => array('fields' => array('username' => 'email', 'password' => 'password')));
-			$this->Auth->authorize = array('Tools.Tiny');
-			$this->Auth->loginAction = array('controller' => 'users', 'action' => 'login', 'admin' => false);
-			$this->Auth->loginRedirect = '/';
-			$this->Auth->logoutRedirect = '/';
 			$this->Auth->authError = __("Vous n'êtes pas autorisé à accéder à cette page.");
-			$this->Auth->userModel = 'User';
-			$this->Auth->scope = array('User.active' => 1);
 			
 			$this->Auth->allow(Configure::read('Config.publicActions'));
 			
@@ -135,7 +132,7 @@ abstract class AppController extends Controller {
 			$this->_restoreLoginFromCookie();
 		}
 		
-		$this->set('moduleTitle', Inflector::humanize($this->request->params['controller']));// Default moduleTitle used in generic breadcrumbs and index
+		$this->set('moduleTitle', Inflector::humanize($this->request->controller));// Default moduleTitle used in generic breadcrumbs and index
 		
 		$siteComponent = Inflector::classify(str_replace('.', '', env('HTTP_HOST')));
 		$siteComponentClass = $siteComponent.'Component';
@@ -148,17 +145,15 @@ abstract class AppController extends Controller {
 			$model =& $this->{$this->modelClass};
 			
 			$modelClass = $this->modelClass;
-			$singularVar = Inflector::variable($modelClass);
-			$pluralVar = Inflector::variable($this->name);
 			$primaryKey = $model->primaryKey;
 			$schema = $model->schema();
 			$fields = (is_array($schema)) ? array_diff(array_keys($schema), $this->bannedFields) : array();
 			$displayField = $model->displayField;
 			
-			$this->set(compact('modelClass', 'singularVar', 'pluralVar', 'primaryKey', 'fields', 'displayField'));
+			$this->set(compact('modelClass', 'primaryKey', 'fields', 'displayField'));
 		}
 		
-		if (isset($this->request->params['pass'][0]) && in_array($this->request->params['action'], array('edit', 'delete', 'admin_edit', 'admin_delete', 'save_field'))) {
+		if (isset($this->request->params['pass'][0]) && in_array($this->request->action, array('edit', 'delete', 'admin_edit', 'admin_delete', 'save_field'))) {
 			$this->checkOwner($this->request->params['pass'][0]);
 		}
 		
@@ -240,12 +235,12 @@ abstract class AppController extends Controller {
 			$this->viewPath .= ($this->viewClass != 'Json') ? $extPath : '';// JsonView set automaticaly the extension path /json
 		}
 		
-		if (in_array($this->request->params['action'], array('add', 'edit', 'admin_add', 'admin_edit'))) {
+		if (in_array($this->request->action, array('add', 'edit', 'admin_add', 'admin_edit'))) {
 			$id = (isset($this->request->params['pass'][0]) && !empty($this->request->params['pass'][0])) ? $this->request->params['pass'][0] : 0;
 			$this->set(compact('id'));
 		}
 		
-		if (in_array($this->request->params['action'], array('add', 'edit', 'search', 'admin_add', 'admin_edit'))) {
+		if (in_array($this->request->action, array('add', 'edit', 'search', 'admin_add', 'admin_edit'))) {
 			$this->_setAssociatedData();
 		}
 	}

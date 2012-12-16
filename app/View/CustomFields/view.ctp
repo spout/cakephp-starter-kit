@@ -3,7 +3,7 @@ $title = getPreferedLang($item[$modelClass], 'name');
 $this->set('title_for_layout', h($title));
 ?>
 
-<div class="<?php echo $pluralVar;?>-view">
+<div class="<?php echo $this->request->controller;?>-view">
 	
 	<?php echo $this->element('generic/actions-links');?>
 	

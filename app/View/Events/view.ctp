@@ -5,7 +5,7 @@ $this->set('title_for_layout', h($title));
 $this->set('metaDescription', $description);
 ?>
 
-<div class="<?php echo $pluralVar;?>-view">
+<div class="<?php echo $this->request->controller;?>-view">
 	
 	<?php echo $this->element('generic/actions-links');?>
 	

@@ -10,13 +10,13 @@ if (isset($item[$modelClass]['h1']) && !empty($item[$modelClass]['h1'])) {
 $this->set('metaDescription', $description);
 ?>
 
-<div class="<?php echo $pluralVar;?>-view">
+<div class="<?php echo $this->request->controller;?>-view">
 	<?php echo $this->element('generic/actions-links');?>
 	
 	<h2><?php echo h($title);?></h2>
-	<p class="<?php echo $pluralVar;?>-view-date"><?php echo sprintf(__('Publié le %s'), $this->MyHtml->niceDate($item[$modelClass]['created']));?></p>
+	<p class="<?php echo $this->request->controller;?>-view-date"><?php echo sprintf(__('Publié le %s'), $this->MyHtml->niceDate($item[$modelClass]['created']));?></p>
 	
-	<div class="<?php echo $pluralVar;?>-view-description">
+	<div class="<?php echo $this->request->controller;?>-view-description">
 		<?php echo $description;?>
 	</div>
 	
