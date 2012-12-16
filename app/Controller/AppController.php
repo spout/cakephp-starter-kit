@@ -158,8 +158,6 @@ abstract class AppController extends Controller {
 		}
 		
 		$this->Crud->config('translations', array(
-			//'domain' => 'crud',
-			//'name' => null,
 			'create' => array(
 				'success' => array(
 					'message' => __('Enregistrement ajouté avec succès !'),
@@ -201,7 +199,7 @@ abstract class AppController extends Controller {
 		
 		// Customize crud
 		$this->Crud->mapActionView(array(
-			//'admin_index' => 'index',
+			'admin_index' => 'index',
 			'admin_add' => 'form',
 			'admin_edit' => 'form',
 			'admin_view' => 'view',
@@ -507,24 +505,25 @@ abstract class AppController extends Controller {
 				$newRating = ($submittedRating + $newRating) / $newCount;
 				$newRating = number_format($newRating, 2, '.', '');
 
-				$saveData = array();
-				$saveData[$this->modelClass]['rating_avg'] = $newRating;
-				$saveData[$this->modelClass]['rating_count'] = $newCount;
-				$saveData[$this->modelClass]['rating_last_ip'] = $ip;
+				$saveData = array(
+					'rating_avg' => $newRating,
+					'rating_count' => $newCount,
+					'rating_last_ip' => $ip,
+				);
 				
 				//Bayesian average
 				$query = $this->{$this->modelClass}->find('first', array('fields' => array('AVG(rating_count) as avg_count', 'AVG(rating_avg) as avg_avg'), 'conditions' => array('rating_count >' => 0)));
 				
-				$avg_num_votes = $query[0]['avg_count'];
-				$avg_rating = $query[0]['avg_avg'];
+				$avgNumVotes = $query[0]['avg_count'];
+				$avgRating = $query[0]['avg_avg'];
 				
-				$this_num_votes = $data[$this->modelClass]['rating_count'];
-				$this_rating = $data[$this->modelClass]['rating_avg'];
+				$thisNumVotes = $data[$this->modelClass]['rating_count'];
+				$thisRating = $data[$this->modelClass]['rating_avg'];
 				
-				$bayesianAvg = (($avg_num_votes * $avg_rating) + ($this_num_votes * $this_rating)) / ($avg_num_votes + $this_num_votes);
+				$bayesianAvg = (($avgNumVotes * $avgRating) + ($thisNumVotes * $thisRating)) / ($avgNumVotes + $thisNumVotes);
 				$bayesianAvg = round($bayesianAvg, 2);
 				
-				$saveData[$this->modelClass]['rating_bayesian'] = number_format($bayesianAvg, 2, '.', '');
+				$saveData['rating_bayesian'] = number_format($bayesianAvg, 2, '.', '');
 			
 				$cookieExpires = 7 * 24 * 60 * 60;//7 jours; 24 heures; 60 minutes; 60 secondes
 				$this->Cookie->write($cookieName, $cookieVar, true, $cookieExpires);
