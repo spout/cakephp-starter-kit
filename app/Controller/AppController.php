@@ -496,9 +496,9 @@ abstract class AppController extends Controller {
 			
 			$submittedRating = $this->request->data[$this->modelClass]['rate'];
 			
-	        $data = $this->{$this->modelClass}->read(null, $id);
-	        
-	        $ip = $this->request->clientIp();
+			$data = $this->{$this->modelClass}->read(null, $id);
+
+			$ip = $this->request->clientIp();
 
 			//check on cookieSet = already click
 			if (empty($cookieSet) && $data[$this->modelClass]['rating_last_ip'] != $ip) {
