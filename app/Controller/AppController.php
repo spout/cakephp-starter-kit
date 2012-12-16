@@ -4,15 +4,14 @@ App::uses('CakeEmail', 'Network/Email');
 App::uses('Sanitize', 'Utility');
 
 abstract class AppController extends Controller {
-    public $components = array(
-        'Crud.Crud' => array(
-            'actions' => array(
+	public $components = array(
+		'Crud.Crud' => array(
+			'actions' => array(
 				'index',
 				// 'add',
 				// 'edit',
 				'view',
 				// 'delete',
-				
 				//'admin_index',
 				'admin_add',
 				'admin_edit',
@@ -21,7 +20,7 @@ abstract class AppController extends Controller {
 			),
 			'validateId' => 'integer',
 			'relatedLists' => array('default' => false),
-        ),
+		),
 		'Auth',
 		'RequestHandler',
 		'Session',
@@ -31,7 +30,7 @@ abstract class AppController extends Controller {
 				'filterEmpty' => true
 			)
 		),
-    );
+	);
 	
 	public $helpers = array(
 		'Form' => array('className' => 'TwitterBootstrap.BootstrapForm'),
@@ -498,7 +497,7 @@ abstract class AppController extends Controller {
 	public function markers() {
 		$conditions = isset($this->paginate['conditions']) ? $this->paginate['conditions'] : array();
 		$conditions['geo_lat !='] = NULL;
-	    $conditions['geo_lon !='] = NULL;
+		$conditions['geo_lon !='] = NULL;
 		$items = $this->{$this->modelClass}->find('all', array('contain' => array('Country'), 'conditions' => $conditions));
 		$this->set(compact('items'));
 	}
