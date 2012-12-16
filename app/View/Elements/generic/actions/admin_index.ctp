@@ -40,11 +40,12 @@ $this->Paginator->options(array('url' => array('admin' => true)));
 					switch ($colk) {
 						case 'actions':
 						$actions = array(
-							'['.$this->Html->link(__('Modifier'), array('action' => 'edit', $item[$modelClass][$primaryKey])).']',
-							'['.$this->Html->link(__('Supprimer'), array('action' => 'delete', $item[$modelClass][$primaryKey], 'admin' => true), null,  __('Vous êtes sur ?')).']'
+							$this->Html->link('<i class="icon-edit"></i> '.__('Modifier'), array('action' => 'edit', $item[$modelClass]['id']), array('class' => 'btn btn-mini', 'escape' => false)),
 						);
-							
-						$output = implode('', $actions);
+						if (isset($item[$modelClass]['active']) && empty($item[$modelClass]['active'])) {
+							$actions[] = $this->Html->link('<i class="icon-ok"></i> '.__('Accepter'), array('action' => 'save_field', $item[$modelClass]['id'], 'active', 1), array('class' => 'btn btn-success btn-mini', 'escape' => false));	
+						}
+						$output = '<div class="btn-group">'.implode('', $actions).'</div>';
 						break;
 
 					case $displayField:

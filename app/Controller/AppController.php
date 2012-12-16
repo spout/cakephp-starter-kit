@@ -158,7 +158,7 @@ abstract class AppController extends Controller {
 			$this->set(compact('modelClass', 'singularVar', 'pluralVar', 'primaryKey', 'fields', 'displayField'));
 		}
 		
-		if (isset($this->request->params['pass'][0]) && in_array($this->request->params['action'], array('edit', 'delete', 'admin_edit', 'admin_delete'))) {
+		if (isset($this->request->params['pass'][0]) && in_array($this->request->params['action'], array('edit', 'delete', 'admin_edit', 'admin_delete', 'save_field'))) {
 			$this->checkOwner($this->request->params['pass'][0]);
 		}
 		
@@ -226,19 +226,18 @@ abstract class AppController extends Controller {
 	}
 	
 	public function beforeRender() {
-		$viewFullPath = APP.'View'.DS.$this->viewPath;
+		$viewFullPath = APP.'View'.DS.$this->name;
 		// Multilanguage views (PagesController)
 		if (isset($this->request->params['lang']) && !empty($this->request->params['lang']) && is_readable($viewFullPath.DS.$this->request->params['lang'])) {
 			$this->viewPath = $this->viewPath.DS.$this->request->params['lang'];
 		}
 		
 		$genericViewFullPath = APP.'View'.DS.'Elements'.DS.'generic'.DS.'actions';
+		$extPath = (isset($this->request->params['ext']) && !empty($this->request->params['ext'])) ? DS.$this->request->params['ext'] : '';
 		
-		//$extPath = (isset($this->request->params['ext']) && !empty($this->request->params['ext'])) ? DS.$this->request->params['ext'] : '';
-		$extPath = '';
-		
-		if ($this->viewPath != 'Errors' && !is_readable($viewFullPath.$extPath.DS.$this->request->action.'.ctp') && is_readable($genericViewFullPath.$extPath.DS.$this->request->action.'.ctp')) {
-			$this->viewPath = 'Elements'.DS.'generic'.DS.'actions'.$extPath;
+		if (!is_readable($viewFullPath.$extPath.DS.$this->request->action.'.ctp') && is_readable($genericViewFullPath.$extPath.DS.$this->request->action.'.ctp')) {
+			$this->viewPath = 'Elements'.DS.'generic'.DS.'actions';
+			$this->viewPath .= ($this->viewClass != 'Json') ? $extPath : '';// JsonView set automaticaly the extension path /json
 		}
 		
 		if (in_array($this->request->params['action'], array('add', 'edit', 'admin_add', 'admin_edit'))) {
@@ -248,16 +247,6 @@ abstract class AppController extends Controller {
 		
 		if (in_array($this->request->params['action'], array('add', 'edit', 'search', 'admin_add', 'admin_edit'))) {
 			$this->_setAssociatedData();
-		}
-	}
-	
-	protected function _renderGenericAction() {
-		if (!is_file(APP.'View'.DS.$this->viewPath.DS.$this->request->action.'.ctp')) {
-			$extDir = '';
-			if (isset($this->request->params['ext']) && !empty($this->request->params['ext'])) {
-				$extDir = $this->request->params['ext'].DS;
-			}
-			$this->render(DS.'Elements'.DS.'generic'.DS.'actions'.DS.$extDir.$this->request->action);
 		}
 	}
 	
@@ -374,22 +363,22 @@ abstract class AppController extends Controller {
 		}
 	}
 	
-	public function save_field() {
+	public function save_field($id = null, $field = null, $value = null) {
+		
 		if ($this->request->is('post') || $this->request->is('put')) {
-			$data = $this->request->data[$this->modelClass];
-			
-			if (isset($data['id'], $data['field'], $data['value']) && !empty($data['id']) && !empty($data['field']) && !empty($data['value']) && $this->{$this->modelClass}->hasField($data['field'])) {
-				$this->{$this->modelClass}->id = $data['id'];
-				$this->{$this->modelClass}->saveField($data['field'], $data['value']);
+			extract($this->request->data[$this->modelClass]);
+		}
+		
+		if (!is_null($id) && !is_null($field) && !is_null($value) && $this->{$this->modelClass}->hasField($field)) {
+			$this->{$this->modelClass}->id = $id;
+			$this->{$this->modelClass}->saveField($field, $value);
 
-				if (!$this->request->is('ajax')) {
-					$this->Session->setFlash(__("L'enregistrement #%s a été modifié avec succès", $id), 'success');
-					$this->redirect($this->referer());
-				} else {
-					$this->set(compact('id', 'field', 'value'));
-				}
+			if (!$this->request->is('ajax')) {
+				$this->Session->setFlash(__("L'enregistrement #%s a été modifié avec succès", $id), 'success');
+				$this->redirect($this->referer());
+			} else {
+				$this->set(compact('id', 'field', 'value'));
 			}
-			
 		}
 	}
 	
@@ -400,7 +389,7 @@ abstract class AppController extends Controller {
 			'actions' => null,
 		);
 
-		$this->paginate['limit'] = 50;
+		$this->paginate = array('limit' => 50);
 		$items = $this->paginate();
 		
 		$this->set(compact('items', 'columns'));
