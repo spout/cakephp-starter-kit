@@ -1,1 +1,0 @@
-<?php debug($this->request->data);?>

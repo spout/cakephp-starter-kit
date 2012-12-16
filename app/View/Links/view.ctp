@@ -17,7 +17,8 @@ $(function(){
 		submitdata : {
 			'data[<?php echo $modelClass;?>][field]': 'description_fr'
 		},
-		submit: 'OK',
+		submit: '<?php echo __('OK');?>',
+		cancel: '<?php echo __('Annuler');?>',
 		type: 'textarea'
 	});
 });
@@ -68,7 +69,7 @@ $this->Html->scriptEnd();
 		'address' => __('Adresse'),
 		'address_components' => __('Localisation'),
 		'geo' => __('Coordonnées GPS'),
-		//'rating' => __('Evaluation'),
+		'rating' => __('Evaluation'),
 		'email_contact' => __('E-mail'),
 		'phone' => __('Téléphone'),
 		'mobile' => __('Mobile'),

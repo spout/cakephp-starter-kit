@@ -8,7 +8,7 @@ $title = getPreferedLang($item[$modelClass], $displayField);
 		<?php echo $this->Html->link($title, array('action' => 'view', 'id' => $item[$modelClass][$primaryKey], 'slug' => slug($title)));?>
 	</p>
 	
-	<?php echo $this->element('Photos/gallery', array($singularVar => $item, 'num' => 1));?>
+	<?php echo $this->element('Photos/gallery', array('item' => $item, 'num' => 1));?>
 	
 	<?php if(!empty($item[$modelClass]['date'])):?>
 		<p><?php echo $this->MyHtml->niceDate($item[$modelClass]['date'], '%e %B %Y');?></p>

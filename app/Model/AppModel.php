@@ -42,7 +42,8 @@ class AppModel extends Model {
 		Cache::clear();
 	}
 	
-	public function isOwnedBy($id, $userId) {
+	public function isOwnedBy($id, $userId = null) {
+		$userId = empty($userId) ? Auth::id() : $userId;
 		return $this->field('id', array('id' => $id, 'user_id' => $userId)) === $id;
 	}
 	

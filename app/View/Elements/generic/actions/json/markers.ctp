@@ -34,4 +34,3 @@ foreach ($markers as $k => $m) {
 }
 
 echo json_encode($json);
-?>

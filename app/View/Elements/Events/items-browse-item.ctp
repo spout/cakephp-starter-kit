@@ -34,7 +34,7 @@ $description = getPreferedLang($item[$modelClass], 'description');
 	</p>
 	
 	<p class="<?php echo $this->request->params['controller'];?>-browse-item-dates">
-		<span class="underline"><?php echo __('Du');?></span>: <?php echo $this->element('generic/fields/date_start', array($singularVar => $item));?> - <span class="underline"><?php echo __('Au');?></span>: <?php echo $this->element('generic/fields/date_end', array($singularVar => $item));?>
+		<span class="underline"><?php echo __('Du');?></span>: <?php echo $this->element('generic/fields/date_start');?> - <span class="underline"><?php echo __('Au');?></span>: <?php echo $this->element('generic/fields/date_end');?>
 	</p>
 	
 	<div class="clear"></div>

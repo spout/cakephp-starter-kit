@@ -28,7 +28,7 @@ $this->set('title_for_layout', join(' ', $titles));
 					||
 					(strtotime($item[$modelClass]['date_end']) >= $monthStart && strtotime($item[$modelClass]['date_end']) <= $monthEnd)
 					) {
-					$outMonth .= $this->element($pluralVar.'/items-browse-item', array($singularVar => $item, 'k' => $k));
+					$outMonth .= $this->element($pluralVar.'/items-browse-item', array('item' => $item, 'k' => $k));
 				}
 			}
 		}

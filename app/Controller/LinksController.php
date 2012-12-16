@@ -66,16 +66,6 @@ class LinksController extends AppController {
 		}
 	}*/
 	
-	/*public function form($id = null, $catId = null) {
-		if ($this->request->is('post') || $this->request->is('put')) {
-			if ($this->{$this->modelClass}->isSpam(getPreferedLang($this->request->data[$this->modelClass], 'title'))) {
-				$this->flash(__("Vous avez été prévenu ! La proposition de la fiche a été ignorée. Si vous pensez qu'il s'agit d'une erreur, vous pouvez nous contacter."), 'Error');
-				$this->redirect('/');
-			}
-		}
-		parent::form($id, $catId);
-	}*/
-	
 	/*public function accept($id) {
 		//$this->checkRole(ROLE_ADMIN);
 		
@@ -102,40 +92,5 @@ class LinksController extends AppController {
 			}
 		}
 	}
-	
-	public function thumbs() {
-		$this->paginate = array('conditions' => array('Link.active' => 1, 'Link.url !=' => ''), 'limit' => 50);
-		$links = $this->paginate();
-		$this->set(compact('links'));
-	}*/
-	
-	/*public function browse($type = 'my') {
-	    
-	    switch($type){
-	    	default:
-		    case 'my':
-				$conditions = array('Link.user_id' => $this->Auth->user('id'));
-		    	break;
-		    	
-		    case 'top-sites':
-				$conditions = array('Link.url !=' => '', 'Link.count_clicks >=' => 2, 'Link.active' => 1);
-		    	$this->paginate['order'] = array('Link.count_clicks' => 'desc');
-				break;
-			case 'not-active':
-				$conditions = array('Link.active !=' => 1);
-				break;
-				
-			case 'thumbs':
-				$conditions = array('Link.url !=' => '', 'Link.active' => 1);
-				$this->paginate['limit'] = 50;
-				break;
-	    }
-	    
-	    $this->set('type', $type);
-		
-		$this->paginate['conditions'] = $conditions;
-		$this->paginate['contain'] = array('Country');	
-		
-	    $this->set('links', $links = $this->paginate('Link'));
-	}*/
+	*/
 }

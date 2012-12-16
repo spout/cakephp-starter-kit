@@ -112,17 +112,6 @@ abstract class AppController extends Controller {
 	public function beforeFilter() {
 		$this->_setLanguage();
 		
-		$viewFullPath = APP.'View'.DS.$this->viewPath.DS;
-		// Multilanguage views (PagesController)
-		if (isset($this->request->params['lang']) && !empty($this->request->params['lang']) && is_readable($viewFullPath.$this->request->params['lang'])) {
-			$this->viewPath = $this->viewPath.DS.$this->request->params['lang'];
-		}
-		
-		$genericViewFullPath = APP.'View'.DS.'Elements'.DS.'generic'.DS.'actions'.DS;
-		if (!is_readable($viewFullPath.$this->request->action.'.ctp') && is_readable($genericViewFullPath.$this->request->action.'.ctp')) {
-			$this->viewPath = 'Elements'.DS.'generic'.DS.'actions';
-		}
-		
 		// Set custom response type
 		if (isset($this->extraContentTypes[$this->RequestHandler->ext])) {
 			$this->response->type(array($this->RequestHandler->ext => $this->extraContentTypes[$this->RequestHandler->ext]));
@@ -168,6 +157,10 @@ abstract class AppController extends Controller {
 			$displayField = $model->displayField;
 			
 			$this->set(compact('modelClass', 'singularVar', 'pluralVar', 'primaryKey', 'fields', 'displayField'));
+		}
+		
+		if (isset($this->request->params['pass'][0]) && in_array($this->request->params['action'], array('edit', 'delete', 'admin_edit', 'admin_delete'))) {
+			$this->checkOwner($this->request->params['pass'][0]);
 		}
 		
 		$this->Crud->config('translations', array(
@@ -234,17 +227,38 @@ abstract class AppController extends Controller {
 	}
 	
 	public function beforeRender() {
+		$viewFullPath = APP.'View'.DS.$this->viewPath;
+		// Multilanguage views (PagesController)
+		if (isset($this->request->params['lang']) && !empty($this->request->params['lang']) && is_readable($viewFullPath.DS.$this->request->params['lang'])) {
+			$this->viewPath = $this->viewPath.DS.$this->request->params['lang'];
+		}
+		
+		$genericViewFullPath = APP.'View'.DS.'Elements'.DS.'generic'.DS.'actions';
+		
+		//$extPath = (isset($this->request->params['ext']) && !empty($this->request->params['ext'])) ? DS.$this->request->params['ext'] : '';
+		$extPath = '';
+		
+		if ($this->viewPath != 'Errors' && !is_readable($viewFullPath.$extPath.DS.$this->request->action.'.ctp') && is_readable($genericViewFullPath.$extPath.DS.$this->request->action.'.ctp')) {
+			$this->viewPath = 'Elements'.DS.'generic'.DS.'actions'.$extPath;
+		}
+		
 		if (in_array($this->request->params['action'], array('add', 'edit', 'admin_add', 'admin_edit'))) {
 			$id = (isset($this->request->params['pass'][0]) && !empty($this->request->params['pass'][0])) ? $this->request->params['pass'][0] : 0;
 			$this->set(compact('id'));
 		}
 		
-		if (in_array($this->request->params['action'], array('edit', 'delete', 'admin_edit', 'admin_delete'))) {
-			$this->checkOwner($this->request->params['pass'][0]);
-		}
-		
 		if (in_array($this->request->params['action'], array('add', 'edit', 'search', 'admin_add', 'admin_edit'))) {
 			$this->_setAssociatedData();
+		}
+	}
+	
+	protected function _renderGenericAction() {
+		if (!is_file(APP.'View'.DS.$this->viewPath.DS.$this->request->action.'.ctp')) {
+			$extDir = '';
+			if (isset($this->request->params['ext']) && !empty($this->request->params['ext'])) {
+				$extDir = $this->request->params['ext'].DS;
+			}
+			$this->render(DS.'Elements'.DS.'generic'.DS.'actions'.DS.$extDir.$this->request->action);
 		}
 	}
 	
@@ -266,7 +280,9 @@ abstract class AppController extends Controller {
 			define('TXT_LANG', $lang);
 		}
 		
-		$locale = setlocale(LC_ALL, $this->_getLocales($lang));
+		$locale = Configure::read('Config.languages.'.$lang.'.locale');
+		$locales = $this->_getLocales($locale);
+		setlocale(LC_ALL, $locales);
 	}
 	
 	protected function _getLocales($lang) {
@@ -277,7 +293,7 @@ abstract class AppController extends Controller {
 		// Iso2 lang code
 		$iso2 = $l10n->map($lang);
 		$catalog = $l10n->catalog($lang);
-
+		
 		$locales = array(
 			$iso2.'_'.strtoupper($iso2).'.'.strtoupper(str_replace('-', '', $catalog['charset'])), // fr_FR.UTF8
 			$iso2.'_'.strtoupper($iso2), // fr_FR
@@ -299,7 +315,7 @@ abstract class AppController extends Controller {
 	}
 	
 	public function checkOwner($id, $redirect = '/') {
-		if (Auth::hasRole(ROLE_ADMIN) || $this->{$this->modelClass}->isOwnedBy($id, Auth::id())) {
+		if (Auth::hasRole(ROLE_ADMIN) || $this->{$this->modelClass}->isOwnedBy($id)) {
 			return;
 		} else {
 			$this->Session->setFlash($this->Auth->authError, 'error');
@@ -359,35 +375,22 @@ abstract class AppController extends Controller {
 		}
 	}
 	
-	public function save_field($id = null, $field = null, $value = null) {
-		$idsList = $this->{$this->modelClass}->find('list', array('order' => array('id' => 'ASC')));
-		
-		foreach ($idsList as $k => &$v) {
-			$v = sprintf("%s - %s", $k, $v);
-		}
-		
-		$this->set(compact('idsList'));
-
+	public function save_field() {
 		if ($this->request->is('post') || $this->request->is('put')) {
-			$params = array('id', 'field', 'value');
-			foreach ($params as $v) {
-				if (is_null(${$v}) && isset($this->request->data[$this->modelClass][$v])) {
-					${$v} = $this->request->data[$this->modelClass][$v];
+			$data = $this->request->data[$this->modelClass];
+			
+			if (isset($data['id'], $data['field'], $data['value']) && !empty($data['id']) && !empty($data['field']) && !empty($data['value']) && $this->{$this->modelClass}->hasField($data['field'])) {
+				$this->{$this->modelClass}->id = $data['id'];
+				$this->{$this->modelClass}->saveField($data['field'], $data['value']);
+
+				if (!$this->request->is('ajax')) {
+					$this->Session->setFlash(__("L'enregistrement #%s a été modifié avec succès", $id), 'success');
+					$this->redirect($this->referer());
+				} else {
+					$this->set(compact('id', 'field', 'value'));
 				}
 			}
-		}
-		
-		if (!is_null($id) && !is_null($field) && !is_null($value) && $this->{$this->modelClass}->hasField($field)) {
-			$this->{$this->modelClass}->id = $id;
-			$this->{$this->modelClass}->saveField($field, $value);
 			
-			if (!$this->request->is('ajax')) {
-				$this->Session->setFlash(sprintf(__('Le champ "%s" de l\'enregistrement #%s a été modifié avec succès".'), $field, $id), 'success');
-				$this->redirect($this->referer());
-			} else {
-				$this->autoRender = false;
-				echo $value;
-			}
 		}
 	}
 	
@@ -445,22 +448,18 @@ abstract class AppController extends Controller {
 				$conditions = array($this->{$this->modelClass}->displayField.' LIKE' => '%'.$term.'%');
 			}
 			
-			$items = $this->{$this->modelClass}->find('all', array('conditions' => $conditions, 'limit' => 10));
+			$results = $this->{$this->modelClass}->find('all', array('conditions' => $conditions, 'limit' => 10));
 			
-			$data = array();
-			foreach ($items as $k => $item) {
-				$id = $item[$this->modelClass]['id'];
-				$label = getPreferedLang($item[$this->modelClass], 'title');
+			$items = array();
+			foreach ($results as $k => $v) {
+				$id = $v[$this->modelClass]['id'];
+				$label = getPreferedLang($v[$this->modelClass], 'title');
 				$url = Router::url(array('lang' => TXT_LANG, 'action' => 'view', 'id' => $id, 'slug' => slug($label)), true);
 				
-				$data[$k] = compact('id', 'label', 'url');
+				$items[$k] = compact('id', 'label', 'url');
 			}
 			
-			$this->autoRender = false;
-			echo json_encode($data);
-			
-			//$this->set('items', $items);
-			//$this->set('_serialize', array('items'));// JSON and XML Views
+			$this->set(compact('items'));
 		}
 	}
 	
@@ -474,10 +473,6 @@ abstract class AppController extends Controller {
 		);
  
 		$this->set(compact('items', 'channel'));
-		
-		if (!is_file(APP.'View'.DS.$this->viewPath.DS.'feed.ctp')) {
-			$this->render(DS.'Elements'.DS.'generic'.DS.'actions'.DS.'rss'.DS.'feed');
-		}
 	}
 	
 	public function map() {
@@ -509,8 +504,6 @@ abstract class AppController extends Controller {
 	}
 	
 	public function rating($id = null) {
-		$this->autoRender = false;
-		
 		if (!is_null($id) && ($this->request->is('post') || $this->request->is('put')) && isset($this->request->data[$this->modelClass]['rate'])) {
 			$cookieName = $this->modelClass.'_rating_'.$id;
 			$cookieName = md5($cookieName);// pretty cool
@@ -555,10 +548,12 @@ abstract class AppController extends Controller {
 				
 				$this->{$this->modelClass}->save($saveData, false);
 				
-				echo __('Votre note a été enregistrée');
+				$message = __('Votre note a été enregistrée');
 			} else {
-				echo __('Vous avez déjà noté cet enregistrement');
+				$message = __('Vous avez déjà noté cet enregistrement');
 			}
+			
+			$this->set(compact('message'));
 		}
 	}
 }
