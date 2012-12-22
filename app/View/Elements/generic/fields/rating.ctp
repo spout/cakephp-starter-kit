@@ -28,7 +28,7 @@ EOT;
 $this->Html->scriptBlock($scriptBlock, array('inline' => false));
 ?>
 
-<?php echo $this->Form->create($modelClass, array('id' => $ratingFormId, 'url' => array('action' => 'rating', $id)));?>
+<?php echo $this->Form->create($modelClass, array('id' => $ratingFormId, 'class' => 'rating-form', 'url' => array('action' => 'rating', $id)));?>
 <fieldset>
 <?php
 $inputs = array();

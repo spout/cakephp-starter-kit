@@ -18,10 +18,18 @@ class LinksController extends AppController {
 		$this->Crud->enableAction('add');
 		$this->Crud->enableAction('edit');
 		
-		$this->Auth->allow('add', 'thumbs');
+		$this->Auth->allow('add');
 		
 		// $this->{$this->modelClass}->updateItemCount();
 		// $this->_update_categorized();
+		
+		if ($this->request->params['action'] == 'view' && isset($this->request->params['pass'][0])) {
+			$this->helpers[] = 'AutoEmbed';
+			$this->set('nearbyResults', $this->{$this->modelClass}->findAllByDistance(array('id' => $this->request->params['pass'][0])));
+
+			$this->{$this->modelClass}->bindModel(array('hasMany' => array('Event' => array('conditions' => array('Event.date_end >=' => date('Y-m-d'))))));
+			$this->{$this->modelClass}->contain('Event');
+		}
 	}
 	
 	protected function _update_categorized() {
@@ -29,14 +37,10 @@ class LinksController extends AppController {
 		$catIdFields = array('cat_id', 'cat_id_2', 'cat_id_3');
 		
 		foreach ($items as $item) {
-			
 			foreach ($catIdFields as $catIdField) {
 				if (!empty($item[$this->modelClass][$catIdField])) {
-					
 					$catId = $item[$this->modelClass][$catIdField];
-					
 					$this->{$this->modelClass}->Categorized->create();
-
 					$dataSave = array(
 						'category_id' => $catId,
 						'foreign_key' => $item[$this->modelClass]['id'],
@@ -46,7 +50,6 @@ class LinksController extends AppController {
 				}
 			}
 		}
-		
 	}
 	
 	/*public function view($id) {

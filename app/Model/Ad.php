@@ -81,6 +81,21 @@ class Ad extends AppModel {
 			),
 	    	'captcha' => $this->validateCaptcha
 	    );
+		
+		$this->priceTypes = array(
+			'fixed' => __('Prix fixé'), 
+			'talk' => __('A discuter'), 
+			'na' => __('Non applicable'), 
+			'free' => __('Gratuit'), 
+			'exchange' => __('Echange'), 
+			'nc' => __('Non communiqué'),
+			//'bid' => __('Enchères')
+		);
+		
+		$this->adsTypes = array(
+			'offer' => __('Offre'),
+			'demand' => __('Demande')
+		);
 	}
 	
 	public function beforeValidate() {

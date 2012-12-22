@@ -61,6 +61,8 @@ abstract class AppController extends Controller {
 		),
 	);
 	
+	public $paginate = array('conditions' => array());
+	
 	public $displayFields = array('title', 'name');
 	public $bannedFields = array('id', 'created', 'modified');
 	
@@ -132,7 +134,7 @@ abstract class AppController extends Controller {
 			$this->_restoreLoginFromCookie();
 		}
 		
-		$this->set('moduleTitle', Inflector::humanize($this->request->controller));// Default moduleTitle used in generic breadcrumbs and index
+		$this->set('moduleTitle', Inflector::humanize($this->request->params['controller']));// Default moduleTitle used in generic breadcrumbs and index
 		
 		$siteComponent = Inflector::classify(str_replace('.', '', env('HTTP_HOST')));
 		$siteComponentClass = $siteComponent.'Component';
@@ -153,7 +155,7 @@ abstract class AppController extends Controller {
 			$this->set(compact('modelClass', 'primaryKey', 'fields', 'displayField'));
 		}
 		
-		if (isset($this->request->params['pass'][0]) && in_array($this->request->action, array('edit', 'delete', 'admin_edit', 'admin_delete', 'save_field'))) {
+		if (isset($this->request->params['pass'][0]) && in_array($this->request->params['action'], array('edit', 'delete', 'admin_edit', 'admin_delete', 'save_field'))) {
 			$this->checkOwner($this->request->params['pass'][0]);
 		}
 		
@@ -228,17 +230,17 @@ abstract class AppController extends Controller {
 		$genericViewFullPath = APP.'View'.DS.'Elements'.DS.'generic'.DS.'actions';
 		$extPath = (isset($this->request->params['ext']) && !empty($this->request->params['ext'])) ? DS.$this->request->params['ext'] : '';
 		
-		if (!is_readable($viewFullPath.$extPath.DS.$this->request->action.'.ctp') && is_readable($genericViewFullPath.$extPath.DS.$this->request->action.'.ctp')) {
+		if (!is_readable($viewFullPath.$extPath.DS.$this->request->params['action'].'.ctp') && is_readable($genericViewFullPath.$extPath.DS.$this->request->params['action'].'.ctp')) {
 			$this->viewPath = 'Elements'.DS.'generic'.DS.'actions';
 			$this->viewPath .= ($this->viewClass != 'Json') ? $extPath : '';// JsonView set automaticaly the extension path /json
 		}
 		
-		if (in_array($this->request->action, array('add', 'edit', 'admin_add', 'admin_edit'))) {
+		if (in_array($this->request->params['action'], array('add', 'edit', 'admin_add', 'admin_edit'))) {
 			$id = (isset($this->request->params['pass'][0]) && !empty($this->request->params['pass'][0])) ? $this->request->params['pass'][0] : 0;
 			$this->set(compact('id'));
 		}
 		
-		if (in_array($this->request->action, array('add', 'edit', 'search', 'admin_add', 'admin_edit'))) {
+		if (in_array($this->request->params['action'], array('add', 'edit', 'search', 'admin_add', 'admin_edit'))) {
 			$this->_setAssociatedData();
 		}
 	}
@@ -408,7 +410,8 @@ abstract class AppController extends Controller {
 	
 	public function search() {
 		$this->Prg->commonProcess();
-		$this->paginate['conditions'] = $this->{$this->modelClass}->parseCriteria($this->passedArgs);
+		$conditions = array_merge($this->paginate['conditions'], $this->{$this->modelClass}->parseCriteria($this->passedArgs));
+		$this->paginate['conditions'] = $conditions;
 		$this->set('items', $this->paginate());
 		$this->set('_serialize', array('items'));// JSON and XML Views
 	}
@@ -428,6 +431,8 @@ abstract class AppController extends Controller {
 			} else {
 				$conditions = array($this->{$this->modelClass}->displayField.' LIKE' => '%'.$term.'%');
 			}
+			
+			$conditions = array_merge($this->paginate['conditions'], $conditions);
 			
 			$results = $this->{$this->modelClass}->find('all', array('conditions' => $conditions, 'limit' => 10));
 			

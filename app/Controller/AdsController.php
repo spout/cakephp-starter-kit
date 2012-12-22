@@ -12,24 +12,10 @@ class AdsController extends AppController {
 		$this->Crud->enableAction('add');
 		$this->Crud->enableAction('edit');
 		
-		$priceTypes = array(
-			'fixed' => __('Prix fixé'), 
-			'talk' => __('A discuter'), 
-			'na' => __('Non applicable'), 
-			'free' => __('Gratuit'), 
-			'exchange' => __('Echange'), 
-			'nc' => __('Non communiqué'),
-			//'bid' => __('Enchères')
-		);
+		$this->Auth->allow('add');
 		
-		$adsTypes = array(
-			'offer' => __('Offre'),
-			'demand' => __('Demande')
-		);
-		
-		$this->set(compact('priceTypes', 'adsTypes'));
-		
-		// $this->set('moduleTitle', __('Annonces équitation'));
+		$this->set('priceTypes', $this->{$this->modelClass}->priceTypes);
+		$this->set('adsTypes', $this->{$this->modelClass}->adsTypes);
 		
 		// $this->{$this->modelClass}->updateItemCount();
 		
