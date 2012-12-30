@@ -96,6 +96,15 @@ form .required label:after {
 	border-radius: 10px;
 }
 
+label {
+	display: inline;
+}
+
+input[type=radio] {
+	width: 30px;
+	margin: 0;
+}
+
 /*
 Fix issue: Bootstrap distorts some Google Maps Controls and Overlays
 https://github.com/twitter/bootstrap/issues/1552

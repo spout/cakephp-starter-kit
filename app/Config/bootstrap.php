@@ -94,6 +94,11 @@ Configure::write('Role', $roles);
 App::uses('Auth', 'Tools.Lib');
 
 /**
+ * 
+ */
+Configure::write('Sitemaps.models', array('Link', 'Ad', 'Event'));
+
+/**
  * Configures default cache engine
  */
 Cache::config('default', array('engine' => 'File'));

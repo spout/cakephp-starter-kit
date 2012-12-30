@@ -40,3 +40,6 @@
 [submodule "app/Plugin/DataTable"]
 	path = app/Plugin/DataTable
 	url = https://github.com/tigrang/cakephp-datatable.git
+[submodule "app/Plugin/FileUpload"]
+	path = app/Plugin/FileUpload
+	url = git://github.com/hugodias/FileUpload.git

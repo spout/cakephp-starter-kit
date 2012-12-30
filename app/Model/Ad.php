@@ -11,7 +11,7 @@ class Ad extends AppModel {
 		),
 		'Hitcount',
 		'CategoryThreaded' => array(
-			'relationshipType' => 'hasAndBelongsToMany'
+			'relationshipType' => 'belongsTo'
 		),
 		'Search.Searchable',
 	);
@@ -39,9 +39,9 @@ class Ad extends AppModel {
 			'lastname' => array(
 				'required' => array('rule' => 'notEmpty', 'required' => true, 'message' => __('Champ requis'))
 			),
-			// 'cat_id' => array(
-	    		// 'required' => array('rule' => 'notEmpty', 'required' => true, 'message' => __('Champ requis'))
-	    	// ),
+			'category_id' => array(
+	    		'required' => array('rule' => 'notEmpty', 'required' => true, 'message' => __('Champ requis'))
+	    	),
 	    	'type' => array(
 	    		'required' => array('rule' => 'notEmpty', 'required' => true, 'message' => __('Champ requis'))
 	    	),

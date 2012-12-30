@@ -2,6 +2,7 @@
 App::uses('GenericEvent', 'Controller/Event');
 
 class LinksController extends AppController {
+	//public $helpers = array('AutoEmbed');
 	public $paginate = array('limit' => 15, 'order' => array('Link.created' => 'DESC') , 'contain' => array('Country', 'Category'), 'conditions' => array('Link.active' => 1));
 	
 	public $presetVars = array(
@@ -24,7 +25,7 @@ class LinksController extends AppController {
 		// $this->_update_categorized();
 		
 		if ($this->request->params['action'] == 'view' && isset($this->request->params['pass'][0])) {
-			$this->helpers[] = 'AutoEmbed';
+			//$this->helpers[] = 'AutoEmbed';
 			$this->set('nearbyResults', $this->{$this->modelClass}->findAllByDistance(array('id' => $this->request->params['pass'][0])));
 
 			$this->{$this->modelClass}->bindModel(array('hasMany' => array('Event' => array('conditions' => array('Event.date_end >=' => date('Y-m-d'))))));

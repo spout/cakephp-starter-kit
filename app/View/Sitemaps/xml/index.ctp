@@ -4,22 +4,27 @@
 		<changefreq>daily</changefreq>
 		<priority>1.0</priority>
 	</url>
-	<?php foreach($games as $game):?>
-		<?php
-		$title = getPreferedLang($game['Game'], 'title', array_keys(Configure::read('Config.languages')), TXT_LANG);
-		?>
-		<url>
-			<loc><?php echo $this->Html->url(array('controller' => 'games', 'action' => 'view', 'id' => $game['Game']['id'], 'slug' => $game['Game']['slug']));?></loc>
-			<lastmod><?php echo $this->Time->toAtom($game['Game']['modified']);?></lastmod>
-			<priority>0.8</priority>
-		</url>
+	<?php 
+	$languages = Configure::read('Config.languages');
+	?>
+	<?php foreach($items as $model => $modelItems):?>
+		<?php foreach($modelItems as $i):?>
+			<?php
+			$title = getPreferedLang($i, 'title', array_keys($languages), TXT_LANG);
+			?>
+			<url>
+				<loc><?php echo $this->Html->url(array('controller' => Inflector::tableize($model), 'action' => 'view', 'id' => $i['id'], 'slug' => slug($title)));?></loc>
+				<lastmod><?php echo $this->Time->toAtom($i['modified']);?></lastmod>
+				<priority>0.8</priority>
+			</url>
+		<?php endforeach;?>
 	<?php endforeach;?>
-	
-	<?php foreach($gameCategories as $gameCategory):?>
-		<url>
-			<loc><?php echo $this->Html->url(array('controller' => 'games', 'action' => 'index', $gameCategory['Category']['slug_'.TXT_LANG]));?></loc>
-			<changefreq>daily</changefreq>
-			<priority>1</priority>
-		</url>
+	<?php foreach($categories as $model => $modelItems):?>
+		<?php foreach($modelItems as $i):?>
+			<url>
+				<loc><?php echo $this->Html->url(array('controller' => Inflector::tableize($model), 'action' => 'index', 'cat_slug' => $i['slug_'.TXT_LANG]));?></loc>
+				<priority>1</priority>
+			</url>
+		<?php endforeach;?>
 	<?php endforeach;?>
 </urlset>

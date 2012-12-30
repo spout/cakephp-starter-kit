@@ -1,7 +1,6 @@
 <?php
 class Event extends AppModel {
 	public $name = 'Event';
-	public $recursive = -1;
 	
 	public $actsAs = array('Containable');
 	

@@ -48,8 +48,8 @@ $this->Html->scriptBlock($scriptBlock, array('inline' => false));
 <fieldset>
 	<legend><?php echo __("L'annonce");?></legend>
 	
-	<?php echo $this->Form->input('Category', array('label' => __('Catégorie'), 'empty' => '-', 'multiple' => false, 'escape' => false));?>
-	<?php echo $this->Form->input('type', array('legend' => __('Type'), 'options' => array('offer' => __('J\'offre'), 'demand' => __('Je recherche')), 'default' => 'offer', 'type' => 'radio'));?>
+	<?php echo $this->Form->input('category_id', array('label' => __('Catégorie'), 'empty' => '-', 'escape' => false));?>
+	<?php echo $this->Form->input('type', array('legend' => __('Type'), 'options' => array('offer' => __('J\'offre'), 'demand' => __('Je recherche')), 'default' => 'offer', 'type' => 'radio', 'class' => 'radio'));?>
 	<?php echo $this->Form->input('title', array('label' => __('Titre'), 'size' => 60, 'maxlength' => 70));?>
 	<?php echo $this->Form->input('description', array('label' => __('Description'), 'rows' => 8, 'cols' => 60));?>
 	
@@ -59,8 +59,8 @@ $this->Html->scriptBlock($scriptBlock, array('inline' => false));
 	
 	<fieldset>
 	<legend><?php echo __('Aspects financiers');?></legend>
-	<?php echo $this->Form->input('price_type', array('legend' => __('Option du prix'), 'options' => $priceTypes, 'default' => 'fixed', 'type' => 'radio', 'onclick' => 'price_type();'));?>
-	<p class="form-inputs-info" id="price-type-talk-info" style="display:none;">
+	<?php echo $this->Form->input('price_type', array('legend' => __('Option du prix'), 'options' => $priceTypes, 'default' => 'fixed', 'type' => 'radio', 'onclick' => 'price_type();', 'class' => 'radio'));?>
+	<p class="text-warning" id="price-type-talk-info" style="display:none;">
 		<?php echo __('Pour l\'option du prix A discuter, le champ prix est à titre indicatif et n\'est pas obligatoire.');?>
 	</p>
 	
@@ -76,6 +76,7 @@ $this->Html->scriptBlock($scriptBlock, array('inline' => false));
 	
 	<fieldset>
 	<legend><?php echo __("Photos");?></legend>
+	
 	<div class="form-inputs-info">
 	<?php echo __('Les annonces avec photo sont les plus visitées.<br />Poids: 500 Ko par photo maximum.<br />La photo 1 est la photo qui sera affichée dans les résultats.');?>
 	</div>

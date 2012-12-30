@@ -111,7 +111,7 @@ EOT;
 	</div>
 
 	<div class="span4">
-		<?php if((!isset($subCategories) || empty($subCategories)) && isset($countriesFilters) && !empty($countriesFilters)):?>
+		<?php if((!isset($subCategories) || empty($subCategories)) && isset($countriesFilters) && count($countriesFilters) > 1):?>
 			<div class="<?php echo $this->request->params['controller'];?>-countries-filters">
 				<h3><?php echo __('Filtrer la catégorie <em>%s</em> par pays', $category[$categoryModelClass]['name_'.TXT_LANG]);?></h3>
 				<ul>

@@ -7,9 +7,13 @@ class AppModel extends Model {
 		parent::__construct($id, $table, $ds);
 		
 		$this->validateCaptcha = array(
-				'valid' => array('rule' => 'validateCaptcha', 'message' => __('Code de sécurité incorrect')),
-				'required' => array('rule' => 'notEmpty', 'required' => true, 'message' => __('Champ requis'))
-			);
+			'valid' => array('rule' => 'validateCaptcha', 'message' => __('Code de sécurité incorrect')),
+			'required' => array('rule' => 'notEmpty', 'required' => true, 'message' => __('Champ requis'))
+		);
+		
+		$this->validatePhone = array(
+			'valid' => array('rule' => '/^(\+)[0-9]{1,3}[\s][0-9]{1,3}[\s][0-9]{6,10}$/', 'allowEmpty' => true, 'message' => __("Le format du numéro n'est pas valide"))
+		);
 	}
 	
 	public function beforeValidate() {
@@ -47,13 +51,13 @@ class AppModel extends Model {
 		return $this->field('id', array('id' => $id, 'user_id' => $userId)) === $id;
 	}
 	
-	public function validateCaptcha($data) {
+	public function validateCaptcha($check) {
 		$solved = CakeSession::read('Captcha.solved');
 	
 		if (!empty($solved)) {
 			return true;
 		} else {
-			list($field, $value) = each($data);
+			list($field, $value) = each($check);
 
 			App::import('Vendor', 'Securimage', array('file' => 'securimage'.DS.'securimage.php'));
 
@@ -88,8 +92,12 @@ class AppModel extends Model {
 		extract($params);
 		
 		if (!isset($id)) {
-			trigger_error('Model::findAllByDistance: please provide id param.');
-			return false;
+			if (isset($this->id) && !empty($this->id)) {
+				$id = $this->id;
+			} else {
+				trigger_error('Model::findAllByDistance: please provide id param.');
+				return false;
+			}
 		}
 		
 		$data = $this->read(null, $id);

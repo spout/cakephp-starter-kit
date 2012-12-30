@@ -1,7 +1,6 @@
 <?php 
 class Post extends AppModel {
 	public $name = 'Post';
-	public $recursive = -1;
 	
 	public $actsAs = array(
 		'Containable'

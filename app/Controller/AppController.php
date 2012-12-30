@@ -318,7 +318,7 @@ abstract class AppController extends Controller {
 	}
 
 	public function redirect($url, $status = 301, $exit = true) {
-		$this->disableCache();// FF6 cache redirect: http://forum.cakephp-fr.org/viewtopic.php?id=4027
+		$this->response->disableCache();// FF6 cache redirect: http://forum.cakephp-fr.org/viewtopic.php?id=4027
 		
 		if (is_array($url)) {
 			if (!isset($url['lang']) && isset($this->request->params['lang'])) {

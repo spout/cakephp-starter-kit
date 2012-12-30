@@ -62,21 +62,11 @@ class Link extends AppModel {
 	    	'email_contact' => array(
 				'email' => array('rule' => 'email', 'allowEmpty' => true, 'message' => __('E-mail non valide'))
 			),
-			'phone' => array(
-				'valid' => array('rule' => '/^(\+)[0-9]{1,3}[\s][0-9]{1,3}[\s][0-9]{6,10}$/', 'allowEmpty' => true, 'message' => __('Le format du numéro n\'est pas valide'))
-			),
-			'phone_2' => array(
-				'valid' => array('rule' => '/^(\+)[0-9]{1,3}[\s][0-9]{1,3}[\s][0-9]{6,10}$/', 'allowEmpty' => true, 'message' => __('Le format du numéro n\'est pas valide'))
-			),
-			'mobile' => array(
-				'valid' => array('rule' => '/^(\+)[0-9]{1,3}[\s][0-9]{1,3}[\s][0-9]{6,10}$/', 'allowEmpty' => true, 'message' => __('Le format du numéro n\'est pas valide'))
-			),
-			'mobile_2' => array(
-				'valid' => array('rule' => '/^(\+)[0-9]{1,3}[\s][0-9]{1,3}[\s][0-9]{6,10}$/', 'allowEmpty' => true, 'message' => __('Le format du numéro n\'est pas valide'))
-			),
-			'fax' => array(
-				'valid' => array('rule' => '/^(\+)[0-9]{1,3}[\s][0-9]{1,3}[\s][0-9]{6,10}$/', 'allowEmpty' => true, 'message' => __('Le format du numéro n\'est pas valide'))
-			),
+			'phone' => $this->validatePhone,
+			'phone_2' => $this->validatePhone,
+			'mobile' => $this->validatePhone,
+			'mobile_2' => $this->validatePhone,
+			'fax' => $this->validatePhone,
 	    	'captcha' => $this->validateCaptcha
 	    );
 	}

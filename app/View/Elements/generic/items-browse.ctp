@@ -18,6 +18,7 @@
 		$this->Paginator->options(array('url' => $paginatorUrl));
 		
 		$displayPaginator = ($this->request->params['action'] === 'search' || (isset($subCategories) && empty($subCategories))) ? true : false;
+		$displayPaginator = true;
 	?>
 	<?php if($displayPaginator):?>
 		<?php echo $this->element('paginator-counter');?>

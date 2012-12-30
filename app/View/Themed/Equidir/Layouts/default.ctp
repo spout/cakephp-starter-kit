@@ -23,17 +23,17 @@
 		
 		echo $this->Html->script('/bootstrap/js/bootstrap.min.js');
 		
-		echo $this->Html->script('jquery/jquery.prettyPhoto.js');
-		echo $this->Html->css('prettyPhoto/css/prettyPhoto.css', 'stylesheet', array('media' => 'screen'));
+		//echo $this->Html->script('jquery/jquery.prettyPhoto.js');
+		//echo $this->Html->css('prettyPhoto/css/prettyPhoto.css', 'stylesheet', array('media' => 'screen'));
 		
 		$this->Html->scriptStart();
 		
 		$autocompleteUrl = $this->Html->url(array('controller' => 'links', 'action' => 'autocomplete.json'));
 		?>
 		$(function(){
-			$("a.lightbox").prettyPhoto({
+			/*$("a.lightbox").prettyPhoto({
 				social_tools: ''
-			});
+			});*/
 			
 			//$('.alert').delay(5000).slideUp();
 			
