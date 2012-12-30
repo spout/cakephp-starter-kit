@@ -5,12 +5,12 @@ class SitemapsController extends AppController {
 	public function index() {
 		$this->layout = 'sitemap';
 		
-		$sitemapsModels = Configure::read('Sitemaps.models');
+		$models = Configure::read('Sitemaps.models');
 		
-		if (!empty($sitemapsModels)) {
+		if (!empty($models)) {
 			$items = array();
 			$categories = array();
-			foreach ($sitemapsModels as $model) {
+			foreach ($models as $model) {
 				$this->loadModel($model);
 				$params = array();
 				if ($this->{$model}->hasField('active')) {
