@@ -4,27 +4,25 @@
 		<changefreq>daily</changefreq>
 		<priority>1.0</priority>
 	</url>
-	<?php 
-	$languages = Configure::read('Config.languages');
-	?>
-	<?php foreach($items as $model => $modelItems):?>
-		<?php foreach($modelItems as $i):?>
-			<?php
-			$title = getPreferedLang($i, 'title', array_keys($languages));
-			?>
-			<url>
-				<loc><?php echo $this->Html->url(array('controller' => Inflector::tableize($model), 'action' => 'view', 'id' => $i['id'], 'slug' => slug($title)));?></loc>
-				<lastmod><?php echo $this->Time->toAtom($i['modified']);?></lastmod>
-				<priority>0.8</priority>
-			</url>
+	<?php if(isset($items) && !empty($items)):?>
+		<?php foreach($items as $model => $modelItems):?>
+			<?php foreach($modelItems as $i):?>
+				<url>
+					<loc><?php echo $this->Html->url(array('controller' => Inflector::tableize($model), 'action' => 'view', 'id' => $i['id'], 'slug' => slug(getPreferedLang($i, 'title'))));?></loc>
+					<lastmod><?php echo $this->Time->toAtom($i['modified']);?></lastmod>
+					<priority>0.8</priority>
+				</url>
+			<?php endforeach;?>
 		<?php endforeach;?>
-	<?php endforeach;?>
-	<?php foreach($categories as $model => $modelItems):?>
-		<?php foreach($modelItems as $i):?>
-			<url>
-				<loc><?php echo $this->Html->url(array('controller' => Inflector::tableize($model), 'action' => 'index', 'cat_slug' => $i['slug_'.TXT_LANG]));?></loc>
-				<priority>1</priority>
-			</url>
+	<?php endif;?>
+	<?php if(isset($categories) && !empty($categories)):?>
+		<?php foreach($categories as $model => $modelItems):?>
+			<?php foreach($modelItems as $i):?>
+				<url>
+					<loc><?php echo $this->Html->url(array('controller' => Inflector::tableize($model), 'action' => 'index', 'cat_slug' => $i['slug_'.TXT_LANG]));?></loc>
+					<priority>1</priority>
+				</url>
+			<?php endforeach;?>
 		<?php endforeach;?>
-	<?php endforeach;?>
+	<?php endif;?>
 </urlset>
