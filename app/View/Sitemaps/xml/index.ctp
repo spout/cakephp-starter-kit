@@ -10,7 +10,7 @@
 	<?php foreach($items as $model => $modelItems):?>
 		<?php foreach($modelItems as $i):?>
 			<?php
-			$title = getPreferedLang($i, 'title', array_keys($languages), TXT_LANG);
+			$title = getPreferedLang($i, 'title', array_keys($languages));
 			?>
 			<url>
 				<loc><?php echo $this->Html->url(array('controller' => Inflector::tableize($model), 'action' => 'view', 'id' => $i['id'], 'slug' => slug($title)));?></loc>

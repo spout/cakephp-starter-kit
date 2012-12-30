@@ -1,6 +1,5 @@
 <?php
 class SitemapsController extends AppController {
-	//public $uses = array('Game');
 	public $uses = array();
 	
 	public function index() {
