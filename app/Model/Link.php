@@ -47,7 +47,7 @@ class Link extends AppModel {
 			'lastname' => array(
 				'required' => array('rule' => 'notEmpty', 'required' => true, 'message' => __('Champ requis'))
 			),*/
-			'title_'.TXT_LANG => array(
+			$this->displayField => array(
 				'required' => array('rule' => 'notEmpty', 'required' => true, 'message' => __('Champ requis'))
 			),
 			/*'cat_id' => array(
@@ -107,9 +107,9 @@ class Link extends AppModel {
 	public function beforeSave() {
 		parent::beforeSave();
 		
-		$urlFields = array('url', 'facebook_url', 'rss_url', 'video');
-    	foreach($urlFields as $f){
-    		if(isset($this->data[$this->alias][$f])){
+		$urlFields = array('url', 'facebook', 'google_plus', 'rss', 'video');
+    	foreach ($urlFields as $f) {
+    		if (isset($this->data[$this->alias][$f])) {
     			$this->data[$this->alias][$f] = ($this->data[$this->alias][$f] == 'http://') ? '' : $this->data[$this->alias][$f];
     		}
     	}
@@ -120,8 +120,8 @@ class Link extends AppModel {
 	public function isSpam($string) {
 		$scoredKeywords = array('tunisie', 'marrakech', 'voyance', 'voiture', 'horoscope');
 		$score = 0;
-		foreach($scoredKeywords as $keyword){
-			if(stripos($string, $keyword) !== FALSE) {
+		foreach ($scoredKeywords as $keyword) {
+			if (stripos($string, $keyword) !== FALSE) {
    				$score++;
   			}
 		}

@@ -64,7 +64,6 @@ Configure::write('Config.publicActions',
 		'search',
 		'rating',
 		'datatable',
-		'admin_index',
 	)
 );
 

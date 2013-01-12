@@ -1,5 +1,17 @@
 <?php $this->set('title_for_layout', ($this->request->params['action'] == 'edit') ? __('Modifier une activité') : __('Proposer une activité'));?>
 
+<?php 
+$this->Html->script('/chosen/chosen.jquery.min.js', false);
+$this->Html->css('/chosen/chosen.css', null, array('inline' => false));
+$scriptBlock = <<<EOT
+	$(function(){
+		$("#LinkCategory").chosen({max_selected_options: 3});
+		$("#LinkCountry").chosen();
+	});
+EOT;
+$this->Html->scriptBlock($scriptBlock, array('inline' => false));
+?>
+
 <?php echo $this->Form->create();?>
 <?php if(isset($this->request->params['pass'][0]) && !empty($this->request->params['pass'][0])):?>
 	<?php echo $this->Form->hidden('id', array('value' => $this->request->params['pass'][0]));?>
@@ -58,15 +70,7 @@ $ebayGlobalIds = $tmp;
 <fieldset>
 	<legend><?php echo __('L\'activité');?></legend>
 	
-	<?php /*echo $this->Form->input('Cat', array('label' => __('Catégorie'), 'size' => 10, 'escape' => false));?>
-	
-	<?php for($i = 1; $i <= 3; $i++):?>
-		<?php echo $this->Form->input(($i == 1) ? 'cat_id' : 'cat_id_'.$i, array('label' => sprintf(__('Catégorie %d'), $i), 'options' => $cats, 'empty' => '-', 'default' => ($i == 1 && !empty($catId)) ? $catId : '', 'escape' => false));?>
-	<?php endfor;*/?>
-	
-	<?php echo $this->Form->input('Category', array('label' => __('Catégories'), 'size' => 10));?>
-	<?php /*echo $this->Form->input('category_id_2', array('label' => __('Catégorie %d', 2), 'options' => $categories, 'empty' => '-'));?>
-	<?php echo $this->Form->input('category_id_3', array('label' => __('Catégorie %d', 3), 'options' => $categories, 'empty' => '-'));*/?>
+	<?php echo $this->Form->input($modelClass.'.Category', array('label' => __('Catégories'), 'multiple' => true, 'size' => 10, 'data-placeholder' => __('Choisissez 1 à 3 catégories')));?>
 	
 	<div class="text-warning">
 		<?php echo __('Indiquez un titre clair et précis, qui vous différencie des autres, tel que le nom de votre entreprise.<br />Exemples <strong>non-valables</strong>:<ul><li>Vente de chevaux</li><li>Construction de boxes</li></ul>Exemples <strong>valables</strong>:<ul><li>Dupont - Vente de chevaux</li><li>Dupond - Construction de boxes</li></ul>');?>
@@ -102,6 +106,12 @@ $ebayGlobalIds = $tmp;
 			<?php echo __('Pour la vidéo de présentation, vous pouvez indiquer un lien vidéo YouTube, Dailymotion, Vimeo, Metacafe,...');?>
 		</div>
 		<?php echo $this->Form->input('video', array('label' => __('Lien vidéo de présentation'), 'size' => 45, 'default' => 'http://'));?>
+	</fieldset>
+	<fieldset>
+		<legend><?php echo __('Réseaux sociaux');?></legend>
+		<?php echo $this->Form->input('facebook', array('label' => __('Page Facebook'), 'size' => 45, 'default' => 'http://'));?>
+		<?php echo $this->Form->input('twitter', array('label' => __('Twitter'), 'size' => 45, 'default' => ''));?>
+		<?php echo $this->Form->input('google_plus', array('label' => __('Google+'), 'size' => 45, 'default' => 'http://'));?>
 	</fieldset>
 	<fieldset>
 		<legend><?php echo __("Où se trouve l'activité ?");?></legend>

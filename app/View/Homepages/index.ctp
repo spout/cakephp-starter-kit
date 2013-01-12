@@ -18,44 +18,33 @@ $sliderDir = 'slider/';
 $sliderPath = App::themePath($this->theme).'webroot/img/'.$sliderDir;
 
 $sliderFiles = glob($sliderPath.'*');
-
-$sliderAppendJs = '';
 if (!empty($sliderFiles)) {
 	shuffle($sliderFiles);
 	$sliderFiles = array_slice($sliderFiles, 0, 3);
-	$oneSlider = array_shift($sliderFiles);
-	
-	if (!empty($sliderFiles)) {
-		$sliderAppendJs = '';
-		foreach ($sliderFiles as $filename) {
-			$sliderAppendJs .= $this->Js->escape('<li>'.$this->Html->image($sliderDir.basename($filename)).'</li>');
-		}
-		
-		$sliderAppendJs = (!empty($sliderAppendJs)) ? '$("#slider").append("'.$sliderAppendJs.'")' : '';
-	}
 }
 
-$carouselId = 'homepage-carousel';
+/*$carouselId = 'homepage-carousel';
 
 $scriptBlock = <<<EOT
 $(function(){
 	$('#{$carouselId}').carousel();
 });
 EOT;
-$this->Html->scriptBlock($scriptBlock, array('inline' => false));
+$this->Html->scriptBlock($scriptBlock, array('inline' => false));*/
 
-/*$this->Html->script('jquery/jquery.carouFredSel-5.5.0-packed.js', false);
+$this->Html->script('jquery/jquery.carouFredSel-6.1.0-packed.js', false);
 
 $scriptBlock = <<<EOT
 $(function(){
-	{$sliderAppendJs}
 	$("#slider").carouFredSel({
 		circular: true,
 		infinite: true,
-		
+		width: "100%",
+		height: "auto",
+		responsive: true,
 		auto: {
 			pauseOnHover: true,
-			pauseDuration: 4000
+			timeoutDuration: 4000
 		},
 		scroll	: {
 			items : 1,
@@ -74,9 +63,10 @@ $(function(){
 	});
 });
 EOT;
-$this->Html->scriptBlock($scriptBlock, array('inline' => false));*/
+$this->Html->scriptBlock($scriptBlock, array('inline' => false));
 ?>
 
+<?php /*
 <div id="<?php echo $carouselId;?>" class="carousel slide">
 	<div class="carousel-inner">
 		<?php foreach ($sliderFiles as $k => $filename):?>
@@ -89,20 +79,23 @@ $this->Html->scriptBlock($scriptBlock, array('inline' => false));*/
 	<a class="carousel-control left" href="#<?php echo $carouselId;?>" data-slide="prev">&lsaquo;</a>
 	<a class="carousel-control right" href="#<?php echo $carouselId;?>" data-slide="next">&rsaquo;</a>
 </div>
+*/?>
 
-<?php /*if(isset($sliderDir) && isset($oneSlider) && !empty($oneSlider)):?>
+<?php if(isset($sliderFiles) && !empty($sliderFiles)):?>
 	<div id="homepages-slider">
 		<ul id="slider">
-			<li><?php echo $this->Html->image($sliderDir.basename($oneSlider));?></li>
+			<?php foreach ($sliderFiles as $k => $filename):?>
+				<li><?php echo $this->Html->image($sliderDir.basename($filename));?></li>
+			<?php endforeach;?>
 		</ul>
 		<div class="clear"></div>
 		<div id="slider-bottom"></div>
 	
-		<a id="slider-prev" href="javascript:void(0)"><span>prev</span></a>
-		<a id="slider-next" href="javascript:void(0)"><span>next</span></a>
+		<a id="slider-prev" href="#"><span>prev</span></a>
+		<a id="slider-next" href="#"><span>next</span></a>
 		<div id="slider-pagination"></div>
 	</div>
-<?php endif;*/?>
+<?php endif;?>
 
 <div class="row">
 	<div class="span8">

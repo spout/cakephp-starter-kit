@@ -5,7 +5,7 @@ class MyHtmlHelper extends HtmlHelper {
 	public function getAlphabetListArray($listData) {
 		$listAlphabet = array();
 		foreach($listData as $key => $name) {
-			$letter = strtoupper(substr(removeAccents(utf8_decode($name)), 0, 1));//removeAccent in vendors/functions.php
+			$letter = strtoupper(substr(removeAccents($name), 0, 1));//removeAccent in vendors/functions.php
 			if (is_numeric($letter)) {
 				$letter = '0-9';
 			}

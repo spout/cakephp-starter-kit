@@ -1,13 +1,16 @@
 <?php
-function removeLineBreaks($string, $replaceBy = " ") {
+function removeLineBreaks($string, $replaceBy = ' ') {
 	return preg_replace("/(\r\n|\n|\r)/", $replaceBy, $string);
 }
 
-function removeAccents($string) { 
-	return strtr($string, 
-		utf8_decode("ÀÁÂÃÄÅàáâãäåÒÓÔÕÖØòóôõöøÈÉÊËèéêëÇçÌÍÎÏìíîïÙÚÛÜùúûüÿÑñ"),
-		utf8_decode("aaaaaaaaaaaaooooooooooooeeeeeeeecciiiiiiiiuuuuuuuuynn")
-		);
+function removeAccents($str, $charset='utf-8') { 
+	$str = htmlentities($str, ENT_NOQUOTES, $charset);
+    
+    $str = preg_replace('#&([A-za-z])(?:acute|cedil|circ|grave|orn|ring|slash|th|tilde|uml);#', '\1', $str);
+    $str = preg_replace('#&([A-za-z]{2})(?:lig);#', '\1', $str); // pour les ligatures e.g. '&oelig;'
+    $str = preg_replace('#&[^;]+;#', '', $str); // supprime les autres caractères
+    
+    return $str;
 }
 
 function redirect($url) {

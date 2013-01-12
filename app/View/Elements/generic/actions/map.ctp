@@ -43,10 +43,11 @@ $(function() {
 });
 
 function getMarkers(){
-	var catId = $("#{$modelClass}CatId").val();
+	/*var catId = $("#{$modelClass}CatId").val();
 	if(catId == '' || catId == null){
 		catId = 0;
-	}
+	}*/
+	var catId = 0;
 	
 	var countryCode = $("#{$modelClass}Country").val();
 	if(countryCode == '' || countryCode == null){
@@ -116,11 +117,11 @@ $this->Html->scriptBlock($scriptBlock, array('inline' => false));
 <?php echo $this->Form->create();?>
 <fieldset>
 <legend><?php echo __('Recherche par carte');?></legend>
-<?php if(isset($catsList)):?>
+<?php /*if(isset($categoriesList)):?>
 	<div class="floatl">
-	<?php echo $this->Form->input('cat_id', array('label' => __('Catégorie'), 'options' => $catsList, 'showParents' => true, 'empty' => __('Toutes les catégories'), 'escape' => false));?>
+	<?php echo $this->Form->input('cat_id', array('label' => __('Catégorie'), 'options' => $categoriesList, 'showParents' => true, 'empty' => __('Toutes les catégories'), 'escape' => false));?>
 	</div>
-<?php endif;?>
+<?php endif;*/?>
 <div class="floatl">
 <?php echo $this->Form->input('country', array('label' => __('Pays'), 'options' => $countriesOptions, 'default' => '', 'empty' => __('Tous les pays')));?>
 </div>

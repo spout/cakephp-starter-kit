@@ -6,12 +6,14 @@ if (isset($categoryPath) && !empty($categoryPath)) {
 	$categoryPath = array_reverse($categoryPath);
 	foreach ($categoryPath as $k => $c) {
 		$titles[] = h($c[$categoryModelClass]['name_'.TXT_LANG]);
+		$h1_for_layout[] = h($c[$categoryModelClass]['name_'.TXT_LANG]);
+		
 		if ($k === 0 && isset($this->request->params['country']) && isset($country)) {
 			$titles[] = h($country['Country']['name_'.TXT_LANG]);
 		}
 	}
 	
-	$h1_for_layout[] = $category[$categoryModelClass]['name_'.TXT_LANG];
+	//$h1_for_layout[] = h($category[$categoryModelClass]['name_'.TXT_LANG]);
 } elseif (!isset($categoryModelClass) && (!isset($this->request->params['cat_slug']) || !isset($this->request->params['country']))) {
 	$h1_for_layout[] = $moduleTitle;
 }
@@ -36,7 +38,7 @@ if (!empty($h1_for_layout)) {
 	if (isset($this->request->params['country']) && !isset($categoryPath)) {
 		array_unshift($h1_for_layout, $moduleTitle);
 	}
-	$this->set('h1_for_layout', join(' - ', h($h1_for_layout)));
+	$this->set('h1_for_layout', join(' - ', $h1_for_layout));
 }
 
 if (isset($categoryModelClass) && isset($cat[$categoryModelClass]['description_'.TXT_LANG]) && !empty($cat[$categoryModelClass]['description_'.TXT_LANG])) {

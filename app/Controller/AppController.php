@@ -41,7 +41,7 @@ abstract class AppController extends Controller {
 	);
 	
 	public $helpers = array(
-		'Form' => array('className' => 'TwitterBootstrap.BootstrapForm'),
+		'Form' /*=> array('className' => 'TwitterBootstrap.BootstrapForm')*/,
 		'Paginator' => array('className' => 'TwitterBootstrap.BootstrapPaginator'),
 		'Html',
 		'Js',
@@ -468,7 +468,8 @@ abstract class AppController extends Controller {
 		
 		$countriesOptions = array();
 		foreach ($results as $r) {
-			$countriesOptions[$r['Country']['code'].'-'.slug($r['Country']['name_'.TXT_LANG])] = $r['Country']['name_'.TXT_LANG];
+			//$countriesOptions[$r['Country']['code'].'-'.slug($r['Country']['name_'.TXT_LANG])] = $r['Country']['name_'.TXT_LANG];
+			$countriesOptions[$r['Country']['code']] = getPreferedLang($r['Country'], 'name');
 		}
 		
 		asort($countriesOptions);
@@ -476,8 +477,8 @@ abstract class AppController extends Controller {
 		$this->set(compact('countriesOptions'));
 		
 		if (isset($this->{$this->modelClass}->Category)) {
-			$catsList = $this->{$this->modelClass}->Category->generateThreadedList(null, 'slug_'.TXT_LANG);
-			$this->set(compact('catsList'));
+			$categoriesList = $this->{$this->modelClass}->Category->generateThreadedList(null, 'slug_'.TXT_LANG);
+			$this->set(compact('categoriesList'));
 		}
 	}
 	
@@ -485,6 +486,9 @@ abstract class AppController extends Controller {
 		$conditions = isset($this->paginate['conditions']) ? $this->paginate['conditions'] : array();
 		$conditions['geo_lat !='] = NULL;
 		$conditions['geo_lon !='] = NULL;
+		if (isset($this->request->params['country']) && !empty($this->request->params['country'])) {
+			$conditions['country'] = $this->request->params['country'];
+		}
 		$items = $this->{$this->modelClass}->find('all', array('contain' => array('Country'), 'conditions' => $conditions));
 		$this->set(compact('items'));
 	}

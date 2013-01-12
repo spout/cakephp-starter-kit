@@ -110,7 +110,7 @@
 						<?php echo $this->element('generic/breadcrumbs');?>
 					<?php endif;?>
 					
-					<?php // pr($this->validationErrors);?>
+					<?php //debug($this->validationErrors);?>
 					
 					<?php echo $this->fetch('content');?>
 				</div>

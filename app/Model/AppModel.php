@@ -29,11 +29,11 @@ class AppModel extends Model {
 		}
 		
 		// HABTM form validation: http://stackoverflow.com/a/3716020
-		foreach ($this->hasAndBelongsToMany as $k => $v) {
+		/*foreach ($this->hasAndBelongsToMany as $k => $v) {
 			if (isset($this->data[$k][$k])) {
 				$this->data[$this->alias][$k] = $this->data[$k][$k];
 			}
-		}
+		}*/
 		
 		return true;
 	}

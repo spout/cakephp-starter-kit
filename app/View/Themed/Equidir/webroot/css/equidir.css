@@ -60,12 +60,6 @@ table {
 	border-collapse: collapse;
 }
 
-form .required label:after {
-	color: #e32;
-	content: ' *';
-	display: inline;
-}
-
 .cake-sql-log {}
 .cake-sql-log td, .cake-sql-log th {
 	border: 1px solid #CCC;
@@ -284,4 +278,116 @@ h2#links-cat-description, .links-browse h2, .ads-browse h2, .links-countries-fil
 		color: #DB7818;
 	}
 
+}
+
+/*Home slider*/
+#homepages-slider {
+	position: relative;
+}
+
+#slider {
+	margin: 0;
+	padding: 0;
+}
+
+#slider li {
+	margin: 0;
+	padding: 0;
+	display: block;
+}
+
+#slider li img {
+	display: block;
+	height: 390px;
+}
+
+#slider-bottom {
+	height: 55px;
+	width: 100%;
+	background: transparent url(../img/pageBg-slideBottom.png) no-repeat 50% 100%;
+	position: absolute;
+	bottom: 0;
+	left: 0;
+}
+
+#slider-prev, #slider-next {
+	position: absolute;
+	top: 40%;
+	display: block;
+	width: 51px;
+	height: 64px;
+	outline: 0;
+}
+
+#slider-prev:hover, #slider-next:hover {
+	background-position: 0 -64px;
+}
+
+#slider-prev span, #slider-next span{
+	display: none;
+}
+
+#slider-prev {
+	left: -15px;
+	background: transparent url(../img/slide-previous.png) no-repeat 0 0;
+}
+
+#slider-next {
+	right: -15px;
+	background: transparent url(../img/slide-next.png) no-repeat 0 0;
+}
+
+#slider-pagination {
+	position: absolute;
+	top: 10px;
+	right: 10px;
+}
+
+#slider-pagination a {
+	background: transparent url(../img/slide-pager.png) no-repeat 0 0;
+	width: 16px;
+	height: 15px;
+	display: inline-block;
+}
+
+#slider-pagination a:hover {
+	background-position: -16px 0;
+}
+
+#slider-pagination a.selected {
+	background-position: -32px 0;
+}
+
+#slider-pagination a span {
+	display: none;
+}
+
+/*End slider*/
+
+/* Forms */
+/*form label {
+	display: block;
+}
+
+form .input input,
+form .input textarea,
+form .input select {
+	width: 90%;
+}
+
+form .error .error-message,
+form .error label {
+	color: #B94A48;
+}
+
+form .error input,
+form .error textarea,
+form .error select {
+	border-color: #B94A48;
+}*/
+
+form .required label:after {
+	color: #e32;
+	content: ' *';
+	display: inline;
 }

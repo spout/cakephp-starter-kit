@@ -1,5 +1,6 @@
 <?php
 class CategoryThreadedBehavior extends ModelBehavior {
+	
 	public function setup(Model $Model, $settings = array()) {
 		switch($settings['relationshipType']) {
 			case 'belongsTo':
@@ -23,41 +24,12 @@ class CategoryThreadedBehavior extends ModelBehavior {
 					'unique' => true
 				);
 				
-				/*$Model->hasMany['Categorized'] = array(
-					'className' => 'Category',
-					'foreignKey' => 'foreign_key',
-					'associationForeignKey' => 'category_id',
-					'conditions' => array(
-						'Categorized.model' => $Model->alias
-					),
-				);
-				
-				$Model->Categorized->belongsTo[$Model->alias] = array(
-					'className' => $Model->alias,
-					'conditions' => array(
-						'Category.model' => $Model->alias
-					)
-				);*/
-				
 				break;
 			
 			default:
 				throw new Exception('Invalid or undefined relationType setting');
 				break;
 		}
-	}
-	
-	public function beforeSave(Model $Model) {
-		// prevent default functionnality to gain full control of others keys, see afterSave method
-		if (isset($Model->hasAndBelongsToMany['Category'])) {
-			// Unset to prevent undefined index in Model::save() because HABTM unbind
-			// Categories are still in $Model->data[$Model->alias]['Category'], see afterSave
-			unset($Model->data['Category']);
-			
-			$Model->unbindModel(array('hasAndBelongsToMany' => array('Category')));
-		}
-		
-		return true;
 	}
 	
 	public function afterSave(Model $Model) {
@@ -113,9 +85,6 @@ class CategoryThreadedBehavior extends ModelBehavior {
 				
 				unset($itemCount);
 			}
-			
-			// $log = $Model->getDataSource()->getLog(false, false);
-			// debug($log);
 		}
 	}
 }
