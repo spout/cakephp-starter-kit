@@ -1,8 +1,6 @@
 <?php
 class SpoutbeComponent extends Component {
 	public function beforeRender(Controller $controller) {
-		$controller->theme = 'Equidir';
-
 		$modulesTitles = array(
 			'users' => __('Membres'),
 			'links' => __('Annuaire'),

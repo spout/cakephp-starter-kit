@@ -17,7 +17,7 @@ $routesAliases = array(
 	'links' => array('fr' => 'annuaire', 'en' => 'directory'),
 	'ads' => array('fr' => 'annonces', 'en' => 'ads'),
 	'places' => array('fr' => 'sources', 'en' => 'springs'),
-	'posts' => array('fr' => 'blog', 'en' => 'blog'),
+	//'posts' => array('fr' => 'blog', 'en' => 'blog'),
 );
 
 $genericActionsRoutes = 'view|add|edit|delete|feed|markers|map|count_clicks|message|autocomplete|comment|search|save_field|accept|rating|browse|filemanager|sponsor|datatable|ajax_pagination';

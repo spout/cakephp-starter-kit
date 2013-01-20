@@ -111,7 +111,7 @@
 					
 					<?php echo $this->element('flash-messages');?>
 					
-					<?php //debug($this->validationErrors);?>
+					<?php //debug(Router::currentRoute());?>
 					
 					<?php echo $this->fetch('content');?>
 				</div>

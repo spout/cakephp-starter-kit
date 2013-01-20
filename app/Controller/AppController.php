@@ -117,6 +117,8 @@ abstract class AppController extends Controller {
 	public function beforeFilter() {
 		$this->_setLanguage();
 		
+		$this->theme = Configure::read('Config.theme');
+		
 		// Set custom response type
 		if (isset($this->extraContentTypes[$this->RequestHandler->ext])) {
 			$this->response->type(array($this->RequestHandler->ext => Configure::read('Config.extraContentTypes.'.$this->RequestHandler->ext)));

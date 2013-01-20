@@ -13,6 +13,11 @@ App::import('Vendor', 'functions');
 // Configure::write('MinifyAsset', true);
 
 /**
+ * Theme
+ */
+Configure::write('Config.theme', 'Equidir');
+
+/**
  * Load plugins
  */
 CakePlugin::loadAll();
