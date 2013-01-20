@@ -21,7 +21,6 @@ Configure::write('Config.theme', 'Equidir');
  * Load plugins
  */
 CakePlugin::loadAll();
-// CakePlugin::load('TwitterBootstrap', array('bootstrap' => false));
 
 /**
  * Configures exception renderer
@@ -33,44 +32,41 @@ Configure::write('Exception.renderer', 'AppExceptionRenderer');
  */
 Configure::write('Config.defaultLanguage', 'fr');
 Configure::write('Config.languages', array(
-		'fr' => array(
-			'language' => 'Français',
-			'locale' => 'fre',
-			'localeFallback' => 'eng',
-			'charset' => 'utf-8'
-		),
-		'en' => array(
-			'language' => 'English',
-			'locale' => 'eng',
-			'localeFallback' => 'fre',
-			'charset' => 'utf-8'
-		),
-	)
-);
+	'fr' => array(
+		'language' => 'Français',
+		'locale' => 'fra',
+		'localeFallback' => 'eng',
+		'charset' => 'utf-8'
+	),
+	'en' => array(
+		'language' => 'English',
+		'locale' => 'eng',
+		'localeFallback' => 'fra',
+		'charset' => 'utf-8'
+	),
+));
 
 /**
  * Configures AppController public controller actions
  */
-Configure::write('Config.publicActions', 
-	array(
-		'login',
-		'logout',
-		'register',
-		'display',
-		'index',
-		'view',
-		'feed',
-		'markers',
-		'map',
-		'count_clicks',
-		'message',
-		'autocomplete',
-		'comment',
-		'search',
-		'rating',
-		'datatable',
-	)
-);
+Configure::write('Config.publicActions', array(
+	'login',
+	'logout',
+	'register',
+	'display',
+	'index',
+	'view',
+	'feed',
+	'markers',
+	'map',
+	'count_clicks',
+	'message',
+	'autocomplete',
+	'comment',
+	'search',
+	'rating',
+	'datatable',
+));
 
 /**
  * Extra content types

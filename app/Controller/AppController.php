@@ -10,10 +10,7 @@ abstract class AppController extends Controller {
 		'Crud.Crud' => array(
 			'actions' => array(
 				'index',
-				// 'add',
-				// 'edit',
 				'view',
-				// 'delete',
 				//'admin_index',
 				'admin_add',
 				'admin_edit',
