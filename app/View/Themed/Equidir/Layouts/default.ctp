@@ -105,10 +105,11 @@
 				$hasSidebar = (isset($sidebarCategories) || isset($platforms)) ? true : false;
 				?>
 				<div class="<?php if($hasSidebar):?>span9<?php else:?>span12<?php endif;?>">
-					<?php echo $this->element('flash-messages');?>
 					<?php if(empty($this->request->params['isAjax'])):?>
 						<?php echo $this->element('generic/breadcrumbs');?>
 					<?php endif;?>
+					
+					<?php echo $this->element('flash-messages');?>
 					
 					<?php //debug($this->validationErrors);?>
 					

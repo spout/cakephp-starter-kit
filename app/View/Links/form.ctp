@@ -1,6 +1,7 @@
 <?php $this->set('title_for_layout', ($this->request->params['action'] == 'edit') ? __('Modifier une activité') : __('Proposer une activité'));?>
 
 <?php 
+/*
 $this->Html->script('/chosen/chosen.jquery.min.js', false);
 $this->Html->css('/chosen/chosen.css', null, array('inline' => false));
 $scriptBlock = <<<EOT
@@ -9,10 +10,13 @@ $scriptBlock = <<<EOT
 		$("#LinkCountry").chosen();
 	});
 EOT;
-$this->Html->scriptBlock($scriptBlock, array('inline' => false));
+$this->Html->scriptBlock($scriptBlock, array('inline' => false));*/
+
+$this->element('chosen', array('selectors' => array('#LinkCategory' => array('max_selected_options' => 3), '#LinkCountry')));
+//$this->element('select2', array('selectors' => array('#LinkCategory' => array('maximumSelectionSize' => 3), '#LinkCountry')));
 ?>
 
-<?php echo $this->Form->create();?>
+<?php echo $this->Form->create($modelClass, array('novalidate' => true));?>
 <?php if(isset($this->request->params['pass'][0]) && !empty($this->request->params['pass'][0])):?>
 	<?php echo $this->Form->hidden('id', array('value' => $this->request->params['pass'][0]));?>
 <?php else:?>
@@ -70,7 +74,7 @@ $ebayGlobalIds = $tmp;
 <fieldset>
 	<legend><?php echo __('L\'activité');?></legend>
 	
-	<?php echo $this->Form->input($modelClass.'.Category', array('label' => __('Catégories'), 'multiple' => true, 'size' => 10, 'data-placeholder' => __('Choisissez 1 à 3 catégories')));?>
+	<?php echo $this->Form->input($modelClass.'.Category', array('label' => __('Catégories'), 'multiple' => true, 'size' => 10, 'data-placeholder' => __('Choisissez 1 à 3 catégories'), 'style' => 'width: 90%;'));?>
 	
 	<div class="text-warning">
 		<?php echo __('Indiquez un titre clair et précis, qui vous différencie des autres, tel que le nom de votre entreprise.<br />Exemples <strong>non-valables</strong>:<ul><li>Vente de chevaux</li><li>Construction de boxes</li></ul>Exemples <strong>valables</strong>:<ul><li>Dupont - Vente de chevaux</li><li>Dupond - Construction de boxes</li></ul>');?>

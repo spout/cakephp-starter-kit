@@ -27,7 +27,7 @@ $this->set('title_for_layout', h(join(' - ', $titles)));
 <?php echo $this->Form->input('keywords', array('label' => __('Mot(s) clé(s)'), 'size' => 40, 'after' => '<br />'.__('Selle, tapis, guêtres, étriers, bridon, couverture, ...')));?>
 </div>
 <div class="floatl">
-<?php echo $this->Form->input('categoryId', array('label' => __('Catégorie'), 'options' => $categories, 'empty' => '-'));?>
+<?php echo $this->Form->input('categoryId', array('legend' => __('Catégorie'), 'options' => $categories, 'type' => 'radio'));?>
 </div>
 <div class="clear"></div>
 <?php if(isset($this->request->params['named']['id']) && !empty($this->request->params['named']['id'])):?>

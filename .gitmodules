@@ -25,9 +25,6 @@
 [submodule "app/Plugin/Crud"]
 	path = app/Plugin/Crud
 	url = git://github.com/nodesagency/Platform-Crud-Plugin.git
-[submodule "app/Plugin/TwitterBootstrap"]
-	path = app/Plugin/TwitterBootstrap
-	url = git://github.com/nodesagency/Platform-Twitter-Bootstrap.git
 [submodule "app/Plugin/Tags"]
 	path = app/Plugin/Tags
 	url = git://github.com/CakeDC/tags.git

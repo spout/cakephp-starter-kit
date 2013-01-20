@@ -41,8 +41,8 @@ abstract class AppController extends Controller {
 	);
 	
 	public $helpers = array(
-		'Form' /*=> array('className' => 'TwitterBootstrap.BootstrapForm')*/,
-		'Paginator' => array('className' => 'TwitterBootstrap.BootstrapPaginator'),
+		'Form',
+		'Paginator',
 		'Html',
 		'Js',
 		'Time',

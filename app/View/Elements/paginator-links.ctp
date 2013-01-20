@@ -25,7 +25,7 @@ if ($paginatorParams['pageCount'] > 1) {
 
 	$first = $this->Paginator->first($labels['first']['anchor'], array('escape' => false, 'tag' => 'li', 'title' => $labels['first']['title']));
 	$prev = $this->Paginator->prev($labels['prev']['anchor'], array('escape' => false, 'tag' => 'li', 'title' => $labels['prev']['title']));
-	$numbers = $this->Paginator->numbers(array('modulus' => 8, 'separator' => $sep, 'tag' => 'li'));
+	$numbers = $this->Paginator->numbers(array('modulus' => 8, 'separator' => $sep, 'tag' => 'li', 'currentClass' => 'active', 'currentTag' => 'a'));
 	$next = $this->Paginator->next($labels['next']['anchor'], array('escape' => false, 'tag' => 'li', 'title' => $labels['next']['title']));
 	$last = $this->Paginator->last($labels['last']['anchor'], array('escape' => false, 'tag' => 'li', 'title' => $labels['last']['title']));
 	

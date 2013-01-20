@@ -365,11 +365,11 @@ h2#links-cat-description, .links-browse h2, .ads-browse h2, .links-countries-fil
 /*End slider*/
 
 /* Forms */
-/*form label {
+form label {
 	display: block;
 }
 
-form .input input,
+form .input input[type=text],
 form .input textarea,
 form .input select {
 	width: 90%;
@@ -380,11 +380,12 @@ form .error label {
 	color: #B94A48;
 }
 
+
 form .error input,
 form .error textarea,
 form .error select {
 	border-color: #B94A48;
-}*/
+}
 
 form .required label:after {
 	color: #e32;
