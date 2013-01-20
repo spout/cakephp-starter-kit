@@ -17,14 +17,14 @@ $routesAliases = array(
 	'links' => array('fr' => 'annuaire', 'en' => 'directory'),
 	'ads' => array('fr' => 'annonces', 'en' => 'ads'),
 	'places' => array('fr' => 'sources', 'en' => 'springs'),
-	//'posts' => array('fr' => 'blog', 'en' => 'blog'),
+	'posts' => array('fr' => 'blog', 'en' => 'blog'),
 );
 
 $genericActionsRoutes = 'view|add|edit|delete|feed|markers|map|count_clicks|message|autocomplete|comment|search|save_field|accept|rating|browse|filemanager|sponsor|datatable|ajax_pagination';
 
 foreach ($routesAliases as $controller => $aliases) {
 	foreach ($aliases as $lang => $alias) {
-		Router::connect('/:lang/:prefix/'.$alias, array('controller' => $controller, 'action' => 'index', 'prefix' => 'admin', 'admin' => true), array('lang' => $lang, 'routeClass' => 'I18nRoute'));
+		//Router::connect('/:lang/:prefix/'.$alias, array('controller' => $controller, 'action' => 'index', 'prefix' => 'admin', 'admin' => true), array('lang' => $lang, 'routeClass' => 'I18nRoute'));
 		Router::connect('/:lang/:prefix/'.$alias.'/*', array('controller' => $controller, 'prefix' => 'admin', 'admin' => true), array('lang' => $lang, 'routeClass' => 'I18nRoute'));
 		
 		Router::connect('/:lang/'.$alias.'/:id-:slug', array('controller' => $controller, 'action' => 'view'), array('lang' => $lang, 'id' => '[0-9]+', 'slug' => '[a-zA-Z0-9\-_]+', 'pass' => array('id'), 'routeClass' => 'I18nRoute'));

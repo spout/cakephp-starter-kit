@@ -117,8 +117,6 @@ abstract class AppController extends Controller {
 	public function beforeFilter() {
 		$this->_setLanguage();
 		
-		$this->theme = Configure::read('Config.theme');
-		
 		// Set custom response type
 		if (isset($this->extraContentTypes[$this->RequestHandler->ext])) {
 			$this->response->type(array($this->RequestHandler->ext => Configure::read('Config.extraContentTypes.'.$this->RequestHandler->ext)));
@@ -134,14 +132,6 @@ abstract class AppController extends Controller {
 			}
 			
 			$this->_restoreLoginFromCookie();
-		}
-		
-		$this->set('moduleTitle', Inflector::humanize($this->request->params['controller']));// Default moduleTitle used in generic breadcrumbs and index
-		
-		$siteComponent = Inflector::classify(str_replace('.', '', env('HTTP_HOST')));
-		$siteComponentClass = $siteComponent.'Component';
-		if (file_exists(APP.'Controller'.DS.'Component'.DS.$siteComponentClass.'.php')) {
-			$this->Components->load($siteComponent);
 		}
 		
 		$this->loadModel($this->modelClass);
@@ -223,6 +213,16 @@ abstract class AppController extends Controller {
 	}
 	
 	public function beforeRender() {
+		$this->theme = Configure::read('Config.theme');
+		
+		// Default moduleTitle used in generic breadcrumbs and index
+		config('modules');
+		$moduleTitle = Configure::read('Modules.titles.'.$this->request->params['controller']);
+		if (empty($moduleTitle)) {
+			$moduleTitle = Inflector::humanize($this->request->params['controller']);
+		}
+		$this->set(compact('moduleTitle'));
+		
 		$viewFullPath = APP.'View'.DS.$this->name;
 		// Multilanguage views (PagesController)
 		if (isset($this->request->params['lang']) && !empty($this->request->params['lang']) && is_readable($viewFullPath.DS.$this->request->params['lang'])) {
@@ -282,8 +282,8 @@ abstract class AppController extends Controller {
 		$locales = array(
 			$iso2.'_'.strtoupper($iso2).'.'.strtoupper(str_replace('-', '', $catalog['charset'])), // fr_FR.UTF8
 			$iso2.'_'.strtoupper($iso2), // fr_FR
-			$catalog['locale'], // fre
-			$catalog['localeFallback'], // fre
+			$catalog['locale'], // fra
+			$catalog['localeFallback'], // fra
 			$iso2 // fr
 		);
 		return $locales;
