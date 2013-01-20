@@ -1,7 +1,7 @@
 <?php
-App::uses('CrudBaseEvent', 'Crud.Controller/Event');
+App::uses('CrudListener', 'Crud.Controller/Event');
 
-class GenericEvent extends CrudBaseEvent {
+class GenericEvent extends CrudListener {
 	
 	public function init(CakeEvent $event) {
 		$event->subject->model->contain(array('Country' , 'Category'));

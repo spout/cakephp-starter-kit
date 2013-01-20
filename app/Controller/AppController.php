@@ -154,6 +154,8 @@ abstract class AppController extends Controller {
 		
 		// Customize crud
 		$this->Crud->mapActionView(array(
+			'add' => 'form',
+			'edit' => 'form',
 			'admin_index' => 'index',
 			'admin_add' => 'form',
 			'admin_edit' => 'form',
