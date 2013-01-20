@@ -11,13 +11,11 @@ abstract class AppController extends Controller {
 			'actions' => array(
 				'index',
 				'view',
-				//'admin_index',
 				'admin_add',
 				'admin_edit',
 				'admin_view',
 				'admin_delete'
 			),
-			'validateId' => 'integer',
 			'relatedLists' => array('default' => false),
 		),
 		'Auth' => array(
@@ -133,6 +131,10 @@ abstract class AppController extends Controller {
 			$this->_restoreLoginFromCookie();
 		}
 		
+		if (isset($this->request->params['pass'][0]) && in_array($this->request->params['action'], array('edit', 'delete', 'admin_edit', 'admin_delete', 'save_field'))) {
+			$this->checkOwner($this->request->params['pass'][0]);
+		}
+		
 		$this->loadModel($this->modelClass);
 		if (class_exists($this->modelClass)) {
 			$model =& $this->{$this->modelClass};
@@ -144,10 +146,6 @@ abstract class AppController extends Controller {
 			$displayField = $model->displayField;
 			
 			$this->set(compact('modelClass', 'primaryKey', 'fields', 'displayField'));
-		}
-		
-		if (isset($this->request->params['pass'][0]) && in_array($this->request->params['action'], array('edit', 'delete', 'admin_edit', 'admin_delete', 'save_field'))) {
-			$this->checkOwner($this->request->params['pass'][0]);
 		}
 		
 		$this->Crud->config('translations', Configure::read('Crud.translations'));
