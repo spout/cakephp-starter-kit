@@ -3,6 +3,8 @@ App::uses('Controller', 'Controller');
 App::uses('CakeEmail', 'Network/Email');
 App::uses('Sanitize', 'Utility');
 
+config('translations');
+
 abstract class AppController extends Controller {
 	public $components = array(
 		'Crud.Crud' => array(
@@ -151,45 +153,7 @@ abstract class AppController extends Controller {
 			$this->checkOwner($this->request->params['pass'][0]);
 		}
 		
-		$this->Crud->config('translations', array(
-			'create' => array(
-				'success' => array(
-					'message' => __('Enregistrement ajouté avec succès !'),
-				),
-				'error' => array(
-					'message' => __('Veuillez corriger les erreurs ci-dessous.'),
-				)
-			),
-			'update' => array(
-				'success' => array(
-					'message' => __('Enregistrement modifié avec succès !'),
-				),
-				'error' => array(
-					'message' => __('Veuillez corriger les erreurs ci-dessous.'),
-				)
-			),
-			'delete' => array(
-				'success' => array(
-					'message' => __('Enregistrement supprimé avec succès !'),
-				),
-				'error' => array(
-					'message' => __('La suppression de l\'enregistrement a échoué.'),
-				)
-			),
-			'find' => array(
-				'error' => array(
-					'message' => __('Enregistrement non trouvé.'),
-				)
-			),
-			'error' => array(
-				'invalid_http_request' => array(
-					'message' => __('Requête HTTP non valide'),
-				),
-				'invalid_id' => array(
-					'message' => __('Id non valide'),
-				)
-			)
-		));
+		$this->Crud->config('translations', Configure::read('Crud.translations'));
 		
 		// Customize crud
 		$this->Crud->mapActionView(array(
@@ -216,7 +180,6 @@ abstract class AppController extends Controller {
 		$this->theme = Configure::read('Config.theme');
 		
 		// Default moduleTitle used in generic breadcrumbs and index
-		config('modules');
 		$moduleTitle = Configure::read('Modules.titles.'.$this->request->params['controller']);
 		if (empty($moduleTitle)) {
 			$moduleTitle = Inflector::humanize($this->request->params['controller']);
