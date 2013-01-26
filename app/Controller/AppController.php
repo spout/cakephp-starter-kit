@@ -51,11 +51,6 @@ abstract class AppController extends Controller {
 		'Utils.Tree',
 		'Utils.Gravatar',
 		'Minify',
-		'DataTable.DataTable' => array(
-			'js' => array(
-				//'bJQueryUI' => true,
-			),
-		),
 	);
 	
 	public $paginate = array('conditions' => array());
@@ -352,29 +347,11 @@ abstract class AppController extends Controller {
 		$this->set(compact('items', 'columns'));
 	}
 	
-	public function datatable() {
-		$columns = array(
-			$this->{$this->modelClass}->primaryKey => '#',
-			$this->{$this->modelClass}->displayField => Inflector::humanize($this->{$this->modelClass}->displayField),
-			'actions' => null
-		);
-		
-		$this->set(compact('columns'));
-		
-		$this->DataTable = $this->Components->load('DataTable.DataTable', array(
-			'columns' => $columns,
-			'triggerAction' => array('datatable')
-		));
-		$this->DataTable->initialize($this);
-		
-		$this->DataTable->paginate = array($this->modelClass);
-	}
-	
 	public function search() {
 		$this->Prg->commonProcess();
-		//$conditions = array_merge($this->paginate['conditions'], $this->{$this->modelClass}->parseCriteria($this->passedArgs));
-		//$this->paginate['conditions'] = $conditions;
-		$this->paginate['conditions'] = $this->{$this->modelClass}->parseCriteria($this->passedArgs);
+
+		$this->paginate['conditions'] = isset($this->paginate['conditions']) ? $this->paginate['conditions'] : array();
+		$this->paginate['conditions'] = array_merge($this->paginate['conditions'], $this->{$this->modelClass}->parseCriteria($this->passedArgs));
 		
 		$this->set('items', $this->paginate());
 		$this->set('_serialize', array('items'));// JSON and XML Views
