@@ -84,16 +84,4 @@ class Bookmark extends AppModel {
 			}
 		}
 	}
-	
-	// public function findByTags($data = array()) {
-        // $this->Tagged->Behaviors->attach('Containable', array('autoFields' => false));
-        // $this->Tagged->Behaviors->attach('Search.Searchable');
-
-        // $query = $this->Tagged->getQuery('all', array(
-            // 'conditions' => array('Tag.name'  => $data['tag']),
-            // 'fields' => array('foreign_key'),
-            // 'contain' => array('Tag')
-        // ));
-        // return $query;
-    // }
 }

@@ -6,9 +6,10 @@ class EventsController extends AppController {
 		parent::beforeFilter();
 		$this->Auth->allow('fullcalendar');
 		
-		$this->paginate['conditions'] = array('date_end >=' => date('Y-m-d'));
+		$this->Crud->enableAction('add');
+		$this->Auth->allow('add');
 		
-		$this->set('moduleTitle', __('Agenda équestre'));
+		$this->paginate['conditions'] = array('date_end >=' => date('Y-m-d'));
 	}
 		
 	public function index() {

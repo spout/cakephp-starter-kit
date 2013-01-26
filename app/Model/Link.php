@@ -3,11 +3,9 @@ class Link extends AppModel {
 	public $name = 'Link';
 	
 	public $actsAs = array(
-		'Containable',
 		'CategoryThreaded' => array(
 			'relationshipType' => 'hasAndBelongsToMany'
 		),
-		'Search.Searchable',
 	);
 	
 	public $belongsTo = array(
@@ -50,9 +48,6 @@ class Link extends AppModel {
 			$this->displayField => array(
 				'required' => array('rule' => 'notEmpty', 'required' => true, 'message' => __('Champ requis'))
 			),
-			/*'cat_id' => array(
-	    		'required' => array('rule' => 'notEmpty', 'required' => true, 'message' => __('Champ requis'))
-	    	),*/
 			'Category' => array(
 	    		'required' => array('rule' => array('multiple', array('min' => 1, 'max' => 3)), 'required' => true, 'message' => __('Veuillez sélectionner 1 à 3 catégories'))
 	    	),
@@ -69,39 +64,6 @@ class Link extends AppModel {
 			'fax' => $this->validatePhone,
 	    	'captcha' => $this->validateCaptcha
 	    );
-	}
-	
-	public function matchQueryConditions($data = array()) {
-		$filter = $data['query'];
-		
-		$matchFields = array();
-		$genericFields = array('title', 'description', 'city', 'postcode', 'address_components');
-		
-		foreach ($genericFields as $f) {
-			if ($this->hasField($f)) {
-				$matchFields[] = $this->alias.'.'.$f;
-			}
-		}
-		
-		foreach (Configure::read('Config.languages') as $lang => $v) {
-			if ($this->hasField('title_'.$lang)) {
-				$matchFields[] = $this->alias.'.'.'title_'.$lang;
-			}
-			
-			if ($this->hasField('description_'.$lang)) {
-				$matchFields[] = $this->alias.'.'.'description_'.$lang;
-			}
-			
-		}
-				
-		$condition = "MATCH (".join(',', $matchFields).") AGAINST ('{$filter}' IN BOOLEAN MODE)";
-
-		return $condition;
-	}
-	
-	public function findByCatSlug($data = array()) {
-		//$this->Tagged->Behaviors->attach('Containable', array('autoFields' => false));
-        //$this->Tagged->Behaviors->attach('Search.Searchable');
 	}
 	
 	public function beforeSave() {

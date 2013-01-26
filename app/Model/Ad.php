@@ -3,7 +3,6 @@ class Ad extends AppModel {
 	public $name = 'Ad';
 	
 	public $actsAs = array(
-		'Containable',
 		'Upload.Upload' => array(
 			'photo_1' => array('path' => 'webroot{DS}files{DS}annonces{DS}{field}{DS}'),//default 'webroot{DS}files{DS}{model}{DS}{field}{DS}', "ad" is banned keyword by AdBlockPlus
 			'photo_2' => array('path' => 'webroot{DS}files{DS}annonces{DS}{field}{DS}'),
@@ -13,7 +12,6 @@ class Ad extends AppModel {
 		'CategoryThreaded' => array(
 			'relationshipType' => 'belongsTo'
 		),
-		'Search.Searchable',
 	);
 	
 	public $belongsTo = array(

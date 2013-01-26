@@ -1,13 +1,6 @@
 <?php 
 class CustomField extends AppModel {
 	public $name = 'CustomField';
-	public $actsAs = array('Containable');
-	
-	public $validate = array(
-		/*'options' => array(
-			'valid' => array('rule' => 'validateJson', 'message' => 'Invalid JSON data')
-		)*/
-	);
 	
 	public function beforeValidate() {
 		if (isset($this->data[$this->name]['id']) && !empty($this->data[$this->name]['id']) && empty($this->data[$this->name]['options'])) {

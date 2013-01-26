@@ -1,27 +1,10 @@
 <?php 
 class ShopsController extends AppController {
-	public $paginate = array('limit' => 10);
+	public $paginate = array('limit' => 20);
 	
 	public function beforeFilter() {
 		parent::beforeFilter();
-		
-		$this->set('moduleTitle', __('Boutique'));
-		
-		$categories = array(
-			115156 => __('Equipements du cheval et de l\'écurie'),
-			115150 => __('Equipements du cavalier')
-		);
-		
-		$this->set(compact('categories'));
-		
-		/*$this->loadModel('Link');
-		$links = $this->Link->find('all', array('conditions' => array('NOT' => array('ebay_store_name' => null))));
-		$stores = array();
-		foreach ($links as $link) {
-			$stores[$link['Link']['id']] = getPreferedLang($link['Link'], 'title');
-		}
-		
-		$this->set(compact('stores'));*/
+		$this->set('categories', $this->{$this->modelClass}->categories);
 	}
 	
 	public function index() {

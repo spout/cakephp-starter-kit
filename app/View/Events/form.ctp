@@ -51,7 +51,7 @@ $this->Html->scriptBlock($scriptBlock, array('inline' => false));
 	<?php echo $this->element('google-maps-autocomplete');?>
 	</fieldset>
 	
-	<?php if($this->Auth->isAdmin()):?>
+	<?php if(Auth::hasRole(ROLE_ADMIN)):?>
 		<?php $this->Html->script('jscolor/jscolor.js', false);?>
 		<fieldset>
 		<legend>Admin</legend>

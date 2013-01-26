@@ -392,3 +392,9 @@ form .required label:after {
 	content: ' *';
 	display: inline;
 }
+
+/* Shops */
+.shops-browse-item {
+	height: 260px;
+	text-align: center;
+}

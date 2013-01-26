@@ -2,10 +2,6 @@
 class Post extends AppModel {
 	public $name = 'Post';
 	
-	public $actsAs = array(
-		'Containable'
-	);
-	
 	public $belongsTo = array(
 		'User'
 	);
@@ -15,8 +11,6 @@ class Post extends AppModel {
 			'foreignKey' => 'foreign_key'
 		)
 	);
-	
-    public $validate = array();
     
 	public function __construct($id = false, $table = null, $ds = null) {
 		parent::__construct($id, $table, $ds);

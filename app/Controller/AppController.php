@@ -372,8 +372,10 @@ abstract class AppController extends Controller {
 	
 	public function search() {
 		$this->Prg->commonProcess();
-		$conditions = array_merge($this->paginate['conditions'], $this->{$this->modelClass}->parseCriteria($this->passedArgs));
-		$this->paginate['conditions'] = $conditions;
+		//$conditions = array_merge($this->paginate['conditions'], $this->{$this->modelClass}->parseCriteria($this->passedArgs));
+		//$this->paginate['conditions'] = $conditions;
+		$this->paginate['conditions'] = $this->{$this->modelClass}->parseCriteria($this->passedArgs);
+		
 		$this->set('items', $this->paginate());
 		$this->set('_serialize', array('items'));// JSON and XML Views
 	}

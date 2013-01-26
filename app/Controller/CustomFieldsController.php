@@ -5,11 +5,7 @@ class CustomFieldsController extends AppController {
 	
 	public function beforeFilter() {
 		parent::beforeFilter();
-		
-		$this->set('moduleTitle', __('Champs personnalisés'));
-		
 		$translatableOptions = array('options', 'label', 'legend', 'before', 'between', 'after', 'empty');
-		
 		$this->set(compact('translatableOptions'));
 		
 		$this->Auth->allow('inputs', 'form');

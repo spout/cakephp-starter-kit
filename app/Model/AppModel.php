@@ -2,6 +2,14 @@
 App::uses('Model', 'Model');
 class AppModel extends Model {
 	public $recursive = -1;
+	public $actsAs = array(
+		'Containable',
+		'Search.Searchable',
+	);
+	public $validate = array();
+	public $filterArgs = array(
+		array('name' => 'query', 'type' => 'query', 'method' => 'matchQueryConditions'),
+    );
 	
 	public function __construct($id = false, $table = null, $ds = null) {
 		parent::__construct($id, $table, $ds);
@@ -72,6 +80,34 @@ class AppModel extends Model {
 			return true;
 		}
 		return false;
+	}
+	
+	public function matchQueryConditions($data = array()) {
+		$filter = $data['query'];
+		
+		$matchFields = array();
+		$genericFields = array('title', 'description', 'city', 'postcode', 'address_components');
+		
+		foreach ($genericFields as $f) {
+			if ($this->hasField($f)) {
+				$matchFields[] = $this->alias.'.'.$f;
+			}
+		}
+		
+		foreach (Configure::read('Config.languages') as $lang => $v) {
+			if ($this->hasField('title_'.$lang)) {
+				$matchFields[] = $this->alias.'.'.'title_'.$lang;
+			}
+			
+			if ($this->hasField('description_'.$lang)) {
+				$matchFields[] = $this->alias.'.'.'description_'.$lang;
+			}
+			
+		}
+				
+		$condition = "MATCH (".join(',', $matchFields).") AGAINST ('{$filter}' IN BOOLEAN MODE)";
+
+		return $condition;
 	}
 	
 	public function findAllByDistance($params = array()) {

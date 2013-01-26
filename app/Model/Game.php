@@ -2,12 +2,6 @@
 class Game extends AppModel {
 	public $name = 'Game';
 	
-	public $actsAs = array(
-		'Containable',
-		//'CategoryThreaded',
-		'Search.Searchable',
-	);
-	
 	public $belongsTo = array('User');
 	
 	public $filterArgs = array(
@@ -97,16 +91,4 @@ class Game extends AppModel {
 
 		return $condition;
 	}
-	
-	// public function findByTags($data = array()) {
-        // $this->Tagged->Behaviors->attach('Containable', array('autoFields' => false));
-        // $this->Tagged->Behaviors->attach('Search.Searchable');
-
-        // $query = $this->Tagged->getQuery('all', array(
-            // 'conditions' => array('Tag.name'  => $data['tag']),
-            // 'fields' => array('foreign_key'),
-            // 'contain' => array('Tag')
-        // ));
-        // return $query;
-    // }
 }

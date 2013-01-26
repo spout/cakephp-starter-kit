@@ -2,8 +2,6 @@
 class Event extends AppModel {
 	public $name = 'Event';
 	
-	public $actsAs = array('Containable');
-	
 	public $belongsTo = array(
 		'Country' => array(
 			'foreignKey' => 'country'

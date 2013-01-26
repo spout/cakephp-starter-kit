@@ -1,3 +1,20 @@
+<?php 
+/*$this->Html->script('//cdnjs.cloudflare.com/ajax/libs/masonry/2.1.05/jquery.masonry.min.js', array('inline' => false));
+$this->Html->script('//cdnjs.cloudflare.com/ajax/libs/jquery.imagesloaded/2.1.0/jquery.imagesloaded.min.js', array('inline' => false));
+
+$scriptBlock = <<<EOT
+	$(function(){
+		var container = $('#shops-browse');
+		container.imagesLoaded(function(){
+			container.masonry({
+				itemSelector : '.shops-browse-item',
+				columnWidth : 240
+			});
+		});
+	});
+EOT;
+$this->Html->scriptBlock($scriptBlock, array('inline' => false));*/
+?>
 <?php if(isset($shops) && !empty($shops)):?>
 	<?php 
 	if(!function_exists('getPrettyTimeFromEbayTime')) {
@@ -29,50 +46,44 @@
 	<?php endif;?>
 	<?php
 		$gallerySizes = array('Large', 'Medium', 'Small');
-		$gallerySize = 'Small';
+		$gallerySize = 'Large';
 		$galleryKey = array_search($gallerySize, $gallerySizes); 
 		
 		$onclick = 'window.open(this.href);return false;';
 	?>
-	<table class="shops-browse">
-	<?php if($this->request->params['action'] != 'view'):?>
-		<tr>
-			<th>&nbsp;</th>
-			<th>&nbsp;</th>
-			<th><?php echo $this->MyHtml->paginatorSort('price', __('Prix'));?></th>
-			<th><?php echo __('Temps restant');?></th>
-		</tr>		
-	<?php endif;?>
-	<?php foreach($shops as $shop):?>
-		<tr>
-			<td class="shops-browse-item-image">
-				<?php if(isset($shop['Shop']['galleryInfoContainer']['galleryURL'][$galleryKey]['@'])):?>
-					<a href="<?php echo h($shop['Shop']['viewItemURL']);?>" onclick="<?php echo $onclick;?>" rel="nofollow"><img src="<?php echo h($shop['Shop']['galleryInfoContainer']['galleryURL'][$galleryKey]['@']);?>" alt="" /></a>
-				<?php else:?>
-					&nbsp;
-				<?php endif;?>
-			</td>
-			<td class="shops-browse-item-description">
-				<p>
-					<a href="<?php echo h($shop['Shop']['viewItemURL']);?>" onclick="<?php echo $onclick;?>" rel="nofollow"><?php echo h($shop['Shop']['title']);?></a>
-				</p>
-				<p>
-					<?php echo h($shop['Shop']['primaryCategory']['categoryName']);?>
-				</p>
-				<p>
-					<?php echo __('Fin: %s', $this->MyHtml->niceDate($shop['Shop']['listingInfo']['endTime']));?>
-				</p>
-			</td>
-			<td class="shops-browse-item-price">
-				<?php echo number_format($shop['Shop']['sellingStatus']['currentPrice']['@'], 2, ',', ' ');?> <?php echo $shop['Shop']['sellingStatus']['currentPrice']['@currencyId'];?>
-			</td>
-			<td>
-			<?php echo getPrettyTimeFromEbayTime($shop['Shop']['sellingStatus']['timeLeft']);?>
-			</td>
-		</tr>
-	<?php endforeach;?>
-	</table>
-	
+	<div id="shops-browse">
+		<?php if($this->request->params['action'] != 'view'):?>
+			<?php echo $this->MyHtml->paginatorSort('price', __('Trier par prix'));?>
+		<?php endif;?>
+		<ul class="thumbnails">
+		<?php foreach($shops as $k => $shop):?>
+			<li class="span3">
+				<div class="thumbnail <?php echo $this->request->params['controller'];?>-browse-item <?php if($k%2):?>odd<?php else:?>even<?php endif;?>">
+					<?php if(isset($shop['Shop']['galleryInfoContainer']['galleryURL'][$galleryKey]['@'])):?>
+						<a href="<?php echo h($shop['Shop']['viewItemURL']);?>" onclick="<?php echo $onclick;?>" rel="nofollow"><img src="<?php echo h($shop['Shop']['galleryInfoContainer']['galleryURL'][$galleryKey]['@']);?>" alt="" /></a>
+						<div class="caption">
+							<p>
+								<a href="<?php echo h($shop['Shop']['viewItemURL']);?>" onclick="<?php echo $onclick;?>" rel="nofollow"><?php echo h($shop['Shop']['title']);?></a>
+							</p>
+							<p>
+								<span class="label"><?php echo number_format($shop['Shop']['sellingStatus']['currentPrice']['@'], 2, ',', ' ');?> <?php echo $shop['Shop']['sellingStatus']['currentPrice']['@currencyId'];?></span>
+							</p>
+							<?php /*
+							<p>
+								<?php echo __('Fin: %s', $this->MyHtml->niceDate($shop['Shop']['listingInfo']['endTime']));?>
+							</p>
+							<p>
+								<?php echo getPrettyTimeFromEbayTime($shop['Shop']['sellingStatus']['timeLeft']);?>
+							</p>
+							*/?>
+						</div>
+					<?php endif;?>
+
+				</div>
+			</li>
+		<?php endforeach;?>
+		</ul>
+	</div>
 	<?php if($this->request->params['action'] == 'view'):?>
 		<p><?php echo $this->Html->link(__('Voir tous les produits'), array('controller' => 'shops', 'action' => 'index', 'id' => $item[$modelClass]['id']));?></p>
 	<?php endif;?>

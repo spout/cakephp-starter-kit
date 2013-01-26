@@ -3,11 +3,15 @@ Configure::write('Modules.titles', array(
 	'users' => __('Membres'),
 	'links' => __('Annuaire'),
 	'ads' => __('Annonces'),
+	'events' => __('Agenda équestre'),
 	'photos' => __('Photos'),
 	'games' => __('Jeux gratuits'),
 	'categories' => __('Catégories'),
 	'file_manager' => __('Gestionnaire de fichiers'),
 	'contact' => __('Contact'),
+	'custom_fields' => __('Champs personnalisés'),
+	'shops' => __('Boutique'),
+	'posts' => __('Blog'),
 ));
 
 Configure::write('Crud.translations', array(
