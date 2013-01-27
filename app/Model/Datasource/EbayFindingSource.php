@@ -2,11 +2,11 @@
 class EbayFindingSource extends DataSource {
 	public $endpoint = 'http://svcs.ebay.com/services/search/FindingService/v1';
 	public $query =  array(
-			'SERVICE-VERSION' => '1.0.0',
-			'GLOBAL-ID' => 'EBAY-FR',//default
-			'affiliate.networkId' => 9, //9 = eBay Partner Network 
-			'outputSelector' => 'GalleryInfo'
-			);
+		'SERVICE-VERSION' => '1.0.0',
+		'GLOBAL-ID' => 'EBAY-FR',//default
+		'affiliate.networkId' => 9, //9 = eBay Partner Network 
+		'outputSelector' => 'GalleryInfo'
+	);
 
 	public function __construct($config) {
 		parent::__construct($config);
@@ -86,4 +86,3 @@ class EbayFindingSource extends DataSource {
 		}
     }
 }
-?>

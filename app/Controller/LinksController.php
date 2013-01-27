@@ -21,8 +21,8 @@ class LinksController extends AppController {
 		
 		$this->Auth->allow('add');
 		
-		// $this->{$this->modelClass}->updateItemCount();
-		// $this->_update_categorized();
+		//$this->{$this->modelClass}->updateItemCount();
+		//$this->_update_categorized();
 		
 		if ($this->request->params['action'] == 'view' && isset($this->request->params['pass'][0])) {
 			//$this->helpers[] = 'AutoEmbed';

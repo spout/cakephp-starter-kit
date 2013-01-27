@@ -65,7 +65,6 @@ Configure::write('Config.publicActions', array(
 	'comment',
 	'search',
 	'rating',
-	'datatable',
 ));
 
 /**

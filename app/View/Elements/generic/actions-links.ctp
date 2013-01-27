@@ -10,7 +10,7 @@
 		
 		if (Auth::hasRole(ROLE_ADMIN)) {
 			// $actions[] = $this->Html->link(__('Supprimer'), array('action' => 'delete', $item[$modelClass]['id']), array('class' => 'action-delete'), __('Vous êtes sur ?'));
-			$actions[] = $this->Form->deleteLink('<i class="icon-trash"></i> '.__('Supprimer'), array('action' => 'delete', $item[$modelClass]['id'], 'admin' => true), array('class' => 'btn btn-danger btn-mini', 'escape' => false), __('Vous êtes sur ?'));
+			$actions[] = $this->Form->postLink('<i class="icon-trash"></i> '.__('Supprimer'), array('action' => 'delete', $item[$modelClass]['id'], 'admin' => true), array('method' => 'DELETE', 'class' => 'btn btn-danger btn-mini', 'escape' => false), __('Vous êtes sur ?'));
 		}
 	}
 	?>
