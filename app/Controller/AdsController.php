@@ -17,6 +17,8 @@ class AdsController extends AppController {
 		$this->set('priceTypes', $this->{$this->modelClass}->priceTypes);
 		$this->set('adsTypes', $this->{$this->modelClass}->adsTypes);
 		
+		$this->Auth->allow('test');
+		
 		// $this->{$this->modelClass}->updateItemCount();
 		
 		// $items = $this->{$this->modelClass}->find('all');

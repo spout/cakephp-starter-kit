@@ -54,7 +54,7 @@ if ($paginatorParams['pageCount'] > 1) {
 	
 	// $this->Html->meta('prev', 'http:://example.com', array('rel' => 'prev', 'type' => null, 'title' => null), array('inline' => false));
 ?>
-	<div class="pagination">
+	<div class="pagination pagination-small">
 		<ul>
 			<?php echo $paginatorLinks;?>
 		</ul>

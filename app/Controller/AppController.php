@@ -7,6 +7,18 @@ config('translations');
 
 abstract class AppController extends Controller {
 	public $components = array(
+		'Security',
+		'RequestHandler',
+		'Session',
+		'Auth' => array(
+			'authenticate' => array('Form' => array('fields' => array('username' => 'email', 'password' => 'password'))),
+			'authorize' => array('Tools.Tiny'),
+			'loginAction' => array('controller' => 'users', 'action' => 'login', 'admin' => false),
+			'loginRedirect' => '/',
+			'logoutRedirect' => '/',
+			'userModel' => 'User',
+			'scope' => array('User.active' => 1),
+		),
 		'Crud.Crud' => array(
 			'actions' => array(
 				'index',
@@ -18,17 +30,6 @@ abstract class AppController extends Controller {
 			),
 			'relatedLists' => array('default' => false),
 		),
-		'Auth' => array(
-			'authenticate' => array('Form' => array('fields' => array('username' => 'email', 'password' => 'password'))),
-			'authorize' => array('Tools.Tiny'),
-			'loginAction' => array('controller' => 'users', 'action' => 'login', 'admin' => false),
-			'loginRedirect' => '/',
-			'logoutRedirect' => '/',
-			'userModel' => 'User',
-			'scope' => array('User.active' => 1),
-		),
-		'RequestHandler',
-		'Session',
 		'Cookie',
 		'Search.Prg' => array(
 			'commonProcess' => array(
@@ -398,7 +399,7 @@ abstract class AppController extends Controller {
 			'description' => 'RSS',
 			'language' => $this->request->params['lang']
 		);
- 
+		
 		$this->set(compact('items', 'channel'));
 	}
 	

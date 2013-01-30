@@ -21,6 +21,8 @@ class LinksController extends AppController {
 		
 		$this->Auth->allow('add');
 		
+		$this->set('ebayGlobalIds', $this->{$this->modelClass}->ebayGlobalIds);
+		
 		//$this->{$this->modelClass}->updateItemCount();
 		//$this->_update_categorized();
 		

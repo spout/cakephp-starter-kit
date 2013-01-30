@@ -4,6 +4,7 @@ $description = getPreferedLang($item[$modelClass], 'description');
 $this->set('title_for_layout', h($title));
 $this->set('metaDescription', $description);
 
+/*
 $this->Html->script('jquery/jquery.jeditable.mini.js', array('inline' => false));
 
 $editableUrl = $this->Html->url(array('action' => 'save_field'));
@@ -24,6 +25,7 @@ $(function(){
 });
 <?php
 $this->Html->scriptEnd();
+*/
 ?>
 
 <div class="<?php echo $this->request->controller;?>-view">

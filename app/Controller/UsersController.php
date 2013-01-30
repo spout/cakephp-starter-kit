@@ -41,7 +41,7 @@ class UsersController extends AppController {
 		if ($this->request->is('post')) {
 			$fieldList = array('email', 'password', 'password_verify', 'firstname', 'lastname');
 			
-	    	$this->request->data['User']['email'] = strtolower($this->request->data['User']['email']);
+			$this->request->data['User']['email'] = strtolower($this->request->data['User']['email']);
 			$this->User->set($this->request->data);
 			
 			if ($this->User->save($this->request->data['User'], array('fieldList' => $fieldList))) {
@@ -65,12 +65,12 @@ class UsersController extends AppController {
 					->send($message);
 				
 				$this->Session->setFlash(__('Un e-mail contenant le lien d\'activation vous a été envoyé, vérifiez votre courrier.<br />Vous devez cliquer sur ce lien pour vérifier votre adresse e-mail avant de pouvoir vous enregistrer.'), 'success');
-	            
-    			$this->redirect(array('action' => 'login'));
-            } else {
-            	$this->Session->setFlash(__('Veuillez corriger les erreurs ci-dessous.'), 'error');
+				
+				$this->redirect(array('action' => 'login'));
+			} else {
+				$this->Session->setFlash(__('Veuillez corriger les erreurs ci-dessous.'), 'error');
 			} 
-	    }
+		}
 	}
 
 	public function logout() {
@@ -84,51 +84,50 @@ class UsersController extends AppController {
 	public function edit() {
 		if (!$this->request->is('post')) {
 			$this->User->id = $this->Auth->user('id');
-	        $this->request->data = $this->User->read();
-	    } else {
+			$this->request->data = $this->User->read();
+		} else {
 			$fieldList = array('firstname', 'lastname');
 			$this->User->set($this->request->data);
 			
 			if ($this->User->save($this->request->data['User'], array('fieldList' => $fieldList))) {
-		        $this->Session->setFlash(__('Vos informations ont été mises à jour.'), 'success');
-    			$this->redirect(array('action' => 'index'));
-	        } else {
-	        	$this->Session->setFlash(__('Veuillez corriger les erreurs ci-dessous.'), 'error');	
-	        }
-	    }
+				$this->Session->setFlash(__('Vos informations ont été mises à jour.'), 'success');
+				$this->redirect(array('action' => 'index'));
+			} else {
+				$this->Session->setFlash(__('Veuillez corriger les erreurs ci-dessous.'), 'error');	
+			}
+		}
 	}
 	
 	public function change_password() {
 		if ($this->request->is('post')) {
-	        $this->User->set($this->request->data);
+			$this->User->set($this->request->data);
 			if ($this->User->validates(array('fieldList' => array('password', 'password_verify')))) {
-	        	$this->User->id = $this->Auth->user('id');
-		    	$this->User->saveField('password', $this->request->data['User']['password']);
+				$this->User->id = $this->Auth->user('id');
+				$this->User->saveField('password', $this->request->data['User']['password']);
 				$this->Session->setFlash(__('Votre mot de passe a été changé.'), 'success');
-    			$this->redirect(array('action' => 'index'));
-	        } else {
+				$this->redirect(array('action' => 'index'));
+			} else {
 				$this->Session->setFlash(__('Veuillez corriger les erreurs ci-dessous.'), 'error');	
 			}
-	    }	    
+		}
 	}
 	
 	public function activate($userId = NULL, $password = NULL) {
-		if (is_null($userId) && in_null($password) && $this->User->hasAny(array('User.id' => $userId, 'User.password' => $password))) {
+		if (is_null($userId) && is_null($password) && $this->User->hasAny(array('User.id' => $userId, 'User.password' => $password))) {
 			$this->User->id = $userId;
 			$this->User->saveField('active', '1');
 			$this->Session->setFlash(__('Votre compte a été activé, vous pouvez maintenant vous connecter.'), 'success');
-    	}
-    	else {
+		} else {
 			$this->Session->setFlash(__('Erreur d\'activation du compte !'), 'error');
-	    }
-	    
-	    $this->redirect(array('action' => 'login'));
+		}
+
+		$this->redirect(array('action' => 'login'));
 	}
 	
 	public function lost_password() {
 		if ($this->request->is('post')) {
-		    $this->User->set($this->request->data);
-		    if ($this->User->validates(array('fieldList' => array('email', 'captcha')))) {
+			$this->User->set($this->request->data);
+			if ($this->User->validates(array('fieldList' => array('email', 'captcha')))) {
 				if ($this->User->hasAny(array('User.email' => $this->request->data['User']['email']))) {
 					$user = $this->User->findByEmail($this->request->data['User']['email']);
 					
@@ -162,7 +161,7 @@ class UsersController extends AppController {
 					$this->Session->setFlash(__('Cette adresse e-mail n\'a pas été trouvée dans notre base de donnée.'), 'error');
 				}
 			}
-	    }
+		}
 	}
 	
 	protected function _setCookie($options = array(), $cookieKey = 'User') {

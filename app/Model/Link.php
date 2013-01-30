@@ -28,6 +28,8 @@ class Link extends AppModel {
     );
 	
     public $validate = array();
+	
+	public $ebayGlobalIds;
     
 	public function __construct($id = false, $table = null, $ds = null) {
 		parent::__construct($id, $table, $ds);
@@ -64,6 +66,33 @@ class Link extends AppModel {
 			'fax' => $this->validatePhone,
 	    	'captcha' => $this->validateCaptcha
 	    );
+		
+		$this->ebayGlobalIds = array(
+			'EBAY-AT',
+			'EBAY-AU',
+			'EBAY-CH',
+			'EBAY-DE',
+			'EBAY-ENCA',
+			'EBAY-ES',
+			'EBAY-FR',
+			'EBAY-FRBE',
+			'EBAY-FRCA',
+			'EBAY-GB',
+			'EBAY-HK',
+			'EBAY-IE',
+			'EBAY-IN',
+			'EBAY-IT',
+			'EBAY-MOTOR',
+			'EBAY-MY',
+			'EBAY-NL',
+			'EBAY-NLBE',
+			'EBAY-PH',
+			'EBAY-PL',
+			'EBAY-SG',
+			'EBAY-US',
+		);
+		
+		$this->ebayGlobalIds = array_combine($this->ebayGlobalIds, $this->ebayGlobalIds);
 	}
 	
 	public function beforeSave() {

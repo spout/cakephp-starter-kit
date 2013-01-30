@@ -1,1 +1,0 @@
-<?php echo $this->element('generic/actions/comment');?>

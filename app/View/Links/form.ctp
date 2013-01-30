@@ -1,18 +1,7 @@
 <?php $this->set('title_for_layout', ($this->request->params['action'] == 'edit') ? __('Modifier une activité') : __('Proposer une activité'));?>
 
 <?php 
-/*
-$this->Html->script('/chosen/chosen.jquery.min.js', false);
-$this->Html->css('/chosen/chosen.css', null, array('inline' => false));
-$scriptBlock = <<<EOT
-	$(function(){
-		$("#LinkCategory").chosen({max_selected_options: 3});
-		$("#LinkCountry").chosen();
-	});
-EOT;
-$this->Html->scriptBlock($scriptBlock, array('inline' => false));*/
-
-$this->element('chosen', array('selectors' => array('#LinkCategory' => array('max_selected_options' => 3), '#LinkCountry')));
+$this->element('chosen', array('selectors' => array('#LinkCategory' => array('max_selected_options' => 3), '#LinkCountry', '#LinkEbayGlobalId')));
 //$this->element('select2', array('selectors' => array('#LinkCategory' => array('maximumSelectionSize' => 3), '#LinkCountry')));
 ?>
 
@@ -28,38 +17,6 @@ $this->element('chosen', array('selectors' => array('#LinkCategory' => array('ma
 <?php //echo $this->element('generic/who-form');?>
 
 <?php if(Auth::hasRole(ROLE_ADMIN)):?>
-<?php 
-$ebayGlobalIds = array(
-	'EBAY-AT',
-	'EBAY-AU',
-	'EBAY-CH',
-	'EBAY-DE',
-	'EBAY-ENCA',
-	'EBAY-ES',
-	'EBAY-FR',
-	'EBAY-FRBE',
-	'EBAY-FRCA',
-	'EBAY-GB',
-	'EBAY-HK',
-	'EBAY-IE',
-	'EBAY-IN',
-	'EBAY-IT',
-	'EBAY-MOTOR',
-	'EBAY-MY',
-	'EBAY-NL',
-	'EBAY-NLBE',
-	'EBAY-PH',
-	'EBAY-PL',
-	'EBAY-SG',
-	'EBAY-US',
-);
-
-$tmp = array();
-foreach ($ebayGlobalIds as $v) {
-	$tmp[$v] = $v;
-}
-$ebayGlobalIds = $tmp;
-?>
 <fieldset>
 	<legend><?php echo __('Admin');?></legend>
 	<fieldset>
