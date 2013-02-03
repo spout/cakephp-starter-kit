@@ -1,7 +1,7 @@
 <?php
 Configure::write('Modules.titles', array(
 	'users' => __('Membres'),
-	'links' => __('Annuaire'),
+	'links' => __('Annuaire du cheval'),
 	'ads' => __('Annonces'),
 	'events' => __('Agenda équestre'),
 	'photos' => __('Photos'),

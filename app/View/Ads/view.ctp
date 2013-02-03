@@ -1,6 +1,4 @@
 <?php 
-$this->element('fancybox');
-
 $title = getPreferedLang($item[$modelClass], 'title');
 $description = getPreferedLang($item[$modelClass], 'description');
 $this->set('title_for_layout', h($title));
@@ -16,7 +14,7 @@ $this->set('metaDescription', $description);
 	<?php for($i = 1; $i <= 3; $i++):?>
 		<?php if(isset($item[$modelClass]['photo_'.$i]) && !empty($item[$modelClass]['photo_'.$i])):?>
 			<p class="<?php echo $this->request->controller;?>-view-photo">
-				<a href="<?php echo FULL_BASE_URL.$this->request->webroot;?>files/annonces/photo_<?php echo $i;?>/<?php echo $item[$modelClass]['id'];?>/<?php echo rawurlencode($item[$modelClass]['photo_'.$i]);?>" class="fancybox" rel="fancybox">
+				<a href="<?php echo FULL_BASE_URL.$this->request->webroot;?>files/annonces/photo_<?php echo $i;?>/<?php echo $item[$modelClass]['id'];?>/<?php echo rawurlencode($item[$modelClass]['photo_'.$i]);?>" class="lighbox" rel="gallery">
 					<?php echo $this->element('phpthumb', array('src' => 'files/annonces/photo_'.$i.'/'.$item[$modelClass]['id'].'/'.$item[$modelClass]['photo_'.$i], 'w' => 200, 'h' => 200));?>
 				</a>
 			</p>

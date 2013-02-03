@@ -27,7 +27,8 @@ foreach ($routesAliases as $controller => $aliases) {
 		//Router::connect('/:lang/:prefix/'.$alias, array('controller' => $controller, 'action' => 'index', 'prefix' => 'admin', 'admin' => true), array('lang' => $lang, 'routeClass' => 'I18nRoute'));
 		Router::connect('/:lang/:prefix/'.$alias.'/*', array('controller' => $controller, 'prefix' => 'admin', 'admin' => true), array('lang' => $lang, 'routeClass' => 'I18nRoute'));
 		
-		Router::connect('/:lang/'.$alias.'/:id-:slug', array('controller' => $controller, 'action' => 'view'), array('lang' => $lang, 'id' => '[0-9]+', 'slug' => '[a-zA-Z0-9\-_]+', 'pass' => array('id'), 'routeClass' => 'I18nRoute'));
+		//Router::connect('/:lang/'.$alias.'/:id-:slug', array('controller' => $controller, 'action' => 'view'), array('lang' => $lang, 'id' => '[0-9]+', 'slug' => '[a-zA-Z0-9\-_]+', 'pass' => array('id'), 'routeClass' => 'I18nRoute'));
+		Router::connect('/:lang/'.$alias.'/:slug-:id', array('controller' => $controller, 'action' => 'view'), array('lang' => $lang, 'id' => '[0-9]+', 'slug' => '[a-zA-Z0-9\-_]+', 'pass' => array('id'), 'routeClass' => 'I18nRoute'));
 		
 		Router::connect('/:lang/'.$alias, array('controller' => $controller, 'action' => 'index'), array('lang' => $lang, 'routeClass' => 'I18nRoute'));
 		
@@ -43,7 +44,8 @@ foreach ($routesAliases as $controller => $aliases) {
 
 $routesAliases = array('fr' => 'agenda', 'en' => 'calendar');
 foreach ($routesAliases as $lang => $alias) {
-	Router::connect('/:lang/'.$alias.'/:id-:slug', array('controller' => 'events', 'action' => 'view'), array('lang' => $lang, 'id' => '[0-9]+', 'slug' => '[a-zA-Z0-9\-_]+', 'pass' => array('id'), 'routeClass' => 'I18nRoute'));
+	//Router::connect('/:lang/'.$alias.'/:id-:slug', array('controller' => 'events', 'action' => 'view'), array('lang' => $lang, 'id' => '[0-9]+', 'slug' => '[a-zA-Z0-9\-_]+', 'pass' => array('id'), 'routeClass' => 'I18nRoute'));
+	Router::connect('/:lang/'.$alias.'/:slug-:id', array('controller' => 'events', 'action' => 'view'), array('lang' => $lang, 'id' => '[0-9]+', 'slug' => '[a-zA-Z0-9\-_]+', 'pass' => array('id'), 'routeClass' => 'I18nRoute'));
 	Router::connect('/:lang/'.$alias.'/:action/*', array('controller' => 'events'), array('lang' => $lang, 'action' => $genericActionsRoutes.'|fullcalendar', 'routeClass' => 'I18nRoute'));
 	Router::connect('/:lang/'.$alias.'/:country/:year/:month/*', array('controller' => 'events', 'action' => 'index'), array('lang' => $lang, 'country' => '[a-zA-Z0-9\-_\,]+', 'routeClass' => 'I18nRoute'));
 	Router::connect('/:lang/'.$alias.'/:country/:year/*', array('controller' => 'events', 'action' => 'index'), array('lang' => $lang, 'country' => '[a-zA-Z0-9\-_\,]+', 'routeClass' => 'I18nRoute'));
@@ -57,7 +59,8 @@ foreach ($routesAliases as $lang => $alias) {
 }
 
 
-Router::connect('/:lang/:controller/:id-:slug/*', array('action' => 'view'), array('lang' => '[a-z]{2}', 'id' => '[0-9]+', 'slug' => '[a-zA-Z0-9\-_]+', 'pass' => array('id', 'slug'), 'routeClass' => 'I18nRoute'));
+//Router::connect('/:lang/:controller/:id-:slug/*', array('action' => 'view'), array('lang' => '[a-z]{2}', 'id' => '[0-9]+', 'slug' => '[a-zA-Z0-9\-_]+', 'pass' => array('id', 'slug'), 'routeClass' => 'I18nRoute'));
+Router::connect('/:lang/:controller/:slug-:id/*', array('action' => 'view'), array('lang' => '[a-z]{2}', 'id' => '[0-9]+', 'slug' => '[a-zA-Z0-9\-_]+', 'pass' => array('id', 'slug'), 'routeClass' => 'I18nRoute'));
 Router::connect('/:lang/sitemap', array('controller' => 'sitemaps', 'action' => 'index'), array('lang' => '[a-z]{2}', 'routeClass' => 'I18nRoute'));
 
 // Admin i18n routes
