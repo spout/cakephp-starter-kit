@@ -7,8 +7,6 @@
 <?php
 $customFieldsUrl = $this->Html->url(array('controller' => 'custom_fields', 'action' => 'inputs'));
 
-$testUrl = $this->Html->url(array('action' => 'test'));
-
 $scriptBlock = <<<EOT
 $(function() {
 	$('#{$modelClass}Email').blur(function() {
@@ -74,6 +72,7 @@ $this->Html->scriptBlock($scriptBlock, array('inline' => false));
 	<fieldset>
 		<legend><?php echo __("Où se trouve le bien de l'annonce ?");?></legend>
 		<?php echo $this->element('google-maps-autocomplete');?>
+		<?php //echo $this->element('jquery-addresspicker');?>
 	</fieldset>
 	
 	<fieldset>

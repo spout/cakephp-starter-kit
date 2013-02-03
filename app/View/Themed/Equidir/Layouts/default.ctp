@@ -23,19 +23,20 @@
 		
 		echo $this->Html->script('/bootstrap/js/bootstrap.min.js');
 		
-		//echo $this->Html->script('jquery/jquery.prettyPhoto.js');
-		//echo $this->Html->css('prettyPhoto/css/prettyPhoto.css', 'stylesheet', array('media' => 'screen'));
-		
-		$this->Html->scriptStart();
-		
+		echo $this->Html->script('jquery/jquery.colorbox-min.js');
+		echo $this->Html->css('colorbox/colorbox.css', 'stylesheet', array('media' => 'screen'));
+
 		$autocompleteUrl = $this->Html->url(array('controller' => 'links', 'action' => 'autocomplete.json'));
+		$this->Html->scriptStart();
 		?>
 		$(function(){
-			/*$("a.lightbox").prettyPhoto({
-				social_tools: ''
-			});*/
-			
 			//$('.alert').delay(5000).slideUp();
+			
+			$('a.lightbox').colorbox({
+				width: '50%',
+				height: '90%',
+				opacity: 0.2
+			});
 			
 			$("#LinkQueryLayout").autocomplete({
 				source: "<?php echo $autocompleteUrl;?>",
@@ -44,39 +45,12 @@
 					window.location.replace(ui.item.url);
 				}
 			});
-			
-			<?php /*
-			var labels, mapped;
-			
-			$("#LinkQueryLayout").typeahead({
-				minLength: 2,
-				items: 10,
-				source: function (query, process) {
-					$.get('<?php echo $autocompleteUrl;?>', { term: query }, function (data) {
-						labels = [];
-						mapped = {};
-
-						$.each(data, function (i, item) {
-							mapped[item.label] = item.url;
-							labels.push(item.label);
-						});
-
-						process(labels);
-					});
-				},
-				updater: function(item) {
-					window.location.replace(mapped[item]);
-					return;
-				}
-			});
-			*/?>
 		});
 		<?php
 		echo $this->Html->scriptEnd();
 
 		echo $this->fetch('meta');
 		echo $this->fetch('css');
-		echo $this->fetch('dataTableSettings');
 		echo $this->fetch('script');
 		?>
 		<!--[if lt IE 9]>
@@ -133,7 +107,7 @@
 		<div class="container" id="footer">
 			<div class="row">
 				<div class="span12">
-					&copy; <?php echo date('Y');?> - <?php echo __('main_title');?> v3.0 - <?php echo $this->Html->link(__('Mentions légales'), array('controller' => 'pages', 'action' => 'display', 'legal'));?> - <?php echo $this->Html->link(__('Contact'), array('controller' => 'contact', 'action' => 'index', 'admin' => false));?>
+					&copy; <?php echo date('Y');?> - <?php echo __('main_title');?> v3.0 - <?php echo $this->Html->link(__('Mentions légales'), array('controller' => 'pages', 'action' => 'display', 'legal'));?> - <?php echo $this->Html->link(__('Contact'), array('controller' => 'contact', 'action' => 'index', 'admin' => false), array('class' => 'lightbox'));?>
 				</div>
 			</div>
 		</div>

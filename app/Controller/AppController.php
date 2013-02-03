@@ -118,9 +118,9 @@ abstract class AppController extends Controller {
 
 			if (Auth::hasRole(ROLE_ADMIN)) {
 				$this->Auth->allow($this->request->params['action']);
+			} else {			
+				$this->Auth->allow(Configure::read('Config.publicActions'));
 			}
-			
-			$this->Auth->allow(Configure::read('Config.publicActions'));
 			
 			$this->_restoreLoginFromCookie();
 		}
@@ -153,7 +153,7 @@ abstract class AppController extends Controller {
 			'admin_view' => 'view',
 		));
 		
-		$this->Crud->on('Crud.beforeRedirect', array($this, 'beforeRedirectEvent'));
+		$this->getEventManager()->attach(array($this, 'beforeRedirectEvent'), 'Crud.beforeRedirect');
 	}
 
 	public function beforeRedirectEvent(CakeEvent $event) {

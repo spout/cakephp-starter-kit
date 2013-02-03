@@ -14,7 +14,7 @@ $this->element('chosen', array('selectors' => array('#LinkCategory' => array('ma
 	</div>
 <?php endif;?>
 
-<?php //echo $this->element('generic/who-form');?>
+<?php echo $this->element('generic/who-form');?>
 
 <?php if(Auth::hasRole(ROLE_ADMIN)):?>
 <fieldset>

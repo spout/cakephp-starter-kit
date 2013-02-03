@@ -97,37 +97,52 @@ function address_component(results, address_type, name_type){
 function update_fields(latitude, longitude, results){
 	$('#{$modelClass}GeoLat').val(latitude);
 	$('#{$modelClass}GeoLon').val(longitude);
-
+		
 	var country = address_component(results, 'country', 'short_name');
-	if(country)	$('#{$modelClass}Country').val(country.toLowerCase());
+	if (country) {
+		$('#{$modelClass}Country').val(country.toLowerCase());
+	}
 	
 	var sublocality = address_component(results, 'sublocality', 'long_name');
-	if(sublocality){
+	if (sublocality) {
 		 $('#{$modelClass}City').val(sublocality);
-	}
-	else{
+	} else {
 		var locality = address_component(results, 'locality', 'long_name');
 		if(locality) $('#{$modelClass}City').val(locality);	
 	}
 	
 	var postcode = address_component(results, 'postal_code', 'short_name');
-	if(postcode) $('#{$modelClass}Postcode').val(postcode);
+	if (postcode) {
+		$('#{$modelClass}Postcode').val(postcode);
+	}
 }
 
 EOT;
 
 $this->Html->scriptBlock($scriptBlock, array('inline' => false));
 ?>
-<div class="form-inputs-info">
-	<?php echo __("Entrez le lieu 'Adresse, ville, code postal/département'. Au fur et à mesure que vous tapez le lieu, des suggestions apparaissent. Une fois que vous aurez cliqué sur une des suggestions, le marqueur apparaîtra sur la carte. Vous pourrez ensuite le déplacer à l'endroit exact où se situe l'enregistrement.");?>
-</div>
-<?php echo $this->Form->input('address', array('label' => __('Lieu'), 'size' => 60));?>
-<div id="gmap" style="width:100%;height:250px;"></div>
-<?php 
-$hiddenFields = array('geo_lat', 'geo_lon', 'country', 'city', 'postcode');
+<div class="row">
+	<div class="span6">
+		<div class="form-inputs-info">
+			<?php echo __("Entrez le lieu 'Adresse, ville, code postal/département'. Au fur et à mesure que vous tapez le lieu, des suggestions apparaissent. Une fois que vous aurez cliqué sur une des suggestions, le marqueur apparaîtra sur la carte. Vous pourrez ensuite le déplacer à l'endroit exact où se situe l'enregistrement.");?>
+		</div>
+		<?php echo $this->Form->input('address', array('label' => __('Lieu'), 'size' => 60));?>
+		<?php 
+		$hiddenFields = array(
+			'geo_lat' => __('Latitude'),
+			'geo_lon' => __('Longitude'),
+			'country' => __('Pays'),
+			'city' => __('Localité'),
+			'postcode' => __('Code postal'),
+		);
 
-foreach ($hiddenFields as $f) {
-	echo $this->Form->hidden($f);
-	//echo $this->Form->input($f);
-}
-?>
+		foreach ($hiddenFields as $k => $v) {
+			echo $this->Form->hidden($k);
+			//echo $this->Form->input($k , array('label' => $v, 'type' => 'text', 'default' => ''));
+		}
+		?>
+	</div>
+	<div class="span6">
+		<div id="gmap" style="width:100%;height:250px;"></div>
+	</div>
+</div>
