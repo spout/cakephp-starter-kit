@@ -2,7 +2,6 @@
 App::uses('GenericEvent', 'Controller/Event');
 
 class LinksController extends AppController {
-	//public $helpers = array('AutoEmbed');
 	public $paginate = array('limit' => 15, 'order' => array('Link.created' => 'DESC') , 'contain' => array('Country', 'Category'), 'conditions' => array('Link.active' => 1));
 	
 	public $presetVars = array(
@@ -18,22 +17,37 @@ class LinksController extends AppController {
 		
 		$this->Crud->enableAction('add');
 		$this->Crud->enableAction('edit');
-		
+
 		$this->Auth->allow('add');
-		
-		$this->set('ebayGlobalIds', $this->{$this->modelClass}->ebayGlobalIds);
 		
 		//$this->{$this->modelClass}->updateItemCount();
 		//$this->_update_categorized();
 		
 		if ($this->request->params['action'] == 'view' && isset($this->request->params['pass'][0])) {
-			//$this->helpers[] = 'AutoEmbed';
-			$this->set('nearbyResults', $this->{$this->modelClass}->findAllByDistance(array('id' => $this->request->params['pass'][0])));
-
-			$this->{$this->modelClass}->bindModel(array('hasMany' => array('Event' => array('conditions' => array('Event.date_end >=' => date('Y-m-d'))))));
-			$this->{$this->modelClass}->contain('Event');
+			$this->Crud->on('Crud.afterFind', array($this, 'viewAfterFindEvent'));
 		}
 	}
+	
+	public function viewAfterFindEvent(CakeEvent $event) {
+		$item = $event->subject->item[$event->subject->modelClass];
+		
+		$event->subject->controller->loadModel('Event');
+		$events = $event->subject->controller->Event->find('all', array('conditions' => array('link_id' => $item['id'], 'Event.date_end >=' => date('Y-m-d'))));
+		$this->set(compact('events'));
+		
+		if (isset($item['ebay_store_name']) && !empty($item['ebay_store_name'])) {
+			$storeName = $item['ebay_store_name'];
+			$globalId = (isset($item['ebay_global_id']) && !empty($item['ebay_global_id'])) ? $item['ebay_global_id'] : 'EBAY-FR';
+			$event->subject->controller->loadModel('Shop');
+			$shops = $event->subject->controller->Shop->find('all', array('conditions' => array('storeName' => $storeName, 'GLOBAL-ID' => $globalId), 'limit' => 5));
+			
+			$event->subject->controller->set(compact('storeName', 'shops'));
+		}
+		
+		if (isset($item['geo_lat']) && !empty($item['geo_lat']) && isset($item['geo_lon']) && !empty($item['geo_lon'])) {
+			$this->set('nearbyItems', $this->{$this->modelClass}->findAllByDistance(array('id' => $item['id'], 'latitude' => $item['geo_lat'], 'longitude' => $item['geo_lon'])));
+		}
+    }
 	
 	protected function _update_categorized() {
 		$items = $this->{$this->modelClass}->find('all');
@@ -54,23 +68,6 @@ class LinksController extends AppController {
 			}
 		}
 	}
-	
-	/*public function view($id) {
-		$this->helpers[] = 'AutoEmbed';
-		$this->set('nearbyResults', $this->{$this->modelClass}->findAllByDistance(array('id' => $id)));
-		
-		$this->{$this->modelClass}->bindModel(array('hasMany' => array('Event' => array('conditions' => array('Event.date_end >=' => date('Y-m-d'))))));
-		$this->{$this->modelClass}->contain('Event');
-		//parent::view($id);
-		
-		if (isset($this->request->data[$this->modelClass]['ebay_store_name']) && !empty($this->request->data[$this->modelClass]['ebay_store_name'])) {
-			$storeName = $this->request->data[$this->modelClass]['ebay_store_name'];
-			$globalId = (isset($this->request->data[$this->modelClass]['ebay_global_id']) && !empty($this->request->data[$this->modelClass]['ebay_global_id'])) ? $this->request->data[$this->modelClass]['ebay_global_id'] : 'EBAY-FR';
-			$this->loadModel('Shop');
-			$shops = $this->Shop->find('all', array('conditions' => array('storeName' => $storeName, 'GLOBAL-ID' => $globalId), 'limit' => 5));
-			$this->set(compact('storeName', 'shops'));
-		}
-	}*/
 	
 	/*public function accept($id) {
 		//$this->checkRole(ROLE_ADMIN);

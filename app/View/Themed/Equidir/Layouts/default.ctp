@@ -133,7 +133,7 @@
 		<div class="container" id="footer">
 			<div class="row">
 				<div class="span12">
-					&copy; <?php echo date('Y');?> - <?php echo __('main_title');?> v2.5 - <?php echo $this->Html->link(__('Mentions légales'), array('controller' => 'pages', 'action' => 'display', 'legal'));?> - <?php echo $this->Html->link(__('Contact'), array('controller' => 'contact', 'action' => 'index', 'admin' => false));?>
+					&copy; <?php echo date('Y');?> - <?php echo __('main_title');?> v3.0 - <?php echo $this->Html->link(__('Mentions légales'), array('controller' => 'pages', 'action' => 'display', 'legal'));?> - <?php echo $this->Html->link(__('Contact'), array('controller' => 'contact', 'action' => 'index', 'admin' => false));?>
 				</div>
 			</div>
 		</div>

@@ -9,7 +9,6 @@ abstract class AppController extends Controller {
 	public $components = array(
 		'Security',
 		'RequestHandler',
-		'Session',
 		'Auth' => array(
 			'authenticate' => array('Form' => array('fields' => array('username' => 'email', 'password' => 'password'))),
 			'authorize' => array('Tools.Tiny'),
@@ -30,6 +29,7 @@ abstract class AppController extends Controller {
 			),
 			'relatedLists' => array('default' => false),
 		),
+		'Session',
 		'Cookie',
 		'Search.Prg' => array(
 			'commonProcess' => array(
@@ -55,9 +55,6 @@ abstract class AppController extends Controller {
 	);
 	
 	public $paginate = array('conditions' => array());
-	
-	public $displayFields = array('title', 'name');
-	public $bannedFields = array('id', 'created', 'modified');
 	
 	/**
 	* Dispatches the controller action.  Checks that the action exists and isn't private.
@@ -111,18 +108,19 @@ abstract class AppController extends Controller {
 		$this->_setLanguage();
 		
 		// Set custom response type
-		if (isset($this->extraContentTypes[$this->RequestHandler->ext])) {
-			$this->response->type(array($this->RequestHandler->ext => Configure::read('Config.extraContentTypes.'.$this->RequestHandler->ext)));
+		$extraContentType = Configure::read('Config.extraContentTypes.'.$this->RequestHandler->ext);
+		if (!empty($extraContentType)) {
+			$this->response->type(array($this->RequestHandler->ext => $extraContentType));
 		}
 		
 		if (isset($this->Auth)) {
 			$this->Auth->authError = __("Vous n'êtes pas autorisé à accéder à cette page.");
+
+			if (Auth::hasRole(ROLE_ADMIN)) {
+				$this->Auth->allow($this->request->params['action']);
+			}
 			
 			$this->Auth->allow(Configure::read('Config.publicActions'));
-			
-			if (Auth::hasRole(ROLE_ADMIN)) {
-				$this->Auth->allow();
-			}
 			
 			$this->_restoreLoginFromCookie();
 		}
@@ -136,12 +134,11 @@ abstract class AppController extends Controller {
 			$model =& $this->{$this->modelClass};
 			
 			$modelClass = $this->modelClass;
+			$modelSchema = $model->schema();
 			$primaryKey = $model->primaryKey;
-			$schema = $model->schema();
-			$fields = (is_array($schema)) ? array_diff(array_keys($schema), $this->bannedFields) : array();
 			$displayField = $model->displayField;
 			
-			$this->set(compact('modelClass', 'primaryKey', 'fields', 'displayField'));
+			$this->set(compact('modelClass', 'modelSchema', 'primaryKey', 'displayField'));
 		}
 		
 		$this->Crud->config('translations', Configure::read('Crud.translations'));
@@ -156,11 +153,11 @@ abstract class AppController extends Controller {
 			'admin_view' => 'view',
 		));
 		
-		$this->getEventManager()->attach(array($this, 'beforeRedirectEvent'), 'Crud.beforeRedirect');
+		$this->Crud->on('Crud.beforeRedirect', array($this, 'beforeRedirectEvent'));
 	}
 
 	public function beforeRedirectEvent(CakeEvent $event) {
-		if (in_array($event->subject->action, array('add', 'edit', 'admin_add', 'admin_edit'))) {
+		if (in_array($event->subject->action, array('add', 'edit', 'admin_add', 'admin_edit')) && isset($event->subject->request->data[$event->subject->model->alias])) {
 			$event->subject->url = array('action' => 'view', 'id' => $event->subject->id, 'slug' => slug($event->subject->request->data[$event->subject->model->alias][$event->subject->model->displayField]));
 		}
 		

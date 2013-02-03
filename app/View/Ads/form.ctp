@@ -100,7 +100,7 @@ $this->Html->scriptBlock($scriptBlock, array('inline' => false));
 		<div class="text-warning">
 		<?php echo __('Vous pouvez indiquer un lien vidéo YouTube, Dailymotion, Vimeo, Metacafe,...');?>
 		</div>
-		<?php echo $this->Form->input('video', array('label' => __('Lien vidéo de présentation'), 'size' => 45, 'default' => 'http://'));?>
+		<?php echo $this->Form->input('video', array('label' => __('Lien vidéo de présentation'), 'size' => 45, 'placeholder' => 'http://'));?>
 	</fieldset>
 	
 	<fieldset>

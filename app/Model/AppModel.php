@@ -9,7 +9,7 @@ class AppModel extends Model {
 	public $validate = array();
 	public $filterArgs = array(
 		array('name' => 'query', 'type' => 'query', 'method' => 'matchQueryConditions'),
-    );
+	);
 	
 	public function __construct($id = false, $table = null, $ds = null) {
 		parent::__construct($id, $table, $ds);
@@ -21,6 +21,10 @@ class AppModel extends Model {
 		
 		$this->validatePhone = array(
 			'valid' => array('rule' => '/^(\+)[0-9]{1,3}[\s][0-9]{1,3}[\s][0-9]{6,10}$/', 'allowEmpty' => true, 'message' => __("Le format du numéro n'est pas valide"))
+		);
+		
+		$this->validateUrl = array(
+			'valid' => array('rule' => array('url', true), 'allowEmpty' => true, 'message' => __("Lien non correct"))
 		);
 	}
 	
@@ -114,8 +118,6 @@ class AppModel extends Model {
 		$defaultParams = array(
 			'distance' => 20,
 			'limit' => 10,
-			'lat' => 'geo_lat',
-			'lng' => 'geo_lon'
 		);		
 		$params = array_merge($defaultParams, $params);
 		extract($params);
@@ -129,19 +131,12 @@ class AppModel extends Model {
 			}
 		}
 		
-		$data = $this->read(null, $id);
-		if (empty($data)) {
+		if (!isset($latitude) || !isset($longitude)) {
+			trigger_error('Model::findAllByDistance: please provide latitude and longitude param.');
 			return false;
 		}
 		
-		$latVal = $data[$this->alias][$lat];
-		$lngVal = $data[$this->alias][$lng];
-		
-		if (empty($latVal) || empty($lngVal)) {
-			return false;	
-		}
-		
-		$formula = "(6366*acos(cos(radians($latVal))*cos(radians(`$lat`))*cos(radians(`$lng`)-radians($lngVal))+sin(radians($latVal))*sin(radians(`$lat`))))";
+		$formula = "(6366*acos(cos(radians($latitude))*cos(radians(`geo_lat`))*cos(radians(`geo_lon`)-radians($longitude))+sin(radians($latitude))*sin(radians(`geo_lat`))))";
 		$results = $this->find('all', array('fields' => array('*', $formula.' AS distance'), 'conditions' => array('id !=' => $id, 'geo_lat !=' => NULL, 'geo_lon !=' => NULL, $formula.' <=' => $distance), 'limit' => $limit, 'order' => 'distance ASC', 'recursive' => -1));
 		return $results;
 	}

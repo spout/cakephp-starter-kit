@@ -28,8 +28,6 @@ class Link extends AppModel {
     );
 	
     public $validate = array();
-	
-	public $ebayGlobalIds;
     
 	public function __construct($id = false, $table = null, $ds = null) {
 		parent::__construct($id, $table, $ds);
@@ -59,6 +57,11 @@ class Link extends AppModel {
 	    	'email_contact' => array(
 				'email' => array('rule' => 'email', 'allowEmpty' => true, 'message' => __('E-mail non valide'))
 			),
+			'url' => $this->validateUrl,
+			'video' => $this->validateUrl,
+			'facebook' => $this->validateUrl,
+			'twitter' => $this->validateUrl,
+			'google_plus' => $this->validateUrl,
 			'phone' => $this->validatePhone,
 			'phone_2' => $this->validatePhone,
 			'mobile' => $this->validatePhone,
@@ -66,46 +69,6 @@ class Link extends AppModel {
 			'fax' => $this->validatePhone,
 	    	'captcha' => $this->validateCaptcha
 	    );
-		
-		$this->ebayGlobalIds = array(
-			'EBAY-AT',
-			'EBAY-AU',
-			'EBAY-CH',
-			'EBAY-DE',
-			'EBAY-ENCA',
-			'EBAY-ES',
-			'EBAY-FR',
-			'EBAY-FRBE',
-			'EBAY-FRCA',
-			'EBAY-GB',
-			'EBAY-HK',
-			'EBAY-IE',
-			'EBAY-IN',
-			'EBAY-IT',
-			'EBAY-MOTOR',
-			'EBAY-MY',
-			'EBAY-NL',
-			'EBAY-NLBE',
-			'EBAY-PH',
-			'EBAY-PL',
-			'EBAY-SG',
-			'EBAY-US',
-		);
-		
-		$this->ebayGlobalIds = array_combine($this->ebayGlobalIds, $this->ebayGlobalIds);
-	}
-	
-	public function beforeSave() {
-		parent::beforeSave();
-		
-		$urlFields = array('url', 'facebook', 'google_plus', 'rss', 'video');
-    	foreach ($urlFields as $f) {
-    		if (isset($this->data[$this->alias][$f])) {
-    			$this->data[$this->alias][$f] = ($this->data[$this->alias][$f] == 'http://') ? '' : $this->data[$this->alias][$f];
-    		}
-    	}
-    	
-    	return true;
 	}
 	
 	public function isSpam($string) {

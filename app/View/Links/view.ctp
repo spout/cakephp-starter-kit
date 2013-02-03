@@ -67,7 +67,7 @@ $this->Html->scriptEnd();
 	<?php 
 	$displayElements = array(
 		'url' => __('Site Web'),
-		'cats' => __('Catégories'),
+		'categories' => __('Catégories'),
 		'address' => __('Adresse'),
 		'address_components' => __('Localisation'),
 		'geo' => __('Coordonnées GPS'),
@@ -88,11 +88,12 @@ $this->Html->scriptEnd();
 	
 	<?php echo $this->element('Shops'.DS.'items-browse');?>
 	
-	<?php if(isset($item['Event']) && !empty($item['Event'])):?>
+	<?php if(isset($events) && !empty($events)):?>
 		<h2><?php echo __('Evénements associés');?></h2>
 		<ul>
-		<?php foreach($item['Event'] as $event):?>
+		<?php foreach($events as $event):?>
 			<?php 
+			$event = $event['Event'];
 			$title = getPreferedLang($event);
 			?>
 			<li><?php echo $this->Html->link($title, array('controller' => 'events', 'action' => 'view', 'id' => $event['id'], 'slug' => slug($title)));?> - <span class="underline"><?php echo __('Du');?></span>: <?php echo $this->MyHtml->niceDate($event['date_start'], '%e %B %Y');?> - <span class="underline"><?php echo __('Au');?></span>: <?php echo $this->MyHtml->niceDate($event['date_end'], '%e %B %Y');?></li>

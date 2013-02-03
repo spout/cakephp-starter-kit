@@ -22,7 +22,7 @@ $this->element('chosen', array('selectors' => array('#LinkCategory' => array('ma
 	<fieldset>
 		<legend>eBay</legend>
 		<?php echo $this->Form->input('ebay_store_name', array('label' => __('Nom de la boutique')));?>
-		<?php echo $this->Form->input('ebay_global_id', array('label' => __('Global ID'), 'options' => $ebayGlobalIds, 'empty' => '-'));?>
+		<?php echo $this->Form->input('ebay_global_id', array('label' => __('Global ID'), 'options' => Configure::read('Config.ebayGlobalIds'), 'empty' => '-'));?>
 	</fieldset>
 	<?php echo $this->Form->input('awards', array('label' => __('Points'), 'type' => 'text'));?>
 </fieldset>
@@ -62,17 +62,17 @@ $this->element('chosen', array('selectors' => array('#LinkCategory' => array('ma
 	?>
 	<fieldset>
 		<legend><?php echo __('Liens');?></legend>
-		<?php echo $this->Form->input('url', array('label' => __('Site Web'), 'size' => 45, 'default' => 'http://'));?>
+		<?php echo $this->Form->input('url', array('label' => __('Site Web'), 'size' => 45, 'placeholder' => 'http://'));?>
 		<div class="text-warning">
 			<?php echo __('Pour la vidéo de présentation, vous pouvez indiquer un lien vidéo YouTube, Dailymotion, Vimeo, Metacafe,...');?>
 		</div>
-		<?php echo $this->Form->input('video', array('label' => __('Lien vidéo de présentation'), 'size' => 45, 'default' => 'http://'));?>
+		<?php echo $this->Form->input('video', array('label' => __('Lien vidéo de présentation'), 'size' => 45, 'placeholder' => 'http://'));?>
 	</fieldset>
 	<fieldset>
 		<legend><?php echo __('Réseaux sociaux');?></legend>
-		<?php echo $this->Form->input('facebook', array('label' => __('Page Facebook'), 'size' => 45, 'default' => 'http://'));?>
+		<?php echo $this->Form->input('facebook', array('label' => __('Page Facebook'), 'size' => 45, 'placeholder' => 'http://'));?>
 		<?php echo $this->Form->input('twitter', array('label' => __('Twitter'), 'size' => 45, 'default' => ''));?>
-		<?php echo $this->Form->input('google_plus', array('label' => __('Google+'), 'size' => 45, 'default' => 'http://'));?>
+		<?php echo $this->Form->input('google_plus', array('label' => __('Google+'), 'size' => 45, 'placeholder' => 'http://'));?>
 	</fieldset>
 	<fieldset>
 		<legend><?php echo __("Où se trouve l'activité ?");?></legend>
@@ -87,12 +87,12 @@ $this->element('chosen', array('selectors' => array('#LinkCategory' => array('ma
 		<div class="text-warning">
 			<?php echo $this->element('generic/phone-info');?>
 		</div>
-		<?php echo $this->Form->input('phone', array('label' => __('Téléphone'), 'size' => 45));?>
-		<?php echo $this->Form->input('phone_2', array('label' => __('Téléphone').' n<sup>o</sup> 2', 'size' => 45));?>
-		<?php echo $this->Form->input('mobile', array('label' => __('Mobile'), 'size' => 45));?>
-		<?php echo $this->Form->input('mobile_2', array('label' => __('Mobile').' n<sup>o</sup> 2', 'size' => 45));?>
-		<?php echo $this->Form->input('fax', array('label' => __('Fax'), 'size' => 45));?>
-		<?php echo $this->Form->input('skype', array('label' => __('Pseudo Skype'), 'size' => 45));?>
+		<?php echo $this->Form->input('phone', array('label' => __('Téléphone'), 'type' => 'tel'));?>
+		<?php echo $this->Form->input('phone_2', array('label' => __('Téléphone').' n<sup>o</sup> 2', 'type' => 'tel'));?>
+		<?php echo $this->Form->input('mobile', array('label' => __('Mobile'), 'type' => 'tel'));?>
+		<?php echo $this->Form->input('mobile_2', array('label' => __('Mobile').' n<sup>o</sup> 2', 'type' => 'tel'));?>
+		<?php echo $this->Form->input('fax', array('label' => __('Fax'), 'type' => 'tel'));?>
+		<?php echo $this->Form->input('skype', array('label' => __('Pseudo Skype')));?>
 	</fieldset>
 </fieldset>
 <?php echo $this->MyHtml->captcha('captcha', false);?>

@@ -93,9 +93,20 @@ Configure::write('Role', $roles);
 App::uses('Auth', 'Tools.Lib');
 
 /**
- * 
+ * Configures sitemap
  */
 Configure::write('Sitemaps.models', array('Link', 'Ad', 'Event'));
+
+/**
+ * Spam scored keywords
+ */
+
+
+/**
+ * eBay
+ */
+$ebayGlobalIds = array('EBAY-AT', 'EBAY-AU', 'EBAY-CH', 'EBAY-DE', 'EBAY-ENCA', 'EBAY-ES', 'EBAY-FR', 'EBAY-FRBE', 'EBAY-FRCA', 'EBAY-GB', 'EBAY-HK', 'EBAY-IE', 'EBAY-IN', 'EBAY-IT', 'EBAY-MOTOR', 'EBAY-MY', 'EBAY-NL', 'EBAY-NLBE', 'EBAY-PH', 'EBAY-PL', 'EBAY-SG', 'EBAY-US');
+Configure::write('Config.ebayGlobalIds', array_combine($ebayGlobalIds, $ebayGlobalIds));
 
 /**
  * Configures default cache engine
