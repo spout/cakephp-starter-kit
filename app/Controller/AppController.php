@@ -250,10 +250,6 @@ abstract class AppController extends Controller {
 				return true;
 			}
 		}
-		
-		if (in_array($this->request->params['action'], Configure::read('Config.publicActions'))) {
-			return true;
-		}
 
 		return false;
 	}
