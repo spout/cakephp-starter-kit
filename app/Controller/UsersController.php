@@ -82,10 +82,7 @@ class UsersController extends AppController {
 	}
 
 	public function edit() {
-		if (!$this->request->is('post')) {
-			$this->User->id = $this->Auth->user('id');
-			$this->request->data = $this->User->read();
-		} else {
+		if ($this->request->is('post') || $this->request->is('put')) {
 			$fieldList = array('firstname', 'lastname');
 			$this->User->set($this->request->data);
 			
@@ -95,6 +92,9 @@ class UsersController extends AppController {
 			} else {
 				$this->Session->setFlash(__('Veuillez corriger les erreurs ci-dessous.'), 'error');	
 			}
+		} else {
+			$this->User->id = $this->Auth->user('id');
+			$this->request->data = $this->User->read();
 		}
 	}
 	

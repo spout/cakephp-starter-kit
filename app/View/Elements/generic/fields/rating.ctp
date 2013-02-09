@@ -44,7 +44,7 @@ echo join(PHP_EOL, $inputs);
 </fieldset>
 <?php echo $this->Form->end();?>
 <div class="clear"></div>
-<span id="stars-cap">&nbsp;</span>
+<span id="stars-cap"></span>
 <p>
 	<?php echo __('Note moyenne: %01.2F/5.00 avec %d évaluation(s)', $item[$modelClass]['rating_avg'], $item[$modelClass]['rating_count']);?>
 </p>

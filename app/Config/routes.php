@@ -20,7 +20,23 @@ $routesAliases = array(
 	'posts' => array('fr' => 'blog', 'en' => 'blog'),
 );
 
-$genericActionsRoutes = 'view|add|edit|delete|feed|markers|map|count_clicks|message|autocomplete|comment|search|save_field|accept|rating|browse|filemanager|sponsor|datatable|ajax_pagination';
+$genericActionsRoutes = array(
+	'add',
+	'edit',
+	'delete',
+	'feed',
+	'markers',
+	'map',
+	'count_clicks',
+	'message',
+	'autocomplete',
+	'search',
+	'save_field',
+	'accept',
+	'rating',
+);
+
+$genericActionsRoutes = implode('|', $genericActionsRoutes);
 
 foreach ($routesAliases as $controller => $aliases) {
 	foreach ($aliases as $lang => $alias) {

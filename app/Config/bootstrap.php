@@ -68,6 +68,24 @@ Configure::write('Config.publicActions', array(
 ));
 
 /**
+ * Configures Security unlockedActions
+ */
+Configure::write('Config.unlockedActions', array(
+	'rating',
+	'save_field',
+));
+
+/**
+ * Configures Crud mapActionView
+ */
+Configure::write('Config.Crud.mapActionView', array(
+	'add' => 'form',
+	'edit' => 'form',
+	'admin_add' => 'form',
+	'admin_edit' => 'form',
+));
+
+/**
  * Extra content types
  */
 Configure::write('Config.extraContentTypes', array(

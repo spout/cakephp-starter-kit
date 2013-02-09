@@ -14,10 +14,10 @@ class AdsController extends AppController {
 		
 		$this->Auth->allow('add');
 		
+		$this->Security->unlockedFields = array('address', 'geo_lat', 'geo_lon', 'country', 'city', 'postcode');
+		
 		$this->set('priceTypes', $this->{$this->modelClass}->priceTypes);
 		$this->set('adsTypes', $this->{$this->modelClass}->adsTypes);
-		
-		$this->Auth->allow('test');
 		
 		// $this->{$this->modelClass}->updateItemCount();
 		

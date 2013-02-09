@@ -1,7 +1,6 @@
 <?php
-//fixed, talk, na, free, exchange
 $price = $item[$modelClass]['price'];
-if(!isset($currencySymbol)){
+if (!isset($currencySymbol)){
 	$currencySymbol = '&euro;';
 }
 
@@ -16,10 +15,9 @@ switch($priceType){
 		break;
 		
 	case 'talk';
-		if(!isset($separator))
-			$separator = ' - ';
+		$separator = (!isset($separator)) ? ' - ' : $separator;
 			
-		if(!empty($price) && $price != 0.00){
+		if (!empty($price) && $price != 0.00) {
 			echo number_format($price, 2, ',', ' ').' '.$currencySymbol;
 			echo $separator;	
 		}
@@ -28,13 +26,13 @@ switch($priceType){
 		break;
 	
 	case 'nc':
-		if(isset($fullPriceTypeDisplay)){
+		if (isset($fullPriceTypeDisplay)) {
 			echo __('Non communiqué');
 		}
 		break;
 		
 	case 'na':
-		if(isset($fullPriceTypeDisplay)){
+		if (isset($fullPriceTypeDisplay)) {
 			echo __('Non applicable');
 		}
 		break;

@@ -1,31 +1,6 @@
 <?php
-function removeLineBreaks($string, $replaceBy = ' ') {
-	return preg_replace("/(\r\n|\n|\r)/", $replaceBy, $string);
-}
-
-function removeAccents($str, $charset='utf-8') { 
-	$str = htmlentities($str, ENT_NOQUOTES, $charset);
-    
-    $str = preg_replace('#&([A-za-z])(?:acute|cedil|circ|grave|orn|ring|slash|th|tilde|uml);#', '\1', $str);
-    $str = preg_replace('#&([A-za-z]{2})(?:lig);#', '\1', $str); // pour les ligatures e.g. '&oelig;'
-    $str = preg_replace('#&[^;]+;#', '', $str); // supprime les autres caractères
-    
-    return $str;
-}
-
-function redirect($url) {
-	header("Status: 301 Moved Permanently");
-	header("Location: ".$url);
-	exit();
-}
-
 function slug($string, $replacement = '-') {
 	return strtolower(Inflector::slug($string, $replacement));
-}
-
-//http://www.php.net/manual/fr/function.hexdec.php#74092
-function getContrastColor($color) {
-    return (hexdec($color) > 0xffffff/2) ? '000000' : 'ffffff';
 }
 
 function getPreferedLang($data, $field = 'title', $prefered = TXT_LANG, $langs = array()) {
@@ -50,6 +25,21 @@ function getPreferedLang($data, $field = 'title', $prefered = TXT_LANG, $langs =
 	}
 }
 
+function removeLineBreaks($string, $replaceBy = ' ') {
+	return preg_replace("/(\r\n|\n|\r)/", $replaceBy, $string);
+}
+
+function redirect($url) {
+	header("Status: 301 Moved Permanently");
+	header("Location: ".$url);
+	exit();
+}
+
+//http://www.php.net/manual/fr/function.hexdec.php#74092
+function getContrastColor($color) {
+    return (hexdec($color) > 0xffffff/2) ? '000000' : 'ffffff';
+}
+
 function truncate($string, $max, $rep = '...') {
 	$stringlength = strlen($string);
 	$string = $string." ";
@@ -59,23 +49,6 @@ function truncate($string, $max, $rep = '...') {
 	 $string = $string.$rep;
 	
 	return $string;
-}
-	
-function return_bytes($val) {
-//http://be2.php.net/manual/en/function.ini-get.php
-   $val = trim($val);
-   $last = strtolower($val{strlen($val)-1});
-   switch($last) {
-       // The 'G' modifier is available since PHP 5.1.0
-       case 'g':
-           $val *= 1024;
-       case 'm':
-           $val *= 1024;
-       case 'k':
-           $val *= 1024;
-   }
-
-   return $val;
 }
 
 function parse_csv_file($file, $columnheadings = false, $delimiter = ',', $enclosure = "\"") {
@@ -101,9 +74,10 @@ function parse_csv_file($file, $columnheadings = false, $delimiter = ',', $enclo
 	fclose($handle);
 	return $rows;
 }
-/*****************************************************************************/
-/* GPS                                                                      */
-/*****************************************************************************/
+
+/*
+ * GPS
+ */
 function getGPSDistance($long1, $lat1, $long2, $lat2) {
 	$earth_radius = 6367000;   // Terre = sphère de 6367km de rayon
 	$rlo1 = deg2rad($long1);
@@ -120,27 +94,20 @@ function getGPSDistance($long1, $lat1, $long2, $lat2) {
 } 
 
 function friendlyGPSCoord($coord) {
-	//thanks to http://en.wikipedia.org/wiki/Geographic_coordinate_conversion
+	// http://en.wikipedia.org/wiki/Geographic_coordinate_conversion
 	return sprintf("%0.0f&#176; %2.3f'",
 		floor(abs($coord)),
 		60*(abs($coord)-floor(abs($coord))));
 }
 
 function friendlyGPSCoords($latitude, $longitude) {
-	//thanks to http://en.wikipedia.org/wiki/Geographic_coordinate_conversion
+	// http://en.wikipedia.org/wiki/Geographic_coordinate_conversion
 	return sprintf("%s %s, %s %s",
 		($latitude>0)?"N":"S",  friendlyGPSCoord($latitude),
 		($longitude>0)?"E":"W", friendlyGPSCoord($longitude));
 }
 
 function decimalToDMS($dec, $returnArray = false) {
-	// Converts decimal longitude / latitude to DMS
-	// ( Degrees / minutes / seconds )
-	// This is the piece of code which may appear to
-	// be inefficient, but to avoid issues with floating
-	// point math we extract the integer part and the float
-	// part by using a string function.
-
 	$vars = explode(".", $dec);
 	$deg = $vars[0];
 	$tempma = "0." . $vars[1];

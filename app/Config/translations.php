@@ -12,6 +12,7 @@ Configure::write('Modules.titles', array(
 	'custom_fields' => __('Champs personnalisés'),
 	'shops' => __('Boutique'),
 	'posts' => __('Blog'),
+	'newsletters' => __("Lettre d'information"),
 ));
 
 Configure::write('Crud.translations', array(

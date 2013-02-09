@@ -99,6 +99,20 @@ input[type=radio] {
 	margin: 0;
 }
 
+.navbar .nav > li > a {
+	/*padding: 10px 15px 10px;*/
+	padding: 10px;
+}
+
+#lang-selector {
+	margin: 0;
+	line-height: 40px;
+}
+
+#lang-selector li {
+	display: inline;
+}
+
 /*
 Fix issue: Bootstrap distorts some Google Maps Controls and Overlays
 https://github.com/twitter/bootstrap/issues/1552
@@ -231,7 +245,7 @@ https://github.com/twitter/bootstrap/issues/1552
 	text-align: center;
 }
 
-.links-browse-item-thumb img, .ads-browse-item-thumb img, .ads-view-photo img, .photos-view-gallery img {
+.links-browse-item-thumb img, .ads-browse-item-thumb img, .photos-view-gallery img {
 	padding: 5px;
 	margin: 0 auto;
 	border: 1px solid #D9D4BD;
@@ -383,17 +397,19 @@ form .input select {
 	width: 90%;
 }
 
-form .error .error-message,
-form .error label {
-	color: #B94A48;
+form .error {
+	background-color: #f2dede;
+	border-color: #eed3d7;
+	color: #b94a48;
+	padding: 8px 35px 8px 14px;
 }
 
-
+/*
 form .error input,
 form .error textarea,
 form .error select {
 	border-color: #B94A48;
-}
+}*/
 
 form .required label:after {
 	color: #e32;

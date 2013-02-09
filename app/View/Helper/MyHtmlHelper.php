@@ -4,8 +4,9 @@ class MyHtmlHelper extends HtmlHelper {
 
 	public function getAlphabetListArray($listData) {
 		$listAlphabet = array();
-		foreach($listData as $key => $name) {
-			$letter = strtoupper(substr(removeAccents($name), 0, 1));//removeAccent in vendors/functions.php
+		foreach ($listData as $key => $name) {
+			$letter = mb_strtoupper(slug(mb_substr($name, 0, 1)));
+			
 			if (is_numeric($letter)) {
 				$letter = '0-9';
 			}
@@ -48,7 +49,7 @@ class MyHtmlHelper extends HtmlHelper {
 		$imgSrc = FULL_BASE_URL.$this->request->webroot.'captcha/image.php?sid='.md5(uniqid(time()));
 		$imgId = $this->domId($fieldName).'Captcha';
 		$out = '<img id="'.$imgId.'" src="'.$imgSrc.'" alt="'.__('Code de sécurité').'" title="'.__('Code de sécurité').'" />';
-		$out .= '&nbsp;<a style="cursor:pointer" title="'.__('Réactualiser l\'image').'" onclick="javascript:document.images.'.$imgId.'.src = \''.$imgSrc.'&amp;\'+Math.round(Math.random(0)*1000)+1;" >'.$this->Html->image('captcha-reload.gif',array('alt' => 'Reload')).'</a>';
+		$out .= '&nbsp;<a style="cursor:pointer" title="'.__('Réactualiser l\'image').'" onclick="javascript:document.images.'.$imgId.'.src = \''.$imgSrc.'&amp;\'+Math.round(Math.random(0)*1000)+1;" >'.$this->Html->image('captcha-reload.gif', array('alt' => 'Reload')).'</a>';
 		return $out;
 	}
 	
@@ -57,7 +58,8 @@ class MyHtmlHelper extends HtmlHelper {
 		return sprintf('<a href="%s">%s</a>', $audioUrl, __('Cliquez-ici pour écouter le code'));
 	}
 	
-	public function captcha($fieldName) {
+	public function captcha($fieldName = null) {
+		$fieldName = is_null($fieldName) ? 'catpcha' : $fieldName;
 		$solved = CakeSession::read('Captcha.solved');
 		
 		if (Auth::id() || !empty($solved)) {
@@ -93,18 +95,8 @@ class MyHtmlHelper extends HtmlHelper {
 			$out = $this->Paginator->sort($key, $title, $options);
 			
 			if ($isSorted) {
-				switch ($this->Paginator->sortDir()) {
-					case 'asc':
-						$out .= $this->Html->image('paginator/sort-asc.gif');
-						break;
-					
-					case 'desc':
-						$out .= $this->Html->image('paginator/sort-desc.gif');
-						break;
-						
-					default:
-						break;
-				}
+				$sortDir = $this->Paginator->sortDir();
+				$out .= $this->Html->image("paginator/sort-{$sortDir}.gif");
 			}
 		} else {
 			$out = $title;//only 1 record, dont need sorting link

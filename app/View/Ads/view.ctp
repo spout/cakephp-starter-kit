@@ -11,16 +11,25 @@ $this->set('metaDescription', $description);
 	
 	<h2><?php echo h($title);?></h2>
 	
-	<?php for($i = 1; $i <= 3; $i++):?>
-		<?php if(isset($item[$modelClass]['photo_'.$i]) && !empty($item[$modelClass]['photo_'.$i])):?>
-			<p class="<?php echo $this->request->controller;?>-view-photo">
-				<a href="<?php echo FULL_BASE_URL.$this->request->webroot;?>files/annonces/photo_<?php echo $i;?>/<?php echo $item[$modelClass]['id'];?>/<?php echo rawurlencode($item[$modelClass]['photo_'.$i]);?>" class="lighbox" rel="gallery">
-					<?php echo $this->element('phpthumb', array('src' => 'files/annonces/photo_'.$i.'/'.$item[$modelClass]['id'].'/'.$item[$modelClass]['photo_'.$i], 'w' => 200, 'h' => 200));?>
-				</a>
-			</p>
-		<?php endif;?>
-	<?php endfor;?>
-	<div class="clear"></div>
+	<?php 
+	$thumbnails = array();
+	for ($i = 1; $i <= 3; $i++) {
+		if (isset($item[$modelClass]['photo_'.$i]) && !empty($item[$modelClass]['photo_'.$i])) {
+			$thumb = '<li class="span3">';
+			$thumb .= '<a href="'.FULL_BASE_URL.$this->request->webroot.'files/annonces/photo_'.$i.'/'.$item[$modelClass]['id'].'/'.rawurlencode($item[$modelClass]['photo_'.$i]).'" class="thumbnail lightbox" rel="gallery">';
+			$thumb .= $this->element('phpthumb', array('src' => 'files/annonces/photo_'.$i.'/'.$item[$modelClass]['id'].'/'.$item[$modelClass]['photo_'.$i], 'w' => 200, 'h' => 200));
+			$thumb .= '</a>';
+			$thumb .= '</li>';
+			$thumbnails[] = $thumb;
+		}
+	}
+	?>
+	<?php if(!empty($thumbnails)):?>
+		<ul class="thumbnails">
+			<?php echo implode('', $thumbnails);?>
+		</ul>
+		<div class="clear"></div>
+	<?php endif;?>
 	
 	<?php 
 	$displayElements = array(

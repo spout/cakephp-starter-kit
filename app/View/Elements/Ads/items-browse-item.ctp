@@ -34,7 +34,7 @@ $description = getPreferedLang($item[$modelClass], 'description');
 		</p>
 		
 		<p class="<?php echo $this->request->params['controller'];?>-browse-item-details">
-			<?php echo __('Type');?> : <?php echo h($adsTypes[$item[$modelClass]['type']]);?> - <?php echo __('Prix');?> : <?php echo $this->element('Ads/fields/price', array('item' => $item));?>
+			<?php echo __('Type');?> : <?php if(isset($adsTypes[$item[$modelClass]['type']])):?><?php echo h($adsTypes[$item[$modelClass]['type']]);?><?php endif;?> - <?php echo __('Prix');?> : <?php echo $this->element('Ads/fields/price', array('item' => $item));?>
 		</p>
 	</div>
 	

@@ -8,7 +8,7 @@ $this->element('chosen', array('selectors' => array('#LinkCategory' => array('ma
 <?php echo $this->Form->create($modelClass, array('novalidate' => true));?>
 <?php if(isset($this->request->params['pass'][0]) && !empty($this->request->params['pass'][0])):?>
 	<?php echo $this->Form->hidden('id', array('value' => $this->request->params['pass'][0]));?>
-<?php else:?>
+<?php elseif(!$this->request->is('post')):?>
 	<div class="alert alert-error" style="font-size: 20px;">
 		<?php echo __("Si votre activité n'a aucun rapport avec l'équitation, c'est inutile de nous proposer votre site Web, la fiche serait supprimée sans notification.");?>
 	</div>

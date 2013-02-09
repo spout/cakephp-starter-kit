@@ -16,7 +16,12 @@
 	<dt>Numéro d'entreprise ou de TVA:</dt>
 	<dd>BE0872130067</dd>
 	<dt>E-mail:</dt>
-	<dd><?php echo $this->MyHtml->encodeEmail(Configure::read('Email.to'));?> ou via le <?php echo $this->Html->link('formulaire de contact', array('controller' => 'contact'));?></dd>
+	<dd>
+		<?php 
+		$email = $this->request->is('ajax') ? Configure::read('Email.to') : $this->MyHtml->encodeEmail(Configure::read('Email.to'));
+		?>
+		<?php echo $email;?> ou via le <?php echo $this->Html->link('formulaire de contact', array('controller' => 'contact'));?>
+	</dd>
 	<dt>Téléphone:</dt>
 	<dd>+32 (0)86 34 52 32</dd>
 	<dt><acronym title="Global System for Mobile communications">GSM</acronym>:</dt>

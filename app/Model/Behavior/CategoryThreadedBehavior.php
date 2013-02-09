@@ -8,6 +8,7 @@ class CategoryThreadedBehavior extends ModelBehavior {
 					'className' => 'Category',
 					'foreignKey' => 'category_id',
 					'conditions' => array('Category.model' => $Model->alias),
+					'counterCache' => false,
 				);
 				break;
 			

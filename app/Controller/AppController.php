@@ -11,7 +11,7 @@ abstract class AppController extends Controller {
 		'RequestHandler',
 		'Auth' => array(
 			'authenticate' => array('Form' => array('fields' => array('username' => 'email', 'password' => 'password'))),
-			'authorize' => array('Tools.Tiny'),
+			'authorize' => array('Controller', 'Tools.Tiny'),
 			'loginAction' => array('controller' => 'users', 'action' => 'login', 'admin' => false),
 			'loginRedirect' => '/',
 			'logoutRedirect' => '/',
@@ -22,6 +22,7 @@ abstract class AppController extends Controller {
 			'actions' => array(
 				'index',
 				'view',
+				'admin_index',
 				'admin_add',
 				'admin_edit',
 				'admin_view',
@@ -105,6 +106,8 @@ abstract class AppController extends Controller {
 	}
 	
 	public function beforeFilter() {
+		$this->Security->unlockedActions = Configure::read('Config.unlockedActions');
+		
 		$this->_setLanguage();
 		
 		// Set custom response type
@@ -115,18 +118,9 @@ abstract class AppController extends Controller {
 		
 		if (isset($this->Auth)) {
 			$this->Auth->authError = __("Vous n'êtes pas autorisé à accéder à cette page.");
-
-			if (Auth::hasRole(ROLE_ADMIN)) {
-				$this->Auth->allow($this->request->params['action']);
-			} else {			
-				$this->Auth->allow(Configure::read('Config.publicActions'));
-			}
+			$this->Auth->allow(Configure::read('Config.publicActions'));
 			
 			$this->_restoreLoginFromCookie();
-		}
-		
-		if (isset($this->request->params['pass'][0]) && in_array($this->request->params['action'], array('edit', 'delete', 'admin_edit', 'admin_delete', 'save_field'))) {
-			$this->checkOwner($this->request->params['pass'][0]);
 		}
 		
 		$this->loadModel($this->modelClass);
@@ -144,14 +138,7 @@ abstract class AppController extends Controller {
 		$this->Crud->config('translations', Configure::read('Crud.translations'));
 		
 		// Customize crud
-		$this->Crud->mapActionView(array(
-			'add' => 'form',
-			'edit' => 'form',
-			'admin_index' => 'index',
-			'admin_add' => 'form',
-			'admin_edit' => 'form',
-			'admin_view' => 'view',
-		));
+		$this->Crud->mapActionView(Configure::read('Config.Crud.mapActionView'));
 		
 		$this->getEventManager()->attach(array($this, 'beforeRedirectEvent'), 'Crud.beforeRedirect');
 	}
@@ -252,24 +239,23 @@ abstract class AppController extends Controller {
 		}
 	}
 	
-	public function checkOwner($id, $redirect = '/') {
-		if (Auth::hasRole(ROLE_ADMIN) || $this->{$this->modelClass}->isOwnedBy($id)) {
-			return;
-		} else {
-			$this->Session->setFlash($this->Auth->authError, 'error');
-			$this->redirect($redirect);
+	public function isAuthorized($user) {
+		if (isset($user['role']) && $user['role'] === 'admin') {
+			return true;
 		}
-	}
-	
-	public function checkRoles($roles, $redirect = '/') {
-		if (Auth::hasRoles($roles)) {
-			$this->Session->setFlash($this->Auth->authError, 'error');
-			$this->redirect($redirect);
+		
+		if (isset($this->request->params['pass'][0]) && in_array($this->request->params['action'], array('edit', 'delete', 'admin_edit', 'admin_delete', 'save_field'))) {
+			$id = $this->request->params['pass'][0];
+			if ($this->{$this->modelClass}->isOwnedBy($id)) {
+				return true;
+			}
 		}
-	}
-	
-	public function checkRole($role, $redirect = '/') {
-		$this->checkRoles($role, $redirect);
+		
+		if (in_array($this->request->params['action'], Configure::read('Config.publicActions'))) {
+			return true;
+		}
+
+		return false;
 	}
 
 	public function redirect($url, $status = 301, $exit = true) {
@@ -332,19 +318,6 @@ abstract class AppController extends Controller {
 		}
 	}
 	
-	public function admin_index() {
-		$columns = array(
-			$this->{$this->modelClass}->primaryKey => '#',
-			$this->{$this->modelClass}->displayField => Inflector::humanize($this->{$this->modelClass}->displayField),
-			'actions' => null,
-		);
-
-		$this->paginate = array('limit' => 50);
-		$items = $this->paginate();
-		
-		$this->set(compact('items', 'columns'));
-	}
-	
 	public function search() {
 		$this->Prg->commonProcess();
 
@@ -356,8 +329,8 @@ abstract class AppController extends Controller {
 	}
 	
 	public function autocomplete() {
-		if (isset($_GET['term']) && !empty($_GET['term'])) {
-			$term = Sanitize::escape($_GET['term']);
+		if ($this->request->query('term')) {
+			$term = Sanitize::escape($this->request->query('term'));
 			$languages = Configure::read('Config.languages');
 			if (!empty($languages)) {
 				$conditions = array();
@@ -371,6 +344,7 @@ abstract class AppController extends Controller {
 				$conditions = array($this->{$this->modelClass}->displayField.' LIKE' => '%'.$term.'%');
 			}
 			
+			$this->paginate['conditions'] = isset($this->paginate['conditions']) ? $this->paginate['conditions'] : array();
 			$conditions = array_merge($this->paginate['conditions'], $conditions);
 			
 			$results = $this->{$this->modelClass}->find('all', array('conditions' => $conditions, 'limit' => 10));
@@ -407,7 +381,6 @@ abstract class AppController extends Controller {
 		
 		$countriesOptions = array();
 		foreach ($results as $r) {
-			//$countriesOptions[$r['Country']['code'].'-'.slug($r['Country']['name_'.TXT_LANG])] = $r['Country']['name_'.TXT_LANG];
 			$countriesOptions[$r['Country']['code']] = getPreferedLang($r['Country'], 'name');
 		}
 		

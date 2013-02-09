@@ -70,44 +70,25 @@
 				</div>
 				<div class="span10">
 					<h1><?php if(isset($h1_for_layout) && !empty($h1_for_layout)):?><?php echo $h1_for_layout;?><?php else:?><?php echo $title_for_layout;?><?php endif;?></h1>
-				</div>	
+				</div>
 			</div>
 		</div>
 		<div class="container" id="content-wrapper">
 			<div class="row">
-				<?php 
-				$hasSidebar = (isset($sidebarCategories) || isset($platforms)) ? true : false;
-				?>
-				<div class="<?php if($hasSidebar):?>span9<?php else:?>span12<?php endif;?>">
+				<div class="span12">
 					<?php if(empty($this->request->params['isAjax'])):?>
 						<?php echo $this->element('generic/breadcrumbs');?>
 					<?php endif;?>
-					
 					<?php echo $this->element('flash-messages');?>
-					
-					<?php //debug(Router::currentRoute());?>
-					
 					<?php echo $this->fetch('content');?>
 				</div>
-				
-				<?php if($hasSidebar):?>
-				<div class="span3">
-					<div id="sidebar">
-						<ul class="nav nav-list">
-							<?php echo $this->element('sidebar-categories');?>
-							<?php echo $this->element('sidebar-platforms');?>
-							<?php echo $this->element('sidebar-partners');?>
-						</ul>	
-					</div>
-				</div>
-				<?php endif;?>
 			</div>
 		</div>
 		
 		<div class="container" id="footer">
 			<div class="row">
 				<div class="span12">
-					&copy; <?php echo date('Y');?> - <?php echo __('main_title');?> v3.0 - <?php echo $this->Html->link(__('Mentions légales'), array('controller' => 'pages', 'action' => 'display', 'legal'));?> - <?php echo $this->Html->link(__('Contact'), array('controller' => 'contact', 'action' => 'index', 'admin' => false), array('class' => 'lightbox'));?>
+					&copy; <?php echo date('Y');?> - <?php echo __('main_title');?> v3.0 - <?php echo $this->Html->link(__('Mentions légales'), array('controller' => 'pages', 'action' => 'display', 'legal'), array('class' => 'lightbox'));?> - <?php echo $this->Html->link(__('Contact'), array('controller' => 'contact', 'action' => 'index', 'admin' => false), array('class' => 'lightbox'));?>
 				</div>
 			</div>
 		</div>

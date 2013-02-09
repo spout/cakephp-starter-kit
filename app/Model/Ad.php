@@ -3,15 +3,24 @@ class Ad extends AppModel {
 	public $name = 'Ad';
 	
 	public $actsAs = array(
-		'Upload.Upload' => array(
-			'photo_1' => array('path' => 'webroot{DS}files{DS}annonces{DS}{field}{DS}'),//default 'webroot{DS}files{DS}{model}{DS}{field}{DS}', "ad" is banned keyword by AdBlockPlus
-			'photo_2' => array('path' => 'webroot{DS}files{DS}annonces{DS}{field}{DS}'),
-			'photo_3' => array('path' => 'webroot{DS}files{DS}annonces{DS}{field}{DS}')
-		),
-		'Hitcount',
 		'CategoryThreaded' => array(
 			'relationshipType' => 'belongsTo'
 		),
+		'Upload.Upload' => array(
+			'photo_1' => array(
+				'path' => 'webroot{DS}files{DS}annonces{DS}{field}{DS}',//default 'webroot{DS}files{DS}{model}{DS}{field}{DS}', "ad" is banned keyword by AdBlockPlus
+				'fields' => array('type' => 'photo_1_type'),
+			),
+			'photo_2' => array(
+				'path' => 'webroot{DS}files{DS}annonces{DS}{field}{DS}',
+				'fields' => array('type' => 'photo_2_type'),
+			),
+			'photo_3' => array(
+				'path' => 'webroot{DS}files{DS}annonces{DS}{field}{DS}',
+				'fields' => array('type' => 'photo_3_type'),
+			),
+		),
+		'Hitcount',
 	);
 	
 	public $belongsTo = array(
@@ -27,7 +36,7 @@ class Ad extends AppModel {
 		parent::__construct($id, $table, $ds);
 		
 		$this->validate = array(
-			'email' => array(
+			/*'email' => array(
 				'email' => array('rule' => 'email', 'message' => __('E-mail non valide')),
 				'required' => array('rule' => 'notEmpty', 'required' => true, 'message' => __('Champ requis'))
 			),
@@ -36,7 +45,7 @@ class Ad extends AppModel {
 			),
 			'lastname' => array(
 				'required' => array('rule' => 'notEmpty', 'required' => true, 'message' => __('Champ requis'))
-			),
+			),*/
 			'category_id' => array(
 				'required' => array('rule' => 'notEmpty', 'required' => true, 'message' => __('Champ requis'))
 			),
@@ -56,9 +65,9 @@ class Ad extends AppModel {
 				'required' => array('rule' => 'notEmpty', 'required' => true, 'message' => __('Champ requis')),
 				'numeric' => array('rule' => 'numeric', 'message' => __('Le prix doit être numérique'))
 			),
-			'address' => array(
+			/*'address' => array(
 				'required' => array('rule' => 'notEmpty', 'required' => true, 'message' => __('Champ requis'))
-			),
+			),*/
 			// 'photo_1' => array(
 				// 'size' => array('rule' => 'isUnderPhpSizeLimit', 'allowEmpty' => true, 'message' => __('Le poids du fichier est supérieur au maximum accepté')),
 				// 'mime' => array('rule' => array('isValidMimeType', array('image/jpeg', 'image/pjpeg', 'image/png'), false), 'allowEmpty' => true, 'message' => __('Le type du fichier est invalide')),

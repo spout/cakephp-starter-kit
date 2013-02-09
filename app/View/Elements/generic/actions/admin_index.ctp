@@ -1,5 +1,11 @@
 <?php 
 $this->set('title_for_layout', __('Admin'));
+
+$columns = array(
+	$primaryKey => '#',
+	$displayField => Inflector::humanize($displayField),
+	'actions' => null,
+);
 /*$ajaxUrl = $this->Html->url(array('action' => 'index', 'admin' => true));
 
 $scriptBlock = <<<EOT

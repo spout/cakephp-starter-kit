@@ -36,16 +36,6 @@
 					<li><?php echo $this->Html->link(__('Boutique'), array('controller' => 'shops', 'action' => 'index', 'admin' => false));?></li>
 					<li><?php echo $this->Html->link(__('Photos'), array('controller' => 'photos', 'action' => 'index', 'admin' => false));?></li>
 					<li><?php echo $this->Html->link($this->Html->image('feed-icons/feed-icon-14x14.png', array('alt' => 'RSS')), array('controller' => 'links', 'action' => 'feed.rss'), array('escape' => false));?></li>
-					<?php if(Auth::id()):?>
-					<li class="divider-vertical"></li>
-					<li class="dropdown">
-						<?php echo $this->Html->link(Auth::user('email').' <b class="caret"></b>', '#', array('class' => 'dropdown-toggle', 'data-toggle' => 'dropdown', 'escape' => false));?>
-						<ul class="dropdown-menu">
-							<li><?php echo $this->Html->link(__('Mon compte'), array('controller' => 'users', 'action' => 'index', 'admin' => false));?></li>
-							<li><?php echo $this->Html->link(__('Déconnexion'), array('controller' => 'users', 'action' => 'logout', 'admin' => false));?></li>
-						</ul>
-					</li>
-					<?php endif;?>
 					<?php /*if(Auth::hasRole(ROLE_ADMIN)):?>
 					<li class="divider-vertical"></li>
 					<li class="dropdown">
@@ -57,9 +47,22 @@
 					</li>	
 					<?php endif;*/?>
 				</ul>
-				<?php echo $this->Form->create('Link', array('url' => array('controller' => 'links', 'action' => 'search'), 'class' => 'navbar-search pull-right', 'id' => 'LinkSearchFormLayout'));?>
+				<?php echo $this->Form->create('Link', array('url' => array('controller' => 'links', 'action' => 'search'), 'class' => 'navbar-search', 'id' => 'LinkSearchFormLayout'));?>
 				<?php echo $this->Form->text('Link.query', array('class' => 'search-query', 'id' => 'LinkQueryLayout', 'placeholder' => __('Recherche'), 'data-provide' => 'typeahead'));?>
 				<?php echo $this->Form->end();?>
+				<ul class="nav pull-right">
+					<?php if(Auth::id()):?>
+					<li class="dropdown">
+						<?php echo $this->Html->link('<i class="icon-user"></i> <b class="caret"></b>', '#', array('class' => 'dropdown-toggle', 'data-toggle' => 'dropdown', 'escape' => false));?>
+						<ul class="dropdown-menu">
+							<li><?php echo $this->Html->link(__('Modifier mon compte'), array('controller' => 'users', 'action' => 'edit'));?></li>
+							<li><?php echo $this->Html->link(__('Déconnexion'), array('controller' => 'users', 'action' => 'logout'));?></li>
+						</ul>
+					</li>
+					<li class="divider-vertical"></li>
+					<?php endif;?>
+					<li><?php echo $this->element('lang-selector');?></li>
+				</ul>
 			</div><!--/.nav-collapse -->
 		</div>
 	</div>
