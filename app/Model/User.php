@@ -12,24 +12,28 @@ class User extends AppModel {
 				'unique' => array('rule' => array('isUnique', 'email'),	'on' => 'create', 'message' => __('Cet e-mail est déjà inscrit'))
 			),
 			'password' => array(
-				'length' => array('rule' => array('minLength', '6'), 'on' => 'create', 'message' => __('Le mot de passe doit être de 6 caractères minimum')),
-				'required' => array('rule' => 'notEmpty', 'required' => true, 'message' => __('Veuillez entrer un mot de passe'))
+				'length' => array('rule' => array('minLength', '6'), 'message' => __('Le mot de passe doit être de 6 caractères minimum')),
+				'required' => array('rule' => 'notEmpty', 'required' => 'create', 'message' => __('Veuillez entrer un mot de passe'))
 			),
 			'password_verify' => array(
-				'same' => array('rule' => array('compareFields', 'password', 'password_verify'), 'required' => true, 'on' => 'create', 'message' => __('Les mots de passe ne correspondent pas')),
+				'same' => array('rule' => array('compareFields', 'password', 'password_verify'), 'required' => 'create', 'message' => __('Les mots de passe ne correspondent pas')),
 			),	
 			'firstname' => array(
-				'required' => array('rule' => 'notEmpty', 'required' => true, 'on' => 'create', 'message' => __('Champ requis'))
+				'required' => array('rule' => 'notEmpty', 'required' => true, 'message' => __('Champ requis'))
 			),
 			'lastname' => array(
-				'required' => array('rule' => 'notEmpty', 'required' => true, 'on' => 'create', 'message' => __('Champ requis'))
+				'required' => array('rule' => 'notEmpty', 'required' => true, 'message' => __('Champ requis'))
 			),
 			'captcha' => $this->validateCaptcha
-			);
+		);
 	}
 	
 	public function beforeSave($options = array()) {
 		parent::beforeSave($options);
+		
+		if (isset($this->data['User']['email']) && !empty($this->data['User']['email'])) {
+			$this->data['User']['email'] = strtolower($this->data['User']['email']);
+		}
 		
 		if (isset($this->data['User']['password']) && !empty($this->data['User']['password'])) {
 			$this->data['User']['password'] = AuthComponent::password($this->data['User']['password']);	
@@ -48,7 +52,7 @@ class User extends AppModel {
 		$num_cons = count($cons);
 	
 		$password = '';
-		for($i = 0; $i < $length; $i++){
+		for ($i = 0; $i < $length; $i++) {
 			$password .= $cons[rand(0, $num_cons - 1)] . $vowels[rand(0, $num_vowels - 1)];
 		}
 	

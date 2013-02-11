@@ -18,6 +18,7 @@
 	<dt>E-mail:</dt>
 	<dd>
 		<?php 
+		//debug(CakeEmail::config());
 		$email = $this->request->is('ajax') ? Configure::read('Email.to') : $this->MyHtml->encodeEmail(Configure::read('Email.to'));
 		?>
 		<?php echo $email;?> ou via le <?php echo $this->Html->link('formulaire de contact', array('controller' => 'contact'));?>

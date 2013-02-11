@@ -9,13 +9,13 @@
 	}
 	?>
 	<?php echo $this->Form->input('email', $emailInputOptions);?>
-	<?php echo $this->Form->input('password', array('label' => __('Mot de passe'), 'size' => 15, 'type' => 'password'));?>
-	<?php echo $this->Form->input('password_verify', array('label' => __('Mot de passe (vérification)'), 'size' => 15, 'type' => 'password'));?>
+	<?php echo $this->Form->input('password', array('label' => __('Mot de passe'), 'type' => 'password'));?>
+	<?php echo $this->Form->input('password_verify', array('label' => __('Mot de passe (vérification)'), 'type' => 'password'));?>
 </fieldset>
 <fieldset>
 	<legend><?php echo __('Informations personnelles');?></legend>
-	<?php echo $this->Form->input('firstname', array('label' => __('Prénom'), 'size' => 20));?>
-	<?php echo $this->Form->input('lastname', array('label' => __('Nom'), 'size' => 20));?>
+	<?php echo $this->Form->input('firstname', array('label' => __('Prénom')));?>
+	<?php echo $this->Form->input('lastname', array('label' => __('Nom')));?>
 </fieldset>
 <?php echo $this->MyHtml->captcha('captcha', $loginInfo = false);?>
 <?php echo $this->Form->end(($this->request->params['action'] == 'register') ? __('Créer un compte') : __('Modifier'));?>

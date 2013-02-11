@@ -2,7 +2,6 @@
 <h2><?php echo __('Mon compte membre');?></h2>
 <ul>
 	<li><?php echo $this->Html->link(__('Modifier mon compte'), array('action' => 'edit'));?></li>
-	<li><?php echo $this->Html->link(__('Modifier le mot de passe'), array('action' => 'change_password'));?></li>
 </ul>
 
 <?php 
